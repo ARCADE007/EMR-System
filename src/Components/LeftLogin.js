@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import "./LeftLogin.css";
 import { Row, Col, Form, Button } from "react-bootstrap";
-const LeftLogin = () => {
+function LeftLogin() {
     return (
-        <div>
+        <div className="Login__Box">
             <Form style={{ width: "80%", marginLeft: "10%", marginTop: "10%" }}>
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={3}>
@@ -23,8 +24,8 @@ const LeftLogin = () => {
                 </Form.Group>
                 <fieldset>
                     <Form.Group as={Row}>
-                        <Form.Label as="legend" column sm={2}>
-                            Choose Role
+                        <Form.Label as="legend" column sm={3}>
+                            Role
       </Form.Label>
                         <Col sm={10}>
                             <Form.Check
