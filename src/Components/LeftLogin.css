@@ -1,10 +1,16 @@
+.Sign__btn{
+    color:grey;
+    background-color: aliceblue;
+    border-color: black;
+}
 .Login__Box{
-    
+    color: aliceblue;
+    background-color:rgb(8, 55, 141);
     margin-top: 40px;
     height:fit-content;
     display:flex;
     flex-direction: column;
     border-radius: 5px;
-    border: 1px solid rgb(52, 113, 226);
+    border: 2px solid black;
 
 }

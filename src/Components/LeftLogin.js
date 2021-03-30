@@ -4,12 +4,12 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 function LeftLogin() {
     return (
         <div className="Login__Box">
-            <Form style={{ width: "80%", marginLeft: "10%", marginTop: "10%" }}>
+            <Form style={{ width: "100%", marginLeft: "10%", marginTop: "10%" }}>
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={3}>
                         Login ID
     </Form.Label>
-                    <Col sm={10}>
+                    <Col xs={10} sm={10}>
                         <Form.Control type="email" placeholder="Login" />
                     </Col>
                 </Form.Group>
@@ -18,7 +18,7 @@ function LeftLogin() {
                     <Form.Label column sm={3}>
                         Password
     </Form.Label>
-                    <Col sm={10}>
+                    <Col xs={10} sm={10}>
                         <Form.Control type="password" placeholder="Password" />
                     </Col>
                 </Form.Group>
@@ -51,7 +51,7 @@ function LeftLogin() {
                 </fieldset>
                 <Form.Group as={Row}>
                     <Col sm={{ span: 10, offset: 2 }}>
-                        <Button type="submit">Sign in</Button>
+                        <Button className="Sign__btn" type="submit">Sign in</Button>
                     </Col>
                 </Form.Group>
             </Form>

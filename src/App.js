@@ -1,22 +1,19 @@
 import React from 'react';
-// Bootstrap is imported from node modules library
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Row, Col, Container } from "react-bootstrap";
-import RightLogin from "./Components/RightLogin";
+import { Row, Col, Container, Jumbotron } from "react-bootstrap";
 import LeftLogin from "./Components/LeftLogin";
 function App() {
     return (
-        <div style={{ marginTop: "5%", position: "absolute" }}>
-            <Container>
-                <Row xs={1} md={2} >
-                    <Col><LeftLogin /></Col>
+        <Jumbotron style={{ backgroundImage: "url(image/LoginPage.jpg)", backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: "cover", position: 'relative', height: "100vh" }}>
+            <div className="Login__page" style={{ marginTop: "5%", alignContent: "center" }}>
+                <Container style={{ width: "100rem", alignContent: "left" }}>
+                    <Row xs={1} md={2} >
+                        <Col ><LeftLogin /></Col>
+                    </Row>
+                </Container>
 
-                    <Col><RightLogin /></Col>
-
-                </Row>
-            </Container>
-
-        </div>
+            </div>
+        </Jumbotron>
     );
 }
 export default App;
