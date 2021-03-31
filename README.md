@@ -2,15 +2,15 @@ CS1106 Project
 
 **Table of Content**
 
-- [CS1106 Project](#cs1106-project)
-  - [Description](#description)
-  - [ER Model](#er-model)
-      - [Proposed ER Models](#proposed-er-models)
-      - [Final ER Model](#final-er-model)
-  - [Relational Schema](#relational-schema)
-    - [Final Schema](#final-schema) 
-  - [Design](#design)
-  - [Tech Stack](#tech-stack)
+- [Description](#description)
+- [ER Model](#er-model)
+  - [Proposed ER Models](#proposed-er-models)
+  - [Final ER Model](#final-er-model)
+- [Relational Schema](#relational-schema)
+  - [Final Schema](#final-schema)
+- [Design](#design)
+  - [Design](#design-1)
+- [Tech Stack](#tech-stack)
   
 
 ## Description
@@ -30,11 +30,11 @@ The Platform will have:
 ## ER Model
 
 ### Proposed ER Models
-![1](./image/FrontendDesign.png)
-![2](./image/FrontendDesign.png)
+![1](public/image/EMR1.jpeg)
+![2](public/image/Emr2.jpeg)
 
 ### Final ER Model
-![Final](./image/FinalEmrSystem.png)
+![Final](public/image/FinalEmrSystem.png)
 
 
 ## Relational Schema
@@ -44,15 +44,15 @@ The Platform will have:
 ## Design
 
 ### Design
-![1](./image/FrontendDesign.png)
+![1](public/image/FrontendDesign.png)
 
 
 ## Tech Stack
 
-| Technology        | Used for             |
-| ----------------- | -------------------- |
-| ReactJS           | Frontend             |
-| NodeJS, ExpressJS | Backend              |
-| MySQL             | Database             |
-| AWS               | Hosting              |
-| ReactBootstrap    | Frontend             |
+| Technology        | Used for |
+| ----------------- | -------- |
+| ReactJS           | Frontend |
+| NodeJS, ExpressJS | Backend  |
+| MySQL             | Database |
+| AWS               | Hosting  |
+| ReactBootstrap    | Frontend |
