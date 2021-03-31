@@ -5,7 +5,13 @@ CS1106 Project
 - [CS1106 Project](#cs1106-project)
   - [Description](#description)
   - [ER Model](#er-model)
+      - [Proposed ER Models](#proposed-er-models)
+      - [Final ER Model](#final-er-model)
+  - [Relational Schema](#relational-schema)
+    - [Final Schema](#final-schema) 
+  - [Design](#design)
   - [Tech Stack](#tech-stack)
+  
 
 ## Description
 
@@ -15,13 +21,31 @@ records at a single place and can also be accessed by Dr and staff.
 The Platform will have:
 
 - Login
-- Pill Tracker on daily basis
-- Read and Write (for updates)
-- Database Connectivity
-- Forgot Password Functionality
-- Searching Functionality
+- Pill Tracker on daily basis.
+- Medicine Update Funcationality.
+- Database Connectivity.
+- Forgot Password Functionality.
+- Searching Functionality.
 
 ## ER Model
+
+### Proposed ER Models
+![1](./image/FrontendDesign.png)
+![2](./image/FrontendDesign.png)
+
+### Final ER Model
+![Final](./image/FinalEmrSystem.png)
+
+
+## Relational Schema
+
+### Final Schema
+
+## Design
+
+### Design
+![1](./image/FrontendDesign.png)
+
 
 ## Tech Stack
 
@@ -31,3 +55,4 @@ The Platform will have:
 | NodeJS, ExpressJS | Backend              |
 | MySQL             | Database             |
 | AWS               | Hosting              |
+| ReactBootstrap    | Frontend             |
