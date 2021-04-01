@@ -15,12 +15,13 @@ CS1106 Project
 
 ## Description
 
-The Basic idea for this project is to create an online platform where one can see and access all of his/her medical
-records at a single place and can also be accessed by Dr and staff.
+In this era when most commercial transactions are automated for reasons of efficiency and accuracy, it is somewhat ironic that most recording of medical events is still done on paper. Despite a wealth of evidence that the electronic medical record(EMR) can save time and cost as well as lead to improved clinical outcomes and data security, most patient-related information is still recorded manually. 
+
+So the Basic idea for this project is to create an online platform where one can see and access all of his/her medical records at a single place and can also be accessed by Doctor and Medical Staff.
 
 The Platform will have:
 
-- Login
+- Login Funcationality. 
 - Pill Tracker on daily basis.
 - Medicine Update Funcationality.
 - Database Connectivity.
@@ -40,6 +41,7 @@ The Platform will have:
 ## Relational Schema
 
 ### Final Schema
+![1](public/image/Relational_Schema.png)
 
 ## Design
 
