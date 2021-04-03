@@ -103,15 +103,7 @@ class Login extends React.Component {
                                                 <small>Forgot password?</small>
                                             </a>
                                         </Col>
-                                        <Col className="text-right" xs="6">
-                                            <a
-                                                className="text-light"
-                                                href="#pablo"
-                                                onClick={e => e.preventDefault()}
-                                            >
-                                                <small>Create new account</small>
-                                            </a>
-                                        </Col>
+
                                     </Row>
                                 </Col>
                             </Row>
