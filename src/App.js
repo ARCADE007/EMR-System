@@ -5,16 +5,35 @@ import Login from "./Components/Login";
 import "./assets/vendor/nucleo/css/nucleo.css";
 import "./assets/vendor/font-awesome/css/font-awesome.min.css";
 import "./assets/scss/argon-design-system-react.scss?v1.1.0";
-
+import AskPatient from './Components/AskPatient';
+import ForgotPass from './Components/ForgotPass';
+import AddDrDisease from './Components/AddDrDisease';
+import AddReport from './Components/AddReport';
 function App() {
     return (
         <Router>
             <div className="app" >
                 <Switch>
+                    <Route path="/AddDr">
+                        <AddDrDisease />
+                    </Route>
+
+                    <Route path="/AddReport">
+                        <AddReport />
+                    </Route>
+
+                    <Route path="/ForgotPass">
+                        <ForgotPass />
+                    </Route>
+
+                    <Route path="/AskPatientID">
+                        <AskPatient />
+                    </Route>
 
                     <Route path="/">
                         <Login />
                     </Route>
+
 
                 </Switch>
             </div>

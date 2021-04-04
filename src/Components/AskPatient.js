@@ -14,10 +14,9 @@ import {
     Row,
     Col
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import LoginNavbar from "./LoginNavbar"
 import LoginFooter from "./LoginFooter";
-class Login extends React.Component {
+class AskPatient extends React.Component {
     componentDidMount() {
         document.documentElement.scrollTop = 0;
         document.scrollingElement.scrollTop = 0;
@@ -52,59 +51,22 @@ class Login extends React.Component {
                                                                 <i className="ni ni-email-83" />
                                                             </InputGroupText>
                                                         </InputGroupAddon>
-                                                        <Input placeholder="Email" type="email" />
+                                                        <Input placeholder="Enter Patient ID" type="Text" />
                                                     </InputGroup>
                                                 </FormGroup>
-                                                <FormGroup>
-                                                    <InputGroup className="input-group-alternative">
-                                                        <InputGroupAddon addonType="prepend">
-                                                            <InputGroupText>
-                                                                <i className="ni ni-lock-circle-open" />
-                                                            </InputGroupText>
-                                                        </InputGroupAddon>
-                                                        <Input
-                                                            placeholder="Password"
-                                                            type="password"
-                                                            autoComplete="off"
-                                                        />
-                                                    </InputGroup>
-                                                </FormGroup>
-                                                <div className="custom-control custom-control-alternative custom-checkbox">
-                                                    <input
-                                                        className="custom-control-input"
-                                                        id=" customCheckLogin"
-                                                        type="checkbox"
-                                                    />
-                                                    <label
-                                                        className="custom-control-label"
-                                                        htmlFor=" customCheckLogin"
-                                                    >
-                                                        <span>Remember me</span>
-                                                    </label>
-                                                </div>
+
                                                 <div className="text-center">
                                                     <Button
                                                         className="my-4"
                                                         color="primary"
                                                         type="button"
                                                     >
-                                                        Sign in
+                                                        Submit
                           </Button>
                                                 </div>
                                             </Form>
                                         </CardBody>
                                     </Card>
-                                    <Row className="mt-3">
-                                        <Col xs="6">
-                                            <Link to="/ForgotPass"
-                                                className="text-light"
-
-                                            >
-                                                <small>Forgot password?</small>
-                                            </Link>
-                                        </Col>
-
-                                    </Row>
                                 </Col>
                             </Row>
                         </Container>
@@ -119,4 +81,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default AskPatient;
