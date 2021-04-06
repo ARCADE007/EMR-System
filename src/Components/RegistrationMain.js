@@ -55,7 +55,7 @@ class RegistrationMain extends React.Component {
                           </Button>
                                                 </div>
                                                 <div className="text-center">
-                                                    <Link to="/RegistrationStaff1">
+                                                    <Link >
                                                         <Button
                                                             className="my-4"
                                                             color="primary"
