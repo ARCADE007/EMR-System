@@ -9,11 +9,27 @@ import AskPatient from './Components/AskPatient';
 import ForgotPass from './Components/ForgotPass';
 import AddDrDisease from './Components/AddDrDisease';
 import AddReport from './Components/AddReport';
+import RegistrationMain from './Components/RegistrationMain';
+import RegistrationStaff1 from './Components/RegistrationStaff1';
+import RegistrationStaff2 from './Components/RegistrationStaff2';
+import RegistrationStaff3 from './Components/RegistrationStaff3';
 function App() {
     return (
         <Router>
             <div className="app" >
                 <Switch>
+                    <Route path="/RegistrationStaff3">
+                        <RegistrationStaff3 />
+                    </Route>
+                    <Route path="/RegistrationStaff2">
+                        <RegistrationStaff2 />
+                    </Route>
+                    <Route path="/RegistrationStaff1">
+                        <RegistrationStaff1 />
+                    </Route>
+                    <Route path="/Registration">
+                        <RegistrationMain />
+                    </Route>
                     <Route path="/AddDr">
                         <AddDrDisease />
                     </Route>
