@@ -10,12 +10,20 @@ import ForgotPass from './Components/ForgotPass';
 import AddDrDisease from './Components/AddDrDisease';
 import AddReport from './Components/AddReport';
 import RegistrationMain from './Components/RegistrationMain';
+import DrDashboard from './Components/DrDashboard';
+import PtDashboard from './Components/PtDashboard';
 
 function App() {
     return (
         <Router>
             <div className="app" >
                 <Switch>
+                <Route path="/PtDashboard">
+                        <PtDashboard/>
+                    </Route>
+                <Route path="/DrDashboard">
+                        <DrDashboard />
+                    </Route>
 
                     <Route path="/Registration">
                         <RegistrationMain />
