@@ -4,31 +4,59 @@ export default function CustomMaterialTable(props) {
 
     const [columns, setColumns] = useState([
         {
+
             title: 'Name', field: 'name',
+
             editComponent: props => (
                 <input
+
                     type="text"
                     value={props.value}
                     onChange={e => props.onChange(e.target.value)}
                 />
-            )
+            ),
+
+            headerStyle: {
+                backgroundColor: 'rgb(82,95,127,0.6)',
+            }
+
         },
-        { title: 'Surname', field: 'surname' },
-        { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
+
+        {
+            title: 'Surname', field: 'surname', headerStyle: {
+                backgroundColor: 'rgb(82,95,127,0.6)',
+            }
+        },
+        {
+            title: 'Birth Year', field: 'birthYear', type: 'numeric', headerStyle: {
+                backgroundColor: 'rgb(82,95,127,0.6)',
+            }
+        },
+
         {
             title: 'Birth Place',
             field: 'birthCity',
             lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+            headerStyle: {
+                backgroundColor: 'rgb(82,95,127,0.6)',
+            }
         },
+
+
+
     ]);
 
     const [data, setData] = useState([
         { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
         { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+
     ]);
+
+
 
     return (
         <MaterialTable
+            style={{ backgroundColor: "rgb(82,95,127,0.6)" }}
             title="Custom Edit Component Preview"
             columns={columns}
             data={data}
@@ -63,6 +91,7 @@ export default function CustomMaterialTable(props) {
                             resolve();
                         }, 1000)
                     }),
+
             }}
         />
     )
