@@ -42,6 +42,7 @@ class DrDashboard extends React.Component {
               <span />
               <span />
             </div>
+            <div className="Patient__Record"><h1>Prescription</h1></div>
             <Container>
               <div>
                 <Row>

@@ -1,7 +1,12 @@
+h1,h2,h3,h5,span{
+    color:white;
+}
 .Card__Padding{
     padding: 5px;
 }
 .Patient__Record{
     text-align: center;
-    color: aliceblue !important;
+}
+@media (max-width: 768px){
+    .Card__Padding{padding:20px}
 }
