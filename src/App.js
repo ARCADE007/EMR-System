@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Login from "./Components/Login";
 import "./assets/vendor/nucleo/css/nucleo.css";
 import "./assets/vendor/font-awesome/css/font-awesome.min.css";
@@ -12,16 +13,20 @@ import AddReport from './Components/AddReport';
 import RegistrationMain from './Components/RegistrationMain';
 import DrDashboard from './Components/DrDashboard';
 import PtDashboard from './Components/PtDashboard';
+import DrRegistrationTable from './Components/DrRegistrationTable';
 
 function App() {
     return (
         <Router>
             <div className="app" >
                 <Switch>
-                <Route path="/PtDashboard">
-                        <PtDashboard/>
+                    <Route path="/DrRegistrationTable">
+                        <DrRegistrationTable />
                     </Route>
-                <Route path="/DrDashboard">
+                    <Route path="/PtDashboard">
+                        <PtDashboard />
+                    </Route>
+                    <Route path="/DrDashboard">
                         <DrDashboard />
                     </Route>
 
