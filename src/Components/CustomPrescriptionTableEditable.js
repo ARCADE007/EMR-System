@@ -17,30 +17,22 @@ export default function CustomPrescriptionTableEditable(props) {
 
             ),
 
-            headerStyle: {
-                backgroundColor: 'rgb(82,95,127,0.6)',
-            }
+            
 
         },
 
         {
-            title: 'Surname', field: 'surname', headerStyle: {
-                backgroundColor: 'rgb(82,95,127,0.6)',
-            }
+            title: 'Surname', field: 'surname'
         },
         {
-            title: 'Birth Year', field: 'birthYear', type: 'numeric', headerStyle: {
-                backgroundColor: 'rgb(82,95,127,0.6)',
-            }
+            title: 'Birth Year', field: 'birthYear', type: 'numeric' 
         },
 
         {
             title: 'Birth Place',
             field: 'birthCity',
             lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-            headerStyle: {
-                backgroundColor: 'rgb(82,95,127,0.6)',
-            }
+            
         },
 
 
@@ -59,10 +51,13 @@ export default function CustomPrescriptionTableEditable(props) {
 
     return (
         <MaterialTable
-            style={{ backgroundColor: "rgb(82,95,127,0.6)" }}
+            style={{ backgroundColor: "rgb(82,95,127,0.6)" , color: "white"}}
             title="Prescription"
             columns={columns}
             data={data}
+            options={{
+                headerStyle: { backgroundColor: "rgb(82,95,127,0.6)", color: "white" },
+              }}
             editable={{
                 onRowAdd: newData =>
                     new Promise((resolve, reject) => {
