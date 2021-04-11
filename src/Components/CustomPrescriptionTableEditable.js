@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MaterialTable from "material-table";
-export default function CustomMaterialTable(props) {
+export default function CustomPrescriptionTableEditable(props) {
 
     const [columns, setColumns] = useState([
         {
@@ -60,7 +60,7 @@ export default function CustomMaterialTable(props) {
     return (
         <MaterialTable
             style={{ backgroundColor: "rgb(82,95,127,0.6)" }}
-            title="Custom Edit Component Preview"
+            title="Prescription"
             columns={columns}
             data={data}
             editable={{

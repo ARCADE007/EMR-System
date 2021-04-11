@@ -14,12 +14,16 @@ import RegistrationMain from './Components/RegistrationMain';
 import DrDashboard from './Components/DrDashboard';
 import PtDashboard from './Components/PtDashboard';
 import DrRegistrationTable from './Components/DrRegistrationTable';
+import PrescriptionTableEditable from './Components/PrescriptionTableEditable';
 
 function App() {
     return (
         <Router>
             <div className="app" >
                 <Switch>
+                    <Route path="/PrescriptionTableEditable">
+                        <PrescriptionTableEditable />
+                    </Route>
                     <Route path="/DrRegistrationTable">
                         <DrRegistrationTable />
                     </Route>
