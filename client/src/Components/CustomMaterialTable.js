@@ -45,12 +45,14 @@ export default function CustomMaterialTable(props) {
   return (
     <MaterialTable
       style={{ backgroundColor: "rgb(82,95,127,0.6)",color: "white" }}
+     
       title="Custom Edit Component Preview"
       columns={columns}
       data={data}
       options={{
-        headerStyle: { backgroundColor: "rgb(82,95,127,0.6)", color: "white" },
+        headerStyle: { backgroundColor: "rgb(105,105,105,0.5)", color: "white" },
       }}
+      
       editable={{
         onRowAdd: (newData) =>
           new Promise((resolve, reject) => {

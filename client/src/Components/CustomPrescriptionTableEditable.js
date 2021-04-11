@@ -56,7 +56,7 @@ export default function CustomPrescriptionTableEditable(props) {
             columns={columns}
             data={data}
             options={{
-                headerStyle: { backgroundColor: "rgb(82,95,127,0.6)", color: "white" },
+                headerStyle: { backgroundColor: "rgb(82,95,127,0.5)", color: "white" },
               }}
             editable={{
                 onRowAdd: newData =>
