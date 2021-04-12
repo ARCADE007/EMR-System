@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import "./CDDDD.css";
 
 import CustomMaterialTable from "./CustomMaterialTable";
 import {
@@ -22,8 +23,8 @@ function DrRegistrationTable() {
         <>
             <LoginNavbar />
             <main ref={refcontainer}>
-                <section className="section section-shaped section-lg">
-                    <div className="shape shape-style-1 bg-gradient-default">
+                <section className=" Naya__mauka section section-shaped section-lg">
+                    <div className="  shape shape-style-1 bg-gradient-default">
                         <span />
                         <span />
                         <span />
@@ -38,7 +39,6 @@ function DrRegistrationTable() {
                     </div>
                     <Container className="pt-lg-7">
                         <CustomMaterialTable />
-
 
                     </Container>
                 </section>

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import MaterialTable from "material-table";
-import { createMuiTheme } from "@material-ui/core";
 export default function CustomPrescriptionTableEditable(props) {
 
     const [columns, setColumns] = useState([
         {
 
             title: 'MedicineName', field: 'name',
+            
 
             editComponent: props => (
                 <input
-
                     type="text"
                     value={props.value}
                     onChange={e => props.onChange(e.target.value)}
@@ -18,13 +17,11 @@ export default function CustomPrescriptionTableEditable(props) {
 
             ),
 
-            
-
         },
 
         
         {
-            title: 'Date (from)', field: 'datefrom', type: 'date' ,
+            title: 'Date (from)', field: 'datefrom', type: 'date',
             dateSetting: { locale: "ko-KR"}
         },
         {
@@ -51,8 +48,6 @@ export default function CustomPrescriptionTableEditable(props) {
             
         },
 
-
-
     ]);
 
     const [data, setData] = useState([
@@ -62,41 +57,8 @@ export default function CustomPrescriptionTableEditable(props) {
         { name: 'mmr12', datefrom: "16.04.2019", dateto: "15.04.2018", morning:1 ,evening:1, night:1 },
 
     ]);
-    const materialTheme = createMuiTheme({
-        overrides: {
-            MuiPickersToolbar: {
-                toolbar: {
-                    backgroundColor: 'red',
-                },
-            },
-            MuiPickersDay: {
-                day: {
-                    color: 'black',
+
     
-                },
-                daySelected: {
-                    backgroundColor: '#33abb6',
-                },
-                dayDisabled: {
-                    color: '#ccc',
-                },
-                current: {
-                    color: 'red',
-                },
-            },
-            MuiPickersModal: {
-                dialogAction: {
-                    color: '#33abb6', 
-                    backgroundColor: 'YOUR HEX HERE',
-                },
-            },
-        },
-    });
-
-
-
-
-
     return (
         <MaterialTable
             style={{ backgroundColor: "rgb(82,95,127,0.6)" , color: "white"}}
@@ -104,14 +66,25 @@ export default function CustomPrescriptionTableEditable(props) {
             columns={columns}
             data={data}
             
+            actions={[
+                
+                {
+                  
+                  icon: "edit",
+                  iconProps: { style: { fontSize: "14px", color: "yellow" } },
+                  
+                }
+              ]}        
             options={{
-                
-                
                 headerStyle: { backgroundColor: "rgb(82,95,127,0.5)", color: "white" },
               }}
+            
+              
             editable={{
+                
                 onRowAdd: newData =>
                     new Promise((resolve, reject) => {
+                        
                         setTimeout(() => {
                             setData([...data, newData]);
 
@@ -142,6 +115,7 @@ export default function CustomPrescriptionTableEditable(props) {
                     }),
 
             }}
+        
         />
     )
 }
