@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import "./CDDDD.css";
 import {
     Container,
 } from "reactstrap";
@@ -22,7 +23,7 @@ function PatientRegistrationTable() {
         <>
             <LoginNavbar />
             <main ref={refcontainer}>
-                <section className="section section-shaped section-lg">
+                <section className=" Naya__mauka section section-shaped section-lg">
                     <div className="shape shape-style-1 bg-gradient-default">
                         <span />
                         <span />

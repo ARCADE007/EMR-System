@@ -1,12 +1,18 @@
-h1,h2,h3,h5,span{
-    color:white;
+h1,
+h2,
+h3,
+h5,
+span {
+  color: yellow;
 }
-.Card__Padding{
-    padding: 5px;
+.Card__Padding {
+  padding: 5px;
 }
-.Patient__Record{
-    text-align: center;
+.Patient__Record {
+  text-align: center;
 }
-@media (max-width: 768px){
-    .Card__Padding{padding:20px}
+@media (max-width: 768px) {
+  .Card__Padding {
+    padding: 20px;
+  }
 }
