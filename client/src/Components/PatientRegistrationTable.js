@@ -1,21 +1,21 @@
 import React, { useEffect, useRef } from 'react';
-
-import CustomMaterialTable from "./CustomMaterialTable";
 import {
-   
-    Container
+    Container,
 } from "reactstrap";
-
 import LoginNavbar from "./LoginNavbar"
 import LoginFooter from "./LoginFooter";
-function DrRegistrationTable() {
+import PatientCustomMaterialTable from './PatientCustomMaterialTable';
+function PatientRegistrationTable() {
 
     const refcontainer = useRef(null)
     useEffect(() => {
         document.documentElement.scrollTop = 0;
         document.scrollingElement.scrollTop = 0;
 
+
+
     });
+
 
 
     return (
@@ -37,9 +37,7 @@ function DrRegistrationTable() {
 
                     </div>
                     <Container className="pt-lg-7">
-                        <CustomMaterialTable />
-
-
+                       <PatientCustomMaterialTable/>
                     </Container>
                 </section>
             </main>
@@ -52,4 +50,4 @@ function DrRegistrationTable() {
 
 }
 
-export default DrRegistrationTable;
+export default PatientRegistrationTable;

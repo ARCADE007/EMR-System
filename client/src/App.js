@@ -15,6 +15,7 @@ import DrDashboard from './Components/DrDashboard';
 import PtDashboard from './Components/PtDashboard';
 import DrRegistrationTable from './Components/DrRegistrationTable';
 import PrescriptionTableEditable from './Components/PrescriptionTableEditable';
+import PatientRegistrationTable from './Components/PatientRegistrationTable';
 
 function App() {
     return (
@@ -23,6 +24,9 @@ function App() {
                 <Switch>
                     <Route path="/PrescriptionTableEditable">
                         <PrescriptionTableEditable />
+                    </Route>
+                    <Route path="/PatientRegistrationTable">
+                        <PatientRegistrationTable />
                     </Route>
                     <Route path="/DrRegistrationTable">
                         <DrRegistrationTable />

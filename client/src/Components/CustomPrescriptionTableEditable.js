@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import MaterialTable from "material-table";
+import { createMuiTheme } from "@material-ui/core";
 export default function CustomPrescriptionTableEditable(props) {
 
     const [columns, setColumns] = useState([
         {
 
-            title: 'Name', field: 'name',
+            title: 'MedicineName', field: 'name',
 
             editComponent: props => (
                 <input
@@ -21,17 +22,32 @@ export default function CustomPrescriptionTableEditable(props) {
 
         },
 
+        
         {
-            title: 'Surname', field: 'surname'
+            title: 'Date (from)', field: 'datefrom', type: 'date' ,
+            dateSetting: { locale: "ko-KR"}
         },
         {
-            title: 'Birth Year', field: 'birthYear', type: 'numeric' 
+            title: 'Date (to)', field: 'dateto', type: 'date' ,
+            dateSetting: { locale: "ko-KR"}
         },
 
         {
-            title: 'Birth Place',
-            field: 'birthCity',
-            lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+            title: 'Morning',
+            field: 'morning',
+            lookup: { 1: 'yes', 2: 'no' },
+            
+        },
+        {
+            title: 'Evening',
+            field: 'evening',
+            lookup: { 1: 'yes', 2: 'no' },
+            
+        },
+        {
+            title: 'Night',
+            field: 'night',
+            lookup: { 1: 'yes', 2: 'no' },
             
         },
 
@@ -40,10 +56,42 @@ export default function CustomPrescriptionTableEditable(props) {
     ]);
 
     const [data, setData] = useState([
-        { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-        { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+        { name: 'mmr12', datefrom: "15.04.2018", dateto: "15.04.2018", morning:1 ,evening:1, night:1 },
+        { name: 'mmr12', datefrom: "15.04.2018", dateto: "15.04.2018", morning:1 ,evening:1, night:1 },
+        { name: 'mmr12', datefrom: "15.04.2018", dateto: "15.04.2018", morning:1 ,evening:1, night:1 },
+        { name: 'mmr12', datefrom: "16.04.2019", dateto: "15.04.2018", morning:1 ,evening:1, night:1 },
 
     ]);
+    const materialTheme = createMuiTheme({
+        overrides: {
+            MuiPickersToolbar: {
+                toolbar: {
+                    backgroundColor: 'red',
+                },
+            },
+            MuiPickersDay: {
+                day: {
+                    color: 'black',
+    
+                },
+                daySelected: {
+                    backgroundColor: '#33abb6',
+                },
+                dayDisabled: {
+                    color: '#ccc',
+                },
+                current: {
+                    color: 'red',
+                },
+            },
+            MuiPickersModal: {
+                dialogAction: {
+                    color: '#33abb6', 
+                    backgroundColor: 'YOUR HEX HERE',
+                },
+            },
+        },
+    });
 
 
 
@@ -52,10 +100,13 @@ export default function CustomPrescriptionTableEditable(props) {
     return (
         <MaterialTable
             style={{ backgroundColor: "rgb(82,95,127,0.6)" , color: "white"}}
-            title="Prescription"
+            title="Prescription " 
             columns={columns}
             data={data}
+            
             options={{
+                
+                
                 headerStyle: { backgroundColor: "rgb(82,95,127,0.5)", color: "white" },
               }}
             editable={{
