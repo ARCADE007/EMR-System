@@ -84,11 +84,11 @@ class LoginNavbar extends React.Component {
 
                                 <NavLink
                                     className="nav-link-icon"
-                                    href="https://github.com/creativetimofficial/argon-design-system-react"
+                                    href="https://github.com/ARCADE007/EMR-System/tree/main/client#readme"
                                     target="_blank"
                                 >
                                     <i className="ni ni-ui-04 d-lg-none mr-1" />
-                                    <span className="nav-link-inner--text light " style={{color:"white"}}>
+                                    <span className="nav-link-inner--text light " style={{color:"rgb(255,250,250,0.8)"}}>
                                         About
                         </span>
                                 </NavLink>
@@ -98,44 +98,47 @@ class LoginNavbar extends React.Component {
 
                                     <NavItem>
                                         <NavLink
+                                            style={{color:"lightblue"}}
                                             className="nav-link-icon"
-                                            href="https://www.instagram.com/creativetimofficial"
+                                            href="https://www.instagram.com/vineet_ks/?igshid=18vwmivf4c60d"
                                             id="tooltip356693867"
                                             target="_blank"
                                         >
                                             <i className="fa fa-instagram" />
                                             <span className="nav-link-inner--text d-lg-none ml-2">
-                                                Instagram
+                                                Instagram 
                         </span>
                                         </NavLink>
                                         <UncontrolledTooltip delay={0} target="tooltip356693867">
-                                            Reach us on Instagram
+                                            Reach us on Instagram(Vineet)
                       </UncontrolledTooltip>
                                     </NavItem>
                                     <NavItem>
                                         <NavLink
+                                            style={{color:"pink"}}
                                             className="nav-link-icon"
-                                            href="https://twitter.com/creativetim"
-                                            id="tooltip184698705"
+                                            href="https://www.instagram.com/__oblivion___/"
+                                            id="tooltip356693863"
                                             target="_blank"
                                         >
-                                            <i className="fa fa-twitter-square" />
+                                            <i className="fa fa-instagram" />
                                             <span className="nav-link-inner--text d-lg-none ml-2">
-                                                Twitter
+                                                Instagram 
                         </span>
                                         </NavLink>
-                                        <UncontrolledTooltip delay={0} target="tooltip184698705">
-                                            Reach us on Twitter
+                                        <UncontrolledTooltip delay={0} target="tooltip356693863">
+                                            Reach us on Instagram(Priya)
                       </UncontrolledTooltip>
                                     </NavItem>
+                                    
                                     <NavItem>
                                         <NavLink
                                             className="nav-link-icon"
-                                            href="https://github.com/creativetimofficial/argon-design-system-react"
+                                            href="https://mailto:sharma24vineet@gmail.com"
                                             id="tooltip112445449"
                                             target="_blank"
                                         >
-                                            <i className="fa fa-github" />
+                                            <i className="fa fa-envelope" />
                                             <span className="nav-link-inner--text d-lg-none ml-2">
                                                 Mail
                         </span>

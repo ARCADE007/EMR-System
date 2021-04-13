@@ -16,12 +16,24 @@ import DrRegistrationTable from './Components/Staff/Registration/DoctorRegistrat
 import PrescriptionTableEditable from './Components/Staff/Prescription/PrescriptionTableEditable';
 import PatientRegistrationTable from './Components/Staff/Registration/PatientRegistration/PatientRegistrationTable';
 import DrDashboardStaff from './Components/Staff/StaffDashboard/DrDashboardStaff';
+import PrescriptionTable from "./Components/Patient/Prescription/PrescriptionTable";
+import DrDashboardPatient from './Components/Patient/PatientDashboard/DrDashboardPatient';
+import RecordDashboardPatient from './Components/Patient/PatientDashboard/RecordDashboardPatient';
 
 function App() {
     return (
         <Router>
             <div className="app" >
                 <Switch>
+                <Route path="/RecordDashboardPatient">
+                        <RecordDashboardPatient />
+                    </Route>
+                <Route path="/DrDashboardPatient">
+                        <DrDashboardPatient />
+                    </Route>
+                <Route path="/PrescriptionTable">
+                        <PrescriptionTable />
+                    </Route>
                     <Route path="/PrescriptionTableEditable">
                         <PrescriptionTableEditable />
                     </Route>
