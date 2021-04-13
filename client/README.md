@@ -11,6 +11,9 @@ CS1106 Project
 - [Design](#design)
   - [Design](#design-1)
 - [Tech Stack](#tech-stack)
+- [MySQL](#mysql)
+- [Database Creation](#database-creation)
+- [Table Creation](#table-creation)
   
 
 ## Description
@@ -58,3 +61,10 @@ The Platform will have:
 | MySQL             | Database |
 | AWS               | Hosting  |
 | ReactBootstrap    | Frontend |
+
+## MySQL
+
+## Database Creation
+
+## Table Creation
+
