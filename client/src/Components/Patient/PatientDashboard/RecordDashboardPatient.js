@@ -2,25 +2,16 @@ import React from "react";
 import {
   Button,
   Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col,
   CardText,
   CardTitle,
 } from "reactstrap";
-import { Link } from "react-router-dom";
-import LoginNavbar from "./LoginNavbar";
-import LoginFooter from "./LoginFooter";
-import "./DrDashboard.css";
-class DrDashboard extends React.Component {
+import LoginNavbar from "../../MainComponents/LoginNavbar";
+import LoginFooter from "../../MainComponents/LoginFooter";
+import "../../DrDashboard.css";
+class RecordDashboardPatient extends React.Component {
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -42,7 +33,7 @@ class DrDashboard extends React.Component {
               <span />
               <span />
             </div>
-            <div className="Patient__Record"><h1>Prescription</h1></div>
+            <div className="Patient__Record"><h1>Patient Records</h1></div>
             <Container>
               <div>
                 <Row>
@@ -153,4 +144,4 @@ class DrDashboard extends React.Component {
   }
 }
 
-export default DrDashboard;
+export default RecordDashboardPatient;

@@ -2,21 +2,15 @@ import React from 'react';
 import {
     Button,
     Card,
-    CardHeader,
     CardBody,
-    FormGroup,
     Form,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
     Container,
     Row,
     Col
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import LoginNavbar from "./LoginNavbar"
-import LoginFooter from "./LoginFooter";
+import LoginNavbar from "../../MainComponents/LoginNavbar"
+import LoginFooter from "../../MainComponents/LoginFooter";
 class RegistrationMain extends React.Component {
     componentDidMount() {
         document.documentElement.scrollTop = 0;

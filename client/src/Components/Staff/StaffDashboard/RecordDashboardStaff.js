@@ -2,25 +2,16 @@ import React from "react";
 import {
   Button,
   Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col,
   CardText,
   CardTitle,
 } from "reactstrap";
-import { Link } from "react-router-dom";
-import LoginNavbar from "./LoginNavbar";
-import LoginFooter from "./LoginFooter";
-import "./DrDashboard.css";
-class PtDashboard extends React.Component {
+import LoginNavbar from "../../MainComponents/LoginNavbar";
+import LoginFooter from "../../MainComponents/LoginFooter";
+import "../../DrDashboard.css";
+class RecordDashboardStaff extends React.Component {
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -153,4 +144,4 @@ class PtDashboard extends React.Component {
   }
 }
 
-export default PtDashboard;
+export default RecordDashboardStaff;

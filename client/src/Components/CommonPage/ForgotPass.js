@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Button,
     Card,
-    CardHeader,
     CardBody,
     FormGroup,
     Form,
@@ -14,8 +13,8 @@ import {
     Row,
     Col
 } from "reactstrap";
-import LoginNavbar from "./LoginNavbar"
-import LoginFooter from "./LoginFooter";
+import LoginNavbar from "../MainComponents/LoginNavbar"
+import LoginFooter from "../MainComponents/LoginFooter";
 class ForgotPass extends React.Component {
     componentDidMount() {
         document.documentElement.scrollTop = 0;

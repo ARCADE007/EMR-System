@@ -2,20 +2,20 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Login from "./Components/Login";
+import Login from "./Components/CommonPage/Login";
 import "./assets/vendor/nucleo/css/nucleo.css";
 import "./assets/vendor/font-awesome/css/font-awesome.min.css";
 import "./assets/scss/argon-design-system-react.scss?v1.1.0";
-import AskPatient from './Components/AskPatient';
-import ForgotPass from './Components/ForgotPass';
-import AddDrDisease from './Components/AddDrDisease';
-import AddReport from './Components/AddReport';
-import RegistrationMain from './Components/RegistrationMain';
-import DrDashboard from './Components/DrDashboard';
-import PtDashboard from './Components/PtDashboard';
-import DrRegistrationTable from './Components/DrRegistrationTable';
-import PrescriptionTableEditable from './Components/PrescriptionTableEditable';
-import PatientRegistrationTable from './Components/PatientRegistrationTable';
+import AskPatient from './Components/Staff/AskPatient';
+import ForgotPass from './Components/CommonPage/ForgotPass';
+import AddDrDisease from './Components/Staff/NewCard/AddDrDisease';
+import AddReport from './Components/Staff/NewCard/AddReport';
+import RegistrationMain from './Components/Staff/Registration/RegistrationMain';
+import RecordDashboardStaff from './Components/Staff/StaffDashboard/RecordDashboardStaff';
+import DrRegistrationTable from './Components/Staff/Registration/DoctorRegistration/DrRegistrationTable';
+import PrescriptionTableEditable from './Components/Staff/Prescription/PrescriptionTableEditable';
+import PatientRegistrationTable from './Components/Staff/Registration/PatientRegistration/PatientRegistrationTable';
+import DrDashboardStaff from './Components/Staff/StaffDashboard/DrDashboardStaff';
 
 function App() {
     return (
@@ -31,11 +31,11 @@ function App() {
                     <Route path="/DrRegistrationTable">
                         <DrRegistrationTable />
                     </Route>
-                    <Route path="/PtDashboard">
-                        <PtDashboard />
+                    <Route path="/RecordDashboardStaff">
+                        <RecordDashboardStaff />
                     </Route>
-                    <Route path="/DrDashboard">
-                        <DrDashboard />
+                    <Route path="/DrDashboardStaff">
+                        <DrDashboardStaff />
                     </Route>
 
                     <Route path="/Registration">

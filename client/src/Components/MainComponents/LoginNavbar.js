@@ -2,13 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Headroom from "headroom.js";
 import {
-    Button,
     UncontrolledCollapse,
-    DropdownMenu,
-    DropdownItem,
-    DropdownToggle,
-    UncontrolledDropdown,
-    Media,
     NavbarBrand,
     Navbar,
     NavItem,
@@ -94,7 +88,7 @@ class LoginNavbar extends React.Component {
                                     target="_blank"
                                 >
                                     <i className="ni ni-ui-04 d-lg-none mr-1" />
-                                    <span className="nav-link-inner--text light ">
+                                    <span className="nav-link-inner--text light " style={{color:"white"}}>
                                         About
                         </span>
                                 </NavLink>

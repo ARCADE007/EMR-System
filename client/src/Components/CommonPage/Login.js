@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Button,
     Card,
-    CardHeader,
     CardBody,
     FormGroup,
     Form,
@@ -15,8 +14,8 @@ import {
     Col
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import LoginNavbar from "./LoginNavbar"
-import LoginFooter from "./LoginFooter";
+import LoginNavbar from "../MainComponents/LoginNavbar"
+import LoginFooter from "../MainComponents/LoginFooter";
 class Login extends React.Component {
     componentDidMount() {
         document.documentElement.scrollTop = 0;

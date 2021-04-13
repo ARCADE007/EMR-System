@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import "./CDDDD.css";
+import "../../../CDDDD.css";
 import {
-    
     Container,
 } from "reactstrap";
-import LoginNavbar from "./LoginNavbar"
-import LoginFooter from "./LoginFooter";
-import CustomPrescriptionTableEditable from './CustomPrescriptionTableEditable';
-function PrescriptionTableEditable() {
+import "../../../Table.css";
+import LoginNavbar from "../../../MainComponents/LoginNavbar"
+import LoginFooter from "../../../MainComponents/LoginFooter";
+import PatientCustomMaterialTable from './PatientCustomMaterialTable';
+function PatientRegistrationTable() {
 
     const refcontainer = useRef(null)
     useEffect(() => {
@@ -39,9 +39,7 @@ function PrescriptionTableEditable() {
 
                     </div>
                     <Container className="pt-lg-7">
-                        <CustomPrescriptionTableEditable />
-
-
+                       <PatientCustomMaterialTable/>
                     </Container>
                 </section>
             </main>
@@ -54,4 +52,4 @@ function PrescriptionTableEditable() {
 
 }
 
-export default PrescriptionTableEditable;
+export default PatientRegistrationTable;

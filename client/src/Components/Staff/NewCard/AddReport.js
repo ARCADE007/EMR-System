@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Button,
     Card,
-    CardHeader,
     CardBody,
     FormGroup,
     Form,
@@ -14,9 +13,9 @@ import {
     Row,
     Col
 } from "reactstrap";
-import LoginNavbar from "./LoginNavbar"
-import LoginFooter from "./LoginFooter";
-class AskPatient extends React.Component {
+import LoginNavbar from "../../MainComponents/LoginNavbar";
+import LoginFooter from "../../MainComponents/LoginFooter";
+class AddReport extends React.Component {
     componentDidMount() {
         document.documentElement.scrollTop = 0;
         document.scrollingElement.scrollTop = 0;
@@ -51,22 +50,32 @@ class AskPatient extends React.Component {
                                                                 <i className="ni ni-email-83" />
                                                             </InputGroupText>
                                                         </InputGroupAddon>
-                                                        <Input placeholder="Enter Patient ID" type="Text" />
+                                                        <Input placeholder="Enter Report ID" type="text" />
                                                     </InputGroup>
                                                 </FormGroup>
-
+                                                <FormGroup className="mb-3">
+                                                    <InputGroup className="input-group-alternative">
+                                                        <InputGroupAddon addonType="prepend">
+                                                            <InputGroupText>
+                                                                <i className="ni ni-email-83" />
+                                                            </InputGroupText>
+                                                        </InputGroupAddon>
+                                                        <Input placeholder="Enter Disease Name" type="text" />
+                                                    </InputGroup>
+                                                </FormGroup>
                                                 <div className="text-center">
                                                     <Button
                                                         className="my-4"
                                                         color="primary"
                                                         type="button"
                                                     >
-                                                        Submit
+                                                        Save
                           </Button>
                                                 </div>
                                             </Form>
                                         </CardBody>
                                     </Card>
+
                                 </Col>
                             </Row>
                         </Container>
@@ -81,4 +90,4 @@ class AskPatient extends React.Component {
     }
 }
 
-export default AskPatient;
+export default AddReport;
