@@ -14,6 +14,7 @@ CS1106 Project
 - [MySQL](#mysql)
 - [Database Creation](#database-creation)
 - [Table Creation](#table-creation)
+
   
 
 ## Description
