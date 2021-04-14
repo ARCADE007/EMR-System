@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "password": "B25j97NrwxUEQoU9@h5",
+            "name": "emrProject",
+            "database": "emrSystem",
+            "username": "emrUser"
+        }
+    ]
+}
