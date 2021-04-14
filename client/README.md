@@ -12,8 +12,15 @@ CS1106 Project
   - [Design](#design-1)
 - [Tech Stack](#tech-stack)
 - [MySQL](#mysql)
-- [Database Creation](#database-creation)
-- [Table Creation](#table-creation)
+  - [Database Creation](#database-creation)
+  - [Table Creation](#table-creation)
+    - [Patient](#patient)
+    - [Staff](#staff)
+    - [Role](#role)
+    - [Prescription](#prescription)
+    - [Medicine](#medicine)
+    - [Report](#report)
+    - [Record](#record)
   
 
 
@@ -65,7 +72,21 @@ The Platform will have:
 
 ## MySQL
 
-## Database Creation
+### Database Creation
 
-## Table Creation
+### Table Creation
+
+#### Patient
+
+#### Staff
+
+#### Role
+
+#### Prescription
+
+#### Medicine
+
+#### Report
+
+#### Record
 

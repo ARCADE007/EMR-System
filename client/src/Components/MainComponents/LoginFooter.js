@@ -16,70 +16,106 @@ class LoginFooter extends React.Component {
                         <Row className=" row-grid align-items-center mb-5">
                             <Col lg="6">
                                 <h3 className=" text-primary font-weight-light mb-2">
-                                    Thank you for supporting us!
+                                    About Us
                   </h3>
-                                <h4 className=" mb-0 font-weight-light">
-                                    Let's get in touch on any of these platforms.
-                  </h4>
+                                <h5 className=" mb-0 font-weight-light">
+                                    At EMR System, we are 2 employees dedicated to improving together with
+                                    our customers.
+                                    
+                                    Many professionals around the globe - rely upon us for comprehensive 
+                                    clinical documentation, along with solutions for telehealth, Population
+                                    Health and Patient Engagement.
+                                    <br/>
+                                    <br/>
+                                    Privately held, and driven by innvation and excellence, we have a single
+                                    focus - providing our customers with secure,cloud-based solutions to their
+                                    healthcare IT needs.
+                                     
+                  </h5>
                             </Col>
                             <Col className="text-lg-center btn-wrapper" lg="6">
                                 <Button
-                                    className="btn-icon-only rounded-circle"
-                                    color="twitter"
-                                    href="https://twitter.com/creativetim"
-                                    id="tooltip475038074"
+                                
+                                color="facebook"
+                                    className="btn-icon-only rounded-circle ml-3"
+                                    href="https://www.instagram.com/vineet_ks/?igshid=18vwmivf4c60d"
+                                    id="tooltip356663867"
                                     target="_blank"
                                 >
+                                    
                                     <span className="btn-inner--icon">
-                                        <i className="fa fa-twitter" />
-                                    </span>
+                                    <i style={{color:"white"}} className="fa fa-instagram" /> 
+                </span>
                                 </Button>
-                                <UncontrolledTooltip delay={0} target="tooltip475038074">
-                                    Follow us
+                                <UncontrolledTooltip delay={0} target="tooltip356663867">
+                                Reach us on Instagram(Vineet)
                   </UncontrolledTooltip>
-                                <Button
-                                    className="btn-icon-only rounded-circle ml-1"
-                                    color="facebook"
-                                    href="https://www.facebook.com/creativetim"
-                                    id="tooltip837440414"
+
+                         <Button
+                                     
+                                     color="instagram"
+                                    className="btn-icon-only rounded-circle ml-3"
+                                    href="https://www.instagram.com/vineet_ks/?igshid=18vwmivf4c60d"
+                                    id="tooltip356693853"
                                     target="_blank"
                                 >
+                                    
                                     <span className="btn-inner--icon">
-                                        <i className="fa fa-facebook-square" />
-                                    </span>
+                                    <i style={{color:"white"}} className="fa fa-instagram" /> 
+                </span>
                                 </Button>
-                                <UncontrolledTooltip delay={0} target="tooltip837440414">
-                                    Like us
+                                <UncontrolledTooltip delay={0} target="tooltip356693853">
+                                Reach us on Instagram(Priya)
                   </UncontrolledTooltip>
                                 <Button
-                                    className="btn-icon-only rounded-circle ml-1"
-                                    color="dribbble"
-                                    href="https://dribbble.com/creativetim"
-                                    id="tooltip829810202"
-                                    target="_blank"
-                                >
-                                    <span className="btn-inner--icon">
-                                        <i className="fa fa-dribbble" />
-                                    </span>
-                                </Button>
-                                <UncontrolledTooltip delay={0} target="tooltip829810202">
-                                    Follow us
-                  </UncontrolledTooltip>
-                                <Button
-                                    className="btn-icon-only rounded-circle ml-1"
+                                    className="btn-icon-only rounded-circle ml-3"
                                     color="github"
-                                    href="https://github.com/creativetimofficial"
+                                    href="http://github.com/ARCADE007/EMR-System"
                                     id="tooltip495507257"
                                     target="_blank"
                                 >
                                     <span className="btn-inner--icon">
-                                        <i className="fa fa-github" />
+                                        <i style={{color:"white"}} className="fa fa-github" />
                                     </span>
                                 </Button>
                                 <UncontrolledTooltip delay={0} target="tooltip495507257">
                                     Star on Github
                   </UncontrolledTooltip>
+                  <Button
+                                     
+                                     color="instagram"
+                                    className="btn-icon-only rounded-circle ml-3"
+                                    href="https://www.linkedin.com/in/priya-kaushik-1a04501a2/"
+                                    id="tooltip3566543853"
+                                    target="_blank"
+                                >
+                                    
+                                    <span className="btn-inner--icon">
+                                    <i style={{color:"white"}} className="fa fa-linkedin" /> 
+                </span>
+                                </Button>
+                                <UncontrolledTooltip delay={0} target="tooltip3566543853">
+                                Reach us on Linkedin (Priya)
+                  </UncontrolledTooltip>
+                  <Button
+                                
+                                color="facebook"
+                                    className="btn-icon-only rounded-circle ml-3"
+                                    href="https://www.linkedin.com/in/vineet-sharma-627b8a195/"
+                                    id="tooltip356123867"
+                                    target="_blank"
+                                >
+                                    
+                                    <span className="btn-inner--icon">
+                                    <i style={{color:"white"}} className="fa fa-linkedin" /> 
+                </span>
+                                </Button>
+                                <UncontrolledTooltip delay={0} target="tooltip356123867">
+                                Reach us on Linkedin (Vineet)
+                  </UncontrolledTooltip>
+                  
                             </Col>
+
                         </Row>
                         <hr />
                         <Col md="6" className=" align-items-center justify-content-md-between">
