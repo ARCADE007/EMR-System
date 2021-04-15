@@ -46,7 +46,7 @@ export default function CustomMaterialTable(props) {
     <MaterialTable
       style={{ backgroundColor: "rgb(82,95,127,0.6)",color: "white" }}
      
-      title="Custom Edit Component Preview"
+      title="Registration"
       columns={columns}
       data={data}
       options={{

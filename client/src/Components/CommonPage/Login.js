@@ -1,4 +1,8 @@
-import React from 'react';
+import React,{useRef,useEffect} from 'react';
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers";
+import * as yup from "yup";
+
 import {
     Button,
     Card,
@@ -14,19 +18,29 @@ import {
     Col
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import LoginNavbar from "../MainComponents/LoginNavbar"
+import LoginNavbar from "../MainComponents/LoginNavbar";
 import LoginFooter from "../MainComponents/LoginFooter";
-class Login extends React.Component {
-    componentDidMount() {
+
+const schema = yup.object().shape({
+    email:yup.string().required() ,
+    password: yup.string().required()
+})
+
+function Login() {
+
+    const refcontainer = useRef(null)
+    useEffect(() => {
         document.documentElement.scrollTop = 0;
         document.scrollingElement.scrollTop = 0;
-        this.refs.main.scrollTop = 0;
-    }
-    render() {
+
+
+
+     });
+
         return (
             <>
                 <LoginNavbar />
-                <main ref="main">
+                <main ref={refcontainer}>
                     <section className="section section-shaped section-lg">
                         <div className="shape shape-style-1 bg-gradient-default">
                             <span />
@@ -42,7 +56,12 @@ class Login extends React.Component {
                             <Row className="justify-content-center">
                                 <Col lg="5">
                                     <Card className="bg-secondary shadow border-0">
-                                        <CardBody className="px-lg-5 py-lg-5">
+                                        <div style={{backgroundColor:"Rgb(71, 115, 168,0.8)",textAlign:"center",paddingTop:"50px"}} >
+                                            
+                                                        <span>Sign in with your credentials</span>
+                                                   
+                                                    </div>
+                                        <CardBody style={{backgroundColor:"Rgb(71, 115, 168,0.8)"}} className="px-lg-5 py-lg-5">
                                             <Form role="form">
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">
@@ -51,7 +70,9 @@ class Login extends React.Component {
                                                                 <i className="ni ni-email-83" />
                                                             </InputGroupText>
                                                         </InputGroupAddon>
-                                                        <Input placeholder="Email" type="email" />
+                                                        <Input 
+                                                        placeholder="Email" 
+                                                        type="email" />
                                                     </InputGroup>
                                                 </FormGroup>
                                                 <FormGroup>
@@ -68,19 +89,7 @@ class Login extends React.Component {
                                                         />
                                                     </InputGroup>
                                                 </FormGroup>
-                                                <div className="custom-control custom-control-alternative custom-checkbox">
-                                                    <input
-                                                        className="custom-control-input"
-                                                        id=" customCheckLogin"
-                                                        type="checkbox"
-                                                    />
-                                                    <label
-                                                        className="custom-control-label"
-                                                        htmlFor=" customCheckLogin"
-                                                    >
-                                                        <span>Remember me</span>
-                                                    </label>
-                                                </div>
+                                                
                                                 <div className="text-center">
                                                     <Button
                                                         className="my-4"
@@ -88,7 +97,7 @@ class Login extends React.Component {
                                                         type="button"
                                                     >
                                                         Sign in
-                          </Button>
+                                                 </Button>
                                                 </div>
                                             </Form>
                                         </CardBody>
@@ -116,6 +125,6 @@ class Login extends React.Component {
 
         );
     }
-}
 
 export default Login;
+

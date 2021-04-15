@@ -37,11 +37,11 @@ class ForgotPass extends React.Component {
                             <span />
                             <span />
                         </div>
-                        <Container className="pt-lg-7">
+                        <Container  className="pt-lg-7">
                             <Row className="justify-content-center">
-                                <Col lg="5">
+                                <Col  lg="5">
                                     <Card  className="bg-secondary shadow border-0">
-                                        <CardBody style={{backgroundColor:"Rgb(71, 115, 168,0.6)"}} className="px-lg-5 py-lg-5">
+                                        <CardBody style={{backgroundColor:"Rgb(71, 115, 168,0.8)"}} className="px-lg-5 py-lg-5">
                                             <Form role="form">
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">
