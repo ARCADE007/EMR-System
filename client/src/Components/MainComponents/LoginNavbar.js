@@ -110,7 +110,7 @@ class LoginNavbar extends React.Component {
                         </span>
                                         </NavLink>
                                         <UncontrolledTooltip delay={0} target="tooltip356693867">
-                                            Reach us on Instagram(Vineet)
+                                            Reach us on Instagram (Vineet)
                       </UncontrolledTooltip>
                                     </NavItem>
                                     <NavItem>
@@ -127,7 +127,7 @@ class LoginNavbar extends React.Component {
                         </span>
                                         </NavLink>
                                         <UncontrolledTooltip delay={0} target="tooltip356693863">
-                                            Reach us on Instagram(Priya)
+                                            Reach us on Instagram (Priya)
                       </UncontrolledTooltip>
                                     </NavItem>
                                     
