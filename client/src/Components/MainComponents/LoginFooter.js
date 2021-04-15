@@ -18,7 +18,7 @@ class LoginFooter extends React.Component {
                                 <h3 className=" text-primary font-weight-light mb-2">
                                     About Us
                   </h3>
-                                <h5 className=" mb-0 font-weight-light">
+                                <h6 className=" mb-0 font-weight-light">
                                     At EMR System, we are 2 employees dedicated to improving together with
                                     our customers.
                                     
@@ -31,7 +31,7 @@ class LoginFooter extends React.Component {
                                     focus - providing our customers with secure,cloud-based solutions to their
                                     healthcare IT needs.
                                      
-                  </h5>
+                  </h6>
                             </Col>
                             <Col className="text-lg-center btn-wrapper" lg="6">
                                 <Button
