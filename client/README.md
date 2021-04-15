@@ -52,7 +52,7 @@ The Platform will have:
 ## Relational Schema
 
 ### Final Schema
-![1](public/image/Relational_Schema.png)
+![1](public/image/RelationalSchema.png)
 
 ## Design
 
