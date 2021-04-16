@@ -61,13 +61,13 @@ export default function CustomPrescriptionTableEditable(props) {
     
     return (
         <MaterialTable
-            style={{ backgroundColor: "rgb(82,95,127,0.6)" , color: "white"}}
-            title="Prescription " 
+        style={{backgroundColor:"Rgb(255,99,71,0.4)" , color: "white"}}
+            title="ID" 
             columns={columns}
             data={data}
             
             options={{
-                headerStyle: { backgroundColor: "rgb(82,95,127,0.6)", color: "white" },
+                headerStyle: { backgroundColor:"Rgb(255,99,71,0.4)", color: "black" },
               }}
             
               
@@ -89,17 +89,6 @@ export default function CustomPrescriptionTableEditable(props) {
                             const index = oldData.tableData.id;
                             dataUpdate[index] = newData;
                             setData([...dataUpdate]);
-
-                            resolve();
-                        }, 1000)
-                    }),
-                onRowDelete: oldData =>
-                    new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                            const dataDelete = [...data];
-                            const index = oldData.tableData.id;
-                            dataDelete.splice(index, 1);
-                            setData([...dataDelete]);
 
                             resolve();
                         }, 1000)
