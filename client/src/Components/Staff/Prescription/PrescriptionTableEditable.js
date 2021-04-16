@@ -41,8 +41,6 @@ function PrescriptionTableEditable() {
                     </div>
                     <Container className="pt-lg-7">
                         <CustomPrescriptionTableEditable />
-
-
                     </Container>
                 </section>
             </main>
