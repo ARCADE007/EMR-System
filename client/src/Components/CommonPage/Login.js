@@ -1,7 +1,6 @@
 import React,{useRef,useEffect} from 'react';
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers";
-import * as yup from "yup";
+import * as Yup from "yup";
+import {ErrorMessage, FormikProvider, useFormik} from "formik";
 
 import {
     Button,
@@ -21,10 +20,6 @@ import { Link } from "react-router-dom";
 import LoginNavbar from "../MainComponents/LoginNavbar";
 import LoginFooter from "../MainComponents/LoginFooter";
 
-const schema = yup.object().shape({
-    email:yup.string().required() ,
-    password: yup.string().required()
-})
 
 function Login() {
 
@@ -36,6 +31,25 @@ function Login() {
 
 
      });
+
+     const schema=Yup.object().shape({
+         email:Yup.string().email('Invalid email !').required(),
+         password:Yup.string().min(6,'At least 6 characters').max(15,'At most 15 characters').required
+         ()
+     })
+
+     const formik=useFormik({
+         initialValues:{
+             email:'',
+             password:''
+         },
+         validationSchema:schema,
+         onSubmit:(values)=>{
+             console.log(values)
+         }
+     })
+
+
 
         return (
             <>
@@ -62,7 +76,8 @@ function Login() {
                                                    
                                                     </div>
                                         <CardBody style={{backgroundColor:"Rgb(71, 115, 168,0.8)"}} className="px-lg-5 py-lg-5">
-                                            <Form role="form">
+                                            <FormikProvider value={formik}>
+                                            <Form onSubmit={formik.handleSubmit} role="form">
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">
                                                         <InputGroupAddon addonType="prepend">
@@ -71,9 +86,12 @@ function Login() {
                                                             </InputGroupText>
                                                         </InputGroupAddon>
                                                         <Input 
+                                                        name="email"
                                                         placeholder="Email" 
                                                         type="email" />
+                                                        
                                                     </InputGroup>
+                                                    <ErrorMessage name='email'/>
                                                 </FormGroup>
                                                 <FormGroup>
                                                     <InputGroup className="input-group-alternative">
@@ -83,23 +101,33 @@ function Login() {
                                                             </InputGroupText>
                                                         </InputGroupAddon>
                                                         <Input
+                                                            name='password'
                                                             placeholder="Password"
                                                             type="password"
                                                             autoComplete="off"
+                                                            
                                                         />
+                                                        
+                                                        
                                                     </InputGroup>
+                                                    <ErrorMessage name='password'/>
+                                                    
                                                 </FormGroup>
+                                                
                                                 
                                                 <div className="text-center">
                                                     <Button
                                                         className="my-4"
                                                         color="primary"
-                                                        type="button"
+                                                        type="submit"
+                                                      //  disabled={!formik.isValid}
+                                                        
                                                     >
                                                         Sign in
                                                  </Button>
                                                 </div>
                                             </Form>
+                                            </FormikProvider>
                                         </CardBody>
                                     </Card>
                                     <Row className="mt-3">
