@@ -26,7 +26,7 @@ class AddReport extends React.Component {
             <>
                 <LoginNavbar />
                 <main ref="main">
-                    <section className="section section-shaped section-lg">
+                    <section style={{backgroundColor:"rgb(255,99,71,0.6)"}} className="section section-shaped section-lg">
                         <div className="shape shape-style-1 bg-gradient-default">
                             <span />
                             <span />
@@ -41,7 +41,12 @@ class AddReport extends React.Component {
                             <Row className="justify-content-center">
                                 <Col lg="5">
                                     <Card className="bg-secondary shadow border-0">
-                                        <CardBody className="px-lg-5 py-lg-5">
+                                    <div style={{backgroundColor:"Rgb(255,99,71,0.5)",textAlign:"center",paddingTop:"50px"}} >
+                                            
+                                            <span>Enter Card Details</span>
+                                       
+                                        </div>
+                                        <CardBody style={{backgroundColor:"Rgb(255,99,71,0.5)"}} className="px-lg-5 py-lg-5">
                                             <Form role="form">
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">

@@ -22,7 +22,7 @@ class DrDashboardPatient extends React.Component {
       <>
         <LoginNavbar />
         <main ref="main">
-          <section className="Custom_heading section section-shaped section-lg">
+          <section style={{backgroundColor:"rgb(144,238,144,0.8)"}} className="Custom_heading section section-shaped section-lg">
             <div className="shape shape-style-1 bg-gradient-default">
               <span />
               <span />
@@ -41,7 +41,7 @@ class DrDashboardPatient extends React.Component {
                     <Card
                       body
                       inverse
-                      style={{ backgroundColor: "#333", borderColor: "#333" }}
+                      style={{backgroundColor:"rgb(144,238,144,0.8)"}}
                     >
                       <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
                       <CardText>
