@@ -2,86 +2,86 @@
 
 ## CREATE STATEMENTS
 
-### Role
-```sql
-CREATE TABLE role(
-    roleID INTEGER PRIMARY KEY,
-    roleName VARCHAR(20)
-);
-```
-
 ### Staff
 ```sql
 CREATE TABLE staff (
-    staffID INTEGER PRIMARY KEY,
-    Password VARCHAR(20),
-    staffName VARCHAR(20),
-    staffPhoneNo INTEGER(1),
-    staffEmail VARCHAR(20),
-    staffAddress VARCHAR(30),
-    roleID INTEGER,
-    FOREIGN KEY staff(roleID) REFERENCES emrsystem.role(roleID)
-);
+    staffID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    password VARCHAR(20) NOT NULL,
+    staffName VARCHAR(20) NOT NULL,
+    staffPhoneNo INTEGER NOT NULL,
+    staffEmail VARCHAR(20) NOT NULL,
+    staffAddress VARCHAR(30)NOT NULL,
+    PRIMARY KEY(staffID),
+    rollName VARCHAR(20)
+)AUTO_INCREMENT=1;
 ```
 
 ### Patient
 ```sql
 CREATE TABLE Patient(
-    patientID INTEGER PRIMARY KEY,
-    password VARCHAR(20),
-    patientName VARCHAR(20),
-    patientPhoneNo INTEGER,
-    patientEmail VARCHAR(20),
-    patientAge INTEGER,
-    patientDOB date,
-    patientAddress Varchar(40)
-);
+    patientID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
+    password VARCHAR(20) NOT NULL,
+    patientName VARCHAR(20) NOT NULL,
+    patientPhoneNo INTEGER NOT NULL,
+    patientEmail VARCHAR(20) NOT NULL,
+    patientAge INTEGER NOT NULL,
+    patientDOB date NOT NULL,
+    patientAddress Varchar(40) NOT NULL,
+    PRIMARY KEY(patientID)
+)AUTO_INCREMENT=1;
+
 ```
 ### Record
 ```sql
 CREATE TABLE Record(
-    recordID INTEGER PRIMARY KEY,
-    recordName VARCHAR(20),
-    patientID INTEGER ,
+    recordID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
+    recordName VARCHAR(20) NOT NULL,
+    PRIMARY KEY(recordID),
+    patientID INTEGER UNSIGNED,
     FOREIGN KEY Record(patientID) REFERENCES emrsystem.Patient(patientID)
+)AUTO_INCREMENT=1;
 );
 ```
 ### Reports
 ```sql
 CREATE TABLE Reports(
-    reportID INTEGER PRIMARY KEY,
-    reportName VARCHAR(10),
-    Date date,
-    File BLOB ,
-    recordID INTEGER,
+    reportID INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT ,
+    reportName VARCHAR(20) NOT NULL,
+    Date date NOT NULL,
+    File BLOB NOT NULL ,
+    PRIMARY KEY(reportID),
+    recordID INTEGER UNSIGNED,
     FOREIGN KEY Reports(recordID) REFERENCES emrsystem.Record(recordId)
+)AUTO_INCREMENT=1;
 );
 ```
 ### Prescription
 ```sql
 CREATE TABLE Prescription(
-    prescriptionID INTEGER PRIMARY KEY ,
-    description BLOB,
-    disease VARCHAR(40),
-    staffID INTEGER,
-    patientID INTEGER,
+    prescriptionID INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
+    description BLOB NOT NULL,
+    disease VARCHAR(40) NOT NULL,
+    PRIMARY KEY(prescriptionID),
+    staffID INTEGER UNSIGNED,
+    patientID INTEGER UNSIGNED,
     FOREIGN KEY (staffID) REFERENCES emrsystem.staff(staffID),
     FOREIGN KEY (patientID) REFERENCES emrsystem.Patient(patientID)
-);
+)AUTO_INCREMENT=1;
 ```
 ### Medicine
 ```sql
 CREATE TABLE Medicine(
-    medicineId INTEGER PRIMARY KEY,
-    Name  VARCHAR(20),
-    `Date(from)` date,
-    `Date(to)` date,
-    `Time(morning)` BINARY,
-    `Time(evening)` BINARY,
-    `Time(night)` BINARY,
-    prescriptionID INTEGER ,
+    medicineId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
+    Name  VARCHAR(20) NOT NULL,
+    `Date(from)` date NOT NULL,
+    `Date(to)` date NOT NULL,
+    `Time(morning)` VARCHAR(20) NOT NULL,
+    `Time(evening)`VARCHAR(20) NOT NULL,
+    `Time(night)` VARCHAR(20) NOT NULL,
+    PRIMARY KEY(medicineID),
+    prescriptionID INTEGER UNSIGNED,
     FOREIGN KEY Medicine(prescriptionID) REFERENCES emrsystem.Prescription(prescriptionID)
-);
+)AUTO_INCREMENT=1;
 ```
 ## INSERT STATEMENTS
 ### Role1
