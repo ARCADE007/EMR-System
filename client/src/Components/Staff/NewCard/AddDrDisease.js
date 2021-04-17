@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState }  from 'react';
 import {
     Button,
     Card,
@@ -16,17 +16,18 @@ import {
 import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter"
 
-class AddDrDisease extends React.Component {
-    componentDidMount() {
+function AddDrDisease() {
+    const refcontainer = useRef(null);
+  useEffect(() => {
         document.documentElement.scrollTop = 0;
         document.scrollingElement.scrollTop = 0;
-        this.refs.main.scrollTop = 0;
-    }
-    render() {
+        
+    });
+    
         return (
             <>
                 <LoginNavbar />
-                <main ref="main">
+                <main ref={refcontainer}>
                     <section style={{backgroundColor:"rgb(255,99,71,0.6)"}} className="section section-shaped section-lg">
                         <div className="shape shape-style-1 bg-gradient-default">
                             <span />
@@ -94,6 +95,6 @@ class AddDrDisease extends React.Component {
 
         );
     }
-}
+
 
 export default AddDrDisease;
