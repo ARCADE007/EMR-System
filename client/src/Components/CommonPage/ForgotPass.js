@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import validator from "validator";
 import {
     Button,
     Card,
@@ -15,17 +16,28 @@ import {
 } from "reactstrap";
 import LoginNavbar from "../MainComponents/LoginNavbar"
 import LoginFooter from "../MainComponents/LoginFooter";
-class ForgotPass extends React.Component {
-    componentDidMount() {
+function ForgotPass() {
+    const refcontainer = useRef(null);
+  useEffect(() => {
         document.documentElement.scrollTop = 0;
         document.scrollingElement.scrollTop = 0;
-        this.refs.main.scrollTop = 0;
+        
+    });
+    const [emailError, setEmailError] = useState("");
+  const validateEmail = (e) => {
+    var email = e.target.value;
+
+    if (validator.isEmail(email)) {
+      setEmailError("Valid Email");
+    } else {
+      setEmailError("Enter valid Email!");
     }
-    render() {
+  };
+    
         return (
             <>
                 <LoginNavbar />
-                <main ref="main">
+                <main ref={refcontainer}>
                     <section className="section section-shaped section-lg">
                         <div className="shape shape-style-1 bg-gradient-default">
                             <span />
@@ -50,8 +62,16 @@ class ForgotPass extends React.Component {
                                                                 <i className="ni ni-email-83" />
                                                             </InputGroupText>
                                                         </InputGroupAddon>
-                                                        <Input placeholder="Enter Your Registered Email" type="Text" />
+                                                        <Input 
+                                                        placeholder="Enter Your Registered Email" 
+                                                        name="email"
+                                                        type="email"
+                                                        onChange={(e) => validateEmail(e)} />
                                                     </InputGroup>
+                                                    <span
+                                                    style={{
+                                                        color:"lightblue"
+                                                    }}>{emailError}</span>
                                                 </FormGroup>
 
                                                 <div className="text-center">
@@ -77,7 +97,7 @@ class ForgotPass extends React.Component {
 
 
         );
-    }
+    
 }
 
 export default ForgotPass;
