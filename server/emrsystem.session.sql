@@ -1,9 +1,5 @@
-# SQL QUERIES
+-- Create Queries
 
-## CREATE STATEMENTS
-
-### Staff
-```sql
 CREATE TABLE staff (
     staffID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     password VARCHAR(20) NOT NULL,
@@ -14,10 +10,7 @@ CREATE TABLE staff (
     PRIMARY KEY(staffID),
     rollName VARCHAR(20)
 )AUTO_INCREMENT=1;
-```
 
-### Patient
-```sql
 CREATE TABLE Patient(
     patientID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
     password VARCHAR(20) NOT NULL,
@@ -30,9 +23,6 @@ CREATE TABLE Patient(
     PRIMARY KEY(patientID)
 )AUTO_INCREMENT=1;
 
-```
-### Record
-```sql
 CREATE TABLE Record(
     recordID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
     recordName VARCHAR(20) NOT NULL,
@@ -40,10 +30,7 @@ CREATE TABLE Record(
     patientID INTEGER UNSIGNED,
     FOREIGN KEY Record(patientID) REFERENCES emrsystem.Patient(patientID)
 )AUTO_INCREMENT=1;
-);
-```
-### Reports
-```sql
+
 CREATE TABLE Reports(
     reportID INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT ,
     reportName VARCHAR(20) NOT NULL,
@@ -53,10 +40,7 @@ CREATE TABLE Reports(
     recordID INTEGER UNSIGNED,
     FOREIGN KEY Reports(recordID) REFERENCES emrsystem.Record(recordId)
 )AUTO_INCREMENT=1;
-);
-```
-### Prescription
-```sql
+
 CREATE TABLE Prescription(
     prescriptionID INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
     description BLOB NOT NULL,
@@ -67,9 +51,7 @@ CREATE TABLE Prescription(
     FOREIGN KEY (staffID) REFERENCES emrsystem.staff(staffID),
     FOREIGN KEY (patientID) REFERENCES emrsystem.Patient(patientID)
 )AUTO_INCREMENT=1;
-```
-### Medicine
-```sql
+
 CREATE TABLE Medicine(
     medicineId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
     Name  VARCHAR(20) NOT NULL,
@@ -82,29 +64,6 @@ CREATE TABLE Medicine(
     prescriptionID INTEGER UNSIGNED,
     FOREIGN KEY Medicine(prescriptionID) REFERENCES emrsystem.Prescription(prescriptionID)
 )AUTO_INCREMENT=1;
-```
-## INSERT STATEMENTS
-### Role1
-```sql
 
-```
+-- Insert Queries
 
-### Role2
-```sql
-
-```
-
-### Role3
-```sql
-
-```
-
-### Role1
-```sql
-
-```
-
-### Role1
-```sql
-
-```
