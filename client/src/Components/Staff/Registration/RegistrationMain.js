@@ -37,16 +37,17 @@ class RegistrationMain extends React.Component {
                             <Row className="justify-content-center">
                                 <Col lg="5">
                                     <Card className="bg-secondary shadow border-0">
-                                        <CardBody className="px-lg-5 py-lg-5">
+                                        <CardBody style={{backgroundColor:"Rgb(71, 115, 168,0.5)"}} className="px-lg-5 py-lg-5">
                                             <Form role="form">
                                                 <div className="text-center">
-                                                    <Button
+                                                  <Link> <Button
+                                                        
                                                         className="my-4"
                                                         color="primary"
                                                         type="button"
                                                     >
                                                         Patient
-                          </Button>
+                          </Button></Link> 
                                                 </div>
                                                 <div className="text-center">
                                                     <Link >
@@ -55,7 +56,7 @@ class RegistrationMain extends React.Component {
                                                             color="primary"
                                                             type="button"
                                                         >
-                                                            Staff
+                                                            Staff  
                           </Button></Link>
                                                 </div>
                                             </Form>

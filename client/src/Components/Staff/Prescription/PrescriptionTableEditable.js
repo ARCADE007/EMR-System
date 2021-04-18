@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import {
+    Button,
     
-    Container,
+    Container
 } from "reactstrap";
 import "../../CDDDD.css";
 import LoginNavbar from "../../MainComponents/LoginNavbar"
 import LoginFooter from "../../MainComponents/LoginFooter";
 import CustomPrescriptionTableEditable from './CustomPrescriptionTableEditable';
+import {Link} from "react-router-dom";
 function PrescriptionTableEditable() {
 
     const refcontainer = useRef(null)
@@ -41,7 +43,9 @@ function PrescriptionTableEditable() {
                     </div>
                     <Container className="pt-lg-7">
                         <CustomPrescriptionTableEditable />
+                        <div style={{float:"right",padding:"6px"}}><Link to=""><Button>Submit</Button></Link></div>
                     </Container>
+                    
                 </section>
             </main>
             <LoginFooter />

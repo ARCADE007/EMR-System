@@ -4,11 +4,12 @@ import "../../../CDDDD.css";
 import CustomMaterialTable from "./CustomMaterialTable";
 import {
    
-    Container
+    Container,
+    Button
 } from "reactstrap";
-import "../../../Table.css";
 import LoginNavbar from "../../../MainComponents/LoginNavbar"
 import LoginFooter from "../../../MainComponents/LoginFooter";
+import {Link} from "react-router-dom";
 function DrRegistrationTable() {
 
     const refcontainer = useRef(null)
@@ -18,12 +19,11 @@ function DrRegistrationTable() {
 
     });
 
-
     return (
         <>
             <LoginNavbar />
             <main ref={refcontainer}>
-                <section className=" Naya__mauka section section-shaped section-lg">
+                <section style={{backgroundColor:"rgb(255,99,71,0.6)"}} className="section section-shaped section-lg">
                     <div className="  shape shape-style-1 bg-gradient-default">
                         <span />
                         <span />
@@ -39,7 +39,7 @@ function DrRegistrationTable() {
                     </div>
                     <Container className="pt-lg-7">
                         <CustomMaterialTable />
-
+                        <div style={{float:"right",padding:"6px"}}><Link to=""><Button>Save</Button></Link></div>
                     </Container>
                 </section>
             </main>
