@@ -7,9 +7,9 @@ CREATE TABLE staff (
     staffPhoneNo INTEGER NOT NULL,
     staffEmail VARCHAR(20) NOT NULL,
     staffAddress VARCHAR(30)NOT NULL,
-    PRIMARY KEY(staffID),
-    rollName VARCHAR(20)
-)AUTO_INCREMENT=1;
+    rollName VARCHAR(20) NOT NULl,
+    PRIMARY KEY(staffID)
+   )AUTO_INCREMENT=1;
 
 CREATE TABLE Patient(
     patientID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
