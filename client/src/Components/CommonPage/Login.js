@@ -38,16 +38,13 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState('')
   
   const validate = (value) => {
-console.log(value);
     if (validator.isStrongPassword(value, {
-        minLength: 8
-        
+        minLength: 6, minLowercase: 1,
+      minUppercase: 1, minNumbers: 1, minSymbols: 0
     })) {
-        console.log("yes");
       setErrorMessage('Is Strong Password');
     } else {
       setErrorMessage('Is Not Strong Password');
-      console.log("no");
     }
   }
 
@@ -75,6 +72,7 @@ console.log(value);
                       backgroundColor: "Rgb(71, 115, 168,0.8)",
                       textAlign: "center",
                       paddingTop: "50px",
+                      fontWeight:"bold",
                     }}
                   >
                     <span>Sign in with your credentials</span>
@@ -100,7 +98,9 @@ console.log(value);
                             onChange={(e) => validateEmail(e)}
                           />
                         </InputGroup>
-                        <span>{emailError}</span>
+                        <span style={{
+                           color:"lightblue"
+                           }}>{emailError}</span>
                           
                         
                       </FormGroup>
@@ -114,12 +114,14 @@ console.log(value);
                           <Input
                             name="password"
                             placeholder="Password"
-                            type="password"
+                            type="text"
                             autoComplete="off"
                             onChange={(e) => validate(e.target.value)}
                           />
                         </InputGroup>
-                        <span>{errorMessage}</span>
+                        <span style={{
+                          color:"lightblue"
+                           }}>{errorMessage}</span>
                       </FormGroup>
 
                       <div className="text-center">

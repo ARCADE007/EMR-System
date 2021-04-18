@@ -22,11 +22,11 @@ export default function CustomPrescriptionTableEditable(props) {
         
         {
             title: 'Date (from)', field: 'datefrom', type: 'date',
-            dateSetting: { locale: "ko-KR"}
+           
         },
         {
             title: 'Date (to)', field: 'dateto', type: 'date' ,
-            dateSetting: { locale: "ko-KR"}
+          
         },
 
         {
@@ -51,23 +51,23 @@ export default function CustomPrescriptionTableEditable(props) {
     ]);
 
     const [data, setData] = useState([
-        { name: 'mmr12', datefrom: "15.04.2018", dateto: "15.04.2018", morning:1 ,evening:1, night:1 },
-        { name: 'mmr12', datefrom: "15.04.2018", dateto: "15.04.2018", morning:1 ,evening:1, night:1 },
-        { name: 'mmr12', datefrom: "15.04.2018", dateto: "15.04.2018", morning:1 ,evening:1, night:1 },
-        { name: 'mmr12', datefrom: "16.04.2019", dateto: "15.04.2018", morning:1 ,evening:1, night:1 },
+        { name: 'mmr12', datefrom: "15/04/2018", dateto: "15/04/2018", morning:1 ,evening:1, night:1 },
+        { name: 'mmr12', datefrom: "15/04/2018", dateto: "15/04/2018", morning:1 ,evening:1, night:1 },
+        { name: 'mmr12', datefrom: "15/04/2018", dateto: "15/04/2018", morning:1 ,evening:1, night:1 },
+        { name: 'mmr12', datefrom: "16/04/2019", dateto: "15/04/2018", morning:1 ,evening:1, night:1 },
 
     ]);
 
     
     return (
         <MaterialTable
-        style={{backgroundColor:"Rgb(255,99,71,0.4)" , color: "white"}}
+        style={{backgroundColor:"Rgb(255,99,71,0.2)" , color: "white"}}
             title="ID" 
             columns={columns}
             data={data}
             
             options={{
-                headerStyle: { backgroundColor:"Rgb(255,99,71,0.4)", color: "black" },
+                headerStyle: { backgroundColor:"transparent", color: "black" },
               }}
             
               
@@ -82,17 +82,7 @@ export default function CustomPrescriptionTableEditable(props) {
                             resolve();
                         }, 1000)
                     }),
-                onRowUpdate: (newData, oldData) =>
-                    new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                            const dataUpdate = [...data];
-                            const index = oldData.tableData.id;
-                            dataUpdate[index] = newData;
-                            setData([...dataUpdate]);
-
-                            resolve();
-                        }, 1000)
-                    }),
+                
 
             }}
         

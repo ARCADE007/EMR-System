@@ -14,6 +14,7 @@ import {
     Row,
     Col
 } from "reactstrap";
+import {Link} from "react-router-dom";
 import LoginNavbar from "../MainComponents/LoginNavbar"
 import LoginFooter from "../MainComponents/LoginFooter";
 function ForgotPass() {
@@ -33,6 +34,9 @@ function ForgotPass() {
       setEmailError("Enter valid Email!");
     }
   };
+  
+
+  
     
         return (
             <>
@@ -53,6 +57,11 @@ function ForgotPass() {
                             <Row className="justify-content-center">
                                 <Col  lg="5">
                                     <Card  className="bg-secondary shadow border-0">
+                                        <div style={{backgroundColor:"Rgb(71, 115, 168,0.8)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
+                                            
+                                            <span>Enter Your Email</span>
+                                       
+                                        </div>
                                         <CardBody style={{backgroundColor:"Rgb(71, 115, 168,0.8)"}} className="px-lg-5 py-lg-5">
                                             <Form role="form">
                                                 <FormGroup className="mb-3">
@@ -75,13 +84,14 @@ function ForgotPass() {
                                                 </FormGroup>
 
                                                 <div className="text-center">
-                                                    <Button
+                                                    <Link to="/"><Button
                                                         className="my-4"
                                                         color="primary"
                                                         type="button"
+                                                        
                                                     >
                                                         Send Email
-                          </Button>
+                          </Button></Link>
                                                 </div>
                                             </Form>
                                         </CardBody>

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState }  from 'react';
+import validator from "validator";
 import {
     Button,
     Card,
@@ -24,6 +25,29 @@ function AddDrDisease() {
         
     });
     
+    const [errorMessage, setErrorMessage] = useState('')
+  
+  const DoctorId = (value) => {
+    if (validator.isNumeric(value, {
+        
+    })) {
+      setErrorMessage("");
+    } else {
+      setErrorMessage('Enter Valid Doctor Id (Only Numbers)');
+    }
+  }
+
+  const [errorMessageans, setErrorMessageans] = useState('')
+  const DiseaseName = (name) => {
+    if (validator.isStrongPassword(name, {
+        minLength:4, minLowercase: 1,
+      minUppercase: 0, minNumbers: 0, minSymbols: 0
+    })) {
+      setErrorMessageans("");
+    } else {
+      setErrorMessageans('Enter Valid Disease Name');
+    }
+  }
         return (
             <>
                 <LoginNavbar />
@@ -43,7 +67,7 @@ function AddDrDisease() {
                             <Row className="justify-content-center">
                                 <Col lg="5">
                                     <Card className="bg-secondary shadow border-0">
-                                    <div style={{backgroundColor:"Rgb(255,99,71,0.5)",textAlign:"center",paddingTop:"50px"}} >
+                                    <div style={{backgroundColor:"Rgb(255,99,71,0.5)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
                                             
                                             <span>Enter Card Details</span>
                                        
@@ -54,21 +78,33 @@ function AddDrDisease() {
                                                     <InputGroup className="input-group-alternative">
                                                         <InputGroupAddon addonType="prepend">
                                                             <InputGroupText>
-                                                                <i className="ni ni-email-83" />
+                                                                <i className="ni ni-badge" />
                                                             </InputGroupText>
                                                         </InputGroupAddon>
-                                                        <Input placeholder="Enter Dr ID" type="text" />
+                                                        <Input 
+                                                        placeholder="Enter Dr ID" 
+                                                        type="text"
+                                                        onChange={(e) => DoctorId(e.target.value)} />
                                                     </InputGroup>
+                                                    <span 
+                                                    style={{
+                                                        color:"lightblue"
+                                                    }}>{errorMessage}</span>
                                                 </FormGroup>
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">
                                                         <InputGroupAddon addonType="prepend">
                                                             <InputGroupText>
-                                                                <i className="ni ni-email-83" />
+                                                                <i className="ni ni-ruler-pencil" />
                                                             </InputGroupText>
                                                         </InputGroupAddon>
-                                                        <Input placeholder="Enter Disease Name" type="text" />
+                                                        <Input placeholder="Enter Disease Name" type="text"
+                                                        onChange={(e) => DiseaseName(e.target.value)} />
                                                     </InputGroup>
+                                                    <span
+                                                    style={{
+                                                        color:"lightblue"
+                                                    }}>{errorMessageans}</span>
                                                 </FormGroup>
                                                 <div className="text-center">
                                                     <Button
