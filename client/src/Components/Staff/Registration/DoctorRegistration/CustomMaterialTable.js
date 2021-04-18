@@ -3,7 +3,7 @@ import MaterialTable from "material-table";
 export default function CustomMaterialTable(props) {
   const [columns, setColumns] = useState([
     {
-      title: "FullName",
+      title: "Patient Name",
       field: "name",
 
       editComponent: (props) => (
@@ -16,6 +16,7 @@ export default function CustomMaterialTable(props) {
 
       
     },
+    
 
     {
       title: "Address",
@@ -44,16 +45,19 @@ export default function CustomMaterialTable(props) {
 
   return (
     <MaterialTable
-      style={{ backgroundColor: "rgb(82,95,127,0.6)",color: "white" }}
+      style={{backgroundColor:"Rgb(255,99,71,0.2)" , color: "white"}}
      
-      title="Registration"
+      title=" Dr Registration"
       columns={columns}
       data={data}
+      
       options={{
-        headerStyle: { backgroundColor: "rgb(105,105,105,0.5)", color: "white" },
+        headerStyle: { backgroundColor:"transparent", color: "black" },
       }}
       
+      
       editable={{
+        
         onRowAdd: (newData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -69,17 +73,6 @@ export default function CustomMaterialTable(props) {
               const index = oldData.tableData.id;
               dataUpdate[index] = newData;
               setData([...dataUpdate]);
-
-              resolve();
-            }, 1000);
-          }),
-        onRowDelete: (oldData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              const dataDelete = [...data];
-              const index = oldData.tableData.id;
-              dataDelete.splice(index, 1);
-              setData([...dataDelete]);
 
               resolve();
             }, 1000);

@@ -9,7 +9,7 @@ import "./assets/scss/argon-design-system-react.scss?v1.1.0";
 import AskPatient from './Components/Staff/AskPatient';
 import ForgotPass from './Components/CommonPage/ForgotPass';
 import AddDrDisease from './Components/Staff/NewCard/AddDrDisease';
-import AddReport from './Components/Staff/NewCard/AddReport';
+import AddRecord from './Components/Staff/NewCard/AddRecord';
 import RegistrationMain from './Components/Staff/Registration/RegistrationMain';
 import RecordDashboardStaff from './Components/Staff/StaffDashboard/RecordDashboardStaff';
 import DrRegistrationTable from './Components/Staff/Registration/DoctorRegistration/DrRegistrationTable';
@@ -57,8 +57,8 @@ function App() {
                         <AddDrDisease />
                     </Route>
 
-                    <Route path="/AddReport">
-                        <AddReport />
+                    <Route path="/AddRecord">
+                        <AddRecord />
                     </Route>
 
                     <Route path="/ForgotPass">

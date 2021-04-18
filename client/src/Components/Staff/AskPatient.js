@@ -14,6 +14,7 @@ import {
     Row,
     Col
 } from "reactstrap";
+import {Link} from "react-router-dom";
 import LoginNavbar from "../MainComponents/LoginNavbar";
 import LoginFooter from "../MainComponents/LoginFooter";
 function AskPatient() {
@@ -52,16 +53,21 @@ function AskPatient() {
                             <Row className="justify-content-center">
                                 <Col lg="5">
                                     <Card  className="bg-secondary shadow border-0">
+                                        <div style={{backgroundColor:"Rgb(255,99,71,0.5)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
+                                            
+                                            <span>Enter Patient ID</span>
+                                       
+                                        </div>
                                         <CardBody style={{backgroundColor:"Rgb(255,99,71,0.5)"}} className="px-lg-5 py-lg-5">
                                             <Form role="form">
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">
                                                         <InputGroupAddon addonType="prepend">
                                                             <InputGroupText>
-                                                                <i className="ni ni-email-83" />
+                                                                <i className="ni ni-circle-08" />
                                                             </InputGroupText>
                                                         </InputGroupAddon>
-                                                        <Input placeholder="Enter Patient Email " 
+                                                        <Input placeholder="Enter Patient Id" 
                                                         name="email"
                                                         type="email"
                                                         onChange={(e) => validateEmail(e)}
@@ -74,13 +80,13 @@ function AskPatient() {
                                                 </FormGroup>
 
                                                 <div className="text-center">
-                                                    <Button
+                                                    <Link to="DrDashboardStaff"><Button
                                                         className="my-4"
                                                         color="primary"
                                                         type="button"
                                                     >
                                                        Go
-                          </Button>
+                          </Button></Link>
                                                 </div>
                                             </Form>
                                         </CardBody>

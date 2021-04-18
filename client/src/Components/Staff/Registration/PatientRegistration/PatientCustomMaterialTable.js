@@ -17,9 +17,9 @@ export default function PatientCustomMaterialTable(props) {
       
     },
     {
-        title: "BirthYear",
-        field: "birthyear",
-      },
+            title: 'Dob', field: 'dob', type: 'date',
+           
+        },
 
     {
       title: "Address",
@@ -44,19 +44,19 @@ export default function PatientCustomMaterialTable(props) {
   ]);
 
   const [data, setData] = useState([
-    { name: "Vineet", address: "london", birthyear:"1856", phoneno: 1234567895, mailid: "sharma24vineet@gmail.com" },
-    { name: "Priya", address: "paris",birthyear:"1855", phoneno: 12345647895, mailid: "priyakaushik2001@gmail.com" },
+    { name: "Vineet", address: "london", dob:"12/04/2021", phoneno: 1234567895, mailid: "sharma24vineet@gmail.com" },
+    { name: "Priya", address: "paris",dob:"12/04/2021", phoneno: 12345647895, mailid: "priyakaushik2001@gmail.com" },
   ]);
 
   return (
     <MaterialTable
-      style={{ backgroundColor: "rgb(82,95,127,0.6)",color: "white" }}
+      style={{backgroundColor:"Rgb(255,99,71,0.2)" , color: "white"}}
      
-      title="Custom Edit Component Preview"
+      title="Patient Registration"
       columns={columns}
       data={data}
       options={{
-        headerStyle: { backgroundColor: "rgb(105,105,105,0.5)", color: "white" },
+        headerStyle: { backgroundColor:"transparent", color: "black" },
       }}
       
       editable={{

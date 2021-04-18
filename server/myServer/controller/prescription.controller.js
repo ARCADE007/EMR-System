@@ -14,6 +14,7 @@ exports.create=(req,res)=>{
 // Create a new Prescription
 
 const newPrescription = new Prescriptions({
+    prescriptionId:null,
     description:req.body.description,
     date:req.body.date,
     disease:req.body.disease,

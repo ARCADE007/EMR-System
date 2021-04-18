@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState }  from 'react';
+import validator from "validator";
 import {
     Button,
     Card,
@@ -15,13 +16,37 @@ import {
 } from "reactstrap";
 import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter";
-function AddReport() {
+function AddRecord() {
     const refcontainer = useRef(null);
   useEffect(() => {
         document.documentElement.scrollTop = 0;
         document.scrollingElement.scrollTop = 0;
         
     });
+    const [errorMessage, setErrorMessage] = useState('')
+  
+  const AddRecord = (value) => {
+    if (validator.isStrongPassword(value, {
+        minLength:4, minLowercase: 1,
+      minUppercase: 0, minNumbers: 0, minSymbols: 0
+    })) {
+      setErrorMessage("");
+    } else {
+      setErrorMessage('Enter Valid Record Name');
+    }
+  }
+
+  const [errorMessageans, setErrorMessageans] = useState('')
+  const DiseaseName = (name) => {
+    if (validator.isStrongPassword(name, {
+        minLength:4, minLowercase: 1,
+      minUppercase: 0, minNumbers: 0, minSymbols: 0
+    })) {
+      setErrorMessageans("");
+    } else {
+      setErrorMessageans('Enter Valid Disease Name');
+    }
+  }
     
         return (
             <>
@@ -42,7 +67,7 @@ function AddReport() {
                             <Row className="justify-content-center">
                                 <Col lg="5">
                                     <Card className="bg-secondary shadow border-0">
-                                    <div style={{backgroundColor:"Rgb(255,99,71,0.5)",textAlign:"center",paddingTop:"50px"}} >
+                                    <div style={{backgroundColor:"Rgb(255,99,71,0.5)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
                                             
                                             <span>Enter Card Details</span>
                                        
@@ -53,21 +78,29 @@ function AddReport() {
                                                     <InputGroup className="input-group-alternative">
                                                         <InputGroupAddon addonType="prepend">
                                                             <InputGroupText>
-                                                                <i className="ni ni-email-83" />
+                                                                <i className="ni ni-ruler-pencil" />
                                                             </InputGroupText>
                                                         </InputGroupAddon>
-                                                        <Input placeholder="Enter Report ID" type="text" />
+                                                        <Input placeholder="Enter Record Name" type="text"onChange={(e) => AddRecord(e.target.value)} />
                                                     </InputGroup>
+                                                    <span 
+                                                    style={{
+                                                        color:"lightblue"
+                                                    }}>{errorMessage}</span>
                                                 </FormGroup>
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">
                                                         <InputGroupAddon addonType="prepend">
                                                             <InputGroupText>
-                                                                <i className="ni ni-email-83" />
+                                                                <i className="ni ni-ruler-pencil" />
                                                             </InputGroupText>
                                                         </InputGroupAddon>
-                                                        <Input placeholder="Enter Disease Name" type="text" />
+                                                        <Input placeholder="Enter Disease Name" type="text"onChange={(e) => DiseaseName(e.target.value)} />
                                                     </InputGroup>
+                                                    <span 
+                                                    style={{
+                                                        color:"lightblue"
+                                                    }}>{errorMessageans}</span>
                                                 </FormGroup>
                                                 <div className="text-center">
                                                     <Button
@@ -95,4 +128,4 @@ function AddReport() {
         );
     }
 
-export default AddReport;
+export default AddRecord;
