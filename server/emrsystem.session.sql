@@ -1,6 +1,6 @@
 -- Create Queries
 
-CREATE TABLE staff (
+CREATE TABLE Staff (
     staffID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     password VARCHAR(20) NOT NULL,
     staffName VARCHAR(20) NOT NULL,
@@ -17,7 +17,6 @@ CREATE TABLE Patient(
     patientName VARCHAR(20) NOT NULL,
     patientPhoneNo INTEGER NOT NULL,
     patientEmail VARCHAR(20) NOT NULL,
-    patientAge INTEGER NOT NULL,
     patientDOB date NOT NULL,
     patientAddress Varchar(40) NOT NULL,
     PRIMARY KEY(patientID)
