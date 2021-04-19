@@ -25,13 +25,18 @@ function Login() {
     document.scrollingElement.scrollTop = 0;
   });
 
+  const [emailIsValid, setEmailIsValid] = useState(false)
+  const [passwordIsValid, setPasswordIsValid] = useState(false)
+
   const [emailError, setEmailError] = useState("");
   const validateEmail = (e) => {
     var email = e.target.value;
 
     if (validator.isEmail(email)) {
+      setEmailIsValid(true);
       setEmailError("Valid Email :)");
     } else {
+      setEmailIsValid(false);
       setEmailError("Enter valid Email!");
     }
   };
@@ -42,11 +47,14 @@ function Login() {
         minLength: 6, minLowercase: 1,
       minUppercase: 1, minNumbers: 1, minSymbols: 0
     })) {
+      setPasswordIsValid(true);
       setErrorMessage('Is Strong Password');
     } else {
+      setPasswordIsValid(false);
       setErrorMessage('Is Not Strong Password');
     }
   }
+  
 
   return (
     <>
@@ -83,7 +91,7 @@ function Login() {
                     }}
                     className="px-lg-5 py-lg-5"
                   >
-                    <Form role="form">
+                    <Form method="post" action="" role="form">
                       <FormGroup className="mb-3">
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
@@ -101,7 +109,6 @@ function Login() {
                         <span style={{
                            color:"lightblue"
                            }}>{emailError}</span>
-                          
                         
                       </FormGroup>
                       <FormGroup>
@@ -125,7 +132,8 @@ function Login() {
                       </FormGroup>
 
                       <div className="text-center">
-                        <Button className="my-4" color="primary" type="submit">
+                        <Button className="my-4" color="primary" type="submit" disabled={!(emailIsValid && passwordIsValid)}>
+                          
                           Sign in
                         </Button>
                       </div>
