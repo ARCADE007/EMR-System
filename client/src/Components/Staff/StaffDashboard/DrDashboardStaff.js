@@ -36,7 +36,9 @@ function DrDashboardStaff(){
               <span />
               <span />
             </div>
-            <div className="Patient__Record"><Row><Col xs="12" sm="12" md="6" lg="6" ><h1 style={{color:"white"}}>Prescription</h1></Col><Col xs="12" sm="12" md="6" lg="6" style={{paddingTop:"5px"}}><Link to="/AddDr"><Button>New Prescription</Button></Link></Col></Row></div>
+            <div className="Patient__Record"><Row><Col xs="12" sm="12" md="6" lg="6" >
+            <h1 style={{color:"white"}}>Prescription</h1></Col><Col xs="12" sm="12" md="6" lg="6" style={{paddingTop:"5px"}}>
+            <Link to="/AddDr"><Button>New Prescription</Button></Link></Col></Row></div>
             <Container>
               <div>
                 <Row>
