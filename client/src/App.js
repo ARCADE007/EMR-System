@@ -19,12 +19,18 @@ import DrDashboardStaff from './Components/Staff/StaffDashboard/DrDashboardStaff
 import PrescriptionTable from "./Components/Patient/Prescription/PrescriptionTable";
 import DrDashboardPatient from './Components/Patient/PatientDashboard/DrDashboardPatient';
 import RecordDashboardPatient from './Components/Patient/PatientDashboard/RecordDashboardPatient';
+import ReportStaff from './Components/Staff/Report/ReportStaff';
+
+
 
 function App() {
     return (
         <Router>
             <div className="app" >
                 <Switch>
+                <Route path="/ReportStaff">
+                        <ReportStaff/>
+                    </Route>
                 <Route path="/RecordDashboardPatient">
                         <RecordDashboardPatient />
                     </Route>
