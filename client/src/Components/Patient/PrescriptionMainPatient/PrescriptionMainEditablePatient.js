@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
-export default function ReportStaffEditable(props) {
+export default function PrescriptionMainEditablePatient(props) {
   const [columns, setColumns] = useState([
     {
-      title: "ReportName",
-      field: "name",
-
+      title: "Disease",
+      field: "Disease",
       editComponent: (props) => (
         <input
           type="text"
@@ -14,24 +13,24 @@ export default function ReportStaffEditable(props) {
         />
       ),
     },
-
     {
-      title: "Date ",
+      title: "Date",
       field: "date",
       type: "date",
     },
+
     {
-      title: "File",
-      field: "File",
-      type: "file",
+      title: "Description",
+      field: "Description",
+      type: "input",
     },
   ]);
 
   const [data, setData] = useState([
-    { name: "mmr12", date: "15/04/2018", file: "" },
-    { name: "mmr12", date: "15/04/2018", file: "" },
-    { name: "mmr12", date: "15/04/2018", file: "" },
-    { name: "mmr12", date: "15/04/2018", file: "" },
+    { Disease: "mmr12", date: "15/04/2018", Description: "" },
+    { Disease: "mmr12", date: "15/04/2018", Description: "" },
+    { Disease: "mmr12", date: "15/04/2018", Description: "" },
+    { Disease: "mmr12", date: "15/04/2018", Description: "" },
   ]);
 
   return (
@@ -42,16 +41,6 @@ export default function ReportStaffEditable(props) {
       data={data}
       options={{
         headerStyle: { backgroundColor: "transparent", color: "black" },
-      }}
-      editable={{
-        onRowAdd: (newData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              setData([...data, newData]);
-
-              resolve();
-            }, 1000);
-          }),
       }}
     />
   );
