@@ -1,44 +1,51 @@
 const sql = require("./db");
 
 // Constructor
-const Patient = function ( patient) {
-    this.patientID = patient.patientID;
-    this.password =  patient.password;
-    this.patientName =  patient.patientName;
-    this.patientphoneNo = patient.patientphoneNo;
-    this.patientemail = patient.patientemail;
-    this.patientAge = patient.patientAge;
-    this.patientdateOfBirth = patient.patientdateOfBirth;
-    this.patientAddress = patient.patientAddress;
+const Report = function (report) {
+    this.reportID = report.reportID;
+    this.reportName =  report.reportName;
+    this.date = report.date;
+    this.file = report.file;
+    this.recordID = report.recordID;
   };
+
+//---------------------------------------------------------
+//Setters
+//---------------------------------------------------------
+
   
   // * Insert a new patient into the Patient Table
-  Patient.create = (newPatient, result) => {
+  Report.create = (newReport, result) => {
   
     const query = "INSERT INTO user SET ?";
 
-  sql.query(query, newPatient, (err, res) => {
+  sql.query(query, newReport, (err, res) => {
   
     if (err) {
       result(err, null);
       return;
     }
     
-    console.log("created patient");
+    console.log("created report");
     result(null, {
       message:
-        "Patient created"
+        "report created"
     });
   });
 };
 
-// * Returns the data of Patient by patientId by running SELECT
-Patient.findByPatientID = (patientID, result) => {
-    console.log(patientID);
+//---------------------------------------------------------
+//Getters
+//---------------------------------------------------------
+
+
+// * Returns the data of report by reportId by running SELECT
+Report.findByReportID = (reportID, result) => {
+    console.log(reportID);
   
     sql.query(
-      `SELECT * FROM Patient WHERE patientID = ?`,
-      patientID,
+      `SELECT * FROM Report WHERE reportID = ?`,
+      reportID,
       (err, res) => {
         if (err) {
           console.log("error: ", err);
@@ -47,40 +54,15 @@ Patient.findByPatientID = (patientID, result) => {
         }
   
         if (res.length) {
-          console.log("found user: ", res[0]);
+          console.log("found report: ", res[0]);
           result(null, res[0]);
           return;
         }
   
-        // not found user with the patientID === patientID
+        // not found user with the repordID === reportID
         result({ kind: "not_found" }, null);
       }
     );
   };
 
-  // * Updates the Patient data by patientID
-Patient.updateById = (patientID, patient, result) => {
-    sql.query(
-      "UPDATE Patient SET ? WHERE patientID = ?",
-      [patient, patientID],
-      (err, res) => {
-        if (err) {
-          console.log("error: ", err);
-          result(null, err);
-          return;
-        }
-  
-        if (res.affectedRows == 0) {
-          // not found Patient with the id
-          result({ kind: "not_found" }, null);
-          return;
-        }
-  
-        console.log("updated Patient: ", {
-          patientID: patientID,
-          ...patient,
-        });
-        result(null, { patientID: patientID, ...patient });
-      }
-    );
-  };
+ 
