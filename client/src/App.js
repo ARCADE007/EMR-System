@@ -20,6 +20,7 @@ import PrescriptionTable from "./Components/Patient/Prescription/PrescriptionTab
 import DrDashboardPatient from './Components/Patient/PatientDashboard/DrDashboardPatient';
 import RecordDashboardPatient from './Components/Patient/PatientDashboard/RecordDashboardPatient';
 import ReportStaff from './Components/Staff/Report/ReportStaff';
+import PrescriptionMain from './Components/Staff/PrescriptionMain/PrescriptionMain';
 
 
 
@@ -28,6 +29,9 @@ function App() {
         <Router>
             <div className="app" >
                 <Switch>
+                <Route path="/PrescriptionMain">
+                        <PrescriptionMain/>
+                    </Route>
                 <Route path="/ReportStaff">
                         <ReportStaff/>
                     </Route>
