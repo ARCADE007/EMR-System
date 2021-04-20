@@ -24,6 +24,8 @@ function AddDrDisease() {
         document.scrollingElement.scrollTop = 0;
         
     });
+    const [doctorIdIsValid, setDoctorIdIsValid] = useState(false)
+  const [nameIsValid, setNameIsValid] = useState(false)
     
     const [errorMessage, setErrorMessage] = useState('')
   
@@ -31,8 +33,10 @@ function AddDrDisease() {
     if (validator.isNumeric(value, {
         
     })) {
+        setDoctorIdIsValid(true);
       setErrorMessage("");
     } else {
+        setDoctorIdIsValid(false);
       setErrorMessage('Enter Valid Doctor Id (Only Numbers)');
     }
   }
@@ -43,8 +47,10 @@ function AddDrDisease() {
         minLength:4, minLowercase: 1,
       minUppercase: 0, minNumbers: 0, minSymbols: 0
     })) {
+        setNameIsValid(true);
       setErrorMessageans("");
     } else {
+        setNameIsValid(false);
       setErrorMessageans('Enter Valid Disease Name');
     }
   }
@@ -52,7 +58,7 @@ function AddDrDisease() {
             <>
                 <LoginNavbar />
                 <main ref={refcontainer}>
-                    <section style={{backgroundColor:"rgb(255,99,71,0.6)"}} className="section section-shaped section-lg">
+                    <section  className="section section-shaped section-lg">
                         <div className="shape shape-style-1 bg-gradient-default">
                             <span />
                             <span />
@@ -67,13 +73,13 @@ function AddDrDisease() {
                             <Row className="justify-content-center">
                                 <Col lg="5">
                                     <Card className="bg-secondary shadow border-0">
-                                    <div style={{backgroundColor:"Rgb(255,99,71,0.5)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
+                                    <div style={{backgroundColor:"Rgb(125,125,125,0.6)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
                                             
                                             <span>Enter Card Details</span>
                                        
                                         </div>
-                                        <CardBody style={{backgroundColor:"Rgb(255,99,71,0.5)"}} className="px-lg-5 py-lg-5">
-                                            <Form role="form">
+                                        <CardBody style={{backgroundColor:"Rgb(125,125,125,0.6)"}} className="px-lg-5 py-lg-5">
+                                            <Form method="post" action=""  role="form">
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">
                                                         <InputGroupAddon addonType="prepend">
@@ -111,6 +117,7 @@ function AddDrDisease() {
                                                         className="my-4"
                                                         color="primary"
                                                         type="button"
+                                                        disabled={!(doctorIdIsValid && nameIsValid)}
                                                     >
                                                         Save
                           </Button>

@@ -50,7 +50,7 @@ export default function PatientCustomMaterialTable(props) {
 
   return (
     <MaterialTable
-      style={{backgroundColor:"Rgb(255,99,71,0.2)" , color: "white"}}
+      style={{backgroundColor:"Rgb(255,255,255,0.2)" , color: "white"}}
      
       title="Patient Registration"
       columns={columns}
@@ -79,17 +79,7 @@ export default function PatientCustomMaterialTable(props) {
               resolve();
             }, 1000);
           }),
-        onRowDelete: (oldData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              const dataDelete = [...data];
-              const index = oldData.tableData.id;
-              dataDelete.splice(index, 1);
-              setData([...dataDelete]);
-
-              resolve();
-            }, 1000);
-          }),
+        
       }}
     />
   );

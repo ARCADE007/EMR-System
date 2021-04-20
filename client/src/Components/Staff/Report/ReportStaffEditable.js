@@ -25,17 +25,17 @@ export default function ReportStaffEditable(props) {
            
         },
         {
-            title: 'File', field:'File',type:'file',
+            title: 'File', field:'File',type:'submit',
         },
 
 
     ]);
 
     const [data, setData] = useState([
-        { name: 'mmr12', date: "15/04/2018",file:""},
-        { name: 'mmr12', date: "15/04/2018",file:""},
-        { name: 'mmr12', date: "15/04/2018",file:""},
-        { name: 'mmr12', date: "15/04/2018",file:""},
+        { name: 'mmr12', date: "15/04/2018",File:1},
+        { name: 'mmr12', date: "15/04/2018",File:1},
+        { name: 'mmr12', date: "15/04/2018",File:1},
+        { name: 'mmr12', date: "15/04/2018",File:1},
     ]);
 
     

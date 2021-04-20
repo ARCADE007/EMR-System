@@ -61,7 +61,7 @@ export default function CustomPrescriptionTableEditable(props) {
     
     return (
         <MaterialTable
-        style={{backgroundColor:"Rgb(255,99,71,0.2)" , color: "white"}}
+        style={{backgroundColor:"Rgb(255,255,255,0.2)" , color: "white"}}
             title="ID" 
             columns={columns}
             data={data}
