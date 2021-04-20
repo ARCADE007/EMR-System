@@ -1,7 +1,7 @@
 const sql = require("./db");
 
 // Constructor
-const Patient = function ( patient) {
+const Patient = function (patient) {
     this.patientID = patient.patientID;
     this.password =  patient.password;
     this.patientName =  patient.patientName;
