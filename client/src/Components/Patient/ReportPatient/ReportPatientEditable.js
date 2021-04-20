@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
-export default function ReportStaffEditable(props) {
+export default function ReportPatientEditable(props) {
   const [columns, setColumns] = useState([
     {
       title: "ReportName",
@@ -42,16 +42,6 @@ export default function ReportStaffEditable(props) {
       data={data}
       options={{
         headerStyle: { backgroundColor: "transparent", color: "black" },
-      }}
-      editable={{
-        onRowAdd: (newData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              setData([...data, newData]);
-
-              resolve();
-            }, 1000);
-          }),
       }}
     />
   );
