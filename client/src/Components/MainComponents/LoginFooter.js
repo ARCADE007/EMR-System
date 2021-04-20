@@ -36,7 +36,7 @@ class LoginFooter extends React.Component {
                             <Col className="text-lg-center btn-wrapper" lg="6">
                                 <Button
                                 
-                                color="facebook"
+                                color="instagram"
                                     className="btn-icon-only rounded-circle ml-3"
                                     href="https://www.instagram.com/vineet_ks/?igshid=18vwmivf4c60d"
                                     id="tooltip356663867"
@@ -83,7 +83,7 @@ class LoginFooter extends React.Component {
                   </UncontrolledTooltip>
                   <Button
                                      
-                                     color="instagram"
+                                     color="facebook"
                                     className="btn-icon-only rounded-circle ml-3"
                                     href="https://www.linkedin.com/in/priya-kaushik-1a04501a2/"
                                     id="tooltip3566543853"
@@ -127,6 +127,7 @@ class LoginFooter extends React.Component {
                                     target="_blank"
                                 >
                                     EMR System </a>
+                                    <span>-- Made by Vineet Sharma & Priya Kaushik --</span>
                             </div>
 
                         </Col>

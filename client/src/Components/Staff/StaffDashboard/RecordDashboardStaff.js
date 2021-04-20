@@ -23,7 +23,7 @@ function RecordDashboardStaff() {
       <>
         <LoginNavbar />
         <main ref={refcontainer}>
-          <section style={{backgroundColor:"rgb(255,99,71,0.6)"}} className="section section-shaped section-lg">
+          <section className="section section-shaped section-lg">
             <div className="shape shape-style-1 bg-gradient-default">
               <span />
               <span />
@@ -42,7 +42,7 @@ function RecordDashboardStaff() {
                     <Card
                       body
                       inverse
-                      style={{backgroundColor:"Rgb(255,99,71,0.5)" }}
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
                     >
                       <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
                       <CardText>
@@ -56,7 +56,7 @@ function RecordDashboardStaff() {
                     <Card
                       body
                       inverse
-                      style={{backgroundColor:"Rgb(255,99,71,0.5)" }}
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
                     >
                       <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
                       <CardText>
@@ -70,7 +70,7 @@ function RecordDashboardStaff() {
                     <Card
                       body
                       inverse
-                      style={{backgroundColor:"Rgb(255,99,71,0.5)" }}
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
                     >
                       <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
                       <CardText>
@@ -84,7 +84,7 @@ function RecordDashboardStaff() {
                     <Card
                       body
                       inverse
-                      style={{backgroundColor:"Rgb(255,99,71,0.5)" }}
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
                     >
                       <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
                       <CardText>
@@ -98,7 +98,7 @@ function RecordDashboardStaff() {
                     <Card
                       body
                       inverse
-                      style={{backgroundColor:"Rgb(255,99,71,0.5)" }}
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
                     >
                       <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
                       <CardText>
@@ -112,7 +112,7 @@ function RecordDashboardStaff() {
                     <Card
                       body
                       inverse
-                      style={{backgroundColor:"Rgb(255,99,71,0.5)" }}
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
                     >
                       <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
                       <CardText>
@@ -126,7 +126,7 @@ function RecordDashboardStaff() {
                     <Card
                       body
                       inverse
-                      style={{backgroundColor:"Rgb(255,99,71,0.5)" }}
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
                     >
                       <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
                       <CardText>
@@ -140,7 +140,77 @@ function RecordDashboardStaff() {
                     <Card
                       body
                       inverse
-                      style={{backgroundColor:"Rgb(255,99,71,0.5)" }}
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
+                    >
+                      <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
+                      <CardText>
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </CardText>
+                      <Button>Button</Button>
+                    </Card>
+                  </Col>
+                  <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
+                    <Card
+                      body
+                      inverse
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
+                    >
+                      <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
+                      <CardText>
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </CardText>
+                      <Button>Button</Button>
+                    </Card>
+                  </Col>
+                  <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
+                    <Card
+                      body
+                      inverse
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
+                    >
+                      <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
+                      <CardText>
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </CardText>
+                      <Button>Button</Button>
+                    </Card>
+                  </Col>
+                  <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
+                    <Card
+                      body
+                      inverse
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
+                    >
+                      <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
+                      <CardText>
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </CardText>
+                      <Button>Button</Button>
+                    </Card>
+                  </Col>
+                  <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
+                    <Card
+                      body
+                      inverse
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
+                    >
+                      <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
+                      <CardText>
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </CardText>
+                      <Button>Button</Button>
+                    </Card>
+                  </Col>
+                  <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
+                    <Card
+                      body
+                      inverse
+                      style={{backgroundColor:"Rgb(125,125,125,0.5)"}}
                     >
                       <CardTitle style={{color:"white"}} tag="h5">Special Title Treatment</CardTitle>
                       <CardText>

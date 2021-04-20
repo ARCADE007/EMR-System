@@ -23,7 +23,7 @@ function DrRegistrationTable() {
         <>
             <LoginNavbar />
             <main ref={refcontainer}>
-                <section style={{backgroundColor:"rgb(255,99,71,0.6)"}} className="section section-shaped section-lg">
+                <section   className="section section-shaped section-lg">
                     <div className="  shape shape-style-1 bg-gradient-default">
                         <span />
                         <span />
