@@ -21,7 +21,7 @@ function PatientRegistrationTable() {
         <>
             <LoginNavbar />
             <main ref={refcontainer}>
-                <section style={{backgroundColor:"rgb(255,99,71,0.6)"}} className=" Naya__mauka section section-shaped section-lg">
+                <section  className=" Naya__mauka section section-shaped section-lg">
                     <div className="shape shape-style-1 bg-gradient-default">
                         <span />
                         <span />

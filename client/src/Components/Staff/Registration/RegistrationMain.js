@@ -6,9 +6,11 @@ import {
     Form,
     Container,
     Row,
-    Col
+    Col,
+    UncontrolledTooltip
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import "../../DrDashboard.css";
 import LoginNavbar from "../../MainComponents/LoginNavbar"
 import LoginFooter from "../../MainComponents/LoginFooter";
 class RegistrationMain extends React.Component {
@@ -22,7 +24,7 @@ class RegistrationMain extends React.Component {
             <>
                 <LoginNavbar />
                 <main ref="main">
-                    <section className="section section-shaped section-lg">
+                    <section style={{backgroundColor:"rgb(128,0,0,0.6)"}} className="section section-shaped section-lg">
                         <div className="shape shape-style-1 bg-gradient-default">
                             <span />
                             <span />
@@ -33,39 +35,48 @@ class RegistrationMain extends React.Component {
                             <span />
                             <span />
                         </div>
-                        <Container className="pt-lg-7">
-                            <Row className="justify-content-center">
-                                <Col lg="5">
-                                    <Card className="bg-secondary shadow border-0">
-                                        <CardBody style={{backgroundColor:"Rgb(71, 115, 168,0.5)"}} className="px-lg-5 py-lg-5">
-                                            <Form role="form">
-                                                <div className="text-center">
-                                                  <Link> <Button
-                                                        
-                                                        className="my-4"
-                                                        color="primary"
-                                                        type="button"
-                                                    >
-                                                        Patient
-                          </Button></Link> 
-                                                </div>
-                                                <div className="text-center">
-                                                    <Link >
-                                                        <Button
-                                                            className="my-4"
-                                                            color="primary"
-                                                            type="button"
-                                                        >
-                                                            Staff  
-                          </Button></Link>
-                                                </div>
-                                            </Form>
-                                        </CardBody>
-                                    </Card>
+                        <div style={{textAlign:"center",paddingBottom:"25px"}}><h1 style={{color:"white"}}>Registration Panel</h1></div>
+                        <Container>
+                            <div>
+                                <Row >
+                                    <Col xs="12" sm="12" md="12" lg="6" style={{padding:"25px"}}>
+                            
+                                
+                                    <Button 
+                                    id="tooltip256123867"
+                                    target="_blank"
+                                    style={{width:"100%",height:"100%",padding:"50px",backgroundColor:"Rgb(125,125,125,0.4)",color:"white"}}
+                                >
+                                    <h6 style={{color:"white"}}>Patient</h6>
+                                </Button>
+                                <UncontrolledTooltip delay={0} target="tooltip256123867">
+                                Register new Patient
+                  </UncontrolledTooltip>
 
-                                </Col>
-                            </Row>
-                        </Container>
+                  </Col>
+                  
+                  
+                  <Col xs="12" sm="12" md="12" lg="6" style={{padding:"25px"}}>
+
+                                    <Button 
+                                    id="tooltip356123837"
+                                    target="_blank"
+                                    style={{width:"100%",height:"100%",padding:"50px",backgroundColor:"Rgb(125,125,125,0.4)",color:"white"}}
+                                >
+                                    <h6 style={{color:"white"}}>Staff</h6>
+                                </Button>
+                                <UncontrolledTooltip delay={0} target="tooltip356123837">
+                                Register new Staff
+                  </UncontrolledTooltip>
+                  </Col>
+
+                              </Row>
+                  
+
+                               </div>
+                            
+                            </Container>
+                        
                     </section>
                 </main>
                 <LoginFooter />

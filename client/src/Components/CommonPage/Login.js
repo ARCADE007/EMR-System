@@ -60,7 +60,7 @@ function Login() {
     <>
       <LoginNavbar />
       <main ref={refcontainer}>
-        <section className="section section-shaped section-lg">
+        <section style={{backgroundColor:"rgb(128,0,0,0.6)"}} className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-default">
             <span />
             <span />
@@ -77,7 +77,7 @@ function Login() {
                 <Card className="bg-secondary shadow border-0">
                   <div
                     style={{
-                      backgroundColor: "Rgb(71, 115, 168,0.8)",
+                      backgroundColor: "rgb(128,0,0,0.4)",
                       textAlign: "center",
                       paddingTop: "50px",
                       fontWeight:"bold",
@@ -87,7 +87,7 @@ function Login() {
                   </div>
                   <CardBody
                     style={{
-                      backgroundColor: "Rgb(71, 115, 168,0.8)",
+                      backgroundColor: "rgb(128,0,0,0.4)",
                     }}
                     className="px-lg-5 py-lg-5"
                   >

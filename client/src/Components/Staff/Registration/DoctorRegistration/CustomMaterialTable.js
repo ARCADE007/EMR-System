@@ -3,7 +3,7 @@ import MaterialTable from "material-table";
 export default function CustomMaterialTable(props) {
   const [columns, setColumns] = useState([
     {
-      title: "Patient Name",
+      title: "Doctor Name",
       field: "name",
 
       editComponent: (props) => (
@@ -15,6 +15,11 @@ export default function CustomMaterialTable(props) {
       ),
 
       
+    },
+    {
+title:"Role",
+field:"role",
+lookup: { 1: 'Doctor', 2: 'Nurse',3:'Receptionist',4:'Panel' },
     },
     
 
@@ -39,13 +44,13 @@ export default function CustomMaterialTable(props) {
   ]);
 
   const [data, setData] = useState([
-    { name: "Vineet", address: "london", phoneno: 1234567895, mailid: "sharma24vineet@gmail.com" },
-    { name: "Priya", address: "paris", phoneno: 12345647895, mailid: "priyakaushik2001@gmail.com" },
+    { name: "DRVineet",role:1, address: "london", phoneno: 1234567895, mailid: "sharma24vineet@gmail.com" },
+    { name: "DrPriya",role:1, address: "paris", phoneno: 12345647895, mailid: "priyakaushik2001@gmail.com" },
   ]);
 
   return (
     <MaterialTable
-      style={{backgroundColor:"Rgb(255,99,71,0.2)" , color: "white"}}
+      style={{backgroundColor:"Rgb(255,255,255,0.2)" , color: "white"}}
      
       title=" Dr Registration"
       columns={columns}

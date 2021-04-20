@@ -23,6 +23,9 @@ function AddRecord() {
         document.scrollingElement.scrollTop = 0;
         
     });
+    const [recordNameIsValid, setRecordNameIsValid] = useState(false)
+  const [nameIsValid, setNameIsValid] = useState(false)
+
     const [errorMessage, setErrorMessage] = useState('')
   
   const AddRecord = (value) => {
@@ -30,8 +33,10 @@ function AddRecord() {
         minLength:4, minLowercase: 1,
       minUppercase: 0, minNumbers: 0, minSymbols: 0
     })) {
+        setRecordNameIsValid(true);
       setErrorMessage("");
     } else {
+        setRecordNameIsValid(false);
       setErrorMessage('Enter Valid Record Name');
     }
   }
@@ -42,8 +47,10 @@ function AddRecord() {
         minLength:4, minLowercase: 1,
       minUppercase: 0, minNumbers: 0, minSymbols: 0
     })) {
+        setNameIsValid(true);
       setErrorMessageans("");
     } else {
+        setNameIsValid(false);
       setErrorMessageans('Enter Valid Disease Name');
     }
   }
@@ -52,7 +59,7 @@ function AddRecord() {
             <>
                 <LoginNavbar />
                 <main ref={refcontainer}>
-                    <section style={{backgroundColor:"rgb(255,99,71,0.6)"}} className="section section-shaped section-lg">
+                    <section className="section section-shaped section-lg">
                         <div className="shape shape-style-1 bg-gradient-default">
                             <span />
                             <span />
@@ -67,13 +74,13 @@ function AddRecord() {
                             <Row className="justify-content-center">
                                 <Col lg="5">
                                     <Card className="bg-secondary shadow border-0">
-                                    <div style={{backgroundColor:"Rgb(255,99,71,0.5)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
+                                    <div style={{backgroundColor:"Rgb(125,125,125,0.6)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
                                             
                                             <span>Enter Card Details</span>
                                        
                                         </div>
-                                        <CardBody style={{backgroundColor:"Rgb(255,99,71,0.5)"}} className="px-lg-5 py-lg-5">
-                                            <Form role="form">
+                                        <CardBody style={{backgroundColor:"Rgb(125,125,125,0.6)"}} className="px-lg-5 py-lg-5">
+                                            <Form method="post" action="" role="form">
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">
                                                         <InputGroupAddon addonType="prepend">
@@ -107,6 +114,7 @@ function AddRecord() {
                                                         className="my-4"
                                                         color="primary"
                                                         type="button"
+                                                        disabled={!(recordNameIsValid && nameIsValid)}
                                                     >
                                                         Save
                           </Button>

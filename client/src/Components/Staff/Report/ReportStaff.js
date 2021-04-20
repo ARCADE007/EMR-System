@@ -27,7 +27,7 @@ function ReportStaff() {
         <>
             <LoginNavbar />
             <main  ref={refcontainer}>
-                <section style={{backgroundColor:"rgb(0,0,0,0.4)"}}  className="section section-shaped section-lg">
+                <section className="section section-shaped section-lg">
                     <div className="shape shape-style-1 bg-gradient-default">
                         <span />
                         <span />

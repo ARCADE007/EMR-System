@@ -24,13 +24,18 @@ function ForgotPass() {
         document.scrollingElement.scrollTop = 0;
         
     });
+
+    const [emailIsValid, setEmailIsValid] = useState(false)
+
     const [emailError, setEmailError] = useState("");
   const validateEmail = (e) => {
     var email = e.target.value;
 
     if (validator.isEmail(email)) {
+        setEmailIsValid(true);
       setEmailError("Valid Email");
     } else {
+        setEmailIsValid(false);
       setEmailError("Enter valid Email!");
     }
   };
@@ -42,7 +47,7 @@ function ForgotPass() {
             <>
                 <LoginNavbar />
                 <main ref={refcontainer}>
-                    <section className="section section-shaped section-lg">
+                    <section style={{backgroundColor:"rgb(128,0,0,0.6)"}} className="section section-shaped section-lg">
                         <div className="shape shape-style-1 bg-gradient-default">
                             <span />
                             <span />
@@ -56,14 +61,14 @@ function ForgotPass() {
                         <Container  className="pt-lg-7">
                             <Row className="justify-content-center">
                                 <Col  lg="5">
-                                    <Card  className="bg-secondary shadow border-0">
-                                        <div style={{backgroundColor:"Rgb(71, 115, 168,0.8)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
+                                    <Card className="bg-secondary shadow border-0">
+                                        <div style={{backgroundColor:"rgb(128,0,0,0.4)",fontWeight:"bold",textAlign:"center",paddingTop:"50px"}} >
                                             
                                             <span>Enter Your Email</span>
                                        
                                         </div>
-                                        <CardBody style={{backgroundColor:"Rgb(71, 115, 168,0.8)"}} className="px-lg-5 py-lg-5">
-                                            <Form role="form">
+                                        <CardBody style={{backgroundColor:"rgb(128,0,0,0.4)"}} className="px-lg-5 py-lg-5">
+                                            <Form method="post" action=""  role="form">
                                                 <FormGroup className="mb-3">
                                                     <InputGroup className="input-group-alternative">
                                                         <InputGroupAddon addonType="prepend">
@@ -84,14 +89,9 @@ function ForgotPass() {
                                                 </FormGroup>
 
                                                 <div className="text-center">
-                                                    <Link to="/"><Button
-                                                        className="my-4"
-                                                        color="primary"
-                                                        type="button"
-                                                        
-                                                    >
+                                                    <Button className="my-4" color="primary" type="submit" disabled={!emailIsValid}>
                                                         Send Email
-                          </Button></Link>
+                          </Button>
                                                 </div>
                                             </Form>
                                         </CardBody>
