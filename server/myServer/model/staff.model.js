@@ -10,6 +10,10 @@ const Staff = function (staff) {
     this.staffAddress = staff.staffAddress;
     this.rollName = staff.rollName;
   };
+
+ //---------------------------------------------------------
+//Setters
+//---------------------------------------------------------
   
   // * Insert a new Staff into the staff Table
   Staff.create = (newStaff, result) => {
@@ -30,6 +34,41 @@ const Staff = function (staff) {
     });
   });
 };
+
+//---------------------------------------------------------
+//Setters
+//---------------------------------------------------------
+
+  // * Updates the staff data by staffID
+  Staff.updateById = (staffID, staff, result) => {
+    sql.query(
+      "UPDATE staff SET ? WHERE staffID = ?",
+      [staff, staffID],
+      (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          result(null, err);
+          return;
+        }
+  
+        if (res.affectedRows == 0) {
+          // not found staff with the id
+          result({ kind: "not_found" }, null);
+          return;
+        }
+  
+        console.log("updated staff: ", {
+          staffID: staffID,
+          ...staff,
+        });
+        result(null, { staffID: staffID, ...staff });
+      }
+    );
+  };
+
+//---------------------------------------------------------
+//Getters
+//---------------------------------------------------------
 
 // * Returns the data of staff by staffId by running SELECT
 Staff.findBystaffID = (staffID, result) => {
@@ -53,33 +92,6 @@ Staff.findBystaffID = (staffID, result) => {
   
         // not found user with the staffID === staffID
         result({ kind: "not_found" }, null);
-      }
-    );
-  };
-
-  // * Updates the staff data by staffID
-Staff.updateById = (staffID, staff, result) => {
-    sql.query(
-      "UPDATE staff SET ? WHERE staffID = ?",
-      [staff, staffID],
-      (err, res) => {
-        if (err) {
-          console.log("error: ", err);
-          result(null, err);
-          return;
-        }
-  
-        if (res.affectedRows == 0) {
-          // not found staff with the id
-          result({ kind: "not_found" }, null);
-          return;
-        }
-  
-        console.log("updated staff: ", {
-          staffID: staffID,
-          ...staff,
-        });
-        result(null, { staffID: staffID, ...staff });
       }
     );
   };
