@@ -1,48 +1,48 @@
 const sql = require("./db");
+const bcrypt = require("bcrypt");
 
 // Constructor
 const Patient = function (patient) {
-    this.patientID = patient.patientID;
-    this.password =  patient.password;
-    this.patientName =  patient.patientName;
-    this.patientphoneNo = patient.patientphoneNo;
-    this.patientemail = patient.patientemail;
-    this.patientAge = patient.patientAge;
-    this.patientdateOfBirth = patient.patientdateOfBirth;
-    this.patientAddress = patient.patientAddress;
-  };
+  this.patientID = patient.patientID;
+  this.password = patient.password;
+  this.patientName = patient.patientName;
+  this.patientphoneNo = patient.patientphoneNo;
+  this.patientemail = patient.patientemail;
+  this.patientAge = patient.patientAge;
+  this.patientdateOfBirth = patient.patientdateOfBirth;
+  this.patientAddress = patient.patientAddress;
+};
 
 //---------------------------------------------------------
 //Setters
 //---------------------------------------------------------
 
-  // * Insert a new patient into the Patient Table
-  Patient.create = (newPatient, result) => {
-  
-    const query = "INSERT INTO user SET ?";
+// * Insert a new patient into the Patient Table
+Patient.create = (newPatient, result) => {
+  const query = "INSERT INTO user SET ?";
 
   sql.query(query, newPatient, (err, res) => {
-  
     if (err) {
       result(err, null);
       return;
     }
-    
-    console.log("created patient");
+
+    console.log("created patient: ", {
+      id: res.insertId,
+      ...newPatient,
+    });
+
     result(null, {
-      message:
-        "Patient created"
+      message: "user created with username " + newPatient.username,
     });
   });
 };
 
-
-  //---------------------------------------------------------
+//---------------------------------------------------------
 //Setters
 //---------------------------------------------------------
 
-
-  // * Updates the Patient data by patientID
+// * Updates the Patient data by patientID
 Patient.updateById = (patientID, patient, result) => {
   sql.query(
     "UPDATE Patient SET ? WHERE patientID = ?",
@@ -69,11 +69,9 @@ Patient.updateById = (patientID, patient, result) => {
   );
 };
 
-
 //---------------------------------------------------------
 //Getters
 //---------------------------------------------------------
-
 
 // * Returns the data of Patient by patientId by running SELECT
 Patient.findByPatientID = (patientID, result) => {
@@ -101,4 +99,41 @@ Patient.findByPatientID = (patientID, result) => {
   );
 };
 
+// Checks Password
 
+Patient.checkPassword = (patientId, password, result) => {
+  sql.query(
+    "SELECT password from patient WHERE patientId = ?",
+    [patientId],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+
+      if (res.length) {
+        bcrypt
+          .compare(password, res[0].password)
+          .then((passResult) => {
+            if (passResult) {
+              console.log("password authenticated : ", patientId);
+              result(null, {
+                message: "authentication successful",
+              });
+              return;
+            } else {
+              result({ kind: "not_found" }, null);
+              return;
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      } else {
+        result({ kind: "not_found" }, null);
+      }
+    }
+  );
+};
+module.exports = Patient;
