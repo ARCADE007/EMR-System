@@ -12,7 +12,7 @@ CREATE TABLE Staff (
    )AUTO_INCREMENT=1;
 
 CREATE TABLE Patient(
-    patientID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
+    patientId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
     password VARCHAR(20) NOT NULL,
     patientName VARCHAR(20) NOT NULL,
     patientPhoneNo INTEGER NOT NULL,
@@ -65,4 +65,20 @@ CREATE TABLE Medicine(
 )AUTO_INCREMENT=1;
 
 -- Insert Queries
+INSERT INTO Patient (
+    password,
+    patientName,
+    patientPhoneNo,
+    patientEmail,
+    patientDOB,
+    patientAddress
+    )
+VALUES (
+        'Cartoon~1',
+        'Priya Kaushik',
+        '8954732145'
+        'priyakaushik2001@gmail.com',
+        '02-05-2000'
+        'H-21 swej farm sodala jaipur'  
+    );
 
