@@ -15,8 +15,8 @@ CREATE TABLE Patient(
     patientId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
     password VARCHAR(20) NOT NULL,
     patientName VARCHAR(20) NOT NULL,
-    patientPhoneNo INTEGER NOT NULL,
-    patientEmail VARCHAR(20) NOT NULL,
+    patientPhoneNo VARCHAR(11) NOT NULL,
+    patientEmail VARCHAR(50) NOT NULL,
     patientDOB date NOT NULL,
     patientAddress Varchar(40) NOT NULL,
     PRIMARY KEY(patientID)
@@ -66,6 +66,7 @@ CREATE TABLE Medicine(
 
 -- Insert Queries
 INSERT INTO Patient (
+    
     password,
     patientName,
     patientPhoneNo,
@@ -76,9 +77,9 @@ INSERT INTO Patient (
 VALUES (
         'Cartoon~1',
         'Priya Kaushik',
-        '8954732145'
+        '8954732178',
         'priyakaushik2001@gmail.com',
-        '02-05-2000'
+         DATE('2001/03/12'),
         'H-21 swej farm sodala jaipur'  
     );
 
