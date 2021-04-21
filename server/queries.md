@@ -24,7 +24,6 @@ CREATE TABLE Patient(
     patientName VARCHAR(20) NOT NULL,
     patientPhoneNo INTEGER NOT NULL,
     patientEmail VARCHAR(20) NOT NULL,
-    patientAge INTEGER NOT NULL,
     patientDOB date NOT NULL,
     patientAddress Varchar(40) NOT NULL,
     PRIMARY KEY(patientID)
