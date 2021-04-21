@@ -11,14 +11,12 @@ exports.create = async (req, res) => {
   }
   // Create a Report
   const report = new Report({
-    patientID: null,
-    password: req.body.password,
-    patientName: req.body.patientName,
-    patientphoneNo: req.body.patientphoneNo,
-    patientemail: req.body.patientemail,
-    patientAge: req.body.patientAge,
-    patientdateOfBirth: req.body.patientdateOfBirth,
-    patientAddress: req.body.patientAddress,
+    reportID: null,
+    reportName: req.body.reportName,
+    date: req.body.date,
+    file: req.body.file,
+    recordID: req.body.recordID,
+
   });
 
   // Save Report in the Database
