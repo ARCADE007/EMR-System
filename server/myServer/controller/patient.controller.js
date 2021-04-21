@@ -17,7 +17,6 @@ exports.create = async (req, res) => {
     patientName: req.body.patientName,
     patientphoneNo: req.body.patientphoneNo,
     patientemail: req.body.patientemail,
-    patientAge: req.body.patientAge,
     patientdateOfBirth: req.body.patientdateOfBirth,
     patientAddress: req.body.patientAddress,
   });
@@ -88,7 +87,6 @@ exports.update = (req, res) => {
         patientName: req.body.patientName,
         patientphoneNo: req.body.patientphoneNo,
         patientemail: req.body.patientemail,
-        patientAge: req.body.patientAge,
         patientdateOfBirth: req.body.patientdateOfBirth,
         patientAddress: req.body.patientAddress,
     };

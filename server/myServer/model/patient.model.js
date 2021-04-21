@@ -7,7 +7,6 @@ const Patient = function (patient) {
     this.patientName =  patient.patientName;
     this.patientphoneNo = patient.patientphoneNo;
     this.patientemail = patient.patientemail;
-    this.patientAge = patient.patientAge;
     this.patientdateOfBirth = patient.patientdateOfBirth;
     this.patientAddress = patient.patientAddress;
   };
