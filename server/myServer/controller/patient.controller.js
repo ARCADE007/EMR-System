@@ -1,4 +1,5 @@
 const Patient = require("../model/patient.model");
+const generator = require("generate-password");
 const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
 
 const bcrypt = require("bcrypt");
@@ -13,15 +14,19 @@ exports.create = async (req, res) => {
     });
     return;
   }
+  const password = generator.generate({
+    length: 10,
+    numbers: true,
+  });
+  console.log(password);
 
   // Create a Patient
   const patient = new Patient({
-    patientId: null,
-    password: req.body.password,
+    password: password,
     patientName: req.body.patientName,
-    patientphoneNo: req.body.patientphoneNo,
-    patientemail: req.body.patientemail,
-    patientdateOfBirth: req.body.patientdateOfBirth,
+    patientPhoneno: req.body.patientPhoneno,
+    patientEmail: req.body.patientEmail,
+    patientDob: req.body.patientDob,
     patientAddress: req.body.patientAddress,
   });
 
@@ -86,15 +91,13 @@ exports.update = (req, res) => {
     });
   }
 
-  if (checkAccessToken(req.cookies.auth) == req.params.PatientId) {
+  if (checkAccessToken(req.cookies.auth)) {
     // Create a Patient
-    const Patient = {
-      patientId: null,
-      password: null,
-      patientName: req.body.patientName,
-      patientphoneNo: req.body.patientphoneNo,
-      patientemail: req.body.patientemail,
-      patientdateOfBirth: req.body.patientdateOfBirth,
+    const patient = {
+      patientName:req.body.patientName,
+      patientPhoneno: req.body.patientPhoneno,
+      patientEmail: req.body.patientEmail,
+      patientDob: req.body.patientDob,
       patientAddress: req.body.patientAddress,
     };
 
@@ -104,16 +107,16 @@ exports.update = (req, res) => {
     );
 
     // Update the Patient
-    Patient.updateById(req.params.patientId, patient, (err, data) => {
+    Patient.updateById(req.cookies.patientId, patient, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Patient with patientId ${req.params.patientId}.`,
+            message: `Not found Patient with patientId ${req.cookies.patientId}.`,
           });
         } else {
           res.status(500).send({
             message:
-              "Error updating Patient with patientId " + req.params.patientId,
+              "Error updating Patient with patientId " + req.cookies.patientId,
           });
         }
       } else {
@@ -179,4 +182,34 @@ exports.authenticate = (req, res) => {
         });
     }
   });
+};
+
+// * Updates the password for the Patient
+exports.updatePassword = (req, res) => {
+  if (
+    req.cookies.PatientId &&
+    checkAccessToken(req.cookies.auth) == req.cookies.patientId
+  ) {
+    Patient.changePassword(
+      req.cookies.patientId,
+      req.body.password,
+      req.body.newPassword,
+      (err, data) => {
+        if (err) {
+          res.status(500).send({
+            message:
+              "Could not change password for Patient with patientId " +
+              req.cookies.patientId,
+          });
+        } else
+          res.status(200).send({
+            message: `Patient password was changed successfully!`,
+          });
+      }
+    );
+  } else {
+    res.status(401).send({
+      message: "Unauthorized",
+    });
+  }
 };
