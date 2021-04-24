@@ -30,6 +30,7 @@ app.get("/", (req, res) => {
 
 // Add Routes
 require("./myServer/routes/patient.routes.js")(app);
+require("./myServer/routes/staff.routes.js")(app);
 // require("./app/routes/questions.routes.js")(app);
 // require("./app/routes/answer.routes.js")(app);
 

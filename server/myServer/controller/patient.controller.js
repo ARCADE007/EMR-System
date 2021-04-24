@@ -15,7 +15,7 @@ exports.create = async (req, res) => {
     return;
   }
   const password = generator.generate({
-    length: 10,
+    length: 8,
     numbers: true,
   });
   console.log(password);
@@ -94,7 +94,7 @@ exports.update = (req, res) => {
   if (checkAccessToken(req.cookies.auth)) {
     // Create a Patient
     const patient = {
-      patientName:req.body.patientName,
+      patientName: req.body.patientName,
       patientPhoneno: req.body.patientPhoneno,
       patientEmail: req.body.patientEmail,
       patientDob: req.body.patientDob,
