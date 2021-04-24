@@ -12,7 +12,4 @@ module.exports = (app) => {
 
   // Login by Authenticate Password
   app.post("/authenticate", patients.authenticate);
-
-  // Confirms a Email JWT
-  // app.get("/confirmEmail/:token", patients.confirmEmail);
 };
