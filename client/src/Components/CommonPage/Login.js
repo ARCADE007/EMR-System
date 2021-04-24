@@ -13,6 +13,7 @@ import {
   Container,
   Row,
   Col,
+  Label,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import LoginNavbar from "../MainComponents/LoginNavbar";
@@ -147,6 +148,31 @@ function Login() {
                         >
                           {errorMessage}
                         </span>
+                      </FormGroup>
+
+                      <FormGroup tag="fieldset">
+                        <span
+                          style={{
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Select Role
+                        </span>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type="radio" name="radio1" /> Patient
+                          </Label>
+                        </FormGroup>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type="radio" name="radio1" /> Staff
+                          </Label>
+                        </FormGroup>
+                        <FormGroup check>
+                          <Label check>
+                            <Input type="radio" name="radio1" /> Reception
+                          </Label>
+                        </FormGroup>
                       </FormGroup>
 
                       <div className="text-center">

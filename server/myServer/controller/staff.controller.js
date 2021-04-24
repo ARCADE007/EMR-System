@@ -5,12 +5,6 @@ const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const password = generator.generate({
-  length: 10,
-  numbers: true,
-});
-console.log(password);
-
 // * Create and save a new staff
 exports.create = async (req, res) => {
   // ValIdate Request
@@ -20,17 +14,33 @@ exports.create = async (req, res) => {
     });
     return;
   }
+  const password = generator.generate({
+    length: 8,
+    numbers: true,
+  });
+  console.log(password);
 
   // Create a Staff
   const staff = new Staff({
-    staffId: null,
     password: password,
     staffName: req.body.staffName,
     staffPhoneno: req.body.staffPhoneno,
-    staffeEmail: req.body.staffEmail,
+    staffEmail: req.body.staffEmail,
     staffAddress: req.body.staffAddress,
     rollName: req.body.rollName,
   });
+
+  await bcrypt
+    .hash(staff.password, saltRounds)
+    .then((hash) => {
+      staff.password = hash;
+      console.log(hash);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the staff.",
+      });
+    });
 
   // Save Staff in the Database
   Staff.create(staff, (err, data) => {
@@ -56,7 +66,7 @@ exports.findOne = (req, res) => {
         } else {
           res.status(500).send({
             message:
-              "Error retrieving staff with staffId " + req.params.PatientId,
+              "Error retrieving staff with staffId " + req.params.staffId,
           });
         }
       } else {
@@ -79,14 +89,12 @@ exports.update = (req, res) => {
     });
   }
 
-  if (checkAccessToken(req.cookies.auth) == req.params.staffId) {
-    // Create a Patient
+  if (checkAccessToken(req.cookies.auth)) {
+    // Create a staff
     const staff = {
-      staffId: req.body.staffId,
-      password: req.body.password,
       staffName: req.body.staffName,
-      staffphoneNo: req.body.staffphoneNo,
-      staffemail: req.body.staffemail,
+      staffPhoneno: req.body.staffPhoneno,
+      staffEmail: req.body.staffEmail,
       staffAddress: req.body.staffAddress,
       rollName: req.body.rollName,
     };
@@ -97,21 +105,105 @@ exports.update = (req, res) => {
     );
 
     // Update the Staff
-    Staff.updateById(req.params.staffId, staff, (err, data) => {
+    Staff.updateById(req.cookies.staffId, staff, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Staff with staffId ${req.params.staffId}.`,
+            message: `Not found Staff with staffId ${req.cookies.staffId}.`,
           });
         } else {
           res.status(500).send({
-            message: "Error updating Staff with staffId " + req.params.staffId,
+            message: "Error updating Staff with staffId " + req.cookies.staffId,
           });
         }
       } else {
         res.status(200).send(data);
       }
     });
+  } else {
+    res.status(401).send({
+      message: "Unauthorized",
+    });
+  }
+};
+
+// * Login/Authentication by checking password and staffId
+exports.authenticate = (req, res) => {
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content cannot be empty!",
+    });
+    return;
+  }
+
+  console.log(req.body);
+
+  if (!req.body.staffId || !req.body.password) {
+    res.status(400).send({
+      message: "staffId and password required",
+    });
+    return;
+  }
+
+  Staff.checkPassword(req.body.staffId, req.body.password, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(400).send({
+          message: `authentication unsuccessful`,
+        });
+      } else if (err.kind === "not_valId") {
+        res.status(402).send({
+          message: `email authentication required`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error authenticating staff " + req.params.staffId,
+        });
+      }
+    } else {
+      const token = generateAccessToken(req.body.staffId);
+      res
+        .status(200)
+        .cookie("auth", token, {
+          httpOnly: true,
+          sameSite: true,
+        })
+        .cookie("staffId", req.body.staffId, {
+          httpOnly: true,
+          sameSite: true,
+        })
+        .send({
+          message: data.message,
+          auth: token,
+          staffId: req.body.staffId,
+        });
+    }
+  });
+};
+
+// * Updates the password for the Staff
+exports.updatePassword = (req, res) => {
+  if (
+    req.cookies.StaffId &&
+    checkAccessToken(req.cookies.auth) == req.cookies.staffId
+  ) {
+    Staff.changePassword(
+      req.cookies.staffId,
+      req.body.password,
+      req.body.newPassword,
+      (err, data) => {
+        if (err) {
+          res.status(500).send({
+            message:
+              "Could not change password for staff with staffId " +
+              req.cookies.staffId,
+          });
+        } else
+          res.status(200).send({
+            message: `staff password was changed successfully!`,
+          });
+      }
+    );
   } else {
     res.status(401).send({
       message: "Unauthorized",
