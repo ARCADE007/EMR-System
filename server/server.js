@@ -31,8 +31,10 @@ app.get("/", (req, res) => {
 // Add Routes
 require("./myServer/routes/patient.routes.js")(app);
 require("./myServer/routes/staff.routes.js")(app);
-// require("./app/routes/questions.routes.js")(app);
-// require("./app/routes/answer.routes.js")(app);
+require("./myServer/routes/medicine.routes.js")(app);
+require("./myServer/routes/prescription.routes.js")(app);
+require("./myServer/routes/record.routes")(app);
+require("./myServer/routes/report.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3001;

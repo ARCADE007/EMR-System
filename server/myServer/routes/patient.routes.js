@@ -11,5 +11,5 @@ module.exports = (app) => {
   app.patch("/patients/data", patients.update);
 
   // Login by Authenticate Password
-  //app.post("/authenticate", patients.authenticate);
+  app.post("/authenticate", patients.authenticate);
 };
