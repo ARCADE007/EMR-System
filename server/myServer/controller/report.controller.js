@@ -1,4 +1,4 @@
-const Report = require("../model/report.model");
+const Reports = require("../model/report.model");
 
 // * Create and save a new Patient
 exports.create = async (req, res) => {
@@ -10,22 +10,19 @@ exports.create = async (req, res) => {
     return;
   }
   // Create a Report
-  const report = new Report({
-    reportID: null,
+  const report = new Reports({
     reportName: req.body.reportName,
     date: req.body.date,
     file: req.body.file,
-    recordID: req.body.recordID,
-
+    recordId: req.body.recordId,
   });
 
   // Save Report in the Database
-  Report.create(report, (err, data) => {
+  Reports.create(report, (err, data) => {
     if (err) {
       res.status(500).send({
         message:
-          err.message ||
-          "Some error occurred while creating the Record.",
+          err.message || "Some error occurred while creating the Record.",
       });
     } else {
       res.status(200).send(data);
@@ -33,45 +30,26 @@ exports.create = async (req, res) => {
   });
 };
 
-// * Find a Single report with a reporttID
-exports.findOne = (req, res) => {
-    if (checkAccessToken(req.cookies.auth)) {
-      Patient.findByReportID(
-        req.params.PatientID,
-        (err, data) => {
-          if (err) {
-            if (err.kind === "not_found") {
-              res.status(404).send({
-                message: `Not found record with recordID ${req.params.PatientID}.`,
-              });
-            } else {
-              res.status(500).send({
-                message:
-                  "Error retrieving Repord with reportID " +
-                  req.params.reportID,
-              });
-            }
-          } else {
-            res.status(200).send(data);
-          }
-        }
-      );
+// * Find a all report with a recordId
+exports.findByReportID = (req, res) => {
+  if (!req.params.recordId) {
+    console.log("Params Parameter recordId is not recieved");
+    return;
+  }
+  const recordId = req.params.recordId;
+  Reports.findByReportID(recordId, (error, reportData) => {
+    if (error) {
+      if (error.kind === "not_found") {
+        res.status(404).send({
+          message: `Cannot find medicine with recordId ${recordId}`,
+        });
+      } else {
+        res.status(500).send({
+          message: `Internal error occured while fetching the reports with recordId ${recordId}`,
+        });
+      }
     } else {
-      res.status(401).send({
-        message: "Unauthorized",
-      });
+      res.status(200).send(reportData);
     }
-  };
-
-  // Create a \Report
-  const Report= {
-    reportID: null,
-    reportName: req.body.reportName,
-    date: req.body.date,
-    file: req.body.file,
-    recordID: req.body.recordID,
+  });
 };
-// Removes undefined keys
-    Object.keys(report).forEach(
-      (key) => report[key] === undefined && delete report[key]
-    );

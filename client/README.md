@@ -238,13 +238,13 @@ CREATE TABLE Prescription(
 
 ```sql
 CREATE TABLE Medicine(
-    medicineId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
-    Name  VARCHAR(20) NOT NULL,
-    `Date(from)` date NOT NULL,
-    `Date(to)` date NOT NULL,
-    `Time(morning)` VARCHAR(20) NOT NULL,
-    `Time(evening)`VARCHAR(20) NOT NULL,
-    `Time(night)` VARCHAR(20) NOT NULL,
+     medicineId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
+    name  VARCHAR(20) NOT NULL,
+    dateFrom date NOT NULL,
+    dateTo date NOT NULL,
+    timeMorning VARCHAR(20) NOT NULL,
+    timeEvening VARCHAR(20) NOT NULL,
+    timeNight VARCHAR(20) NOT NULL,
     PRIMARY KEY(medicineId),
     prescriptionId INTEGER UNSIGNED,
     FOREIGN KEY Medicine(prescriptionId) REFERENCES emrsystem.Prescription(prescriptionId)

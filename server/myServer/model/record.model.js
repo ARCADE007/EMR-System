@@ -2,66 +2,56 @@ const sql = require("./db");
 
 // Constructor
 const Record = function (record) {
-    this.recordID = record.recordID;
-    this.recordName = record.recordID;
-    this.patientID = record.patientID
-  };
+  this.recordName = record.recordName;
+  this.patientId = record.patientId;
+};
 
 //---------------------------------------------------------
 //Setters
 //---------------------------------------------------------
 
-  // * Insert a new record into the Record Table
-  Record.create = (newRecord, result) => {
-  
-    const query = "INSERT INTO user SET ?";
+// * Insert a new record into the Record Table
+Record.create = (newRecord, result) => {
+  const query = "INSERT INTO Record SET ?";
 
   sql.query(query, newRecord, (err, res) => {
-  
     if (err) {
       result(err, null);
       return;
     }
-    
+
     console.log("created Record");
-    result(null, {
-      message:
-        "Record created"
-    });
+    result(
+      null,
+
+      {
+        message: "Record created",
+      }
+    );
   });
 };
-
-
 
 //---------------------------------------------------------
 //Getters
 //---------------------------------------------------------
 
-
 // * Returns the data of Record by recordId by running SELECT
-Record.findByRecordID = (recordID, result) => {
-    console.log(recordID);
-  
-    sql.query(
-      `SELECT * FROM Record WHERE recordID = ?`,
-      recordID,
-      (err, res) => {
-        if (err) {
-          console.log("error: ", err);
-          result(err, null);
-          return;
-        }
-  
-        if (res.length) {
-          console.log("found record: ", res[0]);
-          result(null, res[0]);
-          return;
-        }
-  
-        // not found user with the patientID === patientID
-        result({ kind: "not_found" }, null);
-      }
-    );
-  };
-  
-  
+Record.findByRecordID = (patientId, cb) => {
+  const query = "SELECT * FROM Record WHERE record.patientId = ?";
+  sql.query(query, [patientId], (error, result) => {
+    if (error) {
+      console.log("error: ", error);
+      cb(null, error);
+      return;
+    }
+
+    if (result.affectedRows === 0) {
+      // if not found any
+      cb({ kind: "not_found" }, null);
+    }
+    cb(null, result);
+  });
+};
+
+//--------------------------------------------------------
+module.exports = Record;
