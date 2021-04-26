@@ -9,6 +9,7 @@ const Staff = function (staff) {
   this.staffEmail = staff.staffEmail;
   this.staffAddress = staff.staffAddress;
   this.rollName = staff.rollName;
+  this.departmentName = staff.departmentName;
 };
 
 //---------------------------------------------------------

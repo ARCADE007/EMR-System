@@ -56,19 +56,48 @@ exports.create = async (req, res) => {
   });
 };
 
-// * Find a Single Patient with a PatientId
-exports.findOne = (req, res) => {
+//Returns the data of doctor and disease from prescription
+
+exports.findPrescription = (req, res) => {
+  console.log(req.params);
   if (checkAccessToken(req.cookies.auth)) {
-    Patient.findByPatientId(req.params.PatientId, (err, data) => {
+    Patient.findPrescriptionByPatientId(req.params.patientId, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Patient with PatientId ${req.params.PatientId}.`,
+            message: `Not found Patient with PatientId ${req.params.patientId}.`,
           });
         } else {
           res.status(500).send({
             message:
-              "Error retrieving Patient with PatientId " + req.params.PatientId,
+              "Error retrieving Patient with PatientId " + req.params.patientId,
+          });
+        }
+      } else {
+        res.status(200).send(data);
+      }
+    });
+  } else {
+    res.status(401).send({
+      message: "Unauthorized",
+    });
+  }
+};
+
+// * Find a Single Patient with a PatientId
+exports.findOne = (req, res) => {
+  console.log(req.params);
+  if (checkAccessToken(req.cookies.auth)) {
+    Patient.findByPatientId(req.params.patientId, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Patient with PatientId ${req.params.patientId}.`,
+          });
+        } else {
+          res.status(500).send({
+            message:
+              "Error retrieving Patient with PatientId " + req.params.patientId,
           });
         }
       } else {
@@ -130,7 +159,7 @@ exports.update = (req, res) => {
   }
 };
 
-// * Login/Authentication by checking password and patientId
+// * Login/Authentication by checking password and id
 exports.authenticate = (req, res) => {
   if (!req.body) {
     res.status(400).send({
@@ -141,47 +170,53 @@ exports.authenticate = (req, res) => {
 
   console.log(req.body);
 
-  if (!req.body.patientId || !req.body.password) {
+  if (!req.body.id || !req.body.password || !req.body.role) {
     res.status(400).send({
-      message: "patientId and password required",
+      message: "id and password required",
     });
     return;
   }
 
-  Patient.checkPassword(req.body.patientId, req.body.password, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(400).send({
-          message: `authentication unsuccessful`,
-        });
-      } else if (err.kind === "not_valId") {
-        res.status(402).send({
-          message: `email authentication required`,
-        });
+  Patient.checkPassword(
+    req.body.id,
+    req.body.password,
+    req.body.role,
+    (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(400).send({
+            message: `authentication unsuccessful`,
+          });
+        } else {
+          res.status(500).send({
+            message: "Error authenticating patient " + req.body.id,
+          });
+        }
       } else {
-        res.status(500).send({
-          message: "Error authenticating patient " + req.params.patientId,
-        });
+        const token = generateAccessToken(req.body.id);
+        res
+          .status(200)
+          .cookie("auth", token, {
+            httpOnly: false,
+            sameSite: true,
+          })
+          .cookie("role", req.body.role, {
+            // httpOnly: true,
+            sameSite: true,
+          })
+          .cookie("id", req.body.id, {
+            //   httpOnly: true,
+            sameSite: true,
+          })
+          .redirect(
+            "http://localhost:3000/" +
+              (req.body.role == "patient"
+                ? "DrDashboardPatient"
+                : "AskPatientId")
+          );
       }
-    } else {
-      const token = generateAccessToken(req.body.patientId);
-      res
-        .status(200)
-        .cookie("auth", token, {
-          httpOnly: true,
-          sameSite: true,
-        })
-        .cookie("patientId", req.body.patientId, {
-          httpOnly: true,
-          sameSite: true,
-        })
-        .send({
-          message: data.message,
-          auth: token,
-          patientId: req.body.patientId,
-        });
     }
-  });
+  );
 };
 
 // * Updates the password for the Patient

@@ -3,40 +3,40 @@ import MaterialTable from "material-table";
 export default function PrescriptionMainEditablePatient(props) {
   const [columns, setColumns] = useState([
     {
-      title: "Disease",
-      field: "Disease",
+      title: "Date",
+      field: "date",
       editComponent: (props) => (
         <input
-          type="text"
+          type="date"
           value={props.value}
           onChange={(e) => props.onChange(e.target.value)}
         />
       ),
     },
     {
-      title: "Date",
-      field: "date",
-      type: "date",
+      title: "View Prescription",
+      field: "med",
+      type: "text",
     },
 
     {
       title: "Description",
       field: "Description",
-      type: "input",
+      type: "text",
     },
   ]);
 
   const [data, setData] = useState([
-    { Disease: "mmr12", date: "15/04/2018", Description: "" },
-    { Disease: "mmr12", date: "15/04/2018", Description: "" },
-    { Disease: "mmr12", date: "15/04/2018", Description: "" },
-    { Disease: "mmr12", date: "15/04/2018", Description: "" },
+    { med: "mmr12", date: "15/04/2018", Description: "" },
+    { med: "mmr12", date: "15/04/2018", Description: "" },
+    { med: "mmr12", date: "15/04/2018", Description: "" },
+    { med: "mmr12", date: "15/04/2018", Description: "" },
   ]);
 
   return (
     <MaterialTable
       style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
-      title="ID"
+      title="Prescription"
       columns={columns}
       data={data}
       options={{
