@@ -71,6 +71,31 @@ Patient.updateById = (patientId, patient, result) => {
 //Getters
 //---------------------------------------------------------
 
+//Returns the data of doctor and disease from prescription
+Patient.findPrescriptionByPatientId = (patientId, result) => {
+  console.log(patientId);
+
+  sql.query(
+    "Select DISTINCT staff.staffName,staff.departmentName From prescription,staff where staff.staffId = prescription.staffId and patientId=?",
+    patientId,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+
+      if (res.length) {
+        console.log("found Patient: ", res);
+        result(null, res);
+        return;
+      }
+
+      // not found Patient with the patientId === patientId
+      result({ kind: "not_found" }, null);
+    }
+  );
+};
 // * Returns the data of Patient by patientId by running SELECT
 Patient.findByPatientId = (patientId, result) => {
   console.log(patientId);
@@ -99,42 +124,40 @@ Patient.findByPatientId = (patientId, result) => {
 
 // Checks Password
 
-Patient.checkPassword = (patientId, password, result) => {
-  // console.log(password,patientId);
-  sql.query(
-    "SELECT password from patient WHERE patientId = ?",
-    [patientId],
-    (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(err, null);
-        return;
-      }
-      console.log(res);
-      if (res.length) {
-        console.log(password, res[0].password);
-        bcrypt
-          .compare(password, res[0].password)
-          .then((passResult) => {
-            if (passResult) {
-              console.log("password authenticated : ", patientId);
-              result(null, {
-                message: "authentication successful",
-              });
-              return;
-            } else {
-              result({ kind: "not_found" }, null);
-              return;
-            }
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      } else {
-        result({ kind: "not_found" }, null);
-      }
+Patient.checkPassword = (id, password, role, result) => {
+  const query = `SELECT password from ${
+    role == "patient" ? "patient" : "staff"
+  } WHERE ${role == "patient" ? "patientId" : "staffId"} = ?`;
+  sql.query(query, [id], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
     }
-  );
+    console.log(res);
+    if (res.length) {
+      console.log(password, res[0].password);
+      bcrypt
+        .compare(password, res[0].password)
+        .then((passResult) => {
+          if (passResult) {
+            console.log("password authenticated : ", id);
+            result(null, {
+              message: "authentication successful",
+            });
+            return;
+          } else {
+            result({ kind: "not_found" }, null);
+            return;
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      result({ kind: "not_found" }, null);
+    }
+  });
 };
 
 // * Updates Password

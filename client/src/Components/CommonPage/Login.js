@@ -26,19 +26,19 @@ function Login() {
     document.scrollingElement.scrollTop = 0;
   });
 
-  const [emailIsValid, setEmailIsValid] = useState(false);
+  const [idIsValid, setIdIsValid] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
 
-  const [emailError, setEmailError] = useState("");
-  const validateEmail = (e) => {
-    var email = e.target.value;
+  const [idError, setIdError] = useState("");
+  const validateId = (e) => {
+    var id = e.target.value;
 
-    if (validator.isEmail(email)) {
-      setEmailIsValid(true);
-      setEmailError("Valid Email :)");
+    if (validator.isNumeric(id)) {
+      setIdIsValid(true);
+      setIdError("Valid Id");
     } else {
-      setEmailIsValid(false);
-      setEmailError("Enter valid Email!");
+      setIdIsValid(false);
+      setIdError("Enter valid Id ");
     }
   };
   const [errorMessage, setErrorMessage] = useState("");
@@ -47,7 +47,7 @@ function Login() {
     if (
       validator.isStrongPassword(value, {
         minLength: 6,
-        minLowercase: 1,
+        minLowercase: 0,
         minUppercase: 1,
         minNumbers: 1,
         minSymbols: 0,
@@ -108,14 +108,14 @@ function Login() {
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-email-83" />
+                              <i className="ni ni-circle-08" />
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
-                            name="patientId"
-                            placeholder="Email"
+                            name="id"
+                            placeholder="Id"
                             type="text"
-                            //   onChange={(e) => validateEmail(e)}
+                            onChange={(e) => validateId(e)}
                           />
                         </InputGroup>
                         <span
@@ -123,7 +123,7 @@ function Login() {
                             color: "lightblue",
                           }}
                         >
-                          {emailError}
+                          {idError}
                         </span>
                       </FormGroup>
                       <FormGroup>
@@ -160,17 +160,25 @@ function Login() {
                         </span>
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" /> Patient
+                            <Input
+                              type="radio"
+                              name="role"
+                              value="patient"
+                              checked="checked"
+                            />{" "}
+                            Patient
                           </Label>
                         </FormGroup>
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" /> Staff
+                            <Input type="radio" value="staff" name="role" />{" "}
+                            Staff
                           </Label>
                         </FormGroup>
                         <FormGroup check>
                           <Label check>
-                            <Input type="radio" name="radio1" /> Reception
+                            <Input type="radio" value="reception" name="role" />{" "}
+                            Reception
                           </Label>
                         </FormGroup>
                       </FormGroup>
@@ -180,7 +188,7 @@ function Login() {
                           className="my-4"
                           color="primary"
                           type="submit"
-                          disabled={!passwordIsValid}
+                          disabled={!(passwordIsValid && idIsValid)}
                         >
                           Sign in
                         </Button>

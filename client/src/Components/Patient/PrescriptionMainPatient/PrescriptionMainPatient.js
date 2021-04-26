@@ -37,11 +37,6 @@ function PrescriptionMainPatient() {
           </div>
           <Container className="pt-lg-7">
             <PrescriptionMainEditablePatient />
-            <div style={{ float: "right", padding: "6px" }}>
-              <Link to="">
-                <Button>Submit</Button>
-              </Link>
-            </div>
           </Container>
         </section>
       </main>

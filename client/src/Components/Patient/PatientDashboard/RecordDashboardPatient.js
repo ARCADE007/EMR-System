@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter";
+import { Link } from "react-router-dom";
 import "../../DrDashboard.css";
 function RecordDashboardPatient() {
   const refcontainer = useRef(null);
@@ -36,9 +37,22 @@ function RecordDashboardPatient() {
             <span />
           </div>
           <div className="Patient__Record">
-            <Col>
-              <h1 style={{ color: "white" }}>Record</h1>
-            </Col>
+            <Row>
+              <Col xs="12" sm="12" md="6" lg="6">
+                <h1 style={{ color: "white" }}>Records</h1>
+              </Col>
+              <Col
+                xs="12"
+                sm="12"
+                md="6"
+                lg="6"
+                style={{ paddingTop: "5px", paddingBottom: "5px" }}
+              >
+                <Link to="/DrDashboardPatient">
+                  <Button>View Prescriptions</Button>
+                </Link>
+              </Col>
+            </Row>
             <Container style={{ padding: "0 20%" }}>
               <Col>
                 <input
@@ -58,10 +72,10 @@ function RecordDashboardPatient() {
                     inverse
                     style={{ background: "rgb(255,255,255,0.2)" }}
                   >
-                    <CardTitle style={{ color: "black" }} tag="h5">
+                    <CardTitle style={{ color: "white" }} tag="h5">
                       Special Title Treatment
                     </CardTitle>
-                    <CardText style={{ color: "black" }}>
+                    <CardText style={{ color: "white" }}>
                       With supporting text below as a natural lead-in to
                       additional content.
                     </CardText>
