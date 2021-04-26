@@ -28,6 +28,7 @@ exports.create = async (req, res) => {
     staffEmail: req.body.staffEmail,
     staffAddress: req.body.staffAddress,
     rollName: req.body.rollName,
+    departmentName: req.body.departmentName,
   });
 
   await bcrypt
@@ -97,6 +98,7 @@ exports.update = (req, res) => {
       staffEmail: req.body.staffEmail,
       staffAddress: req.body.staffAddress,
       rollName: req.body.rollName,
+      departmentName: req.body.departmentName,
     };
 
     // Removes undefined keys
@@ -125,60 +127,6 @@ exports.update = (req, res) => {
       message: "Unauthorized",
     });
   }
-};
-
-// * Login/Authentication by checking password and staffId
-exports.authenticate = (req, res) => {
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content cannot be empty!",
-    });
-    return;
-  }
-
-  console.log(req.body);
-
-  if (!req.body.staffId || !req.body.password) {
-    res.status(400).send({
-      message: "staffId and password required",
-    });
-    return;
-  }
-
-  Staff.checkPassword(req.body.staffId, req.body.password, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(400).send({
-          message: `authentication unsuccessful`,
-        });
-      } else if (err.kind === "not_valId") {
-        res.status(402).send({
-          message: `email authentication required`,
-        });
-      } else {
-        res.status(500).send({
-          message: "Error authenticating staff " + req.params.staffId,
-        });
-      }
-    } else {
-      const token = generateAccessToken(req.body.staffId);
-      res
-        .status(200)
-        .cookie("auth", token, {
-          httpOnly: true,
-          sameSite: true,
-        })
-        .cookie("staffId", req.body.staffId, {
-          httpOnly: true,
-          sameSite: true,
-        })
-        .send({
-          message: data.message,
-          auth: token,
-          staffId: req.body.staffId,
-        });
-    }
-  });
 };
 
 // * Updates the password for the Staff

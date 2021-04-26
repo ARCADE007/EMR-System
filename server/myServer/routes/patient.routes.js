@@ -5,7 +5,10 @@ module.exports = (app) => {
   app.post("/patients", patients.create);
 
   // Retrieve a single Patient with PatientId
-  app.get("/patients/:PatientId", patients.findOne);
+  app.get("/patients/:patientId", patients.findOne);
+
+  //Returns the data of doctor and disease from prescription
+  app.get("/patients/prescription/:patientId", patients.findPrescription);
 
   // Update a Patient with PatientId
   app.patch("/patients/data", patients.update);

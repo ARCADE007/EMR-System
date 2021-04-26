@@ -9,7 +9,4 @@ module.exports = (app) => {
 
   // Update a staff with staffId
   app.patch("/staffs/data", staffs.update);
-
-  // Login by Authenticate Password
-  app.post("/authenticate", staffs.authenticate);
 };
