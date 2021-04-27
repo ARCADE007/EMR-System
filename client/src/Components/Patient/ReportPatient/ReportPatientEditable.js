@@ -28,7 +28,12 @@ export default function ReportPatientEditable(props) {
   ]);
 
   const [data, setData] = useState([
-    { name: "mmr12", date: "15/04/2018", file: "" },
+    {
+      name:
+        "https://drive.google.com/file/d/1niep5eK0uQTLDdGQ2Ne3f5J2hKr0zFfU/view?usp=sharing",
+      date: "15/04/2018",
+      file: "",
+    },
     { name: "mmr12", date: "15/04/2018", file: "" },
     { name: "mmr12", date: "15/04/2018", file: "" },
     { name: "mmr12", date: "15/04/2018", file: "" },
@@ -42,6 +47,7 @@ export default function ReportPatientEditable(props) {
       data={data}
       options={{
         headerStyle: { backgroundColor: "transparent", color: "black" },
+        exportButton: true,
       }}
     />
   );
