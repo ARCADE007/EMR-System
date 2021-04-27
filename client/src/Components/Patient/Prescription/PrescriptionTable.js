@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from "react";
 import "../../CDDDD.css";
 import { Container } from "reactstrap";
 import "../../Table.css";
-import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter";
 import CustomPrescriptionTable from "./CustomPrescriptionTable";
+import PatientMedGoBack from "../../MainComponents/PatientMedGoBack";
 function PrescriptionTable() {
   const refcontainer = useRef(null);
   useEffect(() => {
@@ -14,7 +14,7 @@ function PrescriptionTable() {
 
   return (
     <>
-      <LoginNavbar />
+      <PatientMedGoBack />
       <main ref={refcontainer}>
         <section
           style={{ backgroundColor: "rgb(0,100,0,0.6)" }}
