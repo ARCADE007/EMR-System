@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Button, Container } from "reactstrap";
 import "../../CDDDD.css";
-import LoginNavbar from "../../MainComponents/LoginNavbar";
+import ReportToDashboardPatient from "../../MainComponents/ReportToDashboardPatient";
 import LoginFooter from "../../MainComponents/LoginFooter";
 import { Link } from "react-router-dom";
 import ReportPatientEditable from "./ReportPatientEditable";
@@ -14,7 +14,7 @@ function ReportPatient() {
 
   return (
     <>
-      <LoginNavbar />
+      <ReportToDashboardPatient />
       <main ref={refcontainer}>
         <section
           style={{ backgroundColor: "rgb(0,100,0,0.6)" }}

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { Button, Container } from "reactstrap";
 import "../../CDDDD.css";
-import LoginNavbar from "../../MainComponents/LoginNavbar";
+import PrescriptiontoDashboardPatient from "../../MainComponents/PrescriptiontoDashboardPatient";
 import LoginFooter from "../../MainComponents/LoginFooter";
-import { Link } from "react-router-dom";
+
 import PrescriptionMainEditablePatient from "./PrescriptionMainEditablePatient";
 function PrescriptionMainPatient() {
   const refcontainer = useRef(null);
@@ -14,7 +14,7 @@ function PrescriptionMainPatient() {
 
   return (
     <>
-      <LoginNavbar />
+      <PrescriptiontoDashboardPatient />
       <main ref={refcontainer}>
         <section
           style={{ backgroundColor: "rgb(0,100,0,0.6)" }}

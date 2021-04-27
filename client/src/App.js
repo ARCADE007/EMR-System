@@ -23,12 +23,16 @@ import ReportStaff from "./Components/Staff/Report/ReportStaff";
 import PrescriptionMain from "./Components/Staff/PrescriptionMain/PrescriptionMain";
 import PrescriptionMainPatient from "./Components/Patient/PrescriptionMainPatient/PrescriptionMainPatient";
 import ReportPatient from "./Components/Patient/ReportPatient/ReportPatient";
+import AskPatientReception from "./Components/Staff/AskPatientReception";
 
 function App() {
   return (
     <Router>
       <div className="app">
         <Switch>
+          <Route path="/AskPatientReception">
+            <AskPatientReception />
+          </Route>
           <Route path="/ReportPatient">
             <ReportPatient />
           </Route>

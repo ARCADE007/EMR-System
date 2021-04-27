@@ -73,6 +73,7 @@ CREATE TABLE Prescription(
     prescriptionId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
     description VARCHAR(500) NOT NULL,
     disease VARCHAR(40) NOT NULL,
+    date DATE NOT NULL,
     PRIMARY KEY(prescriptionId),
     staffId INTEGER UNSIGNED,
     patientId INTEGER UNSIGNED,
@@ -80,15 +81,17 @@ CREATE TABLE Prescription(
     FOREIGN KEY (patientId) REFERENCES emrsystem.Patient(patientId)
 )AUTO_INCREMENT=1;
 
+
+
 INSERT INTO prescription VALUES
-(null,"Basic symptoms prefer MRI","joint pain","1","1"),
-(null,"Redness on face","Swelling in eyes","1","1"),
-(null,"High colestrol","Nerve damage","2","1"),
-(null,"Low colestrol","brain nerve damage","2","1"),
-(null,"Basic symptoms prefer MRI","joint pain","1","2"),
-(null,"Redness on face","Swelling in eyes","1","2"),
-(null,"High colestrol","Nerve damage","2","2"),
-(null,"Low colestrol","brain nerve damage","2","2");
+(null,"Basic symptoms prefer MRI","joint pain","1999-02-02","1","1"),
+(null,"Redness on face","Swelling in eyes","1999-03-03","1","1"),
+(null,"High colestrol","Nerve damage","1999-04-04","2","1"),
+(null,"Low colestrol","brain nerve damage","1999-05-05","2","1"),
+(null,"Basic symptoms prefer MRI","joint pain","1999-02-02","1","2"),
+(null,"Redness on face","Swelling in eyes","1999-03-03","1","2"),
+(null,"High colestrol","Nerve damage","1999-04-04","2","2"),
+(null,"Low colestrol","brain nerve damage","1999-05-05","2","2");
 
 CREATE TABLE Medicine(
     medicineId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
