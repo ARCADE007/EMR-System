@@ -5,5 +5,5 @@ module.exports = (app) => {
   app.post("/prescriptions", prescriptions.create);
 
   // Retrieve all prescriptions with PatientId
-  app.get("/prescriptions/:patientId", prescriptions.getAllByPatientID);
+  app.get("/prescriptions/:staffId", prescriptions.getAllByPatientID);
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Headroom from "headroom.js";
+import Cookies from "js-cookie";
 import {
   UncontrolledCollapse,
   NavbarBrand,
@@ -96,7 +97,7 @@ class PatientMedGoBack extends React.Component {
                 </NavLink>
 
                 <NavbarBrand
-                  to="/PrescriptionMainPatient"
+                  to={"/PrescriptionMainPatient/" + Cookies.get("id")}
                   tag={Link}
                   className="nav-link-icon"
                 >

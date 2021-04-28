@@ -36,7 +36,7 @@ function App() {
           <Route path="/ReportPatient">
             <ReportPatient />
           </Route>
-          <Route path="/PrescriptionMainPatient">
+          <Route path="/PrescriptionMainPatient/:staffId">
             <PrescriptionMainPatient />
           </Route>
           <Route path="/PrescriptionMain">
@@ -51,7 +51,7 @@ function App() {
           <Route path="/DrDashboardPatient">
             <DrDashboardPatient />
           </Route>
-          <Route path="/PrescriptionTable">
+          <Route path="/PrescriptionTable/:prescriptionId">
             <PrescriptionTable />
           </Route>
           <Route path="/PrescriptionTableEditable">
