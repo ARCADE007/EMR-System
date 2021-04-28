@@ -136,7 +136,7 @@ function Login() {
                           <Input
                             name="password"
                             placeholder="Password"
-                            type="text"
+                            type="password"
                             autoComplete="off"
                             onChange={(e) => validate(e.target.value)}
                           />

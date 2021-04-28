@@ -33,10 +33,11 @@ Prescription.create = (newPrescription, result) => {
 
 // Get all prescription by patient id
 
-Prescription.getAllByPatientID = (patientId, cb) => {
-  const query = "SELECT * FROM prescription WHERE prescription.patientId = ? ";
+Prescription.getAllByPatientID = (patientId, staffId, cb) => {
+  const query =
+    "SELECT * FROM prescription WHERE prescription.patientId = ? AND prescription.staffId = ?";
 
-  sql.query(query, [patientId], (error, result) => {
+  sql.query(query, [patientId, staffId], (error, result) => {
     if (error) {
       console.log("error :", error);
       cb(null, error);
