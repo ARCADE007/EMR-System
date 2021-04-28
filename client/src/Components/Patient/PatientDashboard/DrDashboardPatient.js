@@ -35,7 +35,6 @@ function DrDashboardPatient() {
         console.error(err);
       });
   }, []);
-
   return (
     <>
       <LoginNavbar />
@@ -94,27 +93,25 @@ function DrDashboardPatient() {
                       lg="3"
                       className="Card__Padding"
                     >
-                      <Form
-                        method="post"
-                        action="http://localhost:3001/"
-                        role="form"
+                      <Card
+                        body
+                        inverse
+                        style={{ background: "rgb(255,255,255,0.2)" }}
                       >
-                        <Card
-                          body
-                          inverse
-                          style={{ background: "rgb(255,255,255,0.2)" }}
+                        <CardTitle style={{ color: "white" }} tag="h5">
+                          {prescription.staffName}
+                        </CardTitle>
+                        <CardText style={{ color: "white" }}>
+                          {prescription.departmentName}
+                        </CardText>
+                        <Link
+                          to={
+                            "/PrescriptionMainPatient/" + prescription.staffId
+                          }
                         >
-                          <CardTitle style={{ color: "white" }} tag="h5">
-                            {prescription.staffName}
-                          </CardTitle>
-                          <CardText style={{ color: "white" }}>
-                            {prescription.departmentName}
-                          </CardText>
-                          <Link to="/PrescriptionMainPatient">
-                            <Button type="submit">View</Button>
-                          </Link>
-                        </Card>
-                      </Form>
+                          <Button type="submit">View</Button>
+                        </Link>
+                      </Card>
                     </Col>
                   );
                 })}

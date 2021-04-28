@@ -41,24 +41,34 @@ exports.create = (req, res) => {
 //----------------------------------------------------------
 
 exports.getAllByPatientID = (req, res) => {
-  if (!req.params.patientId) {
-    console.log("Params Parameter patientId is not recieved");
+  if (!req.params.staffId) {
+    console.log("Params Parameter staffId is not recieved");
     return;
   }
-  const patientId = req.params.patientId;
-  Prescriptions.getAllByPatientID(patientId, (error, prescriptionData) => {
-    if (error) {
-      if (error.kind === "not_found") {
-        res.status(404).send({
-          message: `Cannot find answer with patientId ${patientId}`,
-        });
+  if (!req.cookies.id) {
+    console.log("Cookie with patientId is not recieved");
+    return;
+  }
+  const staffId = req.params.staffId;
+  const patientId = req.cookies.id;
+  Prescriptions.getAllByPatientID(
+    patientId,
+    staffId,
+    (error, prescriptionData) => {
+      if (error) {
+        if (error.kind === "not_found") {
+          res.status(404).send({
+            message: `Cannot find answer with staffId ${staffId}`,
+          });
+        } else {
+          res.status(500).send({
+            message: `Internal error occured while fetching the prescriptions with staffId ${staffId}`,
+          });
+        }
       } else {
-        res.status(500).send({
-          message: `Internal error occured while fetching the prescriptions with patientId ${patientId}`,
-        });
+        console.log(prescriptionData);
+        res.status(200).send(prescriptionData);
       }
-    } else {
-      res.status(200).send(prescriptionData);
     }
-  });
+  );
 };

@@ -76,7 +76,7 @@ Patient.findPrescriptionByPatientId = (patientId, result) => {
   console.log(patientId);
 
   sql.query(
-    "Select DISTINCT staff.staffName,staff.departmentName From prescription,staff where staff.staffId = prescription.staffId and patientId=?",
+    "Select DISTINCT staff.staffId,staff.staffName,staff.departmentName From prescription,staff where staff.staffId = prescription.staffId and patientId=?",
     patientId,
     (err, res) => {
       if (err) {
