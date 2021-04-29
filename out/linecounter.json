@@ -1,0 +1,1232 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "c:\\Users\\DADDY\\Documents\\Web Dovelopment\\web dovelopment\\EMR\\EMR-System",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2021-04-28 19:46:42",
+            "filesum": 188,
+            "codesum": 75542,
+            "commentsum": 911,
+            "blanksum": 3972,
+            "statistics": {
+                "": {
+                    "code": 42,
+                    "comment": 2,
+                    "blank": 11
+                },
+                ".md": {
+                    "code": 263,
+                    "comment": 0,
+                    "blank": 82
+                },
+                ".sql": {
+                    "code": 135,
+                    "comment": 4,
+                    "blank": 29
+                },
+                ".json": {
+                    "code": 44036,
+                    "comment": 0,
+                    "blank": 12
+                },
+                ".js": {
+                    "code": 4710,
+                    "comment": 198,
+                    "blank": 420
+                },
+                ".txt": {
+                    "code": 3,
+                    "comment": 1,
+                    "blank": 0
+                },
+                ".css": {
+                    "code": 17719,
+                    "comment": 279,
+                    "blank": 2177
+                },
+                ".html": {
+                    "code": 21,
+                    "comment": 1,
+                    "blank": 6
+                },
+                ".scss": {
+                    "code": 6664,
+                    "comment": 424,
+                    "blank": 1234
+                },
+                ".svg": {
+                    "code": 1783,
+                    "comment": 2,
+                    "blank": 0
+                },
+                ".map": {
+                    "code": 166,
+                    "comment": 0,
+                    "blank": 1
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 5,
+                    "code": 18,
+                    "comment": 1,
+                    "filename": "client\\.gitignore"
+                },
+                {
+                    "blank": 8,
+                    "code": 39737,
+                    "comment": 0,
+                    "filename": "client\\package-lock.json"
+                },
+                {
+                    "blank": 3,
+                    "code": 52,
+                    "comment": 0,
+                    "filename": "client\\package.json"
+                },
+                {
+                    "filename": "client\\public\\image\\EMR1.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\public\\image\\Emr2.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\public\\image\\FinalEmrSystem.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\public\\image\\FrontendDesign.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\public\\image\\LoginPage.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\public\\image\\RelationalSchema.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 6,
+                    "code": 21,
+                    "comment": 1,
+                    "filename": "client\\public\\index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "client\\public\\robots.txt"
+                },
+                {
+                    "blank": 67,
+                    "code": 185,
+                    "comment": 0,
+                    "filename": "client\\README.md"
+                },
+                {
+                    "blank": 7,
+                    "code": 93,
+                    "comment": 0,
+                    "filename": "client\\src\\App.js"
+                },
+                {
+                    "blank": 2049,
+                    "code": 14848,
+                    "comment": 150,
+                    "filename": "client\\src\\assets\\css\\argon-design-system-react.css"
+                },
+                {
+                    "blank": 1,
+                    "code": 166,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\css\\argon-design-system-react.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 53,
+                    "filename": "client\\src\\assets\\css\\argon-design-system-react.min.css"
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\brand\\argon-react-white.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\brand\\argon-react.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\brand\\blue.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\brand\\creativetim-white-slim.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\brand\\favicon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\brand\\white.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\img\\icons\\common\\github.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 17,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\img\\icons\\common\\google.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\img\\ill\\ill-2.svg"
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\theme\\img-1-1200x1000.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\theme\\img-2-1200x1000.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\theme\\landing.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\theme\\profile.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\theme\\promo-1.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\theme\\team-1-800x800.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\theme\\team-2-800x800.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\theme\\team-3-800x800.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\img\\theme\\team-4-800x800.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 5,
+                    "code": 5,
+                    "comment": 22,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system-react.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\accordion.scss"
+                },
+                {
+                    "blank": 10,
+                    "code": 65,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\alert.scss"
+                },
+                {
+                    "blank": 8,
+                    "code": 42,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\avatar.scss"
+                },
+                {
+                    "blank": 13,
+                    "code": 49,
+                    "comment": 5,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\badge.scss"
+                },
+                {
+                    "blank": 32,
+                    "code": 142,
+                    "comment": 7,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\buttons.scss"
+                },
+                {
+                    "blank": 18,
+                    "code": 81,
+                    "comment": 3,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\card.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\carousel.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\close.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\content.scss"
+                },
+                {
+                    "blank": 28,
+                    "code": 161,
+                    "comment": 6,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\custom-forms.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\docs.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 32,
+                    "comment": 3,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\docs\\clipboard-js.scss"
+                },
+                {
+                    "blank": 81,
+                    "code": 402,
+                    "comment": 33,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\docs\\component-examples.scss"
+                },
+                {
+                    "blank": 51,
+                    "code": 318,
+                    "comment": 8,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\docs\\content.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 29,
+                    "comment": 3,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\docs\\footer.scss"
+                },
+                {
+                    "blank": 14,
+                    "code": 92,
+                    "comment": 5,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\docs\\nav.scss"
+                },
+                {
+                    "blank": 35,
+                    "code": 133,
+                    "comment": 8,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\docs\\prism.scss"
+                },
+                {
+                    "blank": 35,
+                    "code": 170,
+                    "comment": 11,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\docs\\sidebar.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 10,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\docs\\variables.scss"
+                },
+                {
+                    "blank": 11,
+                    "code": 56,
+                    "comment": 2,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\dropdown.scss"
+                },
+                {
+                    "blank": 13,
+                    "code": 76,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\footer.scss"
+                },
+                {
+                    "blank": 28,
+                    "code": 106,
+                    "comment": 7,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\forms.scss"
+                },
+                {
+                    "blank": 6,
+                    "code": 15,
+                    "comment": 2,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\functions.scss"
+                },
+                {
+                    "blank": 32,
+                    "code": 147,
+                    "comment": 2,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\global.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\grid.scss"
+                },
+                {
+                    "blank": 24,
+                    "code": 81,
+                    "comment": 2,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\icons.scss"
+                },
+                {
+                    "blank": 13,
+                    "code": 56,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\input-group.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 30,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\kit-free.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 33,
+                    "comment": 2,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\list-group.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\mixins.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\mixins\\alert.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 27,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\mixins\\background-variant.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\mixins\\badge.scss"
+                },
+                {
+                    "blank": 11,
+                    "code": 90,
+                    "comment": 7,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\mixins\\buttons.scss"
+                },
+                {
+                    "blank": 18,
+                    "code": 107,
+                    "comment": 4,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\mixins\\forms.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\mixins\\icon.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\mixins\\modals.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\mixins\\popover.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\modal.scss"
+                },
+                {
+                    "blank": 14,
+                    "code": 68,
+                    "comment": 3,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\nav.scss"
+                },
+                {
+                    "blank": 61,
+                    "code": 328,
+                    "comment": 7,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\navbar.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\pagination.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\popover.scss"
+                },
+                {
+                    "blank": 6,
+                    "code": 65,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\progress.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\reboot.scss"
+                },
+                {
+                    "blank": 102,
+                    "code": 436,
+                    "comment": 33,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\section.scss"
+                },
+                {
+                    "blank": 39,
+                    "code": 175,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\separator.scss"
+                },
+                {
+                    "blank": 9,
+                    "code": 33,
+                    "comment": 20,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\theme.scss"
+                },
+                {
+                    "blank": 18,
+                    "code": 71,
+                    "comment": 4,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\type.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities.scss"
+                },
+                {
+                    "blank": 12,
+                    "code": 29,
+                    "comment": 3,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities\\backgrounds.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 46,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities\\floating.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 51,
+                    "comment": 4,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities\\helper.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities\\position.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities\\shadows.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities\\sizing.scss"
+                },
+                {
+                    "blank": 11,
+                    "code": 90,
+                    "comment": 4,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities\\spacing.scss"
+                },
+                {
+                    "blank": 12,
+                    "code": 24,
+                    "comment": 5,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities\\text.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\utilities\\transform.scss"
+                },
+                {
+                    "blank": 223,
+                    "code": 624,
+                    "comment": 63,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\variables.scss"
+                },
+                {
+                    "blank": 43,
+                    "code": 230,
+                    "comment": 23,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\vendor\\_bootstrap-datepicker.scss"
+                },
+                {
+                    "blank": 13,
+                    "code": 794,
+                    "comment": 26,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\vendor\\datetimepicker.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\vendor\\headroom.scss"
+                },
+                {
+                    "blank": 90,
+                    "code": 356,
+                    "comment": 25,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\vendor\\nouislider.scss"
+                },
+                {
+                    "blank": 6,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\vendor\\scrollbar.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\argon-design-system\\vendors.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\react\\custom\\_dropdown.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\react\\custom\\_mixins.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\react\\custom\\_navbar.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 1,
+                    "filename": "client\\src\\assets\\scss\\react\\custom\\_popover.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\scss\\react\\custom\\_separator.scss"
+                },
+                {
+                    "blank": 21,
+                    "code": 386,
+                    "comment": 3,
+                    "filename": "client\\src\\assets\\scss\\react\\custom\\vendor\\_react-datetime.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 6,
+                    "comment": 19,
+                    "filename": "client\\src\\assets\\scss\\react\\react-differences.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 2327,
+                    "comment": 10,
+                    "filename": "client\\src\\assets\\vendor\\font-awesome\\css\\font-awesome.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 4,
+                    "filename": "client\\src\\assets\\vendor\\font-awesome\\css\\font-awesome.min.css"
+                },
+                {
+                    "filename": "client\\src\\assets\\vendor\\font-awesome\\fonts\\fontawesome-webfont.eot",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1441,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\vendor\\font-awesome\\fonts\\fontawesome-webfont.svg"
+                },
+                {
+                    "filename": "client\\src\\assets\\vendor\\font-awesome\\fonts\\fontawesome-webfont.ttf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\vendor\\font-awesome\\fonts\\fontawesome-webfont.woff",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\vendor\\font-awesome\\fonts\\fontawesome-webfont.woff2",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\vendor\\font-awesome\\fonts\\FontAwesome.otf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 24,
+                    "code": 77,
+                    "comment": 34,
+                    "filename": "client\\src\\assets\\vendor\\nucleo\\css\\nucleo-svg.css"
+                },
+                {
+                    "blank": 103,
+                    "code": 441,
+                    "comment": 28,
+                    "filename": "client\\src\\assets\\vendor\\nucleo\\css\\nucleo.css"
+                },
+                {
+                    "filename": "client\\src\\assets\\vendor\\nucleo\\fonts\\nucleo-icons.eot",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 312,
+                    "comment": 0,
+                    "filename": "client\\src\\assets\\vendor\\nucleo\\fonts\\nucleo-icons.svg"
+                },
+                {
+                    "filename": "client\\src\\assets\\vendor\\nucleo\\fonts\\nucleo-icons.ttf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\vendor\\nucleo\\fonts\\nucleo-icons.woff",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "client\\src\\assets\\vendor\\nucleo\\fonts\\nucleo-icons.woff2",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\CDDDD.css"
+                },
+                {
+                    "blank": 16,
+                    "code": 97,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\CommonPage\\ForgotPass.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 207,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\CommonPage\\Login.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\DrDashboard.css"
+                },
+                {
+                    "blank": 3,
+                    "code": 122,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\MainComponents\\LoginFooter.js"
+                },
+                {
+                    "blank": 12,
+                    "code": 149,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\MainComponents\\LoginNavbar.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 169,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\MainComponents\\PatientMedGoBack.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 168,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\MainComponents\\PrescriptiontoDashboardPatient.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 168,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\MainComponents\\ReportToDashboardPatient.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 123,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Patient\\PatientDashboard\\DrDashboardPatient.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 254,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Patient\\PatientDashboard\\RecordDashboardPatient.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 78,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Patient\\Prescription\\CustomPrescriptionTable.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 42,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Patient\\Prescription\\PrescriptionTable.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 80,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Patient\\PrescriptionMainPatient\\PrescriptionMainEditablePatient.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Patient\\PrescriptionMainPatient\\PrescriptionMainPatient.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 51,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Patient\\ReportPatient\\ReportPatient.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 50,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Patient\\ReportPatient\\ReportPatientEditable.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 119,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\AskPatient.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 126,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\AskPatientReception.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 153,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\NewCard\\AddDrDisease.js"
+                },
+                {
+                    "blank": 12,
+                    "code": 127,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\NewCard\\AddRecord.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 97,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\Prescription\\CustomPrescriptionTableEditable.js"
+                },
+                {
+                    "blank": 15,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\Prescription\\PrescriptionTableEditable.js"
+                },
+                {
+                    "blank": 15,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\PrescriptionMain\\PrescriptionMain.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 53,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\PrescriptionMain\\PrescriptionMainEditable.js"
+                },
+                {
+                    "blank": 7,
+                    "code": 85,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\Registration\\DoctorRegistration\\CustomMaterialTable.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 44,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\Registration\\DoctorRegistration\\DrRegistrationTable.js"
+                },
+                {
+                    "blank": 19,
+                    "code": 67,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\Registration\\PatientRegistration\\PatientCustomMaterialTable.js"
+                },
+                {
+                    "blank": 8,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\Registration\\PatientRegistration\\PatientRegistrationTable.js"
+                },
+                {
+                    "blank": 15,
+                    "code": 76,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\Registration\\RegistrationMain.js"
+                },
+                {
+                    "blank": 15,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\Report\\ReportStaff.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 53,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\Report\\ReportStaffEditable.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 229,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\StaffDashboard\\DrDashboardStaff.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 277,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Staff\\StaffDashboard\\RecordDashboardStaff.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "client\\src\\Components\\Table.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "client\\src\\index.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "server\\.env"
+                },
+                {
+                    "blank": 5,
+                    "code": 18,
+                    "comment": 1,
+                    "filename": "server\\.gitignore"
+                },
+                {
+                    "blank": 18,
+                    "code": 123,
+                    "comment": 1,
+                    "filename": "server\\emrsystem.session.sql"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "server\\myServer\\config\\db.config.js"
+                },
+                {
+                    "blank": 10,
+                    "code": 63,
+                    "comment": 37,
+                    "filename": "server\\myServer\\controller\\medicine.controller.js"
+                },
+                {
+                    "blank": 17,
+                    "code": 218,
+                    "comment": 15,
+                    "filename": "server\\myServer\\controller\\patient.controller.js"
+                },
+                {
+                    "blank": 8,
+                    "code": 58,
+                    "comment": 8,
+                    "filename": "server\\myServer\\controller\\prescription.controller.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 46,
+                    "comment": 5,
+                    "filename": "server\\myServer\\controller\\record.controller.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 47,
+                    "comment": 5,
+                    "filename": "server\\myServer\\controller\\report.controller.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 138,
+                    "comment": 11,
+                    "filename": "server\\myServer\\controller\\staff.controller.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 17,
+                    "comment": 2,
+                    "filename": "server\\myServer\\model\\db.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 40,
+                    "comment": 15,
+                    "filename": "server\\myServer\\model\\medicine.model.js"
+                },
+                {
+                    "blank": 23,
+                    "code": 152,
+                    "comment": 19,
+                    "filename": "server\\myServer\\model\\patient.model.js"
+                },
+                {
+                    "blank": 16,
+                    "code": 48,
+                    "comment": 14,
+                    "filename": "server\\myServer\\model\\prescription.model.js"
+                },
+                {
+                    "blank": 10,
+                    "code": 36,
+                    "comment": 11,
+                    "filename": "server\\myServer\\model\\record.model.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 35,
+                    "comment": 10,
+                    "filename": "server\\myServer\\model\\report.model.js"
+                },
+                {
+                    "blank": 21,
+                    "code": 130,
+                    "comment": 18,
+                    "filename": "server\\myServer\\model\\staff.model.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 5,
+                    "comment": 2,
+                    "filename": "server\\myServer\\routes\\medicine.routes.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 8,
+                    "comment": 5,
+                    "filename": "server\\myServer\\routes\\patient.routes.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 5,
+                    "comment": 2,
+                    "filename": "server\\myServer\\routes\\prescription.routes.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 5,
+                    "comment": 2,
+                    "filename": "server\\myServer\\routes\\record.routes.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 5,
+                    "comment": 2,
+                    "filename": "server\\myServer\\routes\\report.routes.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 6,
+                    "comment": 3,
+                    "filename": "server\\myServer\\routes\\staff.routes.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 23,
+                    "comment": 4,
+                    "filename": "server\\myServer\\utils\\jwtAuth.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 4220,
+                    "comment": 0,
+                    "filename": "server\\package-lock.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": "server\\package.json"
+                },
+                {
+                    "blank": 15,
+                    "code": 78,
+                    "comment": 0,
+                    "filename": "server\\queries.md"
+                },
+                {
+                    "blank": 8,
+                    "code": 28,
+                    "comment": 8,
+                    "filename": "server\\server.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 12,
+                    "comment": 3,
+                    "filename": "server\\test.session.sql"
+                }
+            ]
+        }
+    ]
+}

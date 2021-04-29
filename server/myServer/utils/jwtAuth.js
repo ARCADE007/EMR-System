@@ -1,8 +1,10 @@
 const jwt = require("jsonwebtoken");
 
 const generateAccessToken = (id, role) => {
+  // console.log("genrate");
+  // console.log(id, role);
   return jwt.sign({ id: id, role: role }, process.env.TOKEN_SECRET, {
-    expiresIn: 60 * 60,
+    expiresIn: 60 * 60 * 24,
   });
 };
 
@@ -16,6 +18,7 @@ const checkAccessToken = (token) => {
       console.error(err);
       return false;
     } else {
+      // console.log("decoded");
       // console.log(decoded);
       return {
         id: decoded.id,

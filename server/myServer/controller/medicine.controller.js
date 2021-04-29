@@ -1,4 +1,6 @@
 const Medicines = require("../model/medicine.model");
+const PreMedicine = require("../model/prescription.model");
+const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
 
 // -----------------------------------------------------------------
 // Create and save a new Medicine
@@ -48,19 +50,61 @@ exports.getAllByPrescriptionId = (req, res) => {
     return;
   }
   const prescriptionId = req.params.prescriptionId;
-  Medicines.getAllByPrescriptionId(prescriptionId, (error, medicineData) => {
-    if (error) {
-      if (error.kind === "not_found") {
-        res.status(404).send({
-          message: `Cannot find medicine with prescriptionId ${prescriptionId}`,
-        });
-      } else {
-        res.status(500).send({
-          message: `Internal error occured while fetching the medicines with prescriptionId ${prescriptionId}`,
-        });
+  // console.log(prescriptionId);
+  const auth = checkAccessToken(req.cookies.auth);
+  if (auth && (auth.role == "Patient" || "Staff")) {
+    Medicines.getAllByPrescriptionId(
+      prescriptionId,
+      auth.role == "patient" ? req.cookies.id : req.body.patientId,
+      (error, medicineData) => {
+        if (error) {
+          if (error.kind === "not_found") {
+            res.status(404).send({
+              message: `Cannot find medicine with prescriptionId ${prescriptionId}`,
+            });
+          } else {
+            res.status(500).send({
+              message: `Internal error occured while fetching the medicines with prescriptionId ${prescriptionId}`,
+            });
+          }
+        } else {
+          res.status(200).send(medicineData);
+        }
       }
-    } else {
-      res.status(200).send(medicineData);
-    }
-  });
+    );
+  } else {
+    res.status(401).send({
+      message: `You are not allowed to access this data`,
+    });
+  }
 };
+
+//-----------------------------------------------------------------------
+
+/*
+
+route = /localhost/..../3
+
+auth = checkAuth(cookies.auth)
+
+if(  auth  &&  auth.role ==  "patient"||"staff") ){
+
+  let isAllowed = true
+
+    if (auth.role == "patient"   ){
+      isAllowed =   getPatientIdFromPrescriptionId(params.prescriptionId) === auth.id
+    }
+
+
+    if(isAllowed){
+      ...
+    }else{
+      return res not allowed 
+    }
+
+}else{
+  return res not allowed 
+}
+
+
+*/
