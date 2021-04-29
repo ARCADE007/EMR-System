@@ -8,7 +8,6 @@ import {
   Col,
   CardText,
   CardTitle,
-  Form,
 } from "reactstrap";
 import Cookies from "js-cookie";
 import LoginNavbar from "../../MainComponents/LoginNavbar";

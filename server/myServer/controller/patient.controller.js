@@ -18,7 +18,7 @@ exports.create = async (req, res) => {
     length: 8,
     numbers: true,
   });
-  console.log(password);
+  console.log("actual password : ", password);
 
   // Create a Patient
   const patient = new Patient({
@@ -34,7 +34,6 @@ exports.create = async (req, res) => {
     .hash(patient.password, saltRounds)
     .then((hash) => {
       patient.password = hash;
-      console.log(hash);
     })
     .catch((err) => {
       res.status(500).send({
@@ -42,7 +41,6 @@ exports.create = async (req, res) => {
           err.message || "Some error occurred while creating the patient.",
       });
     });
-
   // Save Patient in the Database
   Patient.create(patient, (err, data) => {
     if (err) {
@@ -193,7 +191,7 @@ exports.authenticate = (req, res) => {
           });
         }
       } else {
-        const token = generateAccessToken(req.body.id);
+        const token = generateAccessToken(req.body.id, req.body.role);
         res
           .status(200)
           .cookie("auth", token, {

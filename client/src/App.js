@@ -30,65 +30,101 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-          <Route path="/AskPatientReception">
-            <AskPatientReception />
-          </Route>
-          <Route path="/ReportPatient">
-            <ReportPatient />
-          </Route>
-          <Route path="/PrescriptionMainPatient/:staffId">
-            <PrescriptionMainPatient />
-          </Route>
-          <Route path="/PrescriptionMain">
-            <PrescriptionMain />
-          </Route>
-          <Route path="/ReportStaff">
-            <ReportStaff />
-          </Route>
-          <Route path="/RecordDashboardPatient">
-            <RecordDashboardPatient />
-          </Route>
+          {/* -------------------------PATIENT-------------------------------- */}
+
           <Route path="/DrDashboardPatient">
             <DrDashboardPatient />
           </Route>
+
+          {/*Pending*/}
+          <Route path="/RecordDashboardPatient">
+            <RecordDashboardPatient />
+          </Route>
+
+          {/*Pending*/}
+          <Route path="/ReportPatient">
+            <ReportPatient />
+          </Route>
+
+          <Route path="/PrescriptionMainPatient/:staffId">
+            <PrescriptionMainPatient />
+          </Route>
+
           <Route path="/PrescriptionTable/:prescriptionId">
             <PrescriptionTable />
           </Route>
-          <Route path="/PrescriptionTableEditable">
-            <PrescriptionTableEditable />
-          </Route>
-          <Route path="/PatientRegistrationTable">
-            <PatientRegistrationTable />
-          </Route>
-          <Route path="/DrRegistrationTable">
-            <DrRegistrationTable />
-          </Route>
-          <Route path="/RecordDashboardStaff">
-            <RecordDashboardStaff />
-          </Route>
-          <Route path="/DrDashboardStaff">
-            <DrDashboardStaff />
-          </Route>
 
-          <Route path="/Registration">
-            <RegistrationMain />
-          </Route>
-          <Route path="/AddDr">
-            <AddDrDisease />
-          </Route>
+          {/* -------------------------STAFF---------------------------------- */}
 
-          <Route path="/AddRecord">
-            <AddRecord />
-          </Route>
-
-          <Route path="/ForgotPass">
-            <ForgotPass />
-          </Route>
-
+          {/*Pending*/}
           <Route path="/AskPatientID">
             <AskPatient />
           </Route>
 
+          {/*Pending*/}
+          <Route path="/DrDashboardStaff">
+            <DrDashboardStaff />
+          </Route>
+
+          {/*Pending*/}
+          <Route path="/AddDr">
+            <AddDrDisease />
+          </Route>
+
+          {/*Pending*/}
+          <Route path="/PrescriptionMain">
+            <PrescriptionMain />
+          </Route>
+
+          {/*Pending*/}
+          <Route path="/PrescriptionTableEditable">
+            <PrescriptionTableEditable />
+          </Route>
+
+          {/*Pending*/}
+          <Route path="/RecordDashboardStaff">
+            <RecordDashboardStaff />
+          </Route>
+
+          {/*Pending*/}
+          <Route path="/AddRecord">
+            <AddRecord />
+          </Route>
+
+          {/*Pending*/}
+          <Route path="/ReportStaff">
+            <ReportStaff />
+          </Route>
+
+          {/* -------------------------RECEPTION------------------------------ */}
+
+          {/*Pending*/}
+          <Route path="/AskPatientReception">
+            <AskPatientReception />
+          </Route>
+
+          {/*Pending*/}
+          <Route path="/Registration">
+            <RegistrationMain />
+          </Route>
+
+          <Route path="/PatientRegistrationTable">
+            <PatientRegistrationTable />
+          </Route>
+
+          {/*Pending*/}
+          <Route path="/DrRegistrationTable">
+            <DrRegistrationTable />
+          </Route>
+
+          {/* -------------------------OTHERS------------------------------ */}
+
+          {/*Pending*/}
+          <Route path="/ForgotPass">
+            <ForgotPass />
+          </Route>
+
+          {/*Pending for Receotionist*/}
           <Route path="/">
             <Login />
           </Route>

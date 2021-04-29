@@ -7,7 +7,10 @@ const Patient = function (patient) {
   this.patientName = patient.patientName;
   this.patientPhoneno = patient.patientPhoneno;
   this.patientEmail = patient.patientEmail;
-  this.patientDob = patient.patientDob;
+  this.patientDob = new Date(patient.patientDob)
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", " ");
   this.patientAddress = patient.patientAddress;
 };
 
@@ -18,9 +21,9 @@ const Patient = function (patient) {
 // * Insert a new patient into the Patient Table
 Patient.create = (newPatient, result) => {
   const query = "INSERT INTO patient SET ?";
-
   sql.query(query, newPatient, (err, res) => {
     if (err) {
+      console.log(err);
       result(err, null);
       return;
     }

@@ -238,7 +238,7 @@ CREATE TABLE Prescription(
 
 ```sql
 CREATE TABLE Medicine(
-     medicineId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
+    medicineId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
     name  VARCHAR(20) NOT NULL,
     dateFrom date NOT NULL,
     dateTo date NOT NULL,

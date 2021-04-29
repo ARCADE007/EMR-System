@@ -35,8 +35,9 @@ Medicine.create = (newMedicine, result) => {
 
 // Get all prescription by prescription id
 
-Medicine.getAllByPrescriptionId = (prescriptionId, cb) => {
-  const query = "SELECT * FROM medicine WHERE medicine.prescriptionId = ? ";
+Medicine.getAllByPrescriptionId = (prescriptionId, patientId, cb) => {
+  const query =
+    "SELECT * FROM medicine, prescription WHERE medicine.prescriptionId = prescription.prescriptionId AND medicine.prescriptionId = ? ";
 
   sql.query(query, [prescriptionId], (error, result) => {
     if (error) {
@@ -48,7 +49,15 @@ Medicine.getAllByPrescriptionId = (prescriptionId, cb) => {
       // if not found any
       cb({ kind: "not_found" }, null);
     }
-    cb(null, result);
+    // console.log(result);
+    // console.log(result[0].patientId);
+    // console.log(id);
+    if (result[0].patientId == patientId) {
+      // console.log("oh yeah");
+      cb(null, result);
+    } else {
+      cb({ kind: "not_found" }, null);
+    }
   });
 };
 
