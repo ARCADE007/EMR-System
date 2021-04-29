@@ -51,6 +51,28 @@ Prescription.getAllByPatientID = (patientId, staffId, cb) => {
   });
 };
 
+// Get PatientId for medicine authentication
+
+Prescription.getPatientIdfromPrescriptionId = (prescriptionId) => {
+  const query = "Select patientId from prescription where prescriptionId=?";
+
+  // console.log(prescriptionId);
+
+  return sql.query(query, [prescriptionId], (error, result) => {
+    if (error) {
+      console.log("error :", error);
+
+      return null;
+    }
+    if (result.affectedRows === 0) {
+      // if not found any
+      return null;
+    }
+    console.log("paitentId = ", result[0].patientId);
+    return result[0].patientId;
+  });
+};
+
 //---------------------------------------------------------
 
 module.exports = Prescription;
