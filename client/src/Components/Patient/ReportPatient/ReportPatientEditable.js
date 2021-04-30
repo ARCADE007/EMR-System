@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, Link } from "react-router-dom";
 import MaterialTable from "material-table";
 export default function ReportPatientEditable(props) {
+  const { recordId } = useParams();
   const [columns, setColumns] = useState([
     {
       title: "ReportName",
-      field: "name",
+      field: "reportName",
 
       editComponent: (props) => (
         <input
@@ -17,34 +20,57 @@ export default function ReportPatientEditable(props) {
 
     {
       title: "Date ",
-      field: "date",
+      field: "Date",
       type: "date",
     },
     {
       title: "File",
-      field: "File",
+      field: "file",
       type: "file",
+      hidden: true,
     },
   ]);
 
-  const [data, setData] = useState([
-    {
-      name:
-        "https://drive.google.com/file/d/1niep5eK0uQTLDdGQ2Ne3f5J2hKr0zFfU/view?usp=sharing",
-      date: "15/04/2018",
-      file: "",
-    },
-    { name: "mmr12", date: "15/04/2018", file: "" },
-    { name: "mmr12", date: "15/04/2018", file: "" },
-    { name: "mmr12", date: "15/04/2018", file: "" },
-  ]);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/reports/" + recordId, {
+        withCredentials: true,
+      })
+      .then((result) => {
+        setData(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <MaterialTable
       style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
       title="ID"
       columns={columns}
-      data={data}
+      data={data.map((report) => {
+        return {
+          reportName: report.reportName,
+          Date: report.Date,
+          file: report.file,
+        };
+      })}
+      actions={[
+        (rowData) => {
+          console.log(rowData);
+          return {
+            icon: () => (
+              <Link to={{ pathname: `${rowData.file}` }} target="_blank">
+                View
+              </Link>
+            ),
+
+            tooltip: "View ",
+          };
+        },
+      ]}
       options={{
         headerStyle: { backgroundColor: "transparent", color: "black" },
         exportButton: true,

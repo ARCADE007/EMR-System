@@ -36,13 +36,11 @@ function App() {
             <DrDashboardPatient />
           </Route>
 
-          {/*Pending*/}
           <Route path="/RecordDashboardPatient">
             <RecordDashboardPatient />
           </Route>
 
-          {/*Pending*/}
-          <Route path="/ReportPatient">
+          <Route path="/ReportPatient/:recordId">
             <ReportPatient />
           </Route>
 
@@ -61,7 +59,7 @@ function App() {
             <AskPatient />
           </Route>
 
-          {/*Pending*/}
+          {/*Pending       cookieid*/}
           <Route path="/DrDashboardStaff">
             <DrDashboardStaff />
           </Route>
@@ -81,7 +79,7 @@ function App() {
             <PrescriptionTableEditable />
           </Route>
 
-          {/*Pending*/}
+          {/*Pending       cookieid*/}
           <Route path="/RecordDashboardStaff">
             <RecordDashboardStaff />
           </Route>
@@ -103,7 +101,6 @@ function App() {
             <AskPatientReception />
           </Route>
 
-          {/*Pending*/}
           <Route path="/Registration">
             <RegistrationMain />
           </Route>
@@ -112,7 +109,6 @@ function App() {
             <PatientRegistrationTable />
           </Route>
 
-          {/*Pending*/}
           <Route path="/DrRegistrationTable">
             <DrRegistrationTable />
           </Route>

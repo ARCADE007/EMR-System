@@ -23,17 +23,17 @@ function AskPatientReception() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
   });
-  const [emailIsValid, setEmailIsValid] = useState(false);
-  const [emailError, setEmailError] = useState("");
-  const validateEmail = (e) => {
-    var email = e.target.value;
+  const [idIsValid, setIdIsValid] = useState(false);
+  const [idError, setIdError] = useState("");
+  const validateId = (e) => {
+    var id = e.target.value;
 
-    if (validator.isEmail(email)) {
-      setEmailIsValid(true);
-      setEmailError("Valid Email");
+    if (validator.isNumeric(id)) {
+      setIdIsValid(true);
+      setIdError("Valid Id");
     } else {
-      setEmailIsValid(false);
-      setEmailError("Enter valid Email!");
+      setIdIsValid(false);
+      setIdError("Enter valid Id ");
     }
   };
   return (
@@ -66,7 +66,7 @@ function AskPatientReception() {
                       paddingTop: "50px",
                     }}
                   >
-                    <span>Enter Patient ID</span>
+                    <span>Enter User ID</span>
                   </div>
                   <CardBody
                     style={{ backgroundColor: "rgb(128,0,0,0.4)" }}
@@ -81,10 +81,10 @@ function AskPatientReception() {
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
-                            placeholder="Enter Patient Id"
-                            name="email"
-                            type="email"
-                            onChange={(e) => validateEmail(e)}
+                            name="id"
+                            placeholder="User Id"
+                            type="text"
+                            onChange={(e) => validateId(e)}
                           />
                         </InputGroup>
                         <span
@@ -92,13 +92,13 @@ function AskPatientReception() {
                             color: "lightgoldenrodyellow",
                           }}
                         >
-                          {emailError}
+                          {idError}
                         </span>
                       </FormGroup>
                       <Row className="mt-3">
-                        <Col xs="6">
+                        <Col xs="12">
                           <Link to="/Registration" className="text-light">
-                            <small>For New Registration</small>
+                            <p>For New Registration</p>
                           </Link>
                         </Col>
                       </Row>
@@ -108,7 +108,7 @@ function AskPatientReception() {
                           className="my-4"
                           color="primary"
                           type="submit"
-                          disabled={!emailIsValid}
+                          disabled={!idIsValid}
                         >
                           Go
                         </Button>

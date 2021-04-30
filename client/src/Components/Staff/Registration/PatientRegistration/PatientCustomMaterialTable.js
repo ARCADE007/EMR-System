@@ -44,13 +44,13 @@ export default function PatientCustomMaterialTable(props) {
       data={props.data}
       options={{
         headerStyle: { backgroundColor: "transparent", color: "black" },
+        exportButton: true,
       }}
       editable={{
         onRowAdd: (newData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
               props.setData([...props.data, newData]);
-              console.log(newData);
               resolve();
             }, 1000);
           }),
@@ -62,7 +62,6 @@ export default function PatientCustomMaterialTable(props) {
               const index = oldData.tableData.id;
               dataUpdate[index] = newData;
               props.setData([...dataUpdate]);
-              console.log(newData);
               resolve();
             }, 1000);
           }),

@@ -1,4 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 import {
   Button,
   Card,
@@ -14,10 +16,22 @@ import { Link } from "react-router-dom";
 import "../../DrDashboard.css";
 function RecordDashboardPatient() {
   const refcontainer = useRef(null);
+  const [data, setData] = useState([]);
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
-  });
+
+    axios
+      .get("http://localhost:3001/records/" + Cookies.get("id"), {
+        withCredentials: true,
+      })
+      .then((result) => {
+        setData(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
   return (
     <>
       <LoginNavbar />
@@ -66,182 +80,32 @@ function RecordDashboardPatient() {
           <Container style={{ paddingTop: "10px" }}>
             <div>
               <Row>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "white" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "white" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
-                <Col xs="12" sm="6" md="4" lg="3" className="Card__Padding">
-                  <Card
-                    body
-                    inverse
-                    style={{ background: "rgb(255,255,255,0.2)" }}
-                  >
-                    <CardTitle style={{ color: "black" }} tag="h5">
-                      Special Title Treatment
-                    </CardTitle>
-                    <CardText style={{ color: "black" }}>
-                      With supporting text below as a natural lead-in to
-                      additional content.
-                    </CardText>
-                    <Button>Button</Button>
-                  </Card>
-                </Col>
+                {data.map((record, index) => {
+                  return (
+                    <Col
+                      key={index}
+                      xs="12"
+                      sm="6"
+                      md="4"
+                      lg="3"
+                      className="Card__Padding"
+                    >
+                      <Card
+                        body
+                        inverse
+                        style={{ background: "rgb(255,255,255,0.2)" }}
+                      >
+                        <CardTitle style={{ color: "white" }} tag="h5">
+                          {record.recordName}
+                        </CardTitle>
+
+                        <Link to={"/ReportPatient/" + record.recordId}>
+                          <Button type="submit">View</Button>
+                        </Link>
+                      </Card>
+                    </Col>
+                  );
+                })}
               </Row>
             </div>
           </Container>
