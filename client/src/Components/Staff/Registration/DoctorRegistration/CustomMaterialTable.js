@@ -5,6 +5,8 @@ export default function CustomMaterialTable(props) {
     {
       title: "Staff Name",
       field: "staffName",
+      validate: (rowData) =>
+        rowData.staffName.length < 2 ? "StaffName must be have 3 chars" : "",
 
       editComponent: (props) => (
         <input
@@ -23,20 +25,32 @@ export default function CustomMaterialTable(props) {
     {
       title: "Address",
       field: "staffAddress",
+      validate: (rowData) =>
+        rowData.staffAddress.length < 5
+          ? "Address must be have 6 character"
+          : "",
     },
     {
       title: "Phone Number",
       field: "staffPhoneno",
       type: "text",
+      validate: (rowData) =>
+        rowData.staffPhoneno.length < 9
+          ? "Phone number must  have 10 character"
+          : "",
     },
 
     {
       title: "Email",
       field: "staffEmail",
+      validate: (rowData) =>
+        rowData.staffAddress.length < 6 ? "Email is not valid" : "",
     },
     {
       title: "Department",
       field: "departmentName",
+      validate: (rowData) =>
+        rowData.staffAddress.length < 4 ? "Cannot be Empty" : "",
     },
   ]);
 

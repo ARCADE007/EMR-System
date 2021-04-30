@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MaterialTable, { Typography } from "material-table";
+import MaterialTable from "material-table";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 export default function PrescriptionMainEditablePatient(props) {

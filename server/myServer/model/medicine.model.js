@@ -35,30 +35,33 @@ Medicine.create = (newMedicine, result) => {
 
 // Get all prescription by prescription id
 
-Medicine.getAllByPrescriptionId = (prescriptionId, patientId, cb) => {
+Medicine.getAllByPrescriptionId = (prescriptionId, role, id, cb) => {
   const query =
-    "SELECT * FROM medicine, prescription WHERE medicine.prescriptionId = prescription.prescriptionId AND medicine.prescriptionId = ? ";
+    role === "staff"
+      ? "SELECT * FROM medicine, prescription WHERE medicine.prescriptionId = prescription.prescriptionId AND medicine.prescriptionId = ? "
+      : "SELECT * FROM medicine, prescription WHERE medicine.prescriptionId = prescription.prescriptionId AND medicine.prescriptionId = ? AND prescription.patientId= ?";
 
-  sql.query(query, [prescriptionId], (error, result) => {
-    if (error) {
-      console.log("error :", error);
-      cb(null, error);
-      return;
-    }
-    if (result.affectedRows === 0) {
-      // if not found any
-      cb({ kind: "not_found" }, null);
-    }
-    // console.log(result);
-    // console.log(result[0].patientId);
-    // console.log(id);
-    if (result[0].patientId == patientId) {
-      // console.log("oh yeah");
+  sql.query(
+    query,
+    role === "staff" ? [prescriptionId] : [prescriptionId, id],
+    (error, result) => {
+      if (error) {
+        console.log("error :", error);
+        cb(null, error);
+        return;
+      }
+
+      if (result.length === 0) {
+        // if not found any
+        cb({ kind: "not_found" }, null);
+        return;
+      }
+      // console.log(result);
+      // console.log(result[0].patientId);
+      // console.log(id);
       cb(null, result);
-    } else {
-      cb({ kind: "not_found" }, null);
     }
-  });
+  );
 };
 
 //---------------------------------------------------------

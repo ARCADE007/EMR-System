@@ -14,6 +14,7 @@ import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter";
 import { Link } from "react-router-dom";
 import "../../DrDashboard.css";
+
 function RecordDashboardPatient() {
   const refcontainer = useRef(null);
   const [data, setData] = useState([]);

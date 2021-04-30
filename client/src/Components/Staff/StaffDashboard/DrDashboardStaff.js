@@ -10,11 +10,12 @@ import {
   CardText,
   CardTitle,
 } from "reactstrap";
-import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter";
 import "../../DrDashboard.css";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import DrDashboardStafftoRecordDashboardStaff from "../../MainComponents/DrDashboardStafftoRecordDashboardStaff";
 function DrDashboardStaff() {
+  const { patientId } = useParams();
   const refcontainer = useRef(null);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -22,7 +23,7 @@ function DrDashboardStaff() {
     document.scrollingElement.scrollTop = 0;
 
     axios
-      .get("http://localhost:3001/patients/prescription/" + Cookies.get("id"), {
+      .get("http://localhost:3001/patients/prescription/" + patientId, {
         withCredentials: true,
       })
       .then((result) => {
@@ -34,7 +35,7 @@ function DrDashboardStaff() {
   }, []);
   return (
     <>
-      <LoginNavbar />
+      <DrDashboardStafftoRecordDashboardStaff patientId={patientId} />
       <main ref={refcontainer}>
         <section className="Custom_heading section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-default">
@@ -92,11 +93,9 @@ function DrDashboardStaff() {
                         <CardText>{prescription.departmentName}</CardText>
 
                         <Link
-                          to={
-                            "/PrescriptionMainPatient/" + prescription.staffId
-                          }
+                          to={"/PrescriptionTableMain/" + prescription.staffId}
                         >
-                          <Button>Button</Button>
+                          <Button>View</Button>
                         </Link>
                       </Card>
                     </Col>

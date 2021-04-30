@@ -10,11 +10,13 @@ import {
   CardText,
   CardTitle,
 } from "reactstrap";
-import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter";
+import RecordDashboardStafftoDrDashboardStaff from "../../MainComponents/RecordDashboardStafftoDrDashboardStaff";
 import "../../DrDashboard.css";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
 function RecordDashboardStaff() {
+  const { patientId } = useParams();
   const refcontainer = useRef(null);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -22,7 +24,7 @@ function RecordDashboardStaff() {
     document.scrollingElement.scrollTop = 0;
 
     axios
-      .get("http://localhost:3001/records/" + Cookies.get("id"), {
+      .get("http://localhost:3001/records/" + patientId, {
         withCredentials: true,
       })
       .then((result) => {
@@ -34,7 +36,7 @@ function RecordDashboardStaff() {
   }, []);
   return (
     <>
-      <LoginNavbar />
+      <RecordDashboardStafftoDrDashboardStaff />
       <main ref={refcontainer}>
         <section className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-default">
@@ -50,11 +52,11 @@ function RecordDashboardStaff() {
           <div className="Patient__Record">
             <Row>
               <Col xs="12" sm="12" md="6" lg="6">
-                <h1 style={{ color: "white" }}>Patient Record</h1>
+                <h1 style={{ color: "white" }}>Records</h1>
               </Col>
               <Col xs="12" sm="12" md="6" lg="6" style={{ paddingTop: "5px" }}>
-                <Link to="/AddRecord">
-                  <Button>Patient Record</Button>
+                <Link to={`/AddRecord/${patientId}`}>
+                  <Button>New Record</Button>
                 </Link>
               </Col>
             </Row>
@@ -89,7 +91,9 @@ function RecordDashboardStaff() {
                         <CardTitle style={{ color: "white" }} tag="h5">
                           {record.recordName}
                         </CardTitle>
-                        <Button>Button</Button>
+                        <Link to={`/ReportStaff/${record.recordId}`}>
+                          <Button>View</Button>
+                        </Link>
                       </Card>
                     </Col>
                   );

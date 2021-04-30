@@ -17,74 +17,38 @@ export default function CustomPrescriptionTableEditable(props) {
 
     {
       title: "Date (from)",
-      field: "datefrom",
+      field: "dateFrom",
       type: "date",
     },
     {
       title: "Date (to)",
-      field: "dateto",
+      field: "dateTo",
       type: "date",
     },
 
     {
       title: "Morning",
-      field: "morning",
-      lookup: { 1: "yes", 2: "no" },
+      field: "timeMorning",
+      type: "text",
     },
     {
       title: "Evening",
-      field: "evening",
-      lookup: { 1: "yes", 2: "no" },
+      field: "timeEvening",
+      type: "text",
     },
     {
       title: "Night",
-      field: "night",
-      lookup: { 1: "yes", 2: "no" },
+      field: "timeNight",
+      type: "text",
     },
   ]);
-
-  const [data, setData] = useState([
-    {
-      name: "mmr12",
-      datefrom: "15/04/2018",
-      dateto: "15/04/2018",
-      morning: 1,
-      evening: 1,
-      night: 1,
-    },
-    {
-      name: "mmr12",
-      datefrom: "15/04/2018",
-      dateto: "15/04/2018",
-      morning: 1,
-      evening: 1,
-      night: 1,
-    },
-    {
-      name: "mmr12",
-      datefrom: "15/04/2018",
-      dateto: "15/04/2018",
-      morning: 1,
-      evening: 1,
-      night: 1,
-    },
-    {
-      name: "mmr12",
-      datefrom: "16/04/2019",
-      dateto: "15/04/2018",
-      morning: 1,
-      evening: 1,
-      night: 1,
-    },
-  ]);
-  console.log(data);
 
   return (
     <MaterialTable
       style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
       title="ID"
       columns={columns}
-      data={data}
+      data={props.data}
       options={{
         headerStyle: { backgroundColor: "transparent", color: "black" },
       }}
@@ -92,7 +56,29 @@ export default function CustomPrescriptionTableEditable(props) {
         onRowAdd: (newData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
-              setData([...data, newData]);
+              props.setData([...props.data, newData]);
+              resolve();
+            }, 1000);
+          }),
+
+        onRowUpdate: (newData, oldData) =>
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              const dataUpdate = [...props.data];
+              const index = oldData.tableData.id;
+              dataUpdate[index] = newData;
+              props.setData([...dataUpdate]);
+
+              resolve();
+            }, 1000);
+          }),
+        onRowDelete: (oldData) =>
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              const dataDelete = [...props.data];
+              const index = oldData.tableData.id;
+              dataDelete.splice(index, 1);
+              props.setData([...dataDelete]);
 
               resolve();
             }, 1000);
