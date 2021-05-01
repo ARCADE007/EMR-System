@@ -59,7 +59,6 @@ export default function ReportPatientEditable(props) {
       })}
       actions={[
         (rowData) => {
-          console.log(rowData);
           return {
             icon: () => (
               <Link to={{ pathname: `${rowData.file}` }} target="_blank">

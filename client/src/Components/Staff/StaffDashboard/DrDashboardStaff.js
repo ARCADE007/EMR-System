@@ -92,9 +92,7 @@ function DrDashboardStaff() {
                         </CardTitle>
                         <CardText>{prescription.departmentName}</CardText>
 
-                        <Link
-                          to={"/PrescriptionTableMain/" + prescription.staffId}
-                        >
+                        <Link to={"/PrescriptionMain/" + prescription.staffId}>
                           <Button>View</Button>
                         </Link>
                       </Card>

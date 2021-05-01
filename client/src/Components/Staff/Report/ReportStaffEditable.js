@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
+import { Link } from "react-router-dom";
 export default function ReportStaffEditable(props) {
   const [columns, setColumns] = useState([
     {
@@ -41,6 +42,19 @@ export default function ReportStaffEditable(props) {
       title="ID"
       columns={columns}
       data={props.data}
+      actions={[
+        (rowData) => {
+          return {
+            icon: () => (
+              <Link to={{ pathname: `${rowData.file}` }} target="_blank">
+                View
+              </Link>
+            ),
+
+            tooltip: "View ",
+          };
+        },
+      ]}
       options={{
         headerStyle: { backgroundColor: "transparent", color: "black" },
       }}

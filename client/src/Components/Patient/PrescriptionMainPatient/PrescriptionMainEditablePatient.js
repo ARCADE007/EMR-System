@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 export default function PrescriptionMainEditablePatient(props) {
   const { staffId } = useParams();
+
   const [columns, setColumns] = useState([
     {
       title: "Date",
@@ -29,6 +30,13 @@ export default function PrescriptionMainEditablePatient(props) {
     },
     {
       title: "PrescriptionId",
+      field: "header",
+      type: "text",
+      hidden: true,
+    },
+
+    {
+      title: "PrescriptionId",
       field: "prescriptionId",
       type: "text",
       hidden: true,
@@ -51,7 +59,7 @@ export default function PrescriptionMainEditablePatient(props) {
   return (
     <MaterialTable
       style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
-      title="Prescription"
+      title="hi"
       columns={columns}
       data={data.map((prescription) => {
         return {
@@ -63,7 +71,6 @@ export default function PrescriptionMainEditablePatient(props) {
       })}
       actions={[
         (rowData) => {
-          console.log(rowData);
           return {
             icon: () => (
               <Link to={`/PrescriptionTable/${rowData.prescriptionId}`}>
