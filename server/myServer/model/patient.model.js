@@ -99,6 +99,33 @@ Patient.findPrescriptionByPatientId = (patientId, result) => {
     }
   );
 };
+
+// //Returns the data of Record from record
+// Patient.findRecordByPatientId = (patientId, result) => {
+//   console.log(patientId);
+
+//   sql.query(
+//     "Select DISTINCT record.recordName From record where  patientId=?",
+//     patientId,
+//     (err, res) => {
+//       if (err) {
+//         console.log("error: ", err);
+//         result(err, null);
+//         return;
+//       }
+
+//       if (res.length) {
+//         console.log("found Patient: ", res);
+//         result(null, res);
+//         return;
+//       }
+
+//       // not found Patient with the patientId === patientId
+//       result({ kind: "not_found" }, null);
+//     }
+//   );
+// };
+
 // * Returns the data of Patient by patientId by running SELECT
 Patient.findByPatientId = (patientId, result) => {
   console.log(patientId);

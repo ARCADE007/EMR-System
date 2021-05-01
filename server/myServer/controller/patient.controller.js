@@ -82,6 +82,34 @@ exports.findPrescription = (req, res) => {
   }
 };
 
+// //Returns the record from record
+
+// exports.findRecord = (req, res) => {
+//   console.log(req.params);
+//   if (checkAccessToken(req.cookies.auth)) {
+//     Patient.findRecordByPatientId(req.params.patientId, (err, data) => {
+//       if (err) {
+//         if (err.kind === "not_found") {
+//           res.status(404).send({
+//             message: `Not found Patient with PatientId ${req.params.patientId}.`,
+//           });
+//         } else {
+//           res.status(500).send({
+//             message:
+//               "Error retrieving Patient with PatientId " + req.params.patientId,
+//           });
+//         }
+//       } else {
+//         res.status(200).send(data);
+//       }
+//     });
+//   } else {
+//     res.status(401).send({
+//       message: "Unauthorized",
+//     });
+//   }
+// };
+
 // * Find a Single Patient with a PatientId
 exports.findOne = (req, res) => {
   console.log(req.params);

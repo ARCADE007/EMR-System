@@ -35,7 +35,6 @@ exports.create = async (req, res) => {
     .hash(staff.password, saltRounds)
     .then((hash) => {
       staff.password = hash;
-      console.log(hash);
     })
     .catch((err) => {
       res.status(500).send({

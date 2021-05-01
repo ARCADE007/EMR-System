@@ -36,13 +36,11 @@ function App() {
             <DrDashboardPatient />
           </Route>
 
-          {/*Pending*/}
           <Route path="/RecordDashboardPatient">
             <RecordDashboardPatient />
           </Route>
 
-          {/*Pending*/}
-          <Route path="/ReportPatient">
+          <Route path="/ReportPatient/:recordId">
             <ReportPatient />
           </Route>
 
@@ -56,13 +54,11 @@ function App() {
 
           {/* -------------------------STAFF---------------------------------- */}
 
-          {/*Pending*/}
           <Route path="/AskPatientID">
             <AskPatient />
           </Route>
 
-          {/*Pending*/}
-          <Route path="/DrDashboardStaff">
+          <Route path="/DrDashboardStaff/:patientId">
             <DrDashboardStaff />
           </Route>
 
@@ -71,28 +67,24 @@ function App() {
             <AddDrDisease />
           </Route>
 
-          {/*Pending*/}
-          <Route path="/PrescriptionMain">
+          <Route path="/PrescriptionMain/:staffId">
             <PrescriptionMain />
           </Route>
 
-          {/*Pending*/}
-          <Route path="/PrescriptionTableEditable">
+          <Route path="/PrescriptionTableEditable/:prescriptionId">
             <PrescriptionTableEditable />
           </Route>
 
-          {/*Pending*/}
-          <Route path="/RecordDashboardStaff">
+          <Route path="/RecordDashboardStaff/:patientId">
             <RecordDashboardStaff />
           </Route>
 
-          {/*Pending*/}
-          <Route path="/AddRecord">
+          <Route path="/AddRecord/:patientId">
             <AddRecord />
           </Route>
 
           {/*Pending*/}
-          <Route path="/ReportStaff">
+          <Route path="/ReportStaff/:recordId">
             <ReportStaff />
           </Route>
 
@@ -103,7 +95,6 @@ function App() {
             <AskPatientReception />
           </Route>
 
-          {/*Pending*/}
           <Route path="/Registration">
             <RegistrationMain />
           </Route>
@@ -112,7 +103,6 @@ function App() {
             <PatientRegistrationTable />
           </Route>
 
-          {/*Pending*/}
           <Route path="/DrRegistrationTable">
             <DrRegistrationTable />
           </Route>

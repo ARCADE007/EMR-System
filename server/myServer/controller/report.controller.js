@@ -30,7 +30,7 @@ exports.create = async (req, res) => {
   });
 };
 
-// * Find a all report with a recordId
+// * Find a all reports with a recordId
 exports.findByReportID = (req, res) => {
   if (!req.params.recordId) {
     console.log("Params Parameter recordId is not recieved");
