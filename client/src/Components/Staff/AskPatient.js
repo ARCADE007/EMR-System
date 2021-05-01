@@ -19,23 +19,13 @@ import LoginNavbar from "../MainComponents/LoginNavbar";
 import LoginFooter from "../MainComponents/LoginFooter";
 function AskPatient() {
   const refcontainer = useRef(null);
+  const [patientId, setPatientId] = useState();
+
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
   });
-  const [emailIsValid, setEmailIsValid] = useState(false);
-  const [emailError, setEmailError] = useState("");
-  const validateEmail = (e) => {
-    var email = e.target.value;
 
-    if (validator.isEmail(email)) {
-      setEmailIsValid(true);
-      setEmailError("Valid Email");
-    } else {
-      setEmailIsValid(false);
-      setEmailError("Enter valid Email!");
-    }
-  };
   return (
     <>
       <LoginNavbar />
@@ -72,7 +62,7 @@ function AskPatient() {
                     style={{ backgroundColor: "rgb(128,0,0,0.4)" }}
                     className="px-lg-5 py-lg-5"
                   >
-                    <Form method="post" action="" role="form">
+                    <Form>
                       <FormGroup className="mb-3">
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
@@ -82,29 +72,34 @@ function AskPatient() {
                           </InputGroupAddon>
                           <Input
                             placeholder="Enter Patient Id"
-                            name="email"
-                            type="email"
-                            onChange={(e) => validateEmail(e)}
+                            name="id"
+                            type="text"
+                            value={patientId}
+                            onChange={(e) => {
+                              setPatientId(e.target.value);
+                            }}
                           />
                         </InputGroup>
-                        <span
+                        {/* <span
                           style={{
                             color: "lightgoldenrodyellow",
                           }}
                         >
                           {emailError}
-                        </span>
+                        </span> */}
                       </FormGroup>
 
                       <div className="text-center">
-                        <Button
-                          className="my-4"
-                          color="primary"
-                          type="submit"
-                          disabled={!emailIsValid}
-                        >
-                          Go
-                        </Button>
+                        <Link to={`/DrDashboardStaff/${patientId}`}>
+                          <Button
+                            className="my-4"
+                            color="primary"
+                            type="button"
+                            // disabled={!emailIsValid}
+                          >
+                            Go
+                          </Button>
+                        </Link>
                       </div>
                     </Form>
                   </CardBody>

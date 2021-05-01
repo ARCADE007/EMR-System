@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
+import { Link } from "react-router-dom";
 export default function ReportStaffEditable(props) {
   const [columns, setColumns] = useState([
     {
       title: "ReportName",
-      field: "name",
+      field: "reportName",
+      validate: (rowData) =>
+        rowData.reportName && rowData.reportName.length < 2
+          ? "Name must be have 3 chars"
+          : "",
 
       editComponent: (props) => (
         <input
@@ -17,21 +22,18 @@ export default function ReportStaffEditable(props) {
 
     {
       title: "Date ",
-      field: "date",
+      field: "Date",
       type: "date",
+      validate: (rowData) =>
+        rowData.Date === "" ? "Date cannot be empty" : "",
     },
     {
       title: "File",
-      field: "File",
+      field: "file",
       type: "file",
+      validate: (rowData) =>
+        rowData.file && rowData.file.length < 9 ? "Upload File" : "",
     },
-  ]);
-
-  const [data, setData] = useState([
-    { name: "mmr12", date: "15/04/2018", file: "" },
-    { name: "mmr12", date: "15/04/2018", file: "" },
-    { name: "mmr12", date: "15/04/2018", file: "" },
-    { name: "mmr12", date: "15/04/2018", file: "" },
   ]);
 
   return (
@@ -39,19 +41,57 @@ export default function ReportStaffEditable(props) {
       style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
       title="ID"
       columns={columns}
-      data={data}
+      data={props.data}
+      actions={[
+        (rowData) => {
+          return {
+            icon: () => (
+              <Link to={{ pathname: `${rowData.file}` }} target="_blank">
+                View
+              </Link>
+            ),
+
+            tooltip: "View ",
+          };
+        },
+      ]}
       options={{
         headerStyle: { backgroundColor: "transparent", color: "black" },
       }}
       editable={{
-        onRowAdd: (newData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              setData([...data, newData]);
+        ...(props.edit && {
+          onRowAdd: (newData) =>
+            new Promise((resolve, reject) => {
+              setTimeout(() => {
+                props.setData([...props.data, newData]);
 
-              resolve();
-            }, 1000);
-          }),
+                resolve();
+              }, 1000);
+            }),
+
+          onRowUpdate: (newData, oldData) =>
+            new Promise((resolve, reject) => {
+              setTimeout(() => {
+                const dataUpdate = [...props.data];
+                const index = oldData.tableData.id;
+                dataUpdate[index] = newData;
+                props.setData([...dataUpdate]);
+
+                resolve();
+              }, 1000);
+            }),
+          onRowDelete: (oldData) =>
+            new Promise((resolve, reject) => {
+              setTimeout(() => {
+                const dataDelete = [...props.data];
+                const index = oldData.tableData.id;
+                dataDelete.splice(index, 1);
+                props.setData([...dataDelete]);
+
+                resolve();
+              }, 1000);
+            }),
+        }),
       }}
     />
   );

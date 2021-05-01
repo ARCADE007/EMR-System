@@ -52,31 +52,27 @@ exports.getAllByPrescriptionId = (req, res) => {
   const prescriptionId = req.params.prescriptionId;
   // console.log(prescriptionId);
   const auth = checkAccessToken(req.cookies.auth);
-  if (auth && (auth.role == "Patient" || "Staff")) {
-    Medicines.getAllByPrescriptionId(
-      prescriptionId,
-      auth.role == "patient" ? req.cookies.id : req.body.patientId,
-      (error, medicineData) => {
-        if (error) {
-          if (error.kind === "not_found") {
-            res.status(404).send({
-              message: `Cannot find medicine with prescriptionId ${prescriptionId}`,
-            });
-          } else {
-            res.status(500).send({
-              message: `Internal error occured while fetching the medicines with prescriptionId ${prescriptionId}`,
-            });
-          }
+
+  Medicines.getAllByPrescriptionId(
+    prescriptionId,
+    auth.role,
+    req.cookies.id,
+    (error, medicineData) => {
+      if (error) {
+        if (error.kind === "not_found") {
+          res.status(404).send({
+            message: `Cannot find medicine with prescriptionId ${prescriptionId}`,
+          });
         } else {
-          res.status(200).send(medicineData);
+          res.status(500).send({
+            message: `Internal error occured while fetching the medicines with prescriptionId ${prescriptionId}`,
+          });
         }
+      } else {
+        res.status(200).send(medicineData);
       }
-    );
-  } else {
-    res.status(401).send({
-      message: `You are not allowed to access this data`,
-    });
-  }
+    }
+  );
 };
 
 //-----------------------------------------------------------------------

@@ -31,7 +31,6 @@ exports.create = (req, res) => {
 // * Find a Single Record with a RecordID
 
 exports.findByRecordID = (req, res) => {
-  console.log(req.params);
   if (!req.params.patientId) {
     console.log("Params Parameter patientId is not recieved");
     return;

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "../../../CDDDD.css";
 import { Container, Button } from "reactstrap";
 import "../../../Table.css";
-import LoginNavbar from "../../../MainComponents/LoginNavbar";
+import RegistrationToRegistrationMain from "../../../MainComponents/RegistraionToRegistrationMain";
 import LoginFooter from "../../../MainComponents/LoginFooter";
 import PatientCustomMaterialTable from "./PatientCustomMaterialTable";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ function PatientRegistrationTable() {
   });
   return (
     <>
-      <LoginNavbar />
+      <RegistrationToRegistrationMain />
       <main ref={refcontainer}>
         <section className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-default">
