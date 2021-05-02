@@ -31,25 +31,35 @@ function PatientRegistrationTable() {
             <span />
           </div>
           <Container className="pt-lg-7">
-            <PatientCustomMaterialTable data={data} setData={setData} />
-            <div style={{ float: "right", padding: "6px" }}>
-              <Link to="">
-                <Button
-                  onClick={() => {
-                    data.forEach((patient) => {
-                      axios
-                        .post(`http://localhost:3001/patients`, patient)
-                        .then()
-                        .catch((error) => {
-                          console.log(error);
-                        });
-                    });
-                  }}
-                >
-                  Save
-                </Button>
-              </Link>
-            </div>
+            <PatientCustomMaterialTable
+              data={data}
+              setData={setData}
+            />
+            {data.length !== 0 && (
+              <div
+                style={{ float: "right", padding: "6px" }}
+              >
+                <Link to="">
+                  <Button
+                    onClick={() => {
+                      data.forEach((patient) => {
+                        axios
+                          .post(
+                            `http://localhost:3001/patients`,
+                            patient
+                          )
+                          .then()
+                          .catch((error) => {
+                            console.log(error);
+                          });
+                      });
+                    }}
+                  >
+                    Save
+                  </Button>
+                </Link>
+              </div>
+            )}
           </Container>
         </section>
       </main>

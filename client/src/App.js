@@ -1,5 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Login from "./Components/CommonPage/Login";
@@ -67,11 +71,11 @@ function App() {
             <AddDrDisease />
           </Route>
 
-          <Route path="/PrescriptionMain/:staffId">
+          <Route path="/PrescriptionMain/:patientId/:staffId/:staffName">
             <PrescriptionMain />
           </Route>
 
-          <Route path="/PrescriptionTableEditable/:prescriptionId">
+          <Route path="/PrescriptionTableEditable/:prescriptionId/:staffId">
             <PrescriptionTableEditable />
           </Route>
 
@@ -84,7 +88,7 @@ function App() {
           </Route>
 
           {/*Pending*/}
-          <Route path="/ReportStaff/:recordId">
+          <Route path="/ReportStaff/:patientId/:recordId/:recordName">
             <ReportStaff />
           </Route>
 

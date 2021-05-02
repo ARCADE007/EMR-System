@@ -1,91 +1,132 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MaterialTable from "material-table";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+
 export default function PrescriptionMainEditable(props) {
   const [columns, setColumns] = useState([
     {
-      title: "Date",
-      field: "date",
-      editComponent: (props) => (
-        <input
-          type="date"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
-    },
-    {
       title: "Disease",
       field: "disease",
-      type: "text",
+      type: "string",
+    },
+    {
+      title: "Date",
+      field: "date",
+      type: "date",
     },
 
     {
       title: "Description",
       field: "description",
-      type: "text",
+      type: "string",
     },
     {
       title: "PrescriptionId",
       field: "prescriptionId",
-      type: "text",
+      type: "string",
       hidden: true,
     },
   ]);
 
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/prescriptions/" + props.staffId, {
-        withCredentials: true,
-      })
-      .then((result) => {
-        setData(result.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
   return (
-    <MaterialTable
-      style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
-      title="ID"
-      columns={columns}
-      data={data.map((prescription) => {
-        return {
-          date: prescription.date,
-          disease: prescription.disease,
-          description: prescription.description,
-          prescriptionId: prescription.prescriptionId,
-        };
-      })}
-      actions={[
-        (rowData) => {
-          console.log(rowData);
-          return {
-            icon: () => (
-              <Link to={`/PrescriptionTableEditable/${rowData.prescriptionId}`}>
-                View
-              </Link>
-            ),
-            tooltip: "View ",
-          };
-        },
-      ]}
-      options={{
-        headerStyle: { backgroundColor: "transparent", color: "black" },
-      }}
-      editable={{
-        onRowAdd: (newData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              setData([...data, newData]);
+    <>
+      {props.prescriptions.length !== 0 && (
+        <MaterialTable
+          style={{
+            backgroundColor: "Rgb(255,255,255,0.2)",
+            color: "white",
+          }}
+          title={props.staffName}
+          columns={columns}
+          data={props.prescriptions.map((prescription) => {
+            return {
+              date: prescription.date,
+              disease: prescription.disease,
+              description: prescription.description,
+              prescriptionId: prescription.prescriptionId,
+            };
+          })}
+          actions={[
+            (rowData) => {
+              return {
+                icon: () => (
+                  <Link
+                    to={`/PrescriptionTableEditable/${rowData.prescriptionId}/${props.staffId}`}
+                  >
+                    View
+                  </Link>
+                ),
+                tooltip: "View ",
+              };
+            },
+          ]}
+          options={{
+            headerStyle: {
+              backgroundColor: "transparent",
+              color: "black",
+            },
+          }}
+        />
+      )}
 
-              resolve();
-            }, 1000);
-          }),
-      }}
-    />
+      {props.staffId === Cookies.get("id") && (
+        <MaterialTable
+          style={{
+            backgroundColor: "Rgb(255,255,255,0.2)",
+            color: "white",
+          }}
+          title="Add Prescriptions"
+          columns={columns}
+          data={props.data.map((newPrescription) => {
+            return {
+              date: newPrescription.date,
+              disease: newPrescription.disease,
+              description: newPrescription.description,
+              prescriptionId:
+                newPrescription.prescriptionId,
+            };
+          })}
+          options={{
+            headerStyle: {
+              backgroundColor: "transparent",
+              color: "black",
+            },
+          }}
+          editable={{
+            onRowAdd: (newData) =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  props.setData([...props.data, newData]);
+
+                  resolve();
+                }, 1000);
+              }),
+            onRowUpdate: (newData, oldData) =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  const dataUpdate = [...props.data];
+                  const index = oldData.tableData.id;
+                  dataUpdate[index] = newData;
+                  props.setData([...dataUpdate]);
+
+                  resolve();
+                }, 1000);
+              }),
+            onRowDelete: (oldData) =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  const dataDelete = [...props.data];
+                  const index = oldData.tableData.id;
+                  dataDelete.splice(index, 1);
+                  props.setData([...dataDelete]);
+
+                  resolve();
+                }, 1000);
+              }),
+          }}
+        />
+      )}
+    </>
   );
 }

@@ -15,7 +15,10 @@ exports.create = (req, res) => {
 
   const prescription = new Prescriptions({
     description: req.body.description,
-    date: req.body.date,
+    date: new Date(req.body.date)
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " "),
     disease: req.body.disease,
     staffId: req.body.staffId,
     patientId: req.body.patientId,
@@ -27,10 +30,10 @@ exports.create = (req, res) => {
     if (err) {
       res.status(500).send({
         message:
-          err.message || "Some error occured while creating the prescription",
+          err.message ||
+          "Some error occured while creating the prescription",
       });
     } else {
-      console.log(req.body.prescriptionId);
       res.status(200).send(data);
     }
   });
@@ -41,16 +44,12 @@ exports.create = (req, res) => {
 //----------------------------------------------------------
 
 exports.getAllByPatientID = (req, res) => {
-  if (!req.params.staffId) {
+  if (!req.params.patientId) {
     console.log("Params Parameter staffId is not recieved");
     return;
   }
-  if (!req.cookies.id) {
-    console.log("Cookie with patientId is not recieved");
-    return;
-  }
   const staffId = req.params.staffId;
-  const patientId = req.cookies.id;
+  const patientId = req.params.patientId;
   Prescriptions.getAllByPatientID(
     patientId,
     staffId,
@@ -66,7 +65,6 @@ exports.getAllByPatientID = (req, res) => {
           });
         }
       } else {
-        console.log(prescriptionData);
         res.status(200).send(prescriptionData);
       }
     }

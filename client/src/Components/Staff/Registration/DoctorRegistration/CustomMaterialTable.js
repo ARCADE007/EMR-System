@@ -6,7 +6,9 @@ export default function CustomMaterialTable(props) {
       title: "Staff Name",
       field: "staffName",
       validate: (rowData) =>
-        rowData.staffName.length < 2 ? "StaffName must be have 3 chars" : "",
+        rowData.staffName && rowData.staffName.length < 2
+          ? "StaffName must be have 3 chars"
+          : "",
 
       editComponent: (props) => (
         <input
@@ -26,6 +28,7 @@ export default function CustomMaterialTable(props) {
       title: "Address",
       field: "staffAddress",
       validate: (rowData) =>
+        rowData.staffAddress &&
         rowData.staffAddress.length < 5
           ? "Address must be have 6 character"
           : "",
@@ -35,6 +38,7 @@ export default function CustomMaterialTable(props) {
       field: "staffPhoneno",
       type: "text",
       validate: (rowData) =>
+        rowData.staffPhoneno &&
         rowData.staffPhoneno.length < 9
           ? "Phone number must  have 10 character"
           : "",
@@ -44,24 +48,36 @@ export default function CustomMaterialTable(props) {
       title: "Email",
       field: "staffEmail",
       validate: (rowData) =>
-        rowData.staffAddress.length < 6 ? "Email is not valid" : "",
+        rowData.staffAddress &&
+        rowData.staffAddress.length < 6
+          ? "Email is not valid"
+          : "",
     },
     {
       title: "Department",
       field: "departmentName",
       validate: (rowData) =>
-        rowData.staffAddress.length < 4 ? "Cannot be Empty" : "",
+        rowData.staffAddress &&
+        rowData.staffAddress.length < 4
+          ? "Cannot be Empty"
+          : "",
     },
   ]);
 
   return (
     <MaterialTable
-      style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
+      style={{
+        backgroundColor: "Rgb(255,255,255,0.2)",
+        color: "white",
+      }}
       title="Staff Registration"
       columns={columns}
       data={props.data}
       options={{
-        headerStyle: { backgroundColor: "transparent", color: "black" },
+        headerStyle: {
+          backgroundColor: "transparent",
+          color: "black",
+        },
         exportButton: true,
       }}
       editable={{

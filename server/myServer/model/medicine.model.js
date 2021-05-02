@@ -22,6 +22,7 @@ Medicine.create = (newMedicine, result) => {
   const query = "INSERT INTO medicine Set ?";
   sql.query(query, [newMedicine], (err, res) => {
     if (err) {
+      console.log(err);
       result(err, null);
       return;
     }
@@ -35,7 +36,12 @@ Medicine.create = (newMedicine, result) => {
 
 // Get all prescription by prescription id
 
-Medicine.getAllByPrescriptionId = (prescriptionId, role, id, cb) => {
+Medicine.getAllByPrescriptionId = (
+  prescriptionId,
+  role,
+  id,
+  cb
+) => {
   const query =
     role === "staff"
       ? "SELECT * FROM medicine, prescription WHERE medicine.prescriptionId = prescription.prescriptionId AND medicine.prescriptionId = ? "
@@ -43,7 +49,9 @@ Medicine.getAllByPrescriptionId = (prescriptionId, role, id, cb) => {
 
   sql.query(
     query,
-    role === "staff" ? [prescriptionId] : [prescriptionId, id],
+    role === "staff"
+      ? [prescriptionId]
+      : [prescriptionId, id],
     (error, result) => {
       if (error) {
         console.log("error :", error);
@@ -56,9 +64,6 @@ Medicine.getAllByPrescriptionId = (prescriptionId, role, id, cb) => {
         cb({ kind: "not_found" }, null);
         return;
       }
-      // console.log(result);
-      // console.log(result[0].patientId);
-      // console.log(id);
       cb(null, result);
     }
   );

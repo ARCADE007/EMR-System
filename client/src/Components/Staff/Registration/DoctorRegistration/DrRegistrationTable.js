@@ -31,25 +31,35 @@ function DrRegistrationTable() {
             <span />
           </div>
           <Container className="pt-lg-7">
-            <CustomMaterialTable data={data} setData={setData} />
-            <div style={{ float: "right", padding: "6px" }}>
-              <Link to="">
-                <Button
-                  onClick={() => {
-                    data.forEach((staff) => {
-                      axios
-                        .post(`http://localhost:3001/staffs`, staff)
-                        .then()
-                        .catch((error) => {
-                          console.log(error);
-                        });
-                    });
-                  }}
-                >
-                  Save
-                </Button>
-              </Link>
-            </div>
+            <CustomMaterialTable
+              data={data}
+              setData={setData}
+            />
+            {data.length !== 0 && (
+              <div
+                style={{ float: "right", padding: "6px" }}
+              >
+                <Link to="">
+                  <Button
+                    onClick={() => {
+                      data.forEach((staff) => {
+                        axios
+                          .post(
+                            `http://localhost:3001/staffs`,
+                            staff
+                          )
+                          .then()
+                          .catch((error) => {
+                            console.log(error);
+                          });
+                      });
+                    }}
+                  >
+                    Save
+                  </Button>
+                </Link>
+              </div>
+            )}
           </Container>
         </section>
       </main>

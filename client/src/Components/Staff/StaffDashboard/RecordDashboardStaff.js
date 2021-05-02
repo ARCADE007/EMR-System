@@ -36,7 +36,9 @@ function RecordDashboardStaff() {
   }, []);
   return (
     <>
-      <RecordDashboardStafftoDrDashboardStaff />
+      <RecordDashboardStafftoDrDashboardStaff
+        patientId={patientId}
+      />
       <main ref={refcontainer}>
         <section className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-default">
@@ -54,7 +56,13 @@ function RecordDashboardStaff() {
               <Col xs="12" sm="12" md="6" lg="6">
                 <h1 style={{ color: "white" }}>Records</h1>
               </Col>
-              <Col xs="12" sm="12" md="6" lg="6" style={{ paddingTop: "5px" }}>
+              <Col
+                xs="12"
+                sm="12"
+                md="6"
+                lg="6"
+                style={{ paddingTop: "5px" }}
+              >
                 <Link to={`/AddRecord/${patientId}`}>
                   <Button>New Record</Button>
                 </Link>
@@ -64,7 +72,7 @@ function RecordDashboardStaff() {
               <Col>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Search"
                 ></input>
               </Col>
@@ -86,12 +94,20 @@ function RecordDashboardStaff() {
                       <Card
                         body
                         inverse
-                        style={{ backgroundColor: "Rgb(125,125,125,0.5)" }}
+                        style={{
+                          backgroundColor:
+                            "Rgb(125,125,125,0.5)",
+                        }}
                       >
-                        <CardTitle style={{ color: "white" }} tag="h5">
+                        <CardTitle
+                          style={{ color: "white" }}
+                          tag="h5"
+                        >
                           {record.recordName}
                         </CardTitle>
-                        <Link to={`/ReportStaff/${record.recordId}`}>
+                        <Link
+                          to={`/ReportStaff/${patientId}/${record.recordId}/${record.recordName}`}
+                        >
                           <Button>View</Button>
                         </Link>
                       </Card>
