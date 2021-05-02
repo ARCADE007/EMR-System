@@ -1,0 +1,40 @@
+Sparsh ------->
+ - Mail (account created & forgot password)
+
+Raghav ------->
+ - Forgot Password
+ - Search
+
+Vineet ------->
+- login page password field message
+
+//render: (rowData) => <Link to="{rowData.url}">view</Link>,
+
+
+Patient---------->
+
+/DrDashboardPatient  (Searching)
+/RecordDashboardPatient (Searching)
+/PrescriptionMainPatient/:staffId  (Dr name in place of prescription|| Date format || View button design || export)
+/PrescriptionTable/:prescriptionId (Disease name in place of prescription || export)
+/ReportPatient/:recordId (Athentication || Recordname inplace of ID || export)
+
+Reception---------->
+(Authentication in all)
+/Registration (||)
+/PatientRegistration (Save button || Validation)
+/DrRegistrationTable (Save || Validation)
+/AskPatientReception
+/Recptionrole redirect to above
+(Updation of registered record)
+
+Staff----------->
+/AskPatient (||)
+/DrDashboardStaff (Searching || New prescription rendering direct to prescriptionMainStaff || View Priscription and update priscription both)
+/RecordDashboardStaff (NavbarLink to prescription || Searching )
+/AddRecord (NavbarLink to RecordDashboardStaff)
+/ReportStaff (filetolink || go-back navbar link || new record save button)
+
+
+
+
