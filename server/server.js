@@ -25,7 +25,7 @@ app.use(cookieParser());
 // simple route
 app.get("/", (req, res) => {
   res.json({
-    message: "Welcome to akathecoder application.",
+    message: "Welcome to Arcade007 application.",
   });
 });
 
