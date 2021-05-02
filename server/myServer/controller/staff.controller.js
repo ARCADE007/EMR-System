@@ -1,6 +1,9 @@
 const Staff = require("../model/staff.model");
 const generator = require("generate-password");
-const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
+const {
+  generateAccessToken,
+  checkAccessToken,
+} = require("../utils/jwtAuth");
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -18,7 +21,7 @@ exports.create = async (req, res) => {
     length: 8,
     numbers: true,
   });
-  console.log(password);
+  console.log(("actual password : ", password));
 
   // Create a Staff
   const staff = new Staff({
@@ -38,7 +41,9 @@ exports.create = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the staff.",
+        message:
+          err.message ||
+          "Some error occurred while creating the staff.",
       });
     });
 
@@ -46,7 +51,9 @@ exports.create = async (req, res) => {
   Staff.create(staff, (err, data) => {
     if (err) {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the Staff.",
+        message:
+          err.message ||
+          "Some error occurred while creating the Staff.",
       });
     } else {
       res.status(200).send(data);
@@ -66,7 +73,8 @@ exports.findOne = (req, res) => {
         } else {
           res.status(500).send({
             message:
-              "Error retrieving staff with staffId " + req.params.staffId,
+              "Error retrieving staff with staffId " +
+              req.params.staffId,
           });
         }
       } else {
@@ -106,21 +114,27 @@ exports.update = (req, res) => {
     );
 
     // Update the Staff
-    Staff.updateById(req.cookies.staffId, staff, (err, data) => {
-      if (err) {
-        if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found Staff with staffId ${req.cookies.staffId}.`,
-          });
+    Staff.updateById(
+      req.cookies.staffId,
+      staff,
+      (err, data) => {
+        if (err) {
+          if (err.kind === "not_found") {
+            res.status(404).send({
+              message: `Not found Staff with staffId ${req.cookies.staffId}.`,
+            });
+          } else {
+            res.status(500).send({
+              message:
+                "Error updating Staff with staffId " +
+                req.cookies.staffId,
+            });
+          }
         } else {
-          res.status(500).send({
-            message: "Error updating Staff with staffId " + req.cookies.staffId,
-          });
+          res.status(200).send(data);
         }
-      } else {
-        res.status(200).send(data);
       }
-    });
+    );
   } else {
     res.status(401).send({
       message: "Unauthorized",
@@ -132,7 +146,8 @@ exports.update = (req, res) => {
 exports.updatePassword = (req, res) => {
   if (
     req.cookies.StaffId &&
-    checkAccessToken(req.cookies.auth) == req.cookies.staffId
+    checkAccessToken(req.cookies.auth) ==
+      req.cookies.staffId
   ) {
     Staff.changePassword(
       req.cookies.staffId,

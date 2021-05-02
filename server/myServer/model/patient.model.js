@@ -34,7 +34,9 @@ Patient.create = (newPatient, result) => {
     });
 
     result(null, {
-      message: "Patient created with patientId " + newPatient.patientId,
+      message:
+        "Patient created with patientId " +
+        newPatient.patientId,
     });
   });
 };
@@ -75,9 +77,10 @@ Patient.updateById = (patientId, patient, result) => {
 //---------------------------------------------------------
 
 //Returns the data of doctor and disease from prescription
-Patient.findPrescriptionByPatientId = (patientId, result) => {
-  console.log(patientId);
-
+Patient.findPrescriptionByPatientId = (
+  patientId,
+  result
+) => {
   sql.query(
     "Select DISTINCT staff.staffId,staff.staffName,staff.departmentName From prescription,staff where staff.staffId = prescription.staffId and patientId=?",
     patientId,
@@ -128,8 +131,6 @@ Patient.findPrescriptionByPatientId = (patientId, result) => {
 
 // * Returns the data of Patient by patientId by running SELECT
 Patient.findByPatientId = (patientId, result) => {
-  console.log(patientId);
-
   sql.query(
     `SELECT * FROM Patient WHERE patientId = ?`,
     patientId,
@@ -157,7 +158,9 @@ Patient.findByPatientId = (patientId, result) => {
 Patient.checkPassword = (id, password, role, result) => {
   const query = `SELECT password from ${
     role == "patient" ? "patient" : "staff"
-  } WHERE ${role == "patient" ? "patientId" : "staffId"} = ?`;
+  } WHERE ${
+    role == "patient" ? "patientId" : "staffId"
+  } = ?`;
   sql.query(query, [id], (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -166,7 +169,6 @@ Patient.checkPassword = (id, password, role, result) => {
     }
     console.log(res);
     if (res.length) {
-      console.log(password, res[0].password);
       bcrypt
         .compare(password, res[0].password)
         .then((passResult) => {
@@ -191,7 +193,12 @@ Patient.checkPassword = (id, password, role, result) => {
 };
 
 // * Updates Password
-Patient.changePassword = (patientId, password, newPassword, result) => {
+Patient.changePassword = (
+  patientId,
+  password,
+  newPassword,
+  result
+) => {
   Patient.checkPassword(patientId, password, (err, res) => {
     if (err) {
       result({ kind: "not_valId" }, null);

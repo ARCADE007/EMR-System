@@ -1,40 +1,47 @@
 const Medicines = require("../model/medicine.model");
 const PreMedicine = require("../model/prescription.model");
-const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
+const {
+  generateAccessToken,
+  checkAccessToken,
+} = require("../utils/jwtAuth");
 
 // -----------------------------------------------------------------
 // Create and save a new Medicine
 //------------------------------------------------------------------
 
 exports.create = (req, res) => {
+  console.log(req.body);
+
   if (!req.body) {
     res.status(400).send({
       message: "Content cannot be empty!",
     });
   }
-
   // Create a new Medicine
-
   const medicine = new Medicines({
     name: req.body.name,
-    dateFrom: req.body.dateFrom,
-    dateTo: req.body.dateTo,
+    dateFrom: new Date(req.body.dateFrom)
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " "),
+    dateTo: new Date(req.body.dateTo)
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " "),
     timeMorning: req.body.timeMorning,
     timeEvening: req.body.timeEvening,
     timeNight: req.body.timeNight,
     prescriptionId: req.body.prescriptionId,
   });
-
   // Save medicine in database
-
   Medicines.create(medicine, (err, data) => {
     if (err) {
       res.status(500).send({
         message:
-          err.message || "Some error occured while creating the prescription",
+          err.message ||
+          "Some error occured while creating the prescription",
       });
     } else {
-      console.log(req.body.prescriptionId);
       res.status(200).send(data);
     }
   });
@@ -46,11 +53,12 @@ exports.create = (req, res) => {
 
 exports.getAllByPrescriptionId = (req, res) => {
   if (!req.params.prescriptionId) {
-    console.log("Params Parameter prescriptionId is not recieved");
+    console.log(
+      "Params Parameter prescriptionId is not recieved"
+    );
     return;
   }
   const prescriptionId = req.params.prescriptionId;
-  // console.log(prescriptionId);
   const auth = checkAccessToken(req.cookies.auth);
 
   Medicines.getAllByPrescriptionId(

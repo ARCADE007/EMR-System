@@ -32,7 +32,8 @@ Staff.create = (newStaff, result) => {
     });
 
     result(null, {
-      message: "Staff created with staffId " + newStaff.staffId,
+      message:
+        "Staff created with staffId " + newStaff.staffId,
     });
   });
 };
@@ -74,24 +75,26 @@ Staff.updateById = (staffId, staff, result) => {
 
 // * Returns the data of staff by staffId by running SELECT
 Staff.findBystaffId = (staffId, result) => {
-  console.log(staffId);
+  sql.query(
+    `SELECT * FROM staff WHERE staffId = ?`,
+    staffId,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
 
-  sql.query(`SELECT * FROM staff WHERE staffId = ?`, staffId, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
+      if (res.length) {
+        console.log("found staff: ", res[0]);
+        result(null, res[0]);
+        return;
+      }
+
+      // not found user with the staffId === staffId
+      result({ kind: "not_found" }, null);
     }
-
-    if (res.length) {
-      console.log("found staff: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-
-    // not found user with the staffId === staffId
-    result({ kind: "not_found" }, null);
-  });
+  );
 };
 
 // Checks Password
@@ -114,7 +117,10 @@ Staff.checkPassword = (staffId, password, result) => {
           .compare(password, res[0].password)
           .then((passResult) => {
             if (passResult) {
-              console.log("password authenticated : ", staffId);
+              console.log(
+                "password authenticated : ",
+                staffId
+              );
               result(null, {
                 message: "authentication successful",
               });
@@ -135,7 +141,12 @@ Staff.checkPassword = (staffId, password, result) => {
 };
 
 // * Updates Password
-Staff.changePassword = (staffId, password, newPassword, result) => {
+Staff.changePassword = (
+  staffId,
+  password,
+  newPassword,
+  result
+) => {
   Staff.checkPassword(staffId, password, (err, res) => {
     if (err) {
       result({ kind: "not_valId" }, null);

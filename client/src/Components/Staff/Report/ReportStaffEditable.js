@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import { Link } from "react-router-dom";
 export default function ReportStaffEditable(props) {
@@ -10,14 +10,7 @@ export default function ReportStaffEditable(props) {
         rowData.reportName && rowData.reportName.length < 2
           ? "Name must be have 3 chars"
           : "",
-
-      editComponent: (props) => (
-        <input
-          type="text"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
+      type: "string",
     },
 
     {
@@ -30,36 +23,111 @@ export default function ReportStaffEditable(props) {
     {
       title: "File",
       field: "file",
-      type: "file",
+      type: "string",
+      hidden: true,
       validate: (rowData) =>
-        rowData.file && rowData.file.length < 9 ? "Upload File" : "",
+        rowData.file && rowData.file.length < 9
+          ? "Upload File"
+          : "",
+    },
+  ]);
+
+  const [columnsEditable, setColumnsEditable] = useState([
+    {
+      title: "ReportName",
+      field: "reportName",
+      validate: (rowData) =>
+        rowData.reportName && rowData.reportName.length < 2
+          ? "Name must be have 3 chars"
+          : "",
+
+      type: "string",
+    },
+
+    {
+      title: "Date ",
+      field: "Date",
+      type: "date",
+      validate: (rowData) =>
+        rowData.Date === "" ? "Date cannot be empty" : "",
+    },
+    {
+      title: "File",
+      field: "file",
+      type: "string",
+      validate: (rowData) =>
+        rowData.file && rowData.file.length < 9
+          ? "Upload File"
+          : "",
     },
   ]);
 
   return (
-    <MaterialTable
-      style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
-      title="ID"
-      columns={columns}
-      data={props.data}
-      actions={[
-        (rowData) => {
-          return {
-            icon: () => (
-              <Link to={{ pathname: `${rowData.file}` }} target="_blank">
-                View
-              </Link>
-            ),
+    <>
+      {!props.edit && (
+        <MaterialTable
+          style={{
+            backgroundColor: "Rgb(255,255,255,0.2)",
+            color: "white",
+          }}
+          title={props.recordName}
+          columns={columns}
+          data={props.reports}
+          actions={[
+            (rowData) => {
+              return {
+                icon: () => (
+                  <Link
+                    to={{ pathname: `${rowData.file}` }}
+                    target="_blank"
+                  >
+                    View
+                  </Link>
+                ),
 
-            tooltip: "View ",
-          };
-        },
-      ]}
-      options={{
-        headerStyle: { backgroundColor: "transparent", color: "black" },
-      }}
-      editable={{
-        ...(props.edit && {
+                tooltip: "View ",
+              };
+            },
+          ]}
+          options={{
+            headerStyle: {
+              backgroundColor: "transparent",
+              color: "black",
+            },
+          }}
+        />
+      )}
+      <MaterialTable
+        style={{
+          backgroundColor: "Rgb(255,255,255,0.2)",
+          color: "white",
+        }}
+        title="Add Reports"
+        columns={columnsEditable}
+        data={props.data}
+        actions={[
+          (rowData) => {
+            return {
+              icon: () => (
+                <Link
+                  to={{ pathname: `${rowData.file}` }}
+                  target="_blank"
+                >
+                  View
+                </Link>
+              ),
+
+              tooltip: "View ",
+            };
+          },
+        ]}
+        options={{
+          headerStyle: {
+            backgroundColor: "transparent",
+            color: "black",
+          },
+        }}
+        editable={{
           onRowAdd: (newData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
@@ -91,8 +159,8 @@ export default function ReportStaffEditable(props) {
                 resolve();
               }, 1000);
             }),
-        }),
-      }}
-    />
+        }}
+      />
+    </>
   );
 }

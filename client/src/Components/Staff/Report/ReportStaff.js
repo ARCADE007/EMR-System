@@ -7,10 +7,12 @@ import { Link, useParams } from "react-router-dom";
 import ReportStaffEditable from "./ReportStaffEditable";
 import axios from "axios";
 function ReportStaff() {
-  const { recordId } = useParams();
+  const { patientId, recordId, recordName } = useParams();
   const refcontainer = useRef(null);
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState([]);
+  const [reports, setReports] = useState([]);
+
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -20,13 +22,13 @@ function ReportStaff() {
         withCredentials: true,
       })
       .then((result) => {
-        setData(result.data);
-        setEdit(!result.data.length);
+        setReports(result.data);
+        setEdit(!Boolean(result.data.length));
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [recordId]);
 
   return (
     <>
@@ -44,19 +46,50 @@ function ReportStaff() {
             <span />
           </div>
           <div>
-            <h1 style={{ color: "white", textAlign: "center" }}>
+            <h1
+              style={{
+                color: "white",
+                textAlign: "center",
+              }}
+            >
               Patient Report
             </h1>
           </div>
           <Container className="pt-lg-7">
-            <ReportStaffEditable data={data} setData={setData} edit={edit} />
-            <div style={{ float: "right", padding: "6px" }}>
-              {edit && (
-                <Link to="">
-                  <Button>Submit</Button>
+            <ReportStaffEditable
+              reports={reports}
+              data={data}
+              setData={setData}
+              edit={edit}
+              recordName={recordName}
+            />
+            {data.length !== 0 && (
+              <div
+                style={{ float: "right", padding: "6px" }}
+              >
+                <Link
+                  to={`/RecordDashboardStaff/${patientId}`}
+                >
+                  <Button
+                    onClick={() => {
+                      data.forEach((report) => {
+                        axios.post(
+                          `http://localhost:3001/reports`,
+                          {
+                            reportName: report.reportName,
+                            date: report.Date,
+                            file: report.file,
+                            recordId: recordId,
+                          }
+                        );
+                      });
+                    }}
+                  >
+                    Submit
+                  </Button>
                 </Link>
-              )}
-            </div>
+              </div>
+            )}
           </Container>
         </section>
       </main>
