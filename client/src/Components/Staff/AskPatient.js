@@ -19,7 +19,7 @@ import LoginNavbar from "../MainComponents/LoginNavbar";
 import LoginFooter from "../MainComponents/LoginFooter";
 function AskPatient() {
   const refcontainer = useRef(null);
-  const [patientId, setPatientId] = useState();
+  const [patientId, setPatientId] = useState("");
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -59,7 +59,9 @@ function AskPatient() {
                     <span>Enter Patient ID</span>
                   </div>
                   <CardBody
-                    style={{ backgroundColor: "rgb(128,0,0,0.4)" }}
+                    style={{
+                      backgroundColor: "rgb(128,0,0,0.4)",
+                    }}
                     className="px-lg-5 py-lg-5"
                   >
                     <Form>
@@ -90,7 +92,9 @@ function AskPatient() {
                       </FormGroup>
 
                       <div className="text-center">
-                        <Link to={`/DrDashboardStaff/${patientId}`}>
+                        <Link
+                          to={`/DrDashboardStaff/${patientId}`}
+                        >
                           <Button
                             className="my-4"
                             color="primary"

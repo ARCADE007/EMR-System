@@ -12,7 +12,10 @@ exports.create = async (req, res) => {
   // Create a Report
   const report = new Reports({
     reportName: req.body.reportName,
-    date: req.body.date,
+    date: new Date(req.body.date)
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " "),
     file: req.body.file,
     recordId: req.body.recordId,
   });
@@ -22,7 +25,8 @@ exports.create = async (req, res) => {
     if (err) {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Record.",
+          err.message ||
+          "Some error occurred while creating the Record.",
       });
     } else {
       res.status(200).send(data);
@@ -33,7 +37,9 @@ exports.create = async (req, res) => {
 // * Find a all reports with a recordId
 exports.findByReportID = (req, res) => {
   if (!req.params.recordId) {
-    console.log("Params Parameter recordId is not recieved");
+    console.log(
+      "Params Parameter recordId is not recieved"
+    );
     return;
   }
   const recordId = req.params.recordId;
