@@ -19,6 +19,25 @@ function RecordDashboardStaff() {
   const { patientId } = useParams();
   const refcontainer = useRef(null);
   const [data, setData] = useState([]);
+  const [actualData, setActualData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      setData(actualData);
+      return;
+    }
+    const newData = actualData.filter((record) => {
+      return (
+        record.recordName.toLowerCase().search(searchTerm.toLowerCase()) !== -1
+      );
+    });
+    setData(newData);
+  }, [searchTerm]);
+
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -29,6 +48,7 @@ function RecordDashboardStaff() {
       })
       .then((result) => {
         setData(result.data);
+        setActualData(result.data);
       })
       .catch((err) => {
         console.error(err);
@@ -36,9 +56,7 @@ function RecordDashboardStaff() {
   }, []);
   return (
     <>
-      <RecordDashboardStafftoDrDashboardStaff
-        patientId={patientId}
-      />
+      <RecordDashboardStafftoDrDashboardStaff patientId={patientId} />
       <main ref={refcontainer}>
         <section className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-default">
@@ -56,13 +74,7 @@ function RecordDashboardStaff() {
               <Col xs="12" sm="12" md="6" lg="6">
                 <h1 style={{ color: "white" }}>Records</h1>
               </Col>
-              <Col
-                xs="12"
-                sm="12"
-                md="6"
-                lg="6"
-                style={{ paddingTop: "5px" }}
-              >
+              <Col xs="12" sm="12" md="6" lg="6" style={{ paddingTop: "5px" }}>
                 <Link to={`/AddRecord/${patientId}`}>
                   <Button>New Record</Button>
                 </Link>
@@ -74,6 +86,8 @@ function RecordDashboardStaff() {
                   type="text"
                   className="form-control"
                   placeholder="Search"
+                  value={searchTerm}
+                  onChange={handleChange}
                 ></input>
               </Col>
             </Container>
@@ -95,14 +109,10 @@ function RecordDashboardStaff() {
                         body
                         inverse
                         style={{
-                          backgroundColor:
-                            "Rgb(125,125,125,0.5)",
+                          backgroundColor: "Rgb(125,125,125,0.5)",
                         }}
                       >
-                        <CardTitle
-                          style={{ color: "white" }}
-                          tag="h5"
-                        >
+                        <CardTitle style={{ color: "white" }} tag="h5">
                           {record.recordName}
                         </CardTitle>
                         <Link

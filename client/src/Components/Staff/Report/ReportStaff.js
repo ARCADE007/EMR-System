@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Container } from "reactstrap";
 import "../../CDDDD.css";
-import LoginNavbar from "../../MainComponents/LoginNavbar";
+
 import LoginFooter from "../../MainComponents/LoginFooter";
 import { Link, useParams } from "react-router-dom";
 import ReportStaffEditable from "./ReportStaffEditable";
 import axios from "axios";
+import StaffReportstoDrDashboardRecord from "../../MainComponents/StaffReportstoDrDashboardRecord";
 function ReportStaff() {
   const { patientId, recordId, recordName } = useParams();
   const refcontainer = useRef(null);
@@ -32,7 +33,7 @@ function ReportStaff() {
 
   return (
     <>
-      <LoginNavbar />
+      <StaffReportstoDrDashboardRecord patientId={patientId} />
       <main ref={refcontainer}>
         <section className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-default">
@@ -64,24 +65,17 @@ function ReportStaff() {
               recordName={recordName}
             />
             {data.length !== 0 && (
-              <div
-                style={{ float: "right", padding: "6px" }}
-              >
-                <Link
-                  to={`/RecordDashboardStaff/${patientId}`}
-                >
+              <div style={{ float: "right", padding: "6px" }}>
+                <Link to={`/RecordDashboardStaff/${patientId}`}>
                   <Button
                     onClick={() => {
                       data.forEach((report) => {
-                        axios.post(
-                          `http://localhost:3001/reports`,
-                          {
-                            reportName: report.reportName,
-                            date: report.Date,
-                            file: report.file,
-                            recordId: recordId,
-                          }
-                        );
+                        axios.post(`http://localhost:3001/reports`, {
+                          reportName: report.reportName,
+                          date: report.Date,
+                          file: report.file,
+                          recordId: recordId,
+                        });
                       });
                     }}
                   >
