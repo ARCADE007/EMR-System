@@ -1,39 +1,66 @@
-import React, { useState, useEffect, useRef, useReducer } from "react";
+/* eslint-disable default-case */
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useReducer,
+} from "react";
 import "../../../CDDDD.css";
 import { Container, Button, Row, Col } from "reactstrap";
 import "../../../Table.css";
 import RegistrationToRegistrationMain from "../../../MainComponents/RegistraionToRegistrationMain";
 import LoginFooter from "../../../MainComponents/LoginFooter";
 import PatientCustomMaterialTable from "./PatientCustomMaterialTable";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 const actionReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
-      return { ...state, add: true, modify: false, view: false };
+      return {
+        ...state,
+        add: true,
+        modify: false,
+        view: false,
+      };
     case "MODIFY":
-      return { ...state, add: false, modify: true, view: false };
+      return {
+        ...state,
+        add: false,
+        modify: true,
+        view: false,
+      };
     case "VIEW":
-      return { ...state, add: false, modify: false, view: true };
+      return {
+        ...state,
+        add: false,
+        modify: false,
+        view: true,
+      };
+    default:
+      break;
   }
 };
 
 function PatientRegistrationTable() {
   const refcontainer = useRef(null);
   const [data, setData] = useState([]);
-  const [action, dispatchAction] = useReducer(actionReducer, {
-    add: false,
-    modify: false,
-    view: false,
-  });
+  const [action, dispatchAction] = useReducer(
+    actionReducer,
+    {
+      add: false,
+      modify: false,
+      view: false,
+    }
+  );
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     dispatchAction({ type: "VIEW" });
     axios
-      .get(`http://localhost:3001/allpatients`, { withCredentials: true })
+      .get(`http://localhost:3001/allpatients`, {
+        withCredentials: true,
+      })
       .then((result) => {
         setData(result.data);
       });
@@ -56,7 +83,13 @@ function PatientRegistrationTable() {
           </div>
           <Container>
             <Row>
-              <Col xs="12" sm="12" md="6" lg="6" style={{ paddingTop: "5px" }}>
+              <Col
+                xs="12"
+                sm="12"
+                md="6"
+                lg="6"
+                style={{ paddingTop: "5px" }}
+              >
                 <Button
                   onClick={() => {
                     dispatchAction({ type: "ADD" });
@@ -65,7 +98,13 @@ function PatientRegistrationTable() {
                   Add Patient
                 </Button>
               </Col>
-              <Col xs="12" sm="12" md="6" lg="6" style={{ paddingTop: "5px" }}>
+              <Col
+                xs="12"
+                sm="12"
+                md="6"
+                lg="6"
+                style={{ paddingTop: "5px" }}
+              >
                 <Button
                   onClick={() => {
                     dispatchAction({ type: "MODIFY" });

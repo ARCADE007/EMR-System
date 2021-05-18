@@ -17,8 +17,7 @@ exports.create = (req, res) => {
     description: req.body.description,
     date: new Date(req.body.date)
       .toISOString()
-      .slice(0, 19)
-      .replace("T", " "),
+      .slice(0, 10),
     disease: req.body.disease,
     staffId: req.body.staffId,
     patientId: req.body.patientId,

@@ -1,5 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Login from "./Components/CommonPage/Login";
@@ -39,7 +43,7 @@ function App() {
             <RecordDashboardPatient />
           </Route>
 
-          <Route path="/ReportPatient/:recordId">
+          <Route path="/ReportPatient/:recordId/:recordName">
             <ReportPatient />
           </Route>
 
