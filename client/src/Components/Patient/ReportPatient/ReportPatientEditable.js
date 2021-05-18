@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import MaterialTable from "material-table";
 export default function ReportPatientEditable(props) {
-  const { recordId } = useParams();
+  const { recordId, recordName } = useParams();
   const [columns, setColumns] = useState([
     {
       title: "ReportName",
@@ -43,12 +43,15 @@ export default function ReportPatientEditable(props) {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [recordId]);
 
   return (
     <MaterialTable
-      style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
-      title="ID"
+      style={{
+        backgroundColor: "Rgb(255,255,255,0.2)",
+        color: "white",
+      }}
+      title={recordName}
       columns={columns}
       data={data.map((report) => {
         return {
@@ -61,7 +64,10 @@ export default function ReportPatientEditable(props) {
         (rowData) => {
           return {
             icon: () => (
-              <Link to={{ pathname: `${rowData.file}` }} target="_blank">
+              <Link
+                to={{ pathname: `${rowData.file}` }}
+                target="_blank"
+              >
                 View
               </Link>
             ),
@@ -71,7 +77,10 @@ export default function ReportPatientEditable(props) {
         },
       ]}
       options={{
-        headerStyle: { backgroundColor: "transparent", color: "black" },
+        headerStyle: {
+          backgroundColor: "transparent",
+          color: "black",
+        },
         exportButton: true,
       }}
     />

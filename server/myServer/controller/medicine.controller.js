@@ -22,12 +22,10 @@ exports.create = (req, res) => {
     name: req.body.name,
     dateFrom: new Date(req.body.dateFrom)
       .toISOString()
-      .slice(0, 19)
-      .replace("T", " "),
+      .slice(0, 10),
     dateTo: new Date(req.body.dateTo)
       .toISOString()
-      .slice(0, 19)
-      .replace("T", " "),
+      .slice(0, 10),
     timeMorning: req.body.timeMorning,
     timeEvening: req.body.timeEvening,
     timeNight: req.body.timeNight,

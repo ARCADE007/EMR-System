@@ -14,8 +14,7 @@ exports.create = async (req, res) => {
     reportName: req.body.reportName,
     date: new Date(req.body.date)
       .toISOString()
-      .slice(0, 19)
-      .replace("T", " "),
+      .slice(0, 10),
     file: req.body.file,
     recordId: req.body.recordId,
   });

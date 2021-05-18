@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
-import { Button } from "reactstrap";
+import {
+  Button,
+  FormGroup,
+  Form,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col,
+} from "reactstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 export default function PatientCustomMaterialTable(props) {
   const [addData, setAddData] = useState([]);
+  const [updateData, setUpdateData] = useState([]);
+  const [patientId, setPatientId] = useState("");
   const [columns, setColumns] = useState([
     {
       title: "FullName",
@@ -12,13 +25,14 @@ export default function PatientCustomMaterialTable(props) {
 
       editComponent: (props) => (
         <input
-          type="text"
+          type="string"
           value={props.value}
           onChange={(e) => props.onChange(e.target.value)}
         />
       ),
       validate: (rowData) =>
-        rowData.patientName && rowData.patientName.length < 2
+        rowData.patientName &&
+        rowData.patientName.length < 2
           ? "Name must be have 3 chars"
           : "",
     },
@@ -27,23 +41,27 @@ export default function PatientCustomMaterialTable(props) {
       field: "patientDob",
       type: "date",
       validate: (rowData) =>
-        rowData.patientDob === "" ? "Name cannot be empty" : "",
+        rowData.patientDob === ""
+          ? "Name cannot be empty"
+          : "",
     },
 
     {
       title: "Address",
       field: "patientAddress",
       validate: (rowData) =>
-        rowData.patientAddress && rowData.patientAddress.length < 5
+        rowData.patientAddress &&
+        rowData.patientAddress.length < 5
           ? "Address must be have 6 character"
           : "",
     },
     {
       title: "Phone Number",
       field: "patientPhoneno",
-      type: "text",
+      type: "string",
       validate: (rowData) =>
-        rowData.patientPhoneno && rowData.patientPhoneno.length < 9
+        rowData.patientPhoneno &&
+        rowData.patientPhoneno.length < 9
           ? "Phone number must  have 10 digit"
           : "",
     },
@@ -52,11 +70,29 @@ export default function PatientCustomMaterialTable(props) {
       title: "Email",
       field: "patientEmail",
       validate: (rowData) =>
-        rowData.patientEmail && rowData.patientEmail.length < 6
+        rowData.patientEmail &&
+        rowData.patientEmail.length < 6
           ? "Email is not valid"
           : "",
     },
   ]);
+  useEffect(() => {
+    if (patientId !== "") {
+      axios
+        .get(
+          `http://localhost:3001/patients/${patientId}`,
+          {
+            withCredentials: true,
+          }
+        )
+        .then((result) => {
+          setUpdateData(new Array(result.data));
+        })
+        .catch((err) => {
+          console.error("404");
+        });
+    }
+  }, [patientId]);
 
   return (
     <>
@@ -66,7 +102,7 @@ export default function PatientCustomMaterialTable(props) {
             backgroundColor: "Rgb(255,255,255,0.2)",
             color: "white",
           }}
-          title="Patient Registration"
+          title="Patient Details"
           columns={columns}
           data={props.data}
           options={{
@@ -95,7 +131,7 @@ export default function PatientCustomMaterialTable(props) {
                 backgroundColor: "transparent",
                 color: "black",
               },
-              exportButton: true,
+              search: false,
             }}
             editable={{
               onRowAdd: (newData) =>
@@ -135,7 +171,10 @@ export default function PatientCustomMaterialTable(props) {
                   onClick={() => {
                     addData.forEach((patient) => {
                       axios
-                        .post(`http://localhost:3001/patients`, patient)
+                        .post(
+                          `http://localhost:3001/patients`,
+                          patient
+                        )
                         .then()
                         .catch((error) => {
                           console.log(error);
@@ -144,6 +183,100 @@ export default function PatientCustomMaterialTable(props) {
                   }}
                 >
                   Save
+                </Button>
+              </Link>
+            </div>
+          )}
+        </>
+      )}
+      {props.action.modify && (
+        <>
+          <Container>
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setPatientId(e.target.id.value);
+              }}
+            >
+              <Row>
+                <Col>
+                  <FormGroup className="px-lg-5">
+                    <InputGroup className="input-group-alternative">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-circle-08" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        placeholder="Enter Patient Id"
+                        name="id"
+                        type="text"
+                      />
+                    </InputGroup>
+                  </FormGroup>
+                </Col>
+                <Col>
+                  <div className="text-center">
+                    <Button
+                      className="my-4"
+                      color="primary"
+                      type="submit"
+                    >
+                      Go
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
+            </Form>
+          </Container>
+          <MaterialTable
+            style={{
+              backgroundColor: "Rgb(255,255,255,0.2)",
+              color: "white",
+            }}
+            title="Patient Details Updation"
+            columns={columns}
+            data={updateData}
+            options={{
+              headerStyle: {
+                backgroundColor: "transparent",
+                color: "black",
+              },
+              search: false,
+            }}
+            editable={{
+              onRowUpdate: (newData, oldData) =>
+                new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    const dataUpdate = [...updateData];
+                    const index = oldData.tableData.id;
+                    dataUpdate[index] = newData;
+                    setUpdateData([...dataUpdate]);
+                    resolve();
+                  }, 1000);
+                }),
+            }}
+          />
+          {updateData.length !== 0 && (
+            <div style={{ float: "right", padding: "6px" }}>
+              <Link to="/Registration">
+                <Button
+                  onClick={() => {
+                    updateData.forEach((patient) => {
+                      axios
+                        .patch(
+                          `http://localhost:3001/patients/${patientId}`,
+                          patient,
+                          { withCredentials: true }
+                        )
+                        .then()
+                        .catch((error) => {
+                          console.log(error);
+                        });
+                    });
+                  }}
+                >
+                  Update
                 </Button>
               </Link>
             </div>
