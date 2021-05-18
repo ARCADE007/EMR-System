@@ -20,7 +20,8 @@ function DrDashboardStaff() {
   const [data, setData] = useState([]);
   const [actualData, setActualData] = useState([]);
   const [staffName, setStaffName] = useState("");
-  const [newPrescription, setNewPrescription] = useState(false);
+  const [newPrescription, setNewPrescription] =
+    useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
@@ -31,9 +32,13 @@ function DrDashboardStaff() {
     document.scrollingElement.scrollTop = 0;
 
     axios
-      .get("http://localhost:3001/patients/prescription/" + patientId, {
-        withCredentials: true,
-      })
+      .get(
+        "http://localhost:3001/patients/prescription/" +
+          patientId,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => {
         setData(result.data);
         setActualData(result.data);
@@ -46,9 +51,12 @@ function DrDashboardStaff() {
         console.error(err);
       });
     axios
-      .get(`http://localhost:3001/staffs/${Cookies.get("id")}`, {
-        withCredentials: true,
-      })
+      .get(
+        `http://localhost:3001/staffs/${Cookies.get("id")}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         setStaffName(res.data.staffName);
       });
@@ -61,15 +69,19 @@ function DrDashboardStaff() {
     }
     const newData = actualData.filter((doctor) => {
       return (
-        doctor.staffName.toLowerCase().search(searchTerm.toLowerCase()) !== -1
+        doctor.staffName
+          .toLowerCase()
+          .search(searchTerm.toLowerCase()) !== -1
       );
     });
     setData(newData);
-  }, [searchTerm]);
+  }, [searchTerm, actualData]);
 
   return (
     <>
-      <DrDashboardStafftoRecordDashboardStaff patientId={patientId} />
+      <DrDashboardStafftoRecordDashboardStaff
+        patientId={patientId}
+      />
       <main ref={refcontainer}>
         <section className="Custom_heading section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-default">
@@ -85,7 +97,9 @@ function DrDashboardStaff() {
           <div className="Patient__Record">
             <Row>
               <Col xs="12" sm="12" md="6" lg="6">
-                <h1 style={{ color: "white" }}>Prescription</h1>
+                <h1 style={{ color: "white" }}>
+                  Prescription
+                </h1>
               </Col>
               {newPrescription && (
                 <Col
@@ -136,13 +150,19 @@ function DrDashboardStaff() {
                         body
                         inverse
                         style={{
-                          backgroundColor: "Rgb(255,255,255,0.2)",
+                          backgroundColor:
+                            "Rgb(255,255,255,0.2)",
                         }}
                       >
-                        <CardTitle style={{ color: "white" }} tag="h5">
+                        <CardTitle
+                          style={{ color: "white" }}
+                          tag="h5"
+                        >
                           {prescription.staffName}
                         </CardTitle>
-                        <CardText>{prescription.departmentName}</CardText>
+                        <CardText>
+                          {prescription.departmentName}
+                        </CardText>
 
                         <Link
                           to={`/PrescriptionMain/${patientId}/${prescription.staffId}/${prescription.staffName}`}

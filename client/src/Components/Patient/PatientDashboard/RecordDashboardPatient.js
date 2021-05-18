@@ -7,7 +7,6 @@ import {
   Container,
   Row,
   Col,
-  CardText,
   CardTitle,
 } from "reactstrap";
 import LoginNavbar from "../../MainComponents/LoginNavbar";
@@ -23,9 +22,13 @@ function RecordDashboardPatient() {
     document.scrollingElement.scrollTop = 0;
 
     axios
-      .get("http://localhost:3001/records/" + Cookies.get("id"), {
-        withCredentials: true,
-      })
+      .get(
+        "http://localhost:3001/records/" +
+          Cookies.get("id"),
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => {
         setData(result.data);
       })
@@ -61,7 +64,10 @@ function RecordDashboardPatient() {
                 sm="12"
                 md="6"
                 lg="6"
-                style={{ paddingTop: "5px", paddingBottom: "5px" }}
+                style={{
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
               >
                 <Link to="/DrDashboardPatient">
                   <Button>View Prescriptions</Button>
@@ -94,14 +100,24 @@ function RecordDashboardPatient() {
                       <Card
                         body
                         inverse
-                        style={{ background: "rgb(255,255,255,0.2)" }}
+                        style={{
+                          background:
+                            "rgb(255,255,255,0.2)",
+                        }}
                       >
-                        <CardTitle style={{ color: "white" }} tag="h5">
+                        <CardTitle
+                          style={{ color: "white" }}
+                          tag="h5"
+                        >
                           {record.recordName}
                         </CardTitle>
 
-                        <Link to={"/ReportPatient/" + record.recordId}>
-                          <Button type="submit">View</Button>
+                        <Link
+                          to={`/ReportPatient/${record.recordId}/${record.recordName}`}
+                        >
+                          <Button type="submit">
+                            View
+                          </Button>
                         </Link>
                       </Card>
                     </Col>

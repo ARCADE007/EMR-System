@@ -11,10 +11,13 @@ module.exports = (app) => {
   app.get("/allpatients", patients.findAll);
 
   //Returns the data of doctor and disease from prescription
-  app.get("/patients/prescription/:patientId", patients.findPrescription);
+  app.get(
+    "/patients/prescription/:patientId",
+    patients.findPrescription
+  );
 
   // Update a Patient with PatientId
-  app.patch("/patients/data", patients.update);
+  app.patch("/patients/:patientId", patients.update);
 
   // Login by Authenticate Password
   app.post("/authenticate", patients.authenticate);
