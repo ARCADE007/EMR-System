@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 export default function PrescriptionMainEditablePatient(props) {
-  const { staffId } = useParams();
+  const { staffId, staffName } = useParams();
 
   const [columns, setColumns] = useState([
     {
@@ -46,20 +47,23 @@ export default function PrescriptionMainEditablePatient(props) {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/prescriptions/" + staffId, {
-        withCredentials: true,
-      })
+      .get(
+        `http://localhost:3001/prescriptions/${Cookies.get("id")}/${staffId}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => {
         setData(result.data);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [staffId]);
   return (
     <MaterialTable
       style={{ backgroundColor: "Rgb(255,255,255,0.2)", color: "white" }}
-      title="hi"
+      title={staffName}
       columns={columns}
       data={data.map((prescription) => {
         return {
@@ -73,7 +77,9 @@ export default function PrescriptionMainEditablePatient(props) {
         (rowData) => {
           return {
             icon: () => (
-              <Link to={`/PrescriptionTable/${rowData.prescriptionId}`}>
+              <Link
+                to={`/PrescriptionTable/${staffId}/${staffName}/${rowData.prescriptionId}`}
+              >
                 View
               </Link>
             ),

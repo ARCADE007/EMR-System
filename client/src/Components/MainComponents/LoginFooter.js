@@ -105,13 +105,7 @@ class LoginFooter extends React.Component {
               className=" align-items-center justify-content-md-between"
             >
               <div className=" copyright">
-                © {new Date().getFullYear()}{" "}
-                <a
-                  href="https://www.creative-tim.com?ref=adsr-footer"
-                  target="_blank"
-                >
-                  EMR System{" "}
-                </a>
+                © {new Date().getFullYear()} <a>EMR System </a>
                 <span>-- Made by Vineet Sharma & Priya Kaushik --</span>
               </div>
             </Col>

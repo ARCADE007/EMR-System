@@ -27,9 +27,7 @@ function Login() {
   });
 
   const [idIsValid, setIdIsValid] = useState(false);
-  const [passwordIsValid, setPasswordIsValid] = useState(
-    false
-  );
+  const [passwordIsValid, setPasswordIsValid] = useState(false);
 
   const [idError, setIdError] = useState("");
   const validateId = (e) => {
@@ -37,7 +35,7 @@ function Login() {
 
     if (validator.isNumeric(id)) {
       setIdIsValid(true);
-      setIdError("Valid Id");
+      setIdError("");
     } else {
       setIdIsValid(false);
       setIdError("Enter valid Id ");
@@ -56,10 +54,10 @@ function Login() {
       })
     ) {
       setPasswordIsValid(true);
-      setErrorMessage("Is Strong Password");
+      setErrorMessage("");
     } else {
       setPasswordIsValid(false);
-      setErrorMessage("Is Not Strong Password");
+      setErrorMessage("Enter valid Password");
     }
   };
 
@@ -93,9 +91,7 @@ function Login() {
                       fontWeight: "bold",
                     }}
                   >
-                    <span>
-                      Sign in with your credentials
-                    </span>
+                    <span>Sign in with your credentials</span>
                   </div>
                   <CardBody
                     style={{
@@ -142,9 +138,7 @@ function Login() {
                             placeholder="Password"
                             type="password"
                             autoComplete="off"
-                            onChange={(e) =>
-                              validate(e.target.value)
-                            }
+                            onChange={(e) => validate(e.target.value)}
                           />
                         </InputGroup>
                         <span
@@ -177,21 +171,13 @@ function Login() {
                         </FormGroup>
                         <FormGroup check>
                           <Label check>
-                            <Input
-                              type="radio"
-                              value="staff"
-                              name="role"
-                            />{" "}
+                            <Input type="radio" value="staff" name="role" />{" "}
                             Staff
                           </Label>
                         </FormGroup>
                         <FormGroup check>
                           <Label check>
-                            <Input
-                              type="radio"
-                              value="reception"
-                              name="role"
-                            />{" "}
+                            <Input type="radio" value="reception" name="role" />{" "}
                             Reception
                           </Label>
                         </FormGroup>
@@ -202,9 +188,7 @@ function Login() {
                           className="my-4"
                           color="primary"
                           type="submit"
-                          disabled={
-                            !(passwordIsValid && idIsValid)
-                          }
+                          disabled={!(passwordIsValid && idIsValid)}
                         >
                           Sign in
                         </Button>
@@ -214,10 +198,7 @@ function Login() {
                 </Card>
                 <Row className="mt-3">
                   <Col xs="6">
-                    <Link
-                      to="/ForgotPass"
-                      className="text-light"
-                    >
+                    <Link to="/ForgotPass" className="text-light">
                       <small>Forgot password?</small>
                     </Link>
                   </Col>

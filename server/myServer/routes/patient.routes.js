@@ -7,6 +7,9 @@ module.exports = (app) => {
   // Retrieve a single Patient with PatientId
   app.get("/patients/:patientId", patients.findOne);
 
+  // Retrieve all Patient
+  app.get("/allpatients", patients.findAll);
+
   //Returns the data of doctor and disease from prescription
   app.get("/patients/prescription/:patientId", patients.findPrescription);
 

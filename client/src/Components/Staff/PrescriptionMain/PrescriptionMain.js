@@ -15,12 +15,9 @@ function PrescriptionMain() {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:3001/prescriptions/${patientId}/${staffId}`,
-        {
-          withCredentials: true,
-        }
-      )
+      .get(`http://localhost:3001/prescriptions/${patientId}/${staffId}`, {
+        withCredentials: true,
+      })
       .then((result) => {
         setPrescriptions(result.data);
       })
@@ -62,39 +59,32 @@ function PrescriptionMain() {
               data={data}
               setData={setData}
             />
-            {staffId === Cookies.get("id") &&
-              data.length !== 0 && (
-                <div
-                  style={{ float: "right", padding: "6px" }}
+            {staffId === Cookies.get("id") && data.length !== 0 && (
+              <div style={{ float: "right", padding: "6px" }}>
+                <Button
+                  onClick={() => {
+                    data.forEach((prescription) => {
+                      axios
+                        .post(`http://localhost:3001/prescriptions`, {
+                          description: prescription.description,
+                          date: prescription.date,
+                          disease: prescription.disease,
+                          staffId: staffId,
+                          patientId: patientId,
+                        })
+                        .then(() => {
+                          window.location.href = `/PrescriptionMain/${patientId}/${staffId}/${staffName}`;
+                        })
+                        .catch((error) => {
+                          console.log(error);
+                        });
+                    });
+                  }}
                 >
-                  <Button
-                    onClick={() => {
-                      data.forEach((prescription) => {
-                        axios
-                          .post(
-                            `http://localhost:3001/prescriptions`,
-                            {
-                              description:
-                                prescription.description,
-                              date: prescription.date,
-                              disease: prescription.disease,
-                              staffId: staffId,
-                              patientId: patientId,
-                            }
-                          )
-                          .then(() => {
-                            window.location.href = `/PrescriptionMain/${patientId}/${staffId}/${staffName}`;
-                          })
-                          .catch((error) => {
-                            console.log(error);
-                          });
-                      });
-                    }}
-                  >
-                    Submit
-                  </Button>
-                </div>
-              )}
+                  Submit
+                </Button>
+              </div>
+            )}
           </Container>
         </section>
       </main>
