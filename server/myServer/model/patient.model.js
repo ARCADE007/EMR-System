@@ -34,9 +34,7 @@ Patient.create = (newPatient, result) => {
     });
 
     result(null, {
-      message:
-        "Patient created with patientId " +
-        newPatient.patientId,
+      message: "Patient created with patientId " + newPatient.patientId,
     });
   });
 };
@@ -77,10 +75,7 @@ Patient.updateById = (patientId, patient, result) => {
 //---------------------------------------------------------
 
 //Returns the data of doctor and disease from prescription
-Patient.findPrescriptionByPatientId = (
-  patientId,
-  result
-) => {
+Patient.findPrescriptionByPatientId = (patientId, result) => {
   sql.query(
     "Select DISTINCT staff.staffId,staff.staffName,staff.departmentName From prescription,staff where staff.staffId = prescription.staffId and patientId=?",
     patientId,
@@ -153,14 +148,32 @@ Patient.findByPatientId = (patientId, result) => {
   );
 };
 
+// Returns all patient
+
+Patient.findAllPatient = (result) => {
+  sql.query(`SELECT * FROM Patient`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    console.log(res);
+    if (res.length) {
+      result(null, res);
+      return;
+    }
+
+    // not found Patient with the patientId === patientId
+    result({ kind: "not_found" }, null);
+  });
+};
+
 // Checks Password
 
 Patient.checkPassword = (id, password, role, result) => {
   const query = `SELECT password from ${
     role == "patient" ? "patient" : "staff"
-  } WHERE ${
-    role == "patient" ? "patientId" : "staffId"
-  } = ?`;
+  } WHERE ${role == "patient" ? "patientId" : "staffId"} = ?`;
   sql.query(query, [id], (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -193,12 +206,7 @@ Patient.checkPassword = (id, password, role, result) => {
 };
 
 // * Updates Password
-Patient.changePassword = (
-  patientId,
-  password,
-  newPassword,
-  result
-) => {
+Patient.changePassword = (patientId, password, newPassword, result) => {
   Patient.checkPassword(patientId, password, (err, res) => {
     if (err) {
       result({ kind: "not_valId" }, null);

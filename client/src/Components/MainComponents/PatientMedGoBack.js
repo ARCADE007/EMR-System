@@ -97,7 +97,7 @@ class PatientMedGoBack extends React.Component {
                 </NavLink>
 
                 <NavbarBrand
-                  to={"/PrescriptionMainPatient/" + Cookies.get("id")}
+                  to={`/PrescriptionMainPatient/${this.props.staffId}/${this.props.staffName}`}
                   tag={Link}
                   className="nav-link-icon"
                 >

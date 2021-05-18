@@ -35,57 +35,45 @@ Prescription.create = (newPrescription, result) => {
 
 // Get all prescription by patient id
 
-Prescription.getAllByPatientID = (
-  patientId,
-  staffId,
-  cb
-) => {
+Prescription.getAllByPatientID = (patientId, staffId, cb) => {
+  console.log(patientId, staffId);
   const query =
     "SELECT * FROM prescription WHERE prescription.patientId = ? AND prescription.staffId = ?";
 
-  sql.query(
-    query,
-    [patientId, staffId],
-    (error, result) => {
-      if (error) {
-        console.log("error :", error);
-        cb(null, error);
-        return;
-      }
-      if (result.affectedRows === 0) {
-        // if not found any
-        cb({ kind: "not_found" }, null);
-      }
-      cb(null, result);
+  sql.query(query, [patientId, staffId], (error, result) => {
+    if (error) {
+      console.log("error :", error);
+      cb(null, error);
+      return;
     }
-  );
+    if (result.affectedRows === 0) {
+      // if not found any
+      cb({ kind: "not_found" }, null);
+      return;
+    }
+
+    cb(null, result);
+  });
 };
 
 // Get PatientId for medicine authentication
 
-Prescription.getPatientIdfromPrescriptionId = (
-  prescriptionId
-) => {
-  const query =
-    "Select patientId from prescription where prescriptionId=?";
+Prescription.getPatientIdfromPrescriptionId = (prescriptionId) => {
+  const query = "Select patientId from prescription where prescriptionId=?";
 
-  return sql.query(
-    query,
-    [prescriptionId],
-    (error, result) => {
-      if (error) {
-        console.log("error :", error);
+  return sql.query(query, [prescriptionId], (error, result) => {
+    if (error) {
+      console.log("error :", error);
 
-        return null;
-      }
-      if (result.affectedRows === 0) {
-        // if not found any
-        return null;
-      }
-      console.log("paitentId = ", result[0].patientId);
-      return result[0].patientId;
+      return null;
     }
-  );
+    if (result.affectedRows === 0) {
+      // if not found any
+      return null;
+    }
+    console.log("paitentId = ", result[0].patientId);
+    return result[0].patientId;
+  });
 };
 
 //---------------------------------------------------------

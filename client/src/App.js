@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Login from "./Components/CommonPage/Login";
@@ -27,7 +23,6 @@ import ReportStaff from "./Components/Staff/Report/ReportStaff";
 import PrescriptionMain from "./Components/Staff/PrescriptionMain/PrescriptionMain";
 import PrescriptionMainPatient from "./Components/Patient/PrescriptionMainPatient/PrescriptionMainPatient";
 import ReportPatient from "./Components/Patient/ReportPatient/ReportPatient";
-import AskPatientReception from "./Components/Staff/AskPatientReception";
 
 function App() {
   return (
@@ -48,12 +43,12 @@ function App() {
             <ReportPatient />
           </Route>
 
-          <Route path="/PrescriptionMainPatient/:staffId">
+          <Route path="/PrescriptionMainPatient/:staffId/:staffName">
             <PrescriptionMainPatient />
           </Route>
 
-          <Route path="/PrescriptionTable/:prescriptionId">
-            <PrescriptionTable />
+          <Route path="/PrescriptionTable/:staffId/:staffName/:prescriptionId">
+            <PrescriptionTable />1
           </Route>
 
           {/* -------------------------STAFF---------------------------------- */}
@@ -93,11 +88,6 @@ function App() {
           </Route>
 
           {/* -------------------------RECEPTION------------------------------ */}
-
-          {/*Pending*/}
-          <Route path="/AskPatientReception">
-            <AskPatientReception />
-          </Route>
 
           <Route path="/Registration">
             <RegistrationMain />

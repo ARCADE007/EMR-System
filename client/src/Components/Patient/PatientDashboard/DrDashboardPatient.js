@@ -104,9 +104,7 @@ function DrDashboardPatient() {
                           {prescription.departmentName}
                         </CardText>
                         <Link
-                          to={
-                            "/PrescriptionMainPatient/" + prescription.staffId
-                          }
+                          to={`/PrescriptionMainPatient/${prescription.staffId}/${prescription.staffName}`}
                         >
                           <Button type="submit">View</Button>
                         </Link>
