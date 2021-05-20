@@ -20,7 +20,7 @@ class LoginFooter extends React.Component {
                   Patient Engagement.
                   <br />
                   <br />
-                  Privately held, and driven by innvation and excellence, we
+                  Privately held, and driven by innovation and excellence, we
                   have a single focus - providing our customers with
                   secure,cloud-based solutions to their healthcare IT needs.
                 </h6>
