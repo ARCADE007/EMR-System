@@ -34,7 +34,7 @@ Patient.create = (newPatient, result) => {
     });
 
     result(null, {
-      message: "Patient created with patientId " + newPatient.patientId,
+      patientId: res.insertId,
     });
   });
 };

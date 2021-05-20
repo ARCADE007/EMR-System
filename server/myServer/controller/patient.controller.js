@@ -1,11 +1,10 @@
 const Patient = require("../model/patient.model");
 const generator = require("generate-password");
-const {
-  generateAccessToken,
-  checkAccessToken,
-} = require("../utils/jwtAuth");
+const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
 
 const bcrypt = require("bcrypt");
+const sendMail = require("../utils/mailer");
+const fptFunction = require("../utils/templetes/ForgotPass/forgotPasswordTemplete");
 const saltRounds = 10;
 
 // * Create and save a new Patient
@@ -41,8 +40,7 @@ exports.create = async (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message ||
-          "Some error occurred while creating the patient.",
+          err.message || "Some error occurred while creating the patient.",
       });
     });
   // Save Patient in the Database
@@ -50,10 +48,14 @@ exports.create = async (req, res) => {
     if (err) {
       res.status(500).send({
         message:
-          err.message ||
-          "Some error occurred while creating the Patient.",
+          err.message || "Some error occurred while creating the Patient.",
       });
     } else {
+      sendMail(
+        patient.patientEmail,
+        "le tera password",
+        fptFunction(data.patientId, password)
+      );
       res.status(200).send(data);
     }
   });
@@ -63,26 +65,22 @@ exports.create = async (req, res) => {
 
 exports.findPrescription = (req, res) => {
   if (checkAccessToken(req.cookies.auth)) {
-    Patient.findPrescriptionByPatientId(
-      req.params.patientId,
-      (err, data) => {
-        if (err) {
-          if (err.kind === "not_found") {
-            res.status(404).send({
-              message: `Not found Patient with PatientId ${req.params.patientId}.`,
-            });
-          } else {
-            res.status(500).send({
-              message:
-                "Error retrieving Patient with PatientId " +
-                req.params.patientId,
-            });
-          }
+    Patient.findPrescriptionByPatientId(req.params.patientId, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Patient with PatientId ${req.params.patientId}.`,
+          });
         } else {
-          res.status(200).send(data);
+          res.status(500).send({
+            message:
+              "Error retrieving Patient with PatientId " + req.params.patientId,
+          });
         }
+      } else {
+        res.status(200).send(data);
       }
-    );
+    });
   } else {
     res.status(401).send({
       message: "Unauthorized",
@@ -121,26 +119,22 @@ exports.findPrescription = (req, res) => {
 // * Find a Single Patient with a PatientId
 exports.findOne = (req, res) => {
   if (checkAccessToken(req.cookies.auth)) {
-    Patient.findByPatientId(
-      req.params.patientId,
-      (err, data) => {
-        if (err) {
-          if (err.kind === "not_found") {
-            res.status(404).send({
-              message: `Not found Patient with PatientId ${req.params.patientId}.`,
-            });
-          } else {
-            res.status(500).send({
-              message:
-                "Error retrieving Patient with PatientId " +
-                req.params.patientId,
-            });
-          }
+    Patient.findByPatientId(req.params.patientId, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Patient with PatientId ${req.params.patientId}.`,
+          });
         } else {
-          res.status(200).send(data);
+          res.status(500).send({
+            message:
+              "Error retrieving Patient with PatientId " + req.params.patientId,
+          });
         }
+      } else {
+        res.status(200).send(data);
       }
-    );
+    });
   } else {
     res.status(401).send({
       message: "Unauthorized",
@@ -193,40 +187,32 @@ exports.update = (req, res) => {
       patientName: req.body.patientName,
       patientPhoneno: req.body.patientPhoneno,
       patientEmail: req.body.patientEmail,
-      patientDob: new Date(req.body.patientDob)
-        .toISOString()
-        .slice(0, 10),
+      patientDob: new Date(req.body.patientDob).toISOString().slice(0, 10),
       patientAddress: req.body.patientAddress,
     };
 
     // Removes undefined keys
     Object.keys(patient).forEach(
-      (key) =>
-        patient[key] === undefined && delete patient[key]
+      (key) => patient[key] === undefined && delete patient[key]
     );
 
     // Update the Patient
-    Patient.updateById(
-      req.params.patientId,
-      patient,
-      (err, data) => {
-        if (err) {
-          if (err.kind === "not_found") {
-            res.status(404).send({
-              message: `Not found Patient with patientId ${req.params.patientId}.`,
-            });
-          } else {
-            res.status(500).send({
-              message:
-                "Error updating Patient with patientId " +
-                req.params.patientId,
-            });
-          }
+    Patient.updateById(req.params.patientId, patient, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Patient with patientId ${req.params.patientId}.`,
+          });
         } else {
-          res.status(200).send(data);
+          res.status(500).send({
+            message:
+              "Error updating Patient with patientId " + req.params.patientId,
+          });
         }
+      } else {
+        res.status(200).send(data);
       }
-    );
+    });
   } else {
     res.status(401).send({
       message: "Unauthorized",
@@ -245,11 +231,7 @@ exports.authenticate = (req, res) => {
 
   console.log(req.body);
 
-  if (
-    !req.body.id ||
-    !req.body.password ||
-    !req.body.role
-  ) {
+  if (!req.body.id || !req.body.password || !req.body.role) {
     res.status(400).send({
       message: "id and password required",
     });
@@ -268,15 +250,11 @@ exports.authenticate = (req, res) => {
           });
         } else {
           res.status(500).send({
-            message:
-              "Error authenticating patient " + req.body.id,
+            message: "Error authenticating patient " + req.body.id,
           });
         }
       } else {
-        const token = generateAccessToken(
-          req.body.id,
-          req.body.role
-        );
+        const token = generateAccessToken(req.body.id, req.body.role);
         res
           .status(200)
           .cookie("auth", token, {
@@ -308,8 +286,7 @@ exports.authenticate = (req, res) => {
 exports.updatePassword = (req, res) => {
   if (
     req.cookies.PatientId &&
-    checkAccessToken(req.cookies.auth) ==
-      req.cookies.patientId
+    checkAccessToken(req.cookies.auth) == req.cookies.patientId
   ) {
     Patient.changePassword(
       req.cookies.patientId,
