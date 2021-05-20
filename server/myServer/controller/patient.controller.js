@@ -299,10 +299,11 @@ exports.updatePassword = (req, res) => {
               "Could not change password for Patient with patientId " +
               req.cookies.patientId,
           });
-        } else
+        } else {
           res.status(200).send({
             message: `Patient password was changed successfully!`,
           });
+        }
       }
     );
   } else {

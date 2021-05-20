@@ -192,7 +192,7 @@ module.exports = fptFunction = (id, password) => {
 <!--<![endif]-->
 <div align="center" class="img-container center autowidth" style="padding-right: 0px;padding-left: 0px;">
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]-->
-<div style="font-size:1px;line-height:22px"> </div><img align="center" alt="I'm an image" border="0" class="center autowidth" src="images/d9252a97815c4dcaadbfcc7a56f02543.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 200px; display: block;" title="I'm an image" width="200"/>
+<div style="font-size:1px;line-height:22px"> </div><img align="center" alt="I'm an image" border="0" class="center autowidth" src="https://raw.githubusercontent.com/ARCADE007/EMR-System/main/server/myServer/utils/templetes/ForgotPass/images/d9252a97815c4dcaadbfcc7a56f02543.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 200px; display: block;" title="I'm an image" width="200"/>
 <div style="font-size:1px;line-height:25px"> </div>
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
@@ -232,7 +232,7 @@ module.exports = fptFunction = (id, password) => {
 </tbody>
 </table>
 <div align="center" class="img-container center fixedwidth" style="padding-right: 40px;padding-left: 40px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 40px;padding-left: 40px;" align="center"><![endif]--><img align="center" alt="I'm an image" border="0" class="center fixedwidth" src="images/emailTemplate.jpg" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 352px; display: block;" title="I'm an image" width="352"/>
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 40px;padding-left: 40px;" align="center"><![endif]--><img align="center" alt="I'm an image" border="0" class="center fixedwidth" src="https://raw.githubusercontent.com/ARCADE007/EMR-System/main/server/myServer/utils/templetes/ForgotPass/images/emailTemplate.jpg" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 352px; display: block;" title="I'm an image" width="352"/>
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 40px; padding-left: 40px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, sans-serif"><![endif]-->
@@ -360,12 +360,12 @@ module.exports = fptFunction = (id, password) => {
 </tbody>
 </table>
 <div align="center" class="img-container center autowidth" style="padding-right: 0px;padding-left: 0px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><img align="center" alt="I'm an image" border="0" class="center autowidth" src="images/footer.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 640px; display: block;" title="I'm an image" width="640"/>
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><img align="center" alt="I'm an image" border="0" class="center autowidth" src="https://raw.githubusercontent.com/ARCADE007/EMR-System/main/server/myServer/utils/templetes/ForgotPass/images/footer.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 640px; display: block;" title="I'm an image" width="640"/>
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
 <div align="center" class="img-container center fixedwidth" style="padding-right: 0px;padding-left: 0px;">
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]-->
-<div style="font-size:1px;line-height:40px"> </div><img align="center" alt="Alternate text" border="0" class="center fixedwidth" src="images/d9252a97815c4dcaadbfcc7a56f02543.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 416px; display: block;" title="Alternate text" width="416"/>
+<div style="font-size:1px;line-height:40px"> </div><img align="center" alt="Alternate text" border="0" class="center fixedwidth" src="https://raw.githubusercontent.com/ARCADE007/EMR-System/main/server/myServer/utils/templetes/ForgotPass/images/d9252a97815c4dcaadbfcc7a56f02543.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 416px; display: block;" title="Alternate text" width="416"/>
 <!--[if mso]></td></tr></table><![endif]-->
 </div>
 <table cellpadding="0" cellspacing="0" class="social_icons" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top" width="100%">
@@ -375,9 +375,9 @@ module.exports = fptFunction = (id, password) => {
 <table align="center" cellpadding="0" cellspacing="0" class="social_table" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-tspace: 0; mso-table-rspace: 0; mso-table-bspace: 0; mso-table-lspace: 0;" valign="top">
 <tbody>
 <tr align="center" style="vertical-align: top; display: inline-block; text-align: center;" valign="top">
-<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;" valign="top"><a href="https://www.linkedin.com/in/vineet-sharma-627b8a195/" target="_blank"><img alt="LinkedIn" height="32" src="images/linkedin2x.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;" title="LinkedIn" width="32"/></a></td>
-<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;" valign="top"><a href="mailto:arcade007vineet@gmail.com" target="_blank"><img alt="E-Mail" height="32" src="images/mail2x.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;" title="E-Mail" width="32"/></a></td>
-<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;" valign="top"><a href="https://github.com/ARCADE007/EMR-System" target="_blank"><img alt="Custom" height="32" src="images/custom-icon-placeholder.svg" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;" title="Github" width="32"/></a></td>
+<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;" valign="top"><a href="https://www.linkedin.com/in/vineet-sharma-627b8a195/" target="_blank"><img alt="LinkedIn" height="32" src="https://raw.githubusercontent.com/ARCADE007/EMR-System/main/server/myServer/utils/templetes/ForgotPass/images/linkedin2x.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;" title="LinkedIn" width="32"/></a></td>
+<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;" valign="top"><a href="mailto:arcade007vineet@gmail.com" target="_blank"><img alt="E-Mail" height="32" src="https://raw.githubusercontent.com/ARCADE007/EMR-System/main/server/myServer/utils/templetes/ForgotPass/images/mail2x.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;" title="E-Mail" width="32"/></a></td>
+<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;" valign="top"><a href="https://github.com/ARCADE007/EMR-System" target="_blank"><img alt="Custom" height="32" src="https://img.icons8.com/fluent-systems-filled/48/000000/github.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;" title="Github" width="32"/></a></td>
 </tr>
 </tbody>
 </table>
@@ -448,7 +448,7 @@ module.exports = fptFunction = (id, password) => {
 <table cellpadding="0" cellspacing="0" class="icons-inner" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;" valign="top">
 <!--<![endif]-->
 <tr style="vertical-align: top;" valign="top">
-<td align="center" style="word-break: break-word; vertical-align: top; text-align: center; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 6px;" valign="top"><a href="https://www.designedwithbee.com/"><img align="center" alt="Designed with BEE" class="icon" height="32" src="images/bee.png" style="border:0;" width="null"/></a></td>
+<td align="center" style="word-break: break-word; vertical-align: top; text-align: center; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 6px;" valign="top"><a href="https://www.designedwithbee.com/"><img align="center" alt="Designed with BEE" class="icon" height="32" src="https://raw.githubusercontent.com/ARCADE007/EMR-System/main/server/myServer/utils/templetes/ForgotPass/images/bee.png" style="border:0;" width="null"/></a></td>
 <td style="word-break: break-word; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 15px; color: #9d9d9d; vertical-align: middle; letter-spacing: undefined;" valign="middle"><a href="https://www.designedwithbee.com/" style="color:#9d9d9d;text-decoration:none;">Designed with BEE</a></td>
 </tr>
 </table>
