@@ -137,15 +137,15 @@ exports.update = (req, res) => {
     );
 
     // Update the Staff
-    Staff.updateById(req.cookies.staffId, staff, (err, data) => {
+    Staff.updateById(req.params.staffId, staff, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Staff with staffId ${req.cookies.staffId}.`,
+            message: `Not found Staff with staffId ${req.params.staffId}.`,
           });
         } else {
           res.status(500).send({
-            message: "Error updating Staff with staffId " + req.cookies.staffId,
+            message: "Error updating Staff with staffId " + req.params.staffId,
           });
         }
       } else {

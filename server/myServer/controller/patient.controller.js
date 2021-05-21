@@ -170,6 +170,7 @@ exports.findAll = (req, res) => {
 // * Update a patient Identified by the PatientId in the request
 exports.update = (req, res) => {
   // ValIdate Request
+
   if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!",
