@@ -7,6 +7,9 @@ module.exports = (app) => {
   // Retrieve a single staff with staffId
   app.get("/staffs/:staffId", staffs.findOne);
 
+  // Retrieve all staffs
+  app.get("/allstaffs", staffs.findAll);
+
   // Update a staff with staffId
-  app.patch("/staffs/data", staffs.update);
+  app.patch("/staffs/:staffId", staffs.update);
 };

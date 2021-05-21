@@ -1,19 +1,59 @@
-import React, { useState, useEffect, useRef } from "react";
+/* eslint-disable default-case */
+import React, { useState, useEffect, useRef, useReducer } from "react";
 import "../../../CDDDD.css";
 
 import CustomMaterialTable from "./CustomMaterialTable";
-import { Container, Button } from "reactstrap";
+import { Container, Button, Row, Col } from "reactstrap";
 import LoginFooter from "../../../MainComponents/LoginFooter";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import RegistrationToRegistrationMain from "../../../MainComponents/RegistraionToRegistrationMain";
+const actionReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD":
+      return {
+        ...state,
+        add: true,
+        modify: false,
+        view: false,
+      };
+    case "MODIFY":
+      return {
+        ...state,
+        add: false,
+        modify: true,
+        view: false,
+      };
+    case "VIEW":
+      return {
+        ...state,
+        add: false,
+        modify: false,
+        view: true,
+      };
+    default:
+      break;
+  }
+};
 function DrRegistrationTable() {
   const refcontainer = useRef(null);
   const [data, setData] = useState([]);
+  const [action, dispatchAction] = useReducer(actionReducer, {
+    add: false,
+    modify: false,
+    view: false,
+  });
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
-  });
+    dispatchAction({ type: "VIEW" });
+    axios
+      .get(`http://localhost:3001/allstaffs`, {
+        withCredentials: true,
+      })
+      .then((result) => {
+        setData(result.data);
+      });
+  }, []);
 
   return (
     <>
@@ -30,36 +70,34 @@ function DrRegistrationTable() {
             <span />
             <span />
           </div>
+          <Container>
+            <Row>
+              <Col xs="12" sm="12" md="6" lg="6" style={{ paddingTop: "5px" }}>
+                <Button
+                  onClick={() => {
+                    dispatchAction({ type: "ADD" });
+                  }}
+                >
+                  Add Staff
+                </Button>
+              </Col>
+              <Col xs="12" sm="12" md="6" lg="6" style={{ paddingTop: "5px" }}>
+                <Button
+                  onClick={() => {
+                    dispatchAction({ type: "MODIFY" });
+                  }}
+                >
+                  Update Staff
+                </Button>
+              </Col>
+            </Row>
+          </Container>
           <Container className="pt-lg-7">
             <CustomMaterialTable
               data={data}
               setData={setData}
+              action={action}
             />
-            {data.length !== 0 && (
-              <div
-                style={{ float: "right", padding: "6px" }}
-              >
-                <Link to="">
-                  <Button
-                    onClick={() => {
-                      data.forEach((staff) => {
-                        axios
-                          .post(
-                            `http://localhost:3001/staffs`,
-                            staff
-                          )
-                          .then()
-                          .catch((error) => {
-                            console.log(error);
-                          });
-                      });
-                    }}
-                  >
-                    Save
-                  </Button>
-                </Link>
-              </div>
-            )}
           </Container>
         </section>
       </main>
