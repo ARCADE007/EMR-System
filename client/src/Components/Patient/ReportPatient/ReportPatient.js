@@ -31,17 +31,10 @@ function ReportPatient() {
             <span />
           </div>
           <div>
-            <h1 style={{ color: "white", textAlign: "center" }}>
-              Patient Report
-            </h1>
+            <h1 style={{ color: "white", textAlign: "center" }}>My Report</h1>
           </div>
           <Container className="pt-lg-7">
             <ReportPatientEditable />
-            <div style={{ float: "right", padding: "6px" }}>
-              <Link to="">
-                <Button>Submit</Button>
-              </Link>
-            </div>
           </Container>
         </section>
       </main>

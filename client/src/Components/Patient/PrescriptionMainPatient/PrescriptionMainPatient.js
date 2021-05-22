@@ -32,7 +32,7 @@ function PrescriptionMainPatient() {
           </div>
           <div>
             <h1 style={{ color: "white", textAlign: "center" }}>
-              Prescriptions
+              My Prescriptions
             </h1>
           </div>
           <Container className="pt-lg-7">

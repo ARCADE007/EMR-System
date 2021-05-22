@@ -16,8 +16,14 @@ import { Link } from "react-router-dom";
 import "../../DrDashboard.css";
 function DrDashboardPatient() {
   const refcontainer = useRef(null);
-
+  const [actualData, setActualData] = useState([]);
   const [data, setData] = useState([]);
+  const [newPrescription, setNewPrescription] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -29,11 +35,32 @@ function DrDashboardPatient() {
       })
       .then((result) => {
         setData(result.data);
+
+        // For Searching Funcationality
+        setActualData(result.data);
+        const exist = result.data.filter((staff) => {
+          return staff.staffId == Cookies.get("id");
+        });
+        setNewPrescription(!exist.length);
       })
       .catch((err) => {
         console.error(err);
       });
   }, []);
+  // For searching Funcationality
+  useEffect(() => {
+    if (searchTerm === "") {
+      setData(actualData);
+      return;
+    }
+    const newData = actualData.filter((doctor) => {
+      return (
+        doctor.staffName.toLowerCase().search(searchTerm.toLowerCase()) !== -1
+      );
+    });
+    setData(newData);
+  }, [searchTerm, actualData]);
+
   return (
     <>
       <LoginNavbar />
@@ -75,6 +102,8 @@ function DrDashboardPatient() {
                   type="text"
                   class="form-control"
                   placeholder="Search"
+                  value={searchTerm}
+                  onChange={handleChange}
                 ></input>
               </Col>
             </Container>
