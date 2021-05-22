@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Login from "./Components/CommonPage/Login";
@@ -38,22 +34,27 @@ function App() {
           <Route path="/DrDashboardPatient">
             <DrDashboardPatient />
           </Route>
+          {/* Done */}
 
           <Route path="/RecordDashboardPatient">
             <RecordDashboardPatient />
           </Route>
+          {/* Done */}
 
           <Route path="/ReportPatient/:recordId/:recordName">
             <ReportPatient />
           </Route>
+          {/* Done */}
 
           <Route path="/PrescriptionMainPatient/:staffId/:staffName">
             <PrescriptionMainPatient />
           </Route>
+          {/* Done */}
 
           <Route path="/PrescriptionTable/:staffId/:staffName/:prescriptionId">
             <PrescriptionTable />1
           </Route>
+          {/* Done */}
 
           {/* -------------------------STAFF---------------------------------- */}
 

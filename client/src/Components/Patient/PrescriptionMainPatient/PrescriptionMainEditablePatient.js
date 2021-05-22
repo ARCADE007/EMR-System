@@ -6,22 +6,22 @@ import Cookies from "js-cookie";
 export default function PrescriptionMainEditablePatient(props) {
   const { staffId, staffName } = useParams();
 
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
-      title: "Date",
-      field: "date",
+      title: "Disease",
+      field: "disease",
       editComponent: (props) => (
         <input
-          type="date"
+          type="text"
           value={props.value}
           onChange={(e) => props.onChange(e.target.value)}
         />
       ),
     },
     {
-      title: "Disease",
-      field: "disease",
-      type: "text",
+      title: "Date",
+      field: "date",
+      type: "date",
     },
 
     {
@@ -80,10 +80,10 @@ export default function PrescriptionMainEditablePatient(props) {
               <Link
                 to={`/PrescriptionTable/${staffId}/${staffName}/${rowData.prescriptionId}`}
               >
-                View
+                🎫
               </Link>
             ),
-            tooltip: "View ",
+            tooltip: "View Prescription",
           };
         },
       ]}
