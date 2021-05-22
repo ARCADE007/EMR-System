@@ -78,6 +78,7 @@ export default function CustomPrescriptionTable(props) {
       })}
       options={{
         headerStyle: { backgroundColor: "transparent", color: "black" },
+        exportButton: true,
       }}
     />
   );

@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import MaterialTable from "material-table";
 export default function ReportPatientEditable(props) {
   const { recordId, recordName } = useParams();
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "ReportName",
       field: "reportName",
@@ -64,11 +64,8 @@ export default function ReportPatientEditable(props) {
         (rowData) => {
           return {
             icon: () => (
-              <Link
-                to={{ pathname: `${rowData.file}` }}
-                target="_blank"
-              >
-                View
+              <Link to={{ pathname: `${rowData.file}` }} target="_blank">
+                🎫
               </Link>
             ),
 
@@ -81,7 +78,6 @@ export default function ReportPatientEditable(props) {
           backgroundColor: "transparent",
           color: "black",
         },
-        exportButton: true,
       }}
     />
   );

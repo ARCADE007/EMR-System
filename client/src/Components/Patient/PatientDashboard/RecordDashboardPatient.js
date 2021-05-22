@@ -1,14 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import {
-  Button,
-  Card,
-  Container,
-  Row,
-  Col,
-  CardTitle,
-} from "reactstrap";
+import { Button, Card, Container, Row, Col, CardTitle } from "reactstrap";
 import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter";
 import { Link } from "react-router-dom";
@@ -17,20 +10,36 @@ import "../../DrDashboard.css";
 function RecordDashboardPatient() {
   const refcontainer = useRef(null);
   const [data, setData] = useState([]);
+  const [actualData, setActualData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      setData(actualData);
+      return;
+    }
+    const newData = actualData.filter((record) => {
+      return (
+        record.recordName.toLowerCase().search(searchTerm.toLowerCase()) !== -1
+      );
+    });
+    setData(newData);
+  }, [searchTerm]);
+
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
 
     axios
-      .get(
-        "http://localhost:3001/records/" +
-          Cookies.get("id"),
-        {
-          withCredentials: true,
-        }
-      )
+      .get("http://localhost:3001/records/" + Cookies.get("id"), {
+        withCredentials: true,
+      })
       .then((result) => {
         setData(result.data);
+        setActualData(result.data);
       })
       .catch((err) => {
         console.error(err);
@@ -57,7 +66,7 @@ function RecordDashboardPatient() {
           <div className="Patient__Record">
             <Row>
               <Col xs="12" sm="12" md="6" lg="6">
-                <h1 style={{ color: "white" }}>Records</h1>
+                <h1 style={{ color: "white" }}>My Records</h1>
               </Col>
               <Col
                 xs="12"
@@ -80,6 +89,8 @@ function RecordDashboardPatient() {
                   type="text"
                   class="form-control"
                   placeholder="Search"
+                  value={searchTerm}
+                  onChange={handleChange}
                 ></input>
               </Col>
             </Container>
@@ -101,23 +112,17 @@ function RecordDashboardPatient() {
                         body
                         inverse
                         style={{
-                          background:
-                            "rgb(255,255,255,0.2)",
+                          background: "rgb(255,255,255,0.2)",
                         }}
                       >
-                        <CardTitle
-                          style={{ color: "white" }}
-                          tag="h5"
-                        >
+                        <CardTitle style={{ color: "white" }} tag="h5">
                           {record.recordName}
                         </CardTitle>
 
                         <Link
                           to={`/ReportPatient/${record.recordId}/${record.recordName}`}
                         >
-                          <Button type="submit">
-                            View
-                          </Button>
+                          <Button type="submit">View</Button>
                         </Link>
                       </Card>
                     </Col>
