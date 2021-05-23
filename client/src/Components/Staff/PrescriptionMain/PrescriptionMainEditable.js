@@ -54,10 +54,10 @@ export default function PrescriptionMainEditable(props) {
                   <Link
                     to={`/PrescriptionTableEditable/${rowData.prescriptionId}/${props.staffId}`}
                   >
-                    View
+                    🎫
                   </Link>
                 ),
-                tooltip: "View ",
+                tooltip: "View Prescription ",
               };
             },
           ]}
@@ -83,8 +83,7 @@ export default function PrescriptionMainEditable(props) {
               date: newPrescription.date,
               disease: newPrescription.disease,
               description: newPrescription.description,
-              prescriptionId:
-                newPrescription.prescriptionId,
+              prescriptionId: newPrescription.prescriptionId,
             };
           })}
           options={{
@@ -92,6 +91,7 @@ export default function PrescriptionMainEditable(props) {
               backgroundColor: "transparent",
               color: "black",
             },
+            search: false,
           }}
           editable={{
             onRowAdd: (newData) =>

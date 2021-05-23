@@ -26,9 +26,7 @@ export default function ReportStaffEditable(props) {
       type: "string",
       hidden: true,
       validate: (rowData) =>
-        rowData.file && rowData.file.length < 9
-          ? "Upload File"
-          : "",
+        rowData.file && rowData.file.length < 9 ? "Upload File" : "",
     },
   ]);
 
@@ -56,9 +54,7 @@ export default function ReportStaffEditable(props) {
       field: "file",
       type: "string",
       validate: (rowData) =>
-        rowData.file && rowData.file.length < 9
-          ? "Upload File"
-          : "",
+        rowData.file && rowData.file.length < 9 ? "Upload File" : "",
     },
   ]);
 
@@ -77,11 +73,8 @@ export default function ReportStaffEditable(props) {
             (rowData) => {
               return {
                 icon: () => (
-                  <Link
-                    to={{ pathname: `${rowData.file}` }}
-                    target="_blank"
-                  >
-                    View
+                  <Link to={{ pathname: `${rowData.file}` }} target="_blank">
+                    🎫
                   </Link>
                 ),
 
@@ -94,6 +87,7 @@ export default function ReportStaffEditable(props) {
               backgroundColor: "transparent",
               color: "black",
             },
+            exportButton: true,
           }}
         />
       )}
@@ -109,11 +103,8 @@ export default function ReportStaffEditable(props) {
           (rowData) => {
             return {
               icon: () => (
-                <Link
-                  to={{ pathname: `${rowData.file}` }}
-                  target="_blank"
-                >
-                  View
+                <Link to={{ pathname: `${rowData.file}` }} target="_blank">
+                  🎫
                 </Link>
               ),
 
@@ -126,6 +117,7 @@ export default function ReportStaffEditable(props) {
             backgroundColor: "transparent",
             color: "black",
           },
+          search: false,
         }}
         editable={{
           onRowAdd: (newData) =>
