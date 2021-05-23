@@ -1,4 +1,5 @@
 const Reports = require("../model/report.model");
+const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
 
 // * Create and save a new Patient
 exports.create = async (req, res) => {
@@ -12,9 +13,7 @@ exports.create = async (req, res) => {
   // Create a Report
   const report = new Reports({
     reportName: req.body.reportName,
-    date: new Date(req.body.date)
-      .toISOString()
-      .slice(0, 10),
+    date: new Date(req.body.date).toISOString().slice(0, 10),
     file: req.body.file,
     recordId: req.body.recordId,
   });
@@ -24,8 +23,7 @@ exports.create = async (req, res) => {
     if (err) {
       res.status(500).send({
         message:
-          err.message ||
-          "Some error occurred while creating the Record.",
+          err.message || "Some error occurred while creating the Record.",
       });
     } else {
       res.status(200).send(data);
@@ -36,13 +34,13 @@ exports.create = async (req, res) => {
 // * Find a all reports with a recordId
 exports.findByReportID = (req, res) => {
   if (!req.params.recordId) {
-    console.log(
-      "Params Parameter recordId is not recieved"
-    );
+    console.log("Params Parameter recordId is not recieved");
     return;
   }
+
   const recordId = req.params.recordId;
-  Reports.findByReportID(recordId, (error, reportData) => {
+  const auth = checkAccessToken(req.cookies.auth);
+  Reports.findByReportID(recordId, auth.role, (error, reportData) => {
     if (error) {
       if (error.kind === "not_found") {
         res.status(404).send({
