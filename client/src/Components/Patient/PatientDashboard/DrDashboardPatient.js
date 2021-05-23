@@ -55,7 +55,10 @@ function DrDashboardPatient() {
     }
     const newData = actualData.filter((doctor) => {
       return (
-        doctor.staffName.toLowerCase().search(searchTerm.toLowerCase()) !== -1
+        doctor.staffName.toLowerCase().search(searchTerm.toLowerCase()) !==
+          -1 ||
+        doctor.departmentName.toLowerCase().search(searchTerm.toLowerCase()) !==
+          -1
       );
     });
     setData(newData);
@@ -82,7 +85,7 @@ function DrDashboardPatient() {
           <div className="Patient__Record">
             <Row>
               <Col xs="12" sm="12" md="6" lg="6">
-                <h1 style={{ color: "white" }}>Prescription</h1>
+                <h1 style={{ color: "white" }}>My Doctors</h1>
               </Col>
               <Col
                 xs="12"

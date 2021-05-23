@@ -36,8 +36,7 @@ Report.create = (newReport, result) => {
 
 // * Returns the data of report by reportId by running SELECT
 Report.findByReportID = (recordId, cb) => {
-  const query =
-    "SELECT * FROM report WHERE report.recordId = ? ";
+  const query = "SELECT * FROM report WHERE report.recordId = ? ";
 
   sql.query(query, [recordId], (error, result) => {
     if (error) {
