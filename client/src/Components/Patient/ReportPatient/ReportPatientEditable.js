@@ -11,7 +11,7 @@ export default function ReportPatientEditable(props) {
 
       editComponent: (props) => (
         <input
-          type="text"
+          type="string"
           value={props.value}
           onChange={(e) => props.onChange(e.target.value)}
         />
@@ -26,7 +26,7 @@ export default function ReportPatientEditable(props) {
     {
       title: "File",
       field: "file",
-      type: "file",
+      type: "string",
       hidden: true,
     },
   ]);

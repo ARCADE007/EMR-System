@@ -40,19 +40,26 @@ exports.findByReportID = (req, res) => {
 
   const recordId = req.params.recordId;
   const auth = checkAccessToken(req.cookies.auth);
-  Reports.findByReportID(recordId, auth.role, (error, reportData) => {
-    if (error) {
-      if (error.kind === "not_found") {
-        res.status(404).send({
-          message: `Cannot find medicine with recordId ${recordId}`,
-        });
+
+  if (auth.role != "Reception" && auth.id) {
+    Reports.findByReportID(recordId, (error, reportData) => {
+      if (error) {
+        if (error.kind === "not_found") {
+          res.status(404).send({
+            message: `Cannot find medicine with recordId ${recordId}`,
+          });
+        } else {
+          res.status(500).send({
+            message: `Internal error occured while fetching the reports with recordId ${recordId}`,
+          });
+        }
       } else {
-        res.status(500).send({
-          message: `Internal error occured while fetching the reports with recordId ${recordId}`,
-        });
+        res.status(200).send(reportData);
       }
-    } else {
-      res.status(200).send(reportData);
-    }
-  });
+    });
+  } else {
+    res.status(401).send({
+      message: "Unauthorized",
+    });
+  }
 };
