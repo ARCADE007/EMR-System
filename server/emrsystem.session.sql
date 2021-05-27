@@ -7,8 +7,8 @@ CREATE TABLE Staff (
     staffName VARCHAR(20) NOT NULL,
     staffPhoneno VARCHAR(15) NOT NULL,
     staffEmail VARCHAR(50) NOT NULL,
-    staffAddress VARCHAR(100)NOT NULL,
-    rollName VARCHAR(20) NOT NULl,
+    staffAddress VARCHAR(200)NOT NULL,
+    roleName VARCHAR(20) NOT NULl,
     departmentName varchar (30) NOT NULL,
     PRIMARY KEY(staffId)
    )AUTO_INCREMENT=1;
@@ -22,7 +22,7 @@ CREATE TABLE Patient(
     patientPhoneno VARCHAR(15) NOT NULL,
     patientEmail VARCHAR(50) NOT NULL,
     patientDob date NOT NULL,
-    patientAddress Varchar(40) NOT NULL,
+    patientAddress Varchar(200) NOT NULL,
     PRIMARY KEY(patientId)
 )AUTO_INCREMENT=1;
 
@@ -34,8 +34,7 @@ CREATE TABLE Record(
     FOREIGN KEY Record(patientId) REFERENCES emrsystem.Patient(patientId)
 )AUTO_INCREMENT=1;
 
-INSERT INTO Record values(null,"Corona","1"),(null,"Corona","2"),(null,"Bp","1"),(null,"Bp","2");
-
+INSERT INTO Record values(null,"Asthma","1"),(null,"Asthma","2"),(null,"Bp","1"),(null,"Bp","2"),(null,"HyperTension","1"),(null,"HyperTension","2"),(null,"Pain in Joint","1"),(null,"Pain in Joint","2"),(null,"Anxiety","1"),(null,"Anxiety","2"),(null,"Diabetes","1"),(null,"Diabetes","2"),(null,"Obesity","1"),(null,"Obesity","2"),(null,"Back pain","1"),(null,"Back pain","2"),(null,"Respiratory problems","1"),(null,"Respiratory problems","2"),(null,"Depressive disorder","1"),(null,"Depressive disorder","2");
 
 CREATE TABLE Report(
     reportId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT ,
@@ -47,26 +46,23 @@ CREATE TABLE Report(
     FOREIGN KEY Report(recordId) REFERENCES emrsystem.Record(recordId)
 )AUTO_INCREMENT=1;
 
-INSERT INTO report values(null,"c-1","1999-01-01","https://drive.google.com/file/d/1hKQPKHpETc0TVntmaQ8cBylSJgkd5wNY/view?usp=sharing","1"),
-(null,"c-2","1999-02-02","https://drive.google.com/file/d/1p0gEpEzvjWK3JDitiKcB_O6w0fbo2KAb/view?usp=sharing","1"),
-(null,"c-3","1999-03-03","https://drive.google.com/file/d/1IABD0sJMA9ewKuC_w_EReGYki8tuzwvp/view?usp=sharing","1"),
-(null,"c-4","1999-04-04","https://drive.google.com/file/d/1dHDnSgCFeOKcGS00bATrSI18KsO05f0y/view?usp=sharing","1"),
-(null,"c-5","1999-05-05","https://drive.google.com/file/d/1COkXeetNARoZF9gfTLtVFg8FGKLUS5jJ/view?usp=sharing","1"),
-(null,"c-1","1999-01-01","https://drive.google.com/file/d/1F5ItCZbmcNdGBKSqQenFH3i7gNg7E65w/view?usp=sharing","2"),
-(null,"c-2","1999-02-02","https://drive.google.com/file/d/1y5uEcNefRuOTuzPrOsk1MOrbYc-0jVdP/view?usp=sharing","2"),
-(null,"c-3","1999-03-03","https://drive.google.com/file/d/1ho531qINBqiiK4mwF-fuy88GFhz3cAKN/view?usp=sharing","2"),
-(null,"c-4","1999-04-04","https://drive.google.com/file/d/1cd21JWA8rD78s_BuEQiQecaQwuE7mXC7/view?usp=sharing","2"),
-(null,"c-5","1999-05-05","https://drive.google.com/file/d/14FDeb9XHWinKrA6e47R2SCLaFdvdJdVc/view?usp=sharing","2"),
-(null,"Bp-1","2000-01-01","https://drive.google.com/file/d/1niep5eK0uQTLDdGQ2Ne3f5J2hKr0zFfU/view?usp=sharing","3"),
-(null,"Bp-2","2000-02-02","https://drive.google.com/file/d/1vaGhFsmKMEZdBWueqxLLizG_Wg7MZTmX/view?usp=sharing","3"),
-(null,"Bp-3","2000-03-03","https://drive.google.com/file/d/16umFXCNaUON1Nc_hc8qnH154CXIkjhHp/view?usp=sharing","3"),
-(null,"Bp-4","2000-04-04","https://drive.google.com/file/d/127jpU0u1mZYq1Dfoeqlu5DuS9s4a4bgT/view?usp=sharing","3"),
-(null,"Bp-5","2000-05-05","https://drive.google.com/file/d/1JGvr2XLigVGX3MG2Gr-oBO3R-LeNstOj/view?usp=sharing","3"),
-(null,"Bp-1","2000-01-01","https://drive.google.com/file/d/1niep5eK0uQTLDdGQ2Ne3f5J2hKr0zFfU/view?usp=sharing","4"),
-(null,"Bp-2","2000-02-02","https://drive.google.com/file/d/1vaGhFsmKMEZdBWueqxLLizG_Wg7MZTmX/view?usp=sharing","4"),
-(null,"Bp-3","2000-03-03","https://drive.google.com/file/d/16umFXCNaUON1Nc_hc8qnH154CXIkjhHp/view?usp=sharing","4"),
-(null,"Bp-4","2000-04-04","https://drive.google.com/file/d/127jpU0u1mZYq1Dfoeqlu5DuS9s4a4bgT/view?usp=sharing","4"),
-(null,"Bp-5","2000-05-05","https://drive.google.com/file/d/1JGvr2XLigVGX3MG2Gr-oBO3R-LeNstOj/view?usp=sharing","4");
+INSERT INTO report values(null,"a1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","1"),
+(null,"a2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","1"),
+(null,"a3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","1"),
+(null,"a4","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","1"),
+(null,"b1","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","2"),
+(null,"b2","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","2"),
+(null,"b3","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","2"),
+(null,"b4","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","2"),
+(null,"c1","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","3"),
+(null,"c2","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","3"),
+(null,"c3","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","3"),
+(null,"c4","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","3"),
+(null,"d1","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","4"),
+(null,"d2","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","4"),
+(null,"d3","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","4"),
+(null,"d4","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","4")
+
 
 
 CREATE TABLE Prescription(
@@ -84,18 +80,19 @@ CREATE TABLE Prescription(
 
 
 INSERT INTO prescription VALUES
-(null,"Basic symptoms prefer MRI","joint pain","1999-02-02","1","1"),
-(null,"Redness on face","Swelling in eyes","1999-03-03","1","1"),
-(null,"High colestrol","Nerve damage","1999-04-04","2","1"),
-(null,"Low colestrol","brain nerve damage","1999-05-05","2","1"),
-(null,"Basic symptoms prefer MRI","joint pain","1999-02-02","1","2"),
-(null,"Redness on face","Swelling in eyes","1999-03-03","1","2"),
-(null,"High colestrol","Nerve damage","1999-04-04","2","2"),
-(null,"Low colestrol","brain nerve damage","1999-05-05","2","2");
+(null,"Basic symptoms prefer MRI","Pain in joint","1999-02-02","1","1"),
+(null,"Infecion of the outer membrane of the eyeball and the inner eyelid ","Conjunctivits","1999-03-03","1","1"),
+(null,"Signs Of High colestrol","Nerve damage","1999-04-04","2","1"),
+(null,"Triggers include hormonal changes preceded by warning symptoms","Migraine","1999-05-05","2","1"),
+(null,"Basic symptoms prefer MRI","Pain in joint","1999-02-02","2","1"),
+(null,"Infecion of the outer membrane of the eyeball and the inner eyelid ","Conjunctivits","1999-03-03","2","1"),
+(null,"Signs Of High colestrol","Nerve damage","1999-04-04","2","2"),
+(null,"Triggers include hormonal changes preceded by warning symptoms","Migraine","1999-05-05","2","2");
+
 
 CREATE TABLE Medicine(
     medicineId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
-    name  VARCHAR(20) NOT NULL,
+    name  VARCHAR(50) NOT NULL,
     dateFrom date NOT NULL,
     dateTo date NOT NULL,
     timeMorning VARCHAR(20) NOT NULL,
@@ -107,36 +104,36 @@ CREATE TABLE Medicine(
 )AUTO_INCREMENT=1;
 
 INSERT INTO medicine VALUES
-(null,"a12","1999-02-02","1999-02-09","yes","no","yes","1"),
-(null,"a13","1999-02-02","1999-02-08","no","yes","yes","1"),
-(null,"a14","1999-02-02","1999-02-09","yes","no","yes","1"),
-(null,"a15","1999-02-02","1999-02-08","no","yes","yes","1"),
-(null,"b12","1999-02-02","1999-02-09","yes","no","yes","2"),
-(null,"b13","1999-02-02","1999-02-08","no","yes","yes","2"),
-(null,"b14","1999-02-02","1999-02-09","yes","no","yes","2"),
-(null,"b15","1999-02-02","1999-02-08","no","yes","yes","2"),
-(null,"c12","1999-02-02","1999-02-09","yes","no","yes","3"),
-(null,"c13","1999-02-02","1999-02-08","no","yes","yes","3"),
-(null,"c14","1999-02-02","1999-02-09","yes","no","yes","3"),
-(null,"c15","1999-02-02","1999-02-08","no","yes","yes","3"),
-(null,"d12","1999-02-02","1999-02-09","yes","no","yes","4"),
-(null,"d13","1999-02-02","1999-02-08","no","yes","yes","4"),
-(null,"d14","1999-02-02","1999-02-09","yes","no","yes","4"),
-(null,"d15","1999-02-02","1999-02-08","no","yes","yes","4"),
-(null,"e12","1999-02-02","1999-02-09","yes","no","yes","5"),
-(null,"e13","1999-02-02","1999-02-08","no","yes","yes","5"),
-(null,"e14","1999-02-02","1999-02-09","yes","no","yes","5"),
-(null,"e15","1999-02-02","1999-02-08","no","yes","yes","5"),
-(null,"f12","1999-02-02","1999-02-09","yes","no","yes","6"),
-(null,"f13","1999-02-02","1999-02-08","no","yes","yes","6"),
-(null,"f14","1999-02-02","1999-02-09","yes","no","yes","6"),
-(null,"f15","1999-02-02","1999-02-08","no","yes","yes","6"),
-(null,"g12","1999-02-02","1999-02-09","yes","no","yes","7"),
-(null,"g13","1999-02-02","1999-02-08","no","yes","yes","7"),
-(null,"g14","1999-02-02","1999-02-09","yes","no","yes","7"),
-(null,"g15","1999-02-02","1999-02-08","no","yes","yes","7"),
-(null,"h12","1999-02-02","1999-02-09","yes","no","yes","8"),
-(null,"h13","1999-02-02","1999-02-08","no","yes","yes","8"),
-(null,"h14","1999-02-02","1999-02-09","yes","no","yes","8"),
-(null,"h15","1999-02-02","1999-02-08","no","yes","yes","8");
+(null,"Amitriptyline","1999-02-02","1999-02-09","yes","no","yes","1"),
+(null,"Amlodipine","1999-02-02","1999-02-08","no","yes","yes","1"),
+(null,"Amoxicillin","1999-02-02","1999-02-09","yes","no","yes","1"),
+(null,"Aprepitant","1999-02-02","1999-02-08","no","yes","yes","1"),
+(null,"Baclofen","1999-02-02","1999-02-09","yes","no","yes","2"),
+(null,"Bleomycin","1999-02-02","1999-02-08","no","yes","yes","2"),
+(null,"Bortezomib","1999-02-02","1999-02-09","yes","no","yes","2"),
+(null,"Bosentan","1999-02-02","1999-02-08","no","yes","yes","2"),
+(null,"Captopril","1999-02-02","1999-02-09","yes","no","yes","3"),
+(null,"Carboplatin","1999-02-02","1999-02-08","no","yes","yes","3"),
+(null,"Cefaclor","1999-02-02","1999-02-09","yes","no","yes","3"),
+(null,"Cefepime","1999-02-02","1999-02-08","no","yes","yes","3"),
+(null,"Dasatinib","1999-02-02","1999-02-09","yes","no","yes","4"),
+(null,"Dexamethasone","1999-02-02","1999-02-08","no","yes","yes","4"),
+(null,"Diclofenac","1999-02-02","1999-02-09","yes","no","yes","4"),
+(null,"Didanosine","1999-02-02","1999-02-08","no","yes","yes","4"),
+(null,"Erlotinib","1999-02-02","1999-02-09","yes","no","yes","5"),
+(null,"Erythromycin","1999-02-02","1999-02-08","no","yes","yes","5"),
+(null,"Enoxaparin","1999-02-02","1999-02-09","yes","no","yes","5"),
+(null,"Etravirine","1999-02-02","1999-02-08","no","yes","yes","5"),
+(null,"Famotidine","1999-02-02","1999-02-09","yes","no","yes","6"),
+(null,"Fluconazole","1999-02-02","1999-02-08","no","yes","yes","6"),
+(null,"Furosemide","1999-02-02","1999-02-09","yes","no","yes","6"),
+(null,"Famciclovir","1999-02-02","1999-02-08","no","yes","yes","6"),
+(null,"Ganciclovir","1999-02-02","1999-02-09","yes","no","yes","7"),
+(null,"Gefitinib","1999-02-02","1999-02-08","no","yes","yes","7"),
+(null,"G-CSF","1999-02-02","1999-02-09","yes","no","yes","7"),
+(null,"Hydrocortisone","1999-02-02","1999-02-08","no","yes","yes","7"),
+(null,"Hydroxyurea","1999-02-02","1999-02-09","yes","no","yes","8"),
+(null,"Ifosfamide","1999-02-02","1999-02-08","no","yes","yes","8"),
+(null,"Imatinib","1999-02-02","1999-02-09","yes","no","yes","8"),
+(null,"Irinotecan","1999-02-02","1999-02-08","no","yes","yes","8");
 
