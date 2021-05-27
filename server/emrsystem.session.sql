@@ -50,18 +50,19 @@ INSERT INTO report values(null,"a1","1999-01-01","https://drive.google.com/file/
 (null,"a2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","1"),
 (null,"a3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","1"),
 (null,"a4","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","1"),
-(null,"b1","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","2"),
-(null,"b2","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","2"),
-(null,"b3","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","2"),
-(null,"b4","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","2"),
-(null,"c1","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","3"),
-(null,"c2","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","3"),
-(null,"c3","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","3"),
-(null,"c4","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","3"),
-(null,"d1","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","4"),
-(null,"d2","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","4"),
-(null,"d3","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","4"),
-(null,"d4","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","4")
+(null,"b1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","2"),
+(null,"b2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","2"),
+(null,"b3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","2"),
+(null,"b4","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","2"),
+(null,"c1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","3"),
+(null,"c2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","3"),
+(null,"c3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","3"),
+(null,"c4","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","3"),
+(null,"d1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","4"),
+(null,"d2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","4"),
+(null,"d3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","4"),
+(null,"d4","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","4"),
+
 
 
 
@@ -84,8 +85,8 @@ INSERT INTO prescription VALUES
 (null,"Infecion of the outer membrane of the eyeball and the inner eyelid ","Conjunctivits","1999-03-03","1","1"),
 (null,"Signs Of High colestrol","Nerve damage","1999-04-04","2","1"),
 (null,"Triggers include hormonal changes preceded by warning symptoms","Migraine","1999-05-05","2","1"),
-(null,"Basic symptoms prefer MRI","Pain in joint","1999-02-02","2","1"),
-(null,"Infecion of the outer membrane of the eyeball and the inner eyelid ","Conjunctivits","1999-03-03","2","1"),
+(null,"Basic symptoms prefer MRI","Pain in joint","1999-02-02","1","2"),
+(null,"Infecion of the outer membrane of the eyeball and the inner eyelid ","Conjunctivits","1999-03-03","1","2"),
 (null,"Signs Of High colestrol","Nerve damage","1999-04-04","2","2"),
 (null,"Triggers include hormonal changes preceded by warning symptoms","Migraine","1999-05-05","2","2");
 
