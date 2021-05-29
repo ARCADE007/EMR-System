@@ -33,12 +33,7 @@ CREATE TABLE record(
     FOREIGN KEY record(patientId) REFERENCES Emr_System.patient(patientId)
 )AUTO_INCREMENT=1;
 
-<<<<<<< HEAD:server/vineet.sql
-INSERT INTO record values(null,"Corona","1"),(null,"Corona","2"),(null,"Bp","1"),(null,"Bp","2");
-
-=======
 INSERT INTO Record values(null,"Asthma","1"),(null,"Asthma","2"),(null,"Bp","1"),(null,"Bp","2"),(null,"HyperTension","1"),(null,"HyperTension","2"),(null,"Pain in Joint","1"),(null,"Pain in Joint","2"),(null,"Anxiety","1"),(null,"Anxiety","2"),(null,"Diabetes","1"),(null,"Diabetes","2"),(null,"Obesity","1"),(null,"Obesity","2"),(null,"Back pain","1"),(null,"Back pain","2"),(null,"Respiratory problems","1"),(null,"Respiratory problems","2"),(null,"Depressive disorder","1"),(null,"Depressive disorder","2");
->>>>>>> f2f306187086fc6b8e7d1262f97388795d42a6ce:server/emrsystem.session.sql
 
 CREATE TABLE report(
     reportId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT ,
@@ -50,31 +45,6 @@ CREATE TABLE report(
     FOREIGN KEY report(recordId) REFERENCES Emr_System.record(recordId)
 )AUTO_INCREMENT=1;
 
-<<<<<<< HEAD:server/vineet.sql
-INSERT INTO report values(null,"c-1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","1"),
-(null,"c-2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","1"),
-(null,"c-3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","1"),
-(null,"c-4","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","1"),
-(null,"c-5","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","1"),
-(null,"c-1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","2"),
-(null,"c-2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","2"),
-(null,"c-3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","2"),
-(null,"c-4","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","2"),
-(null,"c-5","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","2"),
-(null,"bp-1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","3"),
-(null,"bp-2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","3"),
-(null,"bp-3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","3"),
-(null,"bp-4","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","3"),
-(null,"bp-5","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","3"),
-(null,"bp-1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","4"),
-(null,"bp-2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","4"),
-(null,"bp-3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","4"),
-(null,"bp-4","1999-04-04","https://drive.google.com/file/d/1c59S_VD4pF-8l5PFSaB-2ZmymNUbQxTA/view?usp=sharing","4"),
-(null,"bp-5","1999-05-05","https://drive.google.com/file/d/1M3k7vTQvhUT4bFzAseessr6SjaDn8NpN/view?usp=sharing","4"),
-
-
-CREATE TABLE prescription(
-=======
 INSERT INTO report values(null,"a1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","1"),
 (null,"a2","1999-02-02","https://drive.google.com/file/d/1cCN7f-jkNs5H0jgB-Q6INqNvZC5ihZTh/view?usp=sharing","1"),
 (null,"a3","1999-03-03","https://drive.google.com/file/d/1r08VGOynrgEpUD0_1OqJPQMHKkefrbEi/view?usp=sharing","1"),
@@ -96,7 +66,6 @@ INSERT INTO report values(null,"a1","1999-01-01","https://drive.google.com/file/
 
 
 CREATE TABLE Prescription(
->>>>>>> f2f306187086fc6b8e7d1262f97388795d42a6ce:server/emrsystem.session.sql
     prescriptionId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
     description VARCHAR(500) NOT NULL,
     disease VARCHAR(40) NOT NULL,
