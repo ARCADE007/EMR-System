@@ -8,10 +8,10 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "password": "B25j97NrwxUEQoU9@h5",
+            "password": "nmgWxdwD@ek4fBj",
             "name": "emrProject",
-            "database": "emrSystem",
-            "username": "emrUser"
+            "database": "Emr_System",
+            "username": "emr-user"
         }
     ]
 }

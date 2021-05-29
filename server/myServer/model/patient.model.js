@@ -46,7 +46,7 @@ Patient.create = (newPatient, result) => {
 // * Updates the Patient data by patientId
 Patient.updateById = (patientId, patient, result) => {
   sql.query(
-    "UPDATE Patient SET ? WHERE patientId = ?",
+    "UPDATE patient SET ? WHERE patientId = ?",
     [patient, patientId],
     (err, res) => {
       if (err) {
@@ -127,7 +127,7 @@ Patient.findPrescriptionByPatientId = (patientId, result) => {
 // * Returns the data of Patient by patientId by running SELECT
 Patient.findByPatientId = (patientId, result) => {
   sql.query(
-    `SELECT * FROM Patient WHERE patientId = ?`,
+    `SELECT * FROM patient WHERE patientId = ?`,
     patientId,
     (err, res) => {
       if (err) {
@@ -151,7 +151,7 @@ Patient.findByPatientId = (patientId, result) => {
 // Returns all patient
 
 Patient.findAllPatient = (result) => {
-  sql.query(`SELECT * FROM Patient`, (err, res) => {
+  sql.query(`SELECT * FROM patient`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -217,7 +217,7 @@ Patient.changePassword = (patientId, password, newPassword, result) => {
           newPassword = hash;
 
           sql.query(
-            "UPDATE Patient SET password = ? WHERE patientId = ?",
+            "UPDATE patient SET password = ? WHERE patientId = ?",
             [newPassword, patientId],
             (err, res) => {
               if (err) {
