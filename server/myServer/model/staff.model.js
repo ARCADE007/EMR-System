@@ -95,7 +95,7 @@ Staff.findBystaffId = (staffId, result) => {
 // Returns all staff
 
 Staff.findAllStaff = (result) => {
-  sql.query(`SELECT * FROM Staff`, (err, res) => {
+  sql.query(`SELECT * FROM staff`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -164,7 +164,7 @@ Staff.changePassword = (staffId, password, newPassword, result) => {
           newPassword = hash;
 
           sql.query(
-            "UPDATE Staff SET password = ? WHERE staffId = ?",
+            "UPDATE staff SET password = ? WHERE staffId = ?",
             [newPassword, staffId],
             (err, res) => {
               if (err) {
