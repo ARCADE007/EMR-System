@@ -1,7 +1,6 @@
 -- Create Queries
 
-
-CREATE TABLE Staff (
+CREATE TABLE staff (
     staffId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     password VARCHAR(64) NOT NULL,
     staffName VARCHAR(20) NOT NULL,
@@ -15,7 +14,7 @@ CREATE TABLE Staff (
 
 
 
-CREATE TABLE Patient(
+CREATE TABLE patient(
     patientId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
     password VARCHAR(64) NOT NULL,
     patientName VARCHAR(20) NOT NULL,
@@ -26,24 +25,24 @@ CREATE TABLE Patient(
     PRIMARY KEY(patientId)
 )AUTO_INCREMENT=1;
 
-CREATE TABLE Record(
+CREATE TABLE record(
     recordId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,
     recordName VARCHAR(20) NOT NULL,
     PRIMARY KEY(recordId),
     patientId INTEGER UNSIGNED,
-    FOREIGN KEY Record(patientId) REFERENCES emrsystem.Patient(patientId)
+    FOREIGN KEY record(patientId) REFERENCES Emr_System.patient(patientId)
 )AUTO_INCREMENT=1;
 
 INSERT INTO Record values(null,"Asthma","1"),(null,"Asthma","2"),(null,"Bp","1"),(null,"Bp","2"),(null,"HyperTension","1"),(null,"HyperTension","2"),(null,"Pain in Joint","1"),(null,"Pain in Joint","2"),(null,"Anxiety","1"),(null,"Anxiety","2"),(null,"Diabetes","1"),(null,"Diabetes","2"),(null,"Obesity","1"),(null,"Obesity","2"),(null,"Back pain","1"),(null,"Back pain","2"),(null,"Respiratory problems","1"),(null,"Respiratory problems","2"),(null,"Depressive disorder","1"),(null,"Depressive disorder","2");
 
-CREATE TABLE Report(
+CREATE TABLE report(
     reportId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT ,
     reportName VARCHAR(20) NOT NULL,
     Date date NOT NULL,
     file VARCHAR(500) NOT NULL ,
     PRIMARY KEY(reportId),
     recordId INTEGER UNSIGNED,
-    FOREIGN KEY Report(recordId) REFERENCES emrsystem.Record(recordId)
+    FOREIGN KEY report(recordId) REFERENCES Emr_System.record(recordId)
 )AUTO_INCREMENT=1;
 
 INSERT INTO report values(null,"a1","1999-01-01","https://drive.google.com/file/d/14pnyj_HlagRJjjiYZvJnc1yUcyvn1IsA/view?usp=sharing","1"),
@@ -74,8 +73,8 @@ CREATE TABLE Prescription(
     PRIMARY KEY(prescriptionId),
     staffId INTEGER UNSIGNED,
     patientId INTEGER UNSIGNED,
-    FOREIGN KEY (staffId) REFERENCES emrsystem.staff(staffId),
-    FOREIGN KEY (patientId) REFERENCES emrsystem.Patient(patientId)
+    FOREIGN KEY (staffId) REFERENCES Emr_System.staff(staffId),
+    FOREIGN KEY (patientId) REFERENCES Emr_System.patient(patientId)
 )AUTO_INCREMENT=1;
 
 
@@ -91,7 +90,7 @@ INSERT INTO prescription VALUES
 (null,"Triggers include hormonal changes preceded by warning symptoms","Migraine","1999-05-05","2","2");
 
 
-CREATE TABLE Medicine(
+CREATE TABLE medicine(
     medicineId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
     name  VARCHAR(50) NOT NULL,
     dateFrom date NOT NULL,
@@ -101,7 +100,7 @@ CREATE TABLE Medicine(
     timeNight VARCHAR(20) NOT NULL,
     PRIMARY KEY(medicineId),
     prescriptionId INTEGER UNSIGNED,
-    FOREIGN KEY Medicine(prescriptionId) REFERENCES emrsystem.Prescription(prescriptionId)
+    FOREIGN KEY medicine(prescriptionId) REFERENCES Emr_System.prescription(prescriptionId)
 )AUTO_INCREMENT=1;
 
 INSERT INTO medicine VALUES
