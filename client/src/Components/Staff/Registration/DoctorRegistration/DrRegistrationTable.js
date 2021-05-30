@@ -71,8 +71,14 @@ function DrRegistrationTable() {
             <span />
           </div>
           <Container>
-            <Row>
-              <Col xs="12" sm="12" md="6" lg="6" style={{ paddingTop: "5px" }}>
+            <Row style={{ paddingLeft: "30%", paddingRight: "20%" }}>
+              <Col
+                xs="12"
+                sm="12"
+                md="6"
+                lg="6"
+                style={{ paddingTop: "5px", paddingBottom: "5%" }}
+              >
                 <Button
                   onClick={() => {
                     dispatchAction({ type: "ADD" });
@@ -81,7 +87,13 @@ function DrRegistrationTable() {
                   Add Staff
                 </Button>
               </Col>
-              <Col xs="12" sm="12" md="6" lg="6" style={{ paddingTop: "5px" }}>
+              <Col
+                xs="12"
+                sm="12"
+                md="6"
+                lg="6"
+                style={{ paddingTop: "5px", paddingBottom: "5%" }}
+              >
                 <Button
                   onClick={() => {
                     dispatchAction({ type: "MODIFY" });
@@ -92,7 +104,7 @@ function DrRegistrationTable() {
               </Col>
             </Row>
           </Container>
-          <Container className="pt-lg-7">
+          <Container>
             <CustomMaterialTable
               data={data}
               setData={setData}

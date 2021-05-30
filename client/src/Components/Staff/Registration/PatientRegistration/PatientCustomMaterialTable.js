@@ -31,8 +31,7 @@ export default function PatientCustomMaterialTable(props) {
         />
       ),
       validate: (rowData) =>
-        rowData.patientName &&
-        rowData.patientName.length < 2
+        rowData.patientName && rowData.patientName.length < 2
           ? "Name must be have 3 chars"
           : "",
     },
@@ -41,8 +40,8 @@ export default function PatientCustomMaterialTable(props) {
       field: "patientDob",
       type: "date",
       validate: (rowData) =>
-        rowData.patientDob === ""
-          ? "Name cannot be empty"
+        rowData.patientDob && rowData.patientDob.getFullYear() < 1900
+          ? "Birthyear must be after 1900"
           : "",
     },
 
@@ -50,8 +49,7 @@ export default function PatientCustomMaterialTable(props) {
       title: "Address",
       field: "patientAddress",
       validate: (rowData) =>
-        rowData.patientAddress &&
-        rowData.patientAddress.length < 5
+        rowData.patientAddress && rowData.patientAddress.length < 5
           ? "Address must be have 6 character"
           : "",
     },
@@ -60,8 +58,7 @@ export default function PatientCustomMaterialTable(props) {
       field: "patientPhoneno",
       type: "string",
       validate: (rowData) =>
-        rowData.patientPhoneno &&
-        rowData.patientPhoneno.length < 9
+        rowData.patientPhoneno && rowData.patientPhoneno.length < 9
           ? "Phone number must  have 10 digit"
           : "",
     },
@@ -70,8 +67,7 @@ export default function PatientCustomMaterialTable(props) {
       title: "Email",
       field: "patientEmail",
       validate: (rowData) =>
-        rowData.patientEmail &&
-        rowData.patientEmail.length < 6
+        rowData.patientEmail && rowData.patientEmail.length < 6
           ? "Email is not valid"
           : "",
     },
@@ -79,12 +75,9 @@ export default function PatientCustomMaterialTable(props) {
   useEffect(() => {
     if (patientId !== "") {
       axios
-        .get(
-          `http://localhost:3001/patients/${patientId}`,
-          {
-            withCredentials: true,
-          }
-        )
+        .get(`http://localhost:3001/patients/${patientId}`, {
+          withCredentials: true,
+        })
         .then((result) => {
           setUpdateData(new Array(result.data));
         })
@@ -171,10 +164,7 @@ export default function PatientCustomMaterialTable(props) {
                   onClick={() => {
                     addData.forEach((patient) => {
                       axios
-                        .post(
-                          `http://localhost:3001/patients`,
-                          patient
-                        )
+                        .post(`http://localhost:3001/patients`, patient)
                         .then()
                         .catch((error) => {
                           console.log(error);
@@ -217,11 +207,7 @@ export default function PatientCustomMaterialTable(props) {
                 </Col>
                 <Col>
                   <div className="text-center">
-                    <Button
-                      className="my-4"
-                      color="primary"
-                      type="submit"
-                    >
+                    <Button className="my-4" color="primary" type="submit">
                       Go
                     </Button>
                   </div>

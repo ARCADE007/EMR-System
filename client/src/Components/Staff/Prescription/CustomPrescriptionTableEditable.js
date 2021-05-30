@@ -1,39 +1,54 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
-import Cookies from "js-cookie";
+import Cookies, { get } from "js-cookie";
 export default function CustomPrescriptionTableEditable(props) {
   const [columns, setColumns] = useState([
     {
       title: "Medicine Name",
       field: "name",
       type: "string",
+      validate: (rowData) =>
+        rowData.name && rowData.name.length < 3
+          ? "MedicineName must be have 4 chars"
+          : "",
     },
 
     {
       title: "Date (from)",
       field: "dateFrom",
       type: "date",
+      validate: (rowData) =>
+        rowData.dateFrom && rowData.dateFrom.valueOf() <= new Date().valueOf()
+          ? "Date must be current Date or after"
+          : "",
     },
     {
       title: "Date (to)",
       field: "dateTo",
       type: "date",
+
+      validate: (rowData) =>
+        rowData.dateTo &&
+        rowData.dateFrom &&
+        rowData.dateTo.valueOf() <= rowData.dateFrom.valueOf()
+          ? "Date must be Date(from) or after"
+          : "",
     },
 
     {
       title: "Morning",
       field: "timeMorning",
-      type: "string",
+      lookup: { yes: "yes", no: "no" },
     },
     {
       title: "Evening",
       field: "timeEvening",
-      type: "string",
+      lookup: { yes: "yes", no: "no" },
     },
     {
       title: "Night",
       field: "timeNight",
-      type: "string",
+      lookup: { yes: "yes", no: "no" },
     },
   ]);
 
@@ -79,6 +94,7 @@ export default function CustomPrescriptionTableEditable(props) {
               new Promise((resolve, reject) => {
                 setTimeout(() => {
                   props.setData([...props.data, newData]);
+
                   resolve();
                 }, 1000);
               }),

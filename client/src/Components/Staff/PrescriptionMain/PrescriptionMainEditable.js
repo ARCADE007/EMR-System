@@ -9,17 +9,27 @@ export default function PrescriptionMainEditable(props) {
       title: "Disease",
       field: "disease",
       type: "string",
+      validate: (rowData) =>
+        rowData.disease && rowData.disease.length < 3
+          ? "Name must be have 3 chars"
+          : "",
     },
     {
       title: "Date",
       field: "date",
       type: "date",
+      editable: "never",
+      initialEditValue: new Date(),
     },
 
     {
       title: "Description",
       field: "description",
       type: "string",
+      validate: (rowData) =>
+        rowData.description && rowData.description.length < 5
+          ? "Name must be have 6 chars"
+          : "",
     },
     {
       title: "PrescriptionId",

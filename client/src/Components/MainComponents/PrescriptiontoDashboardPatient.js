@@ -13,6 +13,7 @@ import {
   Col,
   UncontrolledTooltip,
 } from "reactstrap";
+import Cookies from "js-cookie";
 
 class PrescriptiontoDashboardPatient extends React.Component {
   componentDidMount() {
@@ -46,7 +47,16 @@ class PrescriptiontoDashboardPatient extends React.Component {
             id="navbar-main"
           >
             <Container>
-              <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
+              <NavbarBrand
+                className="mr-lg-5"
+                to="/"
+                tag={Link}
+                onClick={() => {
+                  Cookies.remove("id");
+                  Cookies.remove("role");
+                  Cookies.remove("auth");
+                }}
+              >
                 <img
                   alt="..."
                   src="https://i.pinimg.com/originals/4f/60/30/4f60305f48b01e05db6b53083abf71dd.png"

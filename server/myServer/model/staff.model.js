@@ -1,5 +1,6 @@
 const sql = require("./db");
 const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 // Constructor
 const Staff = function (staff) {
@@ -112,6 +113,30 @@ Staff.findAllStaff = (result) => {
   });
 };
 
+Staff.changePassword = (staffId, password, result) => {
+  bcrypt
+    .hash(password, saltRounds)
+    .then((hash) => {
+      newPassword = hash;
+
+      sql.query(
+        "UPDATE staff SET password = ? WHERE staffId = ?",
+        [newPassword, staffId],
+        (err, res) => {
+          if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+          }
+
+          result(null, "password changed");
+        }
+      );
+    })
+    .catch((err) => {
+      result(err, null);
+    });
+};
 // Checks Password
 
 Staff.checkPassword = (staffId, password, result) => {
@@ -152,35 +177,22 @@ Staff.checkPassword = (staffId, password, result) => {
   );
 };
 
-// * Updates Password
-Staff.changePassword = (staffId, password, newPassword, result) => {
-  Staff.checkPassword(staffId, password, (err, res) => {
+Staff.findEmailId = (Id, result) => {
+  sql.query("Select staffEmail From staff where staffId=?", Id, (err, res) => {
     if (err) {
-      result({ kind: "not_valId" }, null);
-    } else {
-      bcrypt
-        .hash(newPassword, saltRounds)
-        .then((hash) => {
-          newPassword = hash;
-
-          sql.query(
-            "UPDATE staff SET password = ? WHERE staffId = ?",
-            [newPassword, staffId],
-            (err, res) => {
-              if (err) {
-                console.log("error: ", err);
-                result(err, null);
-                return;
-              }
-
-              result(null, "password changed");
-            }
-          );
-        })
-        .catch((err) => {
-          result(err, null);
-        });
+      console.log("error: ", err);
+      result(err, null);
+      return;
     }
+
+    if (res.length) {
+      console.log("found Staff: ", res);
+      result(null, res[0]);
+      return;
+    }
+
+    // not found Patient with the patientId === patientId
+    result({ kind: "not_found" }, null);
   });
 };
 
