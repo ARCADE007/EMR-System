@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Headroom from "headroom.js";
-import Cookies from "js-cookie";
 import {
   UncontrolledCollapse,
   NavbarBrand,
@@ -14,6 +13,7 @@ import {
   Col,
   UncontrolledTooltip,
 } from "reactstrap";
+import Cookies from "js-cookie";
 
 class PatientMedGoBack extends React.Component {
   componentDidMount() {
@@ -47,7 +47,16 @@ class PatientMedGoBack extends React.Component {
             id="navbar-main"
           >
             <Container>
-              <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
+              <NavbarBrand
+                className="mr-lg-5"
+                to="/"
+                tag={Link}
+                onClick={() => {
+                  Cookies.remove("id");
+                  Cookies.remove("role");
+                  Cookies.remove("auth");
+                }}
+              >
                 <img
                   alt="..."
                   src="https://i.pinimg.com/originals/4f/60/30/4f60305f48b01e05db6b53083abf71dd.png"

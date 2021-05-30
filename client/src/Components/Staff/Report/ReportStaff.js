@@ -70,12 +70,16 @@ function ReportStaff() {
                   <Button
                     onClick={() => {
                       data.forEach((report) => {
-                        axios.post(`http://localhost:3001/reports`, {
-                          reportName: report.reportName,
-                          date: report.Date,
-                          file: report.file,
-                          recordId: recordId,
-                        });
+                        axios.post(
+                          `http://localhost:3001/reports`,
+                          {
+                            reportName: report.reportName,
+                            date: report.Date,
+                            file: report.file,
+                            recordId: recordId,
+                          },
+                          { withCredentials: true }
+                        );
                       });
                     }}
                   >

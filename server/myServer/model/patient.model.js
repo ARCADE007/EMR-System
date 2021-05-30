@@ -1,5 +1,6 @@
 const sql = require("./db");
 const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 // Constructor
 const Patient = function (patient) {
@@ -100,22 +101,26 @@ Patient.findPrescriptionByPatientId = (patientId, result) => {
 
 //Forgot Password
 Patient.findEmailId = (Id, result) => {
-  sql.query("Select email From patient where  patientId=?", Id, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
+  sql.query(
+    "Select patientEmail From patient where  patientId=?",
+    Id,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
 
-    if (res.length) {
-      console.log("found Patient: ", res);
-      result(null, res);
-      return;
-    }
+      if (res.length) {
+        console.log("found Patient: ", res);
+        result(null, res[0]);
+        return;
+      }
 
-    // not found Patient with the patientId === patientId
-    result({ kind: "not_found" }, null);
-  });
+      // not found Patient with the patientId === patientId
+      result({ kind: "not_found" }, null);
+    }
+  );
 };
 
 // * Returns the data of Patient by patientId by running SELECT
@@ -200,34 +205,28 @@ Patient.checkPassword = (id, password, role, result) => {
 };
 
 // * Updates Password
-Patient.changePassword = (patientId, password, newPassword, result) => {
-  Patient.checkPassword(patientId, password, (err, res) => {
-    if (err) {
-      result({ kind: "not_valId" }, null);
-    } else {
-      bcrypt
-        .hash(newPassword, saltRounds)
-        .then((hash) => {
-          newPassword = hash;
+Patient.changePassword = (patientId, password, result) => {
+  bcrypt
+    .hash(password, saltRounds)
+    .then((hash) => {
+      newPassword = hash;
 
-          sql.query(
-            "UPDATE patient SET password = ? WHERE patientId = ?",
-            [newPassword, patientId],
-            (err, res) => {
-              if (err) {
-                console.log("error: ", err);
-                result(err, null);
-                return;
-              }
+      sql.query(
+        "UPDATE patient SET password = ? WHERE patientId = ?",
+        [newPassword, patientId],
+        (err, res) => {
+          if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+          }
 
-              result(null, "password changed");
-            }
-          );
-        })
-        .catch((err) => {
-          result(err, null);
-        });
-    }
-  });
+          result(null, "password changed");
+        }
+      );
+    })
+    .catch((err) => {
+      result(err, null);
+    });
 };
 module.exports = Patient;

@@ -38,7 +38,7 @@ export default function CustomMaterialTable(props) {
     {
       title: "Role",
       field: "rollName",
-      lookup: { Staff: "Staff", Reception: "Reception" },
+      lookup: { staff: "Staff", reception: "Reception" },
     },
 
     {
