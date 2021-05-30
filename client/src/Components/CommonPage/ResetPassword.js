@@ -14,44 +14,43 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import LoginNavbar from "../../MainComponents/LoginNavbar";
-import LoginFooter from "../../MainComponents/LoginFooter";
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-function AddRecord() {
-  const { patientId } = useParams();
+import { Link } from "react-router-dom";
+import LoginNavbar from "../MainComponents/LoginNavbar";
+import LoginFooter from "../MainComponents/LoginFooter";
+
+function ResetPassword(props) {
   const refcontainer = useRef(null);
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
   });
-  const [recordNameIsValid, setRecordNameIsValid] = useState(false);
 
-  const [errorMessage, setErrorMessage] = useState("");
+  //   const [emailIsValid, setEmailIsValid] = useState(false);
 
-  const AddRecord = (value) => {
-    if (
-      validator.isStrongPassword(value, {
-        minLength: 1,
-        minLowercase: 0,
-        minUppercase: 0,
-        minNumbers: 0,
-        minSymbols: 0,
-      })
-    ) {
-      setRecordNameIsValid(true);
-      setErrorMessage("");
-    } else {
-      setRecordNameIsValid(false);
-      setErrorMessage("Enter Valid Record Name");
-    }
-  };
+  //   const [emailError, setEmailError] = useState("");
+  //   const validateEmail = (e) => {
+  //     var email = e.target.value;
+
+  //     if (validator.isEmail(email)) {
+  //       setEmailIsValid(true);
+  //       setEmailError("Valid Email");
+  //     } else {
+  //       setEmailIsValid(false);
+  //       setEmailError("Enter valid Email!");
+  //     }
+  //   };
+  // console.log(props.location.);
+  const query = new URLSearchParams(props.location.search);
+  const token = query.get("token");
 
   return (
     <>
       <LoginNavbar />
       <main ref={refcontainer}>
-        <section className="section section-shaped section-lg">
+        <section
+          style={{ backgroundColor: "rgb(128,0,0,0.6)" }}
+          className="section section-shaped section-lg"
+        >
           <div className="shape shape-style-1 bg-gradient-default">
             <span />
             <span />
@@ -68,70 +67,61 @@ function AddRecord() {
                 <Card className="bg-secondary shadow border-0">
                   <div
                     style={{
-                      backgroundColor: "Rgb(125,125,125,0.6)",
+                      backgroundColor: "rgb(128,0,0,0.4)",
                       fontWeight: "bold",
                       textAlign: "center",
                       paddingTop: "50px",
                     }}
                   >
-                    <span>Enter Card Details</span>
+                    <span>Enter Your Password</span>
                   </div>
                   <CardBody
-                    style={{ backgroundColor: "Rgb(125,125,125,0.6)" }}
+                    style={{ backgroundColor: "rgb(128,0,0,0.4)" }}
                     className="px-lg-5 py-lg-5"
                   >
                     <Form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        axios
-                          .post(
-                            `http://localhost:3001/records`,
-                            {
-                              patientId: patientId,
-                              recordName: e.target.recordName.value,
-                            },
-                            { withCredentials: true }
-                          )
-                          .catch((error) => {
-                            console.log(error);
-                          });
-                        window.location.href = `/RecordDashboardStaff/${patientId}`;
-                      }}
+                      method="post"
+                      action="http://localhost:3001/resetPassword"
+                      role="form"
                     >
                       <FormGroup className="mb-3">
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-ruler-pencil" />
+                              <i className="ni ni-email-83" />
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
-                            placeholder="Enter Record Name"
-                            name="recordName"
-                            type="text"
-                            onChange={(e) => AddRecord(e.target.value)}
+                            placeholder="Enter Your New Password"
+                            name="password"
+                            type="password"
+                            // onChange={(e) => validateEmail(e)}
                           />
                         </InputGroup>
-                        <span
+                        {/* <span
                           style={{
                             color: "lightblue",
                           }}
                         >
-                          {errorMessage}
-                        </span>
+                          {emailError}
+                        </span> */}
+                        <InputGroup
+                          style={{ display: "none" }}
+                          className="input-group-alternative"
+                        >
+                          <Input name="token" type="text" value={token} />
+                        </InputGroup>
                       </FormGroup>
 
                       <div className="text-center">
-                        {/* <Link to={`/RecordDashboardStaff/${patientId}`}> */}
                         <Button
                           className="my-4"
                           color="primary"
                           type="submit"
-                          disabled={!recordNameIsValid}
+                          //   disabled={!emailIsValid}
                         >
-                          Save
+                          Change Password
                         </Button>
-                        {/* </Link> */}
                       </div>
                     </Form>
                   </CardBody>
@@ -146,4 +136,4 @@ function AddRecord() {
   );
 }
 
-export default AddRecord;
+export default ResetPassword;
