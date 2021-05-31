@@ -24,13 +24,6 @@ export default function PatientCustomMaterialTable(props) {
       field: "patientName",
       type: "string",
 
-      // editComponent: (props) => (
-      //   <input
-
-      //     value={props.value}
-      //     onChange={(e) => props.onChange(e.target.value)}
-      //   />
-      // ),
       validate: (rowData) =>
         rowData.patientName && rowData.patientName.length < 2
           ? "Name must be have 3 chars"

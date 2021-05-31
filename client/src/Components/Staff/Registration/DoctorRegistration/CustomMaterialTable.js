@@ -22,18 +22,11 @@ export default function CustomMaterialTable(props) {
     {
       title: "Staff Name",
       field: "staffName",
+      type: "string",
       validate: (rowData) =>
         rowData.staffName && rowData.staffName.length < 2
           ? "StaffName must be have 3 chars"
           : "",
-
-      editComponent: (props) => (
-        <input
-          type="string"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
     },
     {
       title: "Role",
