@@ -18,7 +18,7 @@ function DrDashboardPatient() {
   const refcontainer = useRef(null);
   const [actualData, setActualData] = useState([]);
   const [data, setData] = useState([]);
-  const [newPrescription, setNewPrescription] = useState(false);
+  const [setNewPrescription] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (e) => {
@@ -39,14 +39,14 @@ function DrDashboardPatient() {
         // For Searching Funcationality
         setActualData(result.data);
         const exist = result.data.filter((staff) => {
-          return staff.staffId == Cookies.get("id");
+          return staff.staffId === Cookies.get("id");
         });
         setNewPrescription(!exist.length);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [setNewPrescription]);
   // For searching Funcationality
   useEffect(() => {
     if (searchTerm === "") {

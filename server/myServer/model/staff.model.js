@@ -33,7 +33,7 @@ Staff.create = (newStaff, result) => {
     });
 
     result(null, {
-      message: "Staff created with staffId " + newStaff.staffId,
+      staffId: res.insertId,
     });
   });
 };

@@ -18,7 +18,7 @@ export default function CustomMaterialTable(props) {
   const [addData, setAddData] = useState([]);
   const [updateData, setUpdateData] = useState([]);
   const [staffId, setStaffId] = useState("");
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "Staff Name",
       field: "staffName",
@@ -62,8 +62,9 @@ export default function CustomMaterialTable(props) {
     {
       title: "Email",
       field: "staffEmail",
+      type: "string",
       validate: (rowData) =>
-        rowData.staffAddress && rowData.staffAddress.length < 6
+        rowData.staffEmail && rowData.staffEmail.length < 6
           ? "Email is not valid"
           : "",
     },

@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { Button, Container } from "reactstrap";
+import { Container } from "reactstrap";
 import "../../CDDDD.css";
 import ReportToDashboardPatient from "../../MainComponents/ReportToDashboardPatient";
 import LoginFooter from "../../MainComponents/LoginFooter";
-import { Link } from "react-router-dom";
 import ReportPatientEditable from "./ReportPatientEditable";
 function ReportPatient() {
   const refcontainer = useRef(null);

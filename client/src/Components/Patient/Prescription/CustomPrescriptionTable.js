@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import MaterialTable from "material-table";
 export default function CustomPrescriptionTable(props) {
   const { prescriptionId } = useParams();
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "MedicineName",
       field: "name",
@@ -59,7 +59,7 @@ export default function CustomPrescriptionTable(props) {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [prescriptionId]);
 
   return (
     <MaterialTable

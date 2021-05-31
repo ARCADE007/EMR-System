@@ -17,7 +17,7 @@ import {
 import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 function AddRecord() {
   const { patientId } = useParams();
   const refcontainer = useRef(null);

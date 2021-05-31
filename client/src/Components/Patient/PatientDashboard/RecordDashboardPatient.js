@@ -27,7 +27,7 @@ function RecordDashboardPatient() {
       );
     });
     setData(newData);
-  }, [searchTerm]);
+  }, [actualData, searchTerm]);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
