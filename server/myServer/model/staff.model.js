@@ -9,7 +9,7 @@ const Staff = function (staff) {
   this.staffPhoneno = staff.staffPhoneno;
   this.staffEmail = staff.staffEmail;
   this.staffAddress = staff.staffAddress;
-  this.rollName = staff.rollName;
+  this.roleName = staff.roleName;
   this.departmentName = staff.departmentName;
 };
 
@@ -23,6 +23,7 @@ Staff.create = (newStaff, result) => {
 
   sql.query(query, newStaff, (err, res) => {
     if (err) {
+      console.log(err);
       result(err, null);
       return;
     }

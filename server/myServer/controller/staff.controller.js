@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // * Create and save a new staff
+
 exports.create = async (req, res) => {
   // ValIdate Request
   if (!req.body) {
@@ -19,7 +20,7 @@ exports.create = async (req, res) => {
     length: 8,
     numbers: true,
   });
-  console.log(("actual password : ", password));
+  console.log("actual password : ", password);
 
   // Create a Staff
   const staff = new Staff({
@@ -28,7 +29,7 @@ exports.create = async (req, res) => {
     staffPhoneno: req.body.staffPhoneno,
     staffEmail: req.body.staffEmail,
     staffAddress: req.body.staffAddress,
-    rollName: req.body.rollName,
+    roleName: req.body.roleName,
     departmentName: req.body.departmentName,
   });
 
@@ -133,7 +134,7 @@ exports.update = (req, res) => {
       staffPhoneno: req.body.staffPhoneno,
       staffEmail: req.body.staffEmail,
       staffAddress: req.body.staffAddress,
-      rollName: req.body.rollName,
+      roleName: req.body.roleName,
       departmentName: req.body.departmentName,
     };
 
