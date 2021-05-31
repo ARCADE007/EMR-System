@@ -79,7 +79,7 @@ CREATE TABLE prescription(
 
 
 INSERT INTO prescription VALUES
-(null,"Basic symptoms prefer MRI","Pain in joint","1999-02-02","1","1"),
+(null,"Basic symptoms prefer MRI","Cancer","1999-02-02","1","1"),
 (null,"Infecion of the outer membrane of the eyeball and the inner eyelid ","Conjunctivits","1999-03-03","1","1"),
 (null,"Signs Of High colestrol","Nerve damage","1999-04-04","2","1"),
 (null,"Triggers include hormonal changes preceded by warning symptoms","Migraine","1999-05-05","2","1"),
