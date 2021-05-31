@@ -18,7 +18,7 @@ export default function PatientCustomMaterialTable(props) {
   const [addData, setAddData] = useState([]);
   const [updateData, setUpdateData] = useState([]);
   const [patientId, setPatientId] = useState("");
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "FullName",
       field: "patientName",
@@ -39,10 +39,6 @@ export default function PatientCustomMaterialTable(props) {
       title: "Dob",
       field: "patientDob",
       type: "date",
-      validate: (rowData) =>
-        rowData.patientDob && rowData.patientDob.getFullYear() < 1900
-          ? "Birthyear must be after 1900"
-          : "",
     },
 
     {

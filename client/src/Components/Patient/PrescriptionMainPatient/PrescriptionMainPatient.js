@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Button, Container } from "reactstrap";
+import { Container } from "reactstrap";
 import "../../CDDDD.css";
 import PrescriptiontoDashboardPatient from "../../MainComponents/PrescriptiontoDashboardPatient";
 import LoginFooter from "../../MainComponents/LoginFooter";

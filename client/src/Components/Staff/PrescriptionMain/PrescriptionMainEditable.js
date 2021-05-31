@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 export default function PrescriptionMainEditable(props) {
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "Disease",
       field: "disease",

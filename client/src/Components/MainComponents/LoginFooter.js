@@ -105,7 +105,7 @@ class LoginFooter extends React.Component {
               className=" align-items-center justify-content-md-between"
             >
               <div className=" copyright">
-                © {new Date().getFullYear()} <a>EMR System </a>
+                © {new Date().getFullYear()} <span>EMR System </span>
                 <span>-- Made by Vineet Sharma & Priya Kaushik --</span>
               </div>
             </Col>

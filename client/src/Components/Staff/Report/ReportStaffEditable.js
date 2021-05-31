@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MaterialTable from "material-table";
 import { Link } from "react-router-dom";
 export default function ReportStaffEditable(props) {
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "ReportName",
       field: "reportName",
@@ -30,7 +30,7 @@ export default function ReportStaffEditable(props) {
     },
   ]);
 
-  const [columnsEditable, setColumnsEditable] = useState([
+  const [columnsEditable] = useState([
     {
       title: "ReportName",
       field: "reportName",

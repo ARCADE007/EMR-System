@@ -38,7 +38,7 @@ function DrDashboardStaff() {
         setData(result.data);
         setActualData(result.data);
         const exist = result.data.filter((staff) => {
-          return staff.staffId == Cookies.get("id");
+          return staff.staffId === Cookies.get("id");
         });
         setNewPrescription(!exist.length);
       })

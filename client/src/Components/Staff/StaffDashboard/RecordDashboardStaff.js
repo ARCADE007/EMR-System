@@ -1,15 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
-import {
-  Button,
-  Card,
-  Container,
-  Row,
-  Col,
-  CardText,
-  CardTitle,
-} from "reactstrap";
+import { Button, Card, Container, Row, Col, CardTitle } from "reactstrap";
 import LoginFooter from "../../MainComponents/LoginFooter";
 import RecordDashboardStafftoDrDashboardStaff from "../../MainComponents/RecordDashboardStafftoDrDashboardStaff";
 import "../../DrDashboard.css";
@@ -36,7 +27,7 @@ function RecordDashboardStaff() {
       );
     });
     setData(newData);
-  }, [searchTerm]);
+  }, [actualData, searchTerm]);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -53,7 +44,7 @@ function RecordDashboardStaff() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [patientId]);
   return (
     <>
       <RecordDashboardStafftoDrDashboardStaff patientId={patientId} />
