@@ -14,7 +14,6 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import LoginNavbar from "../MainComponents/LoginNavbar";
 import LoginFooter from "../MainComponents/LoginFooter";
 
@@ -25,21 +24,29 @@ function ResetPassword(props) {
     document.scrollingElement.scrollTop = 0;
   });
 
-  //   const [emailIsValid, setEmailIsValid] = useState(false);
+  const [passwordIsValid, setPasswordIsValid] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  //   const [emailError, setEmailError] = useState("");
-  //   const validateEmail = (e) => {
-  //     var email = e.target.value;
+  const validate = (value) => {
+    if (
+      validator.isStrongPassword(value, {
+        minLength: 6,
+        minLowercase: 0,
+        minUppercase: 1,
+        minNumbers: 0,
+        minSymbols: 0,
+      })
+    ) {
+      setPasswordIsValid(true);
+      setErrorMessage("");
+    } else {
+      setPasswordIsValid(false);
+      setErrorMessage(
+        "Password must be of length 6 and must contain Uppercase"
+      );
+    }
+  };
 
-  //     if (validator.isEmail(email)) {
-  //       setEmailIsValid(true);
-  //       setEmailError("Valid Email");
-  //     } else {
-  //       setEmailIsValid(false);
-  //       setEmailError("Enter valid Email!");
-  //     }
-  //   };
-  // console.log(props.location.);
   const query = new URLSearchParams(props.location.search);
   const token = query.get("token");
 
@@ -73,7 +80,7 @@ function ResetPassword(props) {
                       paddingTop: "50px",
                     }}
                   >
-                    <span>Enter Your Password</span>
+                    <span>Enter New Password</span>
                   </div>
                   <CardBody
                     style={{ backgroundColor: "rgb(128,0,0,0.4)" }}
@@ -95,16 +102,17 @@ function ResetPassword(props) {
                             placeholder="Enter Your New Password"
                             name="password"
                             type="password"
-                            // onChange={(e) => validateEmail(e)}
+                            onChange={(e) => validate(e.target.value)}
                           />
                         </InputGroup>
-                        {/* <span
+                        <span
                           style={{
                             color: "lightblue",
                           }}
                         >
-                          {emailError}
-                        </span> */}
+                          {errorMessage}
+                        </span>
+
                         <InputGroup
                           style={{ display: "none" }}
                           className="input-group-alternative"
@@ -118,7 +126,7 @@ function ResetPassword(props) {
                           className="my-4"
                           color="primary"
                           type="submit"
-                          //   disabled={!emailIsValid}
+                          disabled={!passwordIsValid}
                         >
                           Change Password
                         </Button>

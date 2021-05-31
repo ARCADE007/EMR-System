@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from "react";
-import validator from "validator";
 import {
   Button,
   Card,
@@ -92,9 +91,7 @@ function AskPatient() {
                       </FormGroup>
 
                       <div className="text-center">
-                        <Link
-                          to={`/DrDashboardStaff/${patientId}`}
-                        >
+                        <Link to={`/DrDashboardStaff/${patientId}`}>
                           <Button
                             className="my-4"
                             color="primary"

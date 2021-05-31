@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
-import Cookies, { get } from "js-cookie";
+import Cookies from "js-cookie";
 export default function CustomPrescriptionTableEditable(props) {
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "Medicine Name",
       field: "name",
@@ -30,7 +30,7 @@ export default function CustomPrescriptionTableEditable(props) {
       validate: (rowData) =>
         rowData.dateTo &&
         rowData.dateFrom &&
-        rowData.dateTo.valueOf() <= rowData.dateFrom.valueOf()
+        rowData.dateTo.valueOf() < rowData.dateFrom.valueOf()
           ? "Date must be Date(from) or after"
           : "",
     },
@@ -61,7 +61,7 @@ export default function CustomPrescriptionTableEditable(props) {
             backgroundColor: "Rgb(255,255,255,0.2)",
             color: "white",
           }}
-          title="Prescription"
+          title={props.prescriptionId}
           columns={columns}
           data={props.medicines}
           options={{
@@ -80,7 +80,7 @@ export default function CustomPrescriptionTableEditable(props) {
             backgroundColor: "Rgb(255,255,255,0.2)",
             color: "white",
           }}
-          title="ID"
+          title={props.prescriptionId}
           columns={columns}
           data={props.data}
           options={{

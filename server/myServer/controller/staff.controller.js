@@ -1,7 +1,8 @@
 const Staff = require("../model/staff.model");
 const generator = require("generate-password");
 const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
-
+const sendMail = require("../utils/mailer");
+const fptFunction = require("../utils/templetes/ForgotPass/forgotPasswordTemplete");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
@@ -49,6 +50,11 @@ exports.create = async (req, res) => {
         message: err.message || "Some error occurred while creating the Staff.",
       });
     } else {
+      sendMail(
+        staff.staffEmail,
+        "Your Login Credentials",
+        fptFunction(data.staffId, password)
+      );
       res.status(200).send(data);
     }
   });

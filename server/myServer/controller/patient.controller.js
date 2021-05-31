@@ -54,7 +54,7 @@ exports.create = async (req, res) => {
     } else {
       sendMail(
         patient.patientEmail,
-        "le tera password",
+        "Your Login Credentials",
         fptFunction(data.patientId, password)
       );
       res.status(200).send(data);

@@ -15,7 +15,6 @@ import {
   Col,
   Label,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import LoginNavbar from "../MainComponents/LoginNavbar";
 import LoginFooter from "../MainComponents/LoginFooter";
 function ForgotPass() {
@@ -25,20 +24,19 @@ function ForgotPass() {
     document.scrollingElement.scrollTop = 0;
   });
 
-  //   const [emailIsValid, setEmailIsValid] = useState(false);
+  const [idIsValid, setIdIsValid] = useState(false);
+  const [idError, setIdError] = useState("");
+  const validateId = (e) => {
+    var id = e.target.value;
 
-  //   const [emailError, setEmailError] = useState("");
-  //   const validateEmail = (e) => {
-  //     var email = e.target.value;
-
-  //     if (validator.isEmail(email)) {
-  //       setEmailIsValid(true);
-  //       setEmailError("Valid Email");
-  //     } else {
-  //       setEmailIsValid(false);
-  //       setEmailError("Enter valid Email!");
-  //     }
-  //   };
+    if (validator.isNumeric(id)) {
+      setIdIsValid(true);
+      setIdError("");
+    } else {
+      setIdIsValid(false);
+      setIdError("Enter valid Id ");
+    }
+  };
 
   return (
     <>
@@ -91,10 +89,17 @@ function ForgotPass() {
                           <Input
                             placeholder="Enter Your Id"
                             name="id"
-                            type="string"
-                            // onChange={(e) => validateEmail(e)}
+                            type="text"
+                            onChange={(e) => validateId(e)}
                           />
                         </InputGroup>
+                        <span
+                          style={{
+                            color: "lightblue",
+                          }}
+                        >
+                          {idError}
+                        </span>
                         <FormGroup style={{ paddingTop: "15px" }} check>
                           <Label check>
                             <Input
@@ -133,7 +138,7 @@ function ForgotPass() {
                           className="my-4"
                           color="primary"
                           type="submit"
-                          //   disabled={!emailIsValid}
+                          disabled={!idIsValid}
                         >
                           Send Email
                         </Button>
