@@ -9,8 +9,6 @@ import {
   InputGroupText,
   InputGroup,
   Container,
-  Row,
-  Col,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -24,13 +22,6 @@ export default function PatientCustomMaterialTable(props) {
       field: "patientName",
       type: "string",
 
-      // editComponent: (props) => (
-      //   <input
-
-      //     value={props.value}
-      //     onChange={(e) => props.onChange(e.target.value)}
-      //   />
-      // ),
       validate: (rowData) =>
         rowData.patientName && rowData.patientName.length < 2
           ? "Name must be have 3 chars"
@@ -185,8 +176,8 @@ export default function PatientCustomMaterialTable(props) {
                 setPatientId(e.target.id.value);
               }}
             >
-              <Row>
-                <Col>
+              <div style={{ display: "flex", marginLeft: "28%" }}>
+                <div style={{ display: "flex", paddingTop: "25px" }}>
                   <FormGroup className="px-lg-5">
                     <InputGroup className="input-group-alternative">
                       <InputGroupAddon addonType="prepend">
@@ -201,15 +192,17 @@ export default function PatientCustomMaterialTable(props) {
                       />
                     </InputGroup>
                   </FormGroup>
-                </Col>
-                <Col>
-                  <div className="text-center">
-                    <Button className="my-4" color="primary" type="submit">
-                      Go
-                    </Button>
-                  </div>
-                </Col>
-              </Row>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                  <Button className="my-4" color="primary" type="submit">
+                    Go
+                  </Button>
+                </div>
+              </div>
             </Form>
           </Container>
           <MaterialTable

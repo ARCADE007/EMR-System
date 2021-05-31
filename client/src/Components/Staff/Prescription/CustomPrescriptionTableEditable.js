@@ -19,7 +19,7 @@ export default function CustomPrescriptionTableEditable(props) {
       type: "date",
       validate: (rowData) =>
         rowData.dateFrom && rowData.dateFrom.valueOf() <= new Date().valueOf()
-          ? "Date must be current Date or after"
+          ? "Date must be of Day after current date"
           : "",
     },
     {
