@@ -65,7 +65,7 @@ INSERT INTO report values(null,"a1","1999-01-01","https://drive.google.com/file/
 
 
 
-CREATE TABLE Prescription(
+CREATE TABLE prescription(
     prescriptionId INTEGER  UNSIGNED NOT NULL AUTO_INCREMENT,
     description VARCHAR(500) NOT NULL,
     disease VARCHAR(40) NOT NULL,
@@ -76,7 +76,6 @@ CREATE TABLE Prescription(
     FOREIGN KEY (staffId) REFERENCES Emr_System.staff(staffId),
     FOREIGN KEY (patientId) REFERENCES Emr_System.patient(patientId)
 )AUTO_INCREMENT=1;
-
 
 
 INSERT INTO prescription VALUES

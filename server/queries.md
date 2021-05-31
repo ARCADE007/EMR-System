@@ -12,7 +12,7 @@ CREATE TABLE Staff (
     staffPhoneno INTEGER NOT NULL,
     staffEmail VARCHAR(20) NOT NULL,
     staffAddress VARCHAR(30)NOT NULL,
-    rollName VARCHAR(20) NOT NULl,
+    roleName VARCHAR(20) NOT NULl,
     PRIMARY KEY(staffId)
    )AUTO_INCREMENT=1;
 ```
