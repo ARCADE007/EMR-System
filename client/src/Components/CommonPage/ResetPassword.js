@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import validator from "validator";
 import {
   Button,
   Card,
@@ -13,17 +14,41 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import LoginNavbar from "../MainComponents/LoginNavbar";
 import LoginFooter from "../MainComponents/LoginFooter";
-function AskPatient() {
-  const refcontainer = useRef(null);
-  const [patientId, setPatientId] = useState("");
 
+function ResetPassword(props) {
+  const refcontainer = useRef(null);
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
   });
+
+  const [passwordIsValid, setPasswordIsValid] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const validate = (value) => {
+    if (
+      validator.isStrongPassword(value, {
+        minLength: 6,
+        minLowercase: 0,
+        minUppercase: 1,
+        minNumbers: 0,
+        minSymbols: 0,
+      })
+    ) {
+      setPasswordIsValid(true);
+      setErrorMessage("");
+    } else {
+      setPasswordIsValid(false);
+      setErrorMessage(
+        "Password must be of length 6 and must contain Uppercase"
+      );
+    }
+  };
+
+  const query = new URLSearchParams(props.location.search);
+  const token = query.get("token");
 
   return (
     <>
@@ -55,52 +80,56 @@ function AskPatient() {
                       paddingTop: "50px",
                     }}
                   >
-                    <span>Enter Patient ID</span>
+                    <span>Enter New Password</span>
                   </div>
                   <CardBody
-                    style={{
-                      backgroundColor: "rgb(128,0,0,0.4)",
-                    }}
+                    style={{ backgroundColor: "rgb(128,0,0,0.4)" }}
                     className="px-lg-5 py-lg-5"
                   >
-                    <Form>
+                    <Form
+                      method="post"
+                      action="http://localhost:3001/resetPassword"
+                      role="form"
+                    >
                       <FormGroup className="mb-3">
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-circle-08" />
+                              <i className="ni ni-email-83" />
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
-                            placeholder="Enter Patient Id"
-                            name="id"
-                            type="text"
-                            value={patientId}
-                            onChange={(e) => {
-                              setPatientId(e.target.value);
-                            }}
+                            placeholder="Enter Your New Password"
+                            name="password"
+                            type="password"
+                            onChange={(e) => validate(e.target.value)}
                           />
                         </InputGroup>
-                        {/* <span
+                        <span
                           style={{
-                            color: "lightgoldenrodyellow",
+                            color: "lightblue",
                           }}
                         >
-                          {emailError}
-                        </span> */}
+                          {errorMessage}
+                        </span>
+
+                        <InputGroup
+                          style={{ display: "none" }}
+                          className="input-group-alternative"
+                        >
+                          <Input name="token" type="text" value={token} />
+                        </InputGroup>
                       </FormGroup>
 
                       <div className="text-center">
-                        <Link to={`/DrDashboardStaff/${patientId}`}>
-                          <Button
-                            className="my-4"
-                            color="primary"
-                            type="button"
-                            // disabled={!emailIsValid}
-                          >
-                            Go
-                          </Button>
-                        </Link>
+                        <Button
+                          className="my-4"
+                          color="primary"
+                          type="submit"
+                          disabled={!passwordIsValid}
+                        >
+                          Change Password
+                        </Button>
                       </div>
                     </Form>
                   </CardBody>
@@ -115,4 +144,4 @@ function AskPatient() {
   );
 }
 
-export default AskPatient;
+export default ResetPassword;

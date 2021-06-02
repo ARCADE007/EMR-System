@@ -1,10 +1,5 @@
 /* eslint-disable default-case */
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useReducer,
-} from "react";
+import React, { useState, useEffect, useRef, useReducer } from "react";
 import "../../../CDDDD.css";
 import { Container, Button, Row, Col } from "reactstrap";
 import "../../../Table.css";
@@ -44,14 +39,11 @@ const actionReducer = (state, action) => {
 function PatientRegistrationTable() {
   const refcontainer = useRef(null);
   const [data, setData] = useState([]);
-  const [action, dispatchAction] = useReducer(
-    actionReducer,
-    {
-      add: false,
-      modify: false,
-      view: false,
-    }
-  );
+  const [action, dispatchAction] = useReducer(actionReducer, {
+    add: false,
+    modify: false,
+    view: false,
+  });
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -82,13 +74,13 @@ function PatientRegistrationTable() {
             <span />
           </div>
           <Container>
-            <Row>
+            <Row style={{ paddingLeft: "30%", paddingRight: "20%" }}>
               <Col
                 xs="12"
                 sm="12"
                 md="6"
                 lg="6"
-                style={{ paddingTop: "5px" }}
+                style={{ paddingTop: "5px", paddingBottom: "5%" }}
               >
                 <Button
                   onClick={() => {
@@ -103,7 +95,7 @@ function PatientRegistrationTable() {
                 sm="12"
                 md="6"
                 lg="6"
-                style={{ paddingTop: "5px" }}
+                style={{ paddingTop: "5px", paddingBottom: "5%" }}
               >
                 <Button
                   onClick={() => {
@@ -116,7 +108,7 @@ function PatientRegistrationTable() {
             </Row>
           </Container>
 
-          <Container className="pt-lg-7">
+          <Container>
             <PatientCustomMaterialTable
               data={data}
               setData={setData}

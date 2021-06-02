@@ -9,8 +9,6 @@ import {
   InputGroupText,
   InputGroup,
   Container,
-  Row,
-  Col,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -18,21 +16,14 @@ export default function PatientCustomMaterialTable(props) {
   const [addData, setAddData] = useState([]);
   const [updateData, setUpdateData] = useState([]);
   const [patientId, setPatientId] = useState("");
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "FullName",
       field: "patientName",
+      type: "string",
 
-      editComponent: (props) => (
-        <input
-          type="string"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
       validate: (rowData) =>
-        rowData.patientName &&
-        rowData.patientName.length < 2
+        rowData.patientName && rowData.patientName.length < 2
           ? "Name must be have 3 chars"
           : "",
     },
@@ -40,18 +31,13 @@ export default function PatientCustomMaterialTable(props) {
       title: "Dob",
       field: "patientDob",
       type: "date",
-      validate: (rowData) =>
-        rowData.patientDob === ""
-          ? "Name cannot be empty"
-          : "",
     },
 
     {
       title: "Address",
       field: "patientAddress",
       validate: (rowData) =>
-        rowData.patientAddress &&
-        rowData.patientAddress.length < 5
+        rowData.patientAddress && rowData.patientAddress.length < 5
           ? "Address must be have 6 character"
           : "",
     },
@@ -60,8 +46,7 @@ export default function PatientCustomMaterialTable(props) {
       field: "patientPhoneno",
       type: "string",
       validate: (rowData) =>
-        rowData.patientPhoneno &&
-        rowData.patientPhoneno.length < 9
+        rowData.patientPhoneno && rowData.patientPhoneno.length < 9
           ? "Phone number must  have 10 digit"
           : "",
     },
@@ -70,8 +55,7 @@ export default function PatientCustomMaterialTable(props) {
       title: "Email",
       field: "patientEmail",
       validate: (rowData) =>
-        rowData.patientEmail &&
-        rowData.patientEmail.length < 6
+        rowData.patientEmail && rowData.patientEmail.length < 6
           ? "Email is not valid"
           : "",
     },
@@ -79,12 +63,9 @@ export default function PatientCustomMaterialTable(props) {
   useEffect(() => {
     if (patientId !== "") {
       axios
-        .get(
-          `http://localhost:3001/patients/${patientId}`,
-          {
-            withCredentials: true,
-          }
-        )
+        .get(`http://localhost:3001/patients/${patientId}`, {
+          withCredentials: true,
+        })
         .then((result) => {
           setUpdateData(new Array(result.data));
         })
@@ -171,10 +152,7 @@ export default function PatientCustomMaterialTable(props) {
                   onClick={() => {
                     addData.forEach((patient) => {
                       axios
-                        .post(
-                          `http://localhost:3001/patients`,
-                          patient
-                        )
+                        .post(`http://localhost:3001/patients`, patient)
                         .then()
                         .catch((error) => {
                           console.log(error);
@@ -198,8 +176,8 @@ export default function PatientCustomMaterialTable(props) {
                 setPatientId(e.target.id.value);
               }}
             >
-              <Row>
-                <Col>
+              <div style={{ display: "flex", marginLeft: "28%" }}>
+                <div style={{ display: "flex", paddingTop: "25px" }}>
                   <FormGroup className="px-lg-5">
                     <InputGroup className="input-group-alternative">
                       <InputGroupAddon addonType="prepend">
@@ -214,19 +192,17 @@ export default function PatientCustomMaterialTable(props) {
                       />
                     </InputGroup>
                   </FormGroup>
-                </Col>
-                <Col>
-                  <div className="text-center">
-                    <Button
-                      className="my-4"
-                      color="primary"
-                      type="submit"
-                    >
-                      Go
-                    </Button>
-                  </div>
-                </Col>
-              </Row>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                  <Button className="my-4" color="primary" type="submit">
+                    Go
+                  </Button>
+                </div>
+              </div>
             </Form>
           </Container>
           <MaterialTable

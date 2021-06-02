@@ -17,7 +17,7 @@ import {
 import LoginNavbar from "../../MainComponents/LoginNavbar";
 import LoginFooter from "../../MainComponents/LoginFooter";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 function AddRecord() {
   const { patientId } = useParams();
   const refcontainer = useRef(null);
@@ -84,10 +84,14 @@ function AddRecord() {
                       onSubmit={(e) => {
                         e.preventDefault();
                         axios
-                          .post(`http://localhost:3001/records`, {
-                            patientId: patientId,
-                            recordName: e.target.recordName.value,
-                          })
+                          .post(
+                            `http://localhost:3001/records`,
+                            {
+                              patientId: patientId,
+                              recordName: e.target.recordName.value,
+                            },
+                            { withCredentials: true }
+                          )
                           .catch((error) => {
                             console.log(error);
                           });

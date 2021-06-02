@@ -9,21 +9,18 @@ import axios from "axios";
 import Cookies from "js-cookie";
 function PrescriptionTableEditable() {
   const { prescriptionId, staffId } = useParams();
-
   const [data, setData] = useState([]);
   const [medicines, setMedicines] = useState([]);
   const refcontainer = useRef(null);
+
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
 
     axios
-      .get(
-        "http://localhost:3001/medicines/" + prescriptionId,
-        {
-          withCredentials: true,
-        }
-      )
+      .get("http://localhost:3001/medicines/" + prescriptionId, {
+        withCredentials: true,
+      })
       .then((result) => {
         setMedicines(result.data);
       })
@@ -66,32 +63,26 @@ function PrescriptionTableEditable() {
               data={data}
               setData={setData}
               medicines={medicines}
+              prescriptionId={prescriptionId}
             />
             {medicines.length === 0 &&
               data.length !== 0 &&
               staffId === Cookies.get("id") && (
-                <div
-                  style={{ float: "right", padding: "6px" }}
-                >
+                <div style={{ float: "right", padding: "6px" }}>
                   <Button
                     onClick={() => {
                       data.forEach((medicine) => {
                         console.table(medicine);
                         axios
-                          .post(
-                            `http://localhost:3001/medicines`,
-                            {
-                              name: medicine.name,
-                              dateFrom: medicine.dateFrom,
-                              dateTo: medicine.dateTo,
-                              timeMorning:
-                                medicine.timeMorning,
-                              timeEvening:
-                                medicine.timeEvening,
-                              timeNight: medicine.timeNight,
-                              prescriptionId: prescriptionId,
-                            }
-                          )
+                          .post(`http://localhost:3001/medicines`, {
+                            name: medicine.name,
+                            dateFrom: medicine.dateFrom,
+                            dateTo: medicine.dateTo,
+                            timeMorning: medicine.timeMorning,
+                            timeEvening: medicine.timeEvening,
+                            timeNight: medicine.timeNight,
+                            prescriptionId: prescriptionId,
+                          })
                           .catch((error) => {
                             console.log(error);
                           });

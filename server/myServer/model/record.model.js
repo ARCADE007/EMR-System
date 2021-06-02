@@ -12,7 +12,7 @@ const Record = function (record) {
 
 // * Insert a new record into the Record Table
 Record.create = (newRecord, result) => {
-  const query = "INSERT INTO Record SET ?";
+  const query = "INSERT INTO record SET ?";
 
   sql.query(query, newRecord, (err, res) => {
     if (err) {
@@ -37,7 +37,7 @@ Record.create = (newRecord, result) => {
 
 // * Returns the data of Record by recordId by running SELECT
 Record.findByRecordID = (patientId, cb) => {
-  const query = "SELECT * FROM Record WHERE record.patientId = ?";
+  const query = "SELECT * FROM record WHERE record.patientId = ?";
   sql.query(query, [patientId], (error, result) => {
     if (error) {
       console.log("error: ", error);

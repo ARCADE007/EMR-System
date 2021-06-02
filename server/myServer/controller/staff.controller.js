@@ -1,11 +1,13 @@
 const Staff = require("../model/staff.model");
 const generator = require("generate-password");
 const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
-
+const sendMail = require("../utils/mailer");
+const fptFunction = require("../utils/templetes/ForgotPass/forgotPasswordTemplete");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // * Create and save a new staff
+
 exports.create = async (req, res) => {
   // ValIdate Request
   if (!req.body) {
@@ -18,7 +20,7 @@ exports.create = async (req, res) => {
     length: 8,
     numbers: true,
   });
-  console.log(("actual password : ", password));
+  console.log("actual password : ", password);
 
   // Create a Staff
   const staff = new Staff({
@@ -27,7 +29,7 @@ exports.create = async (req, res) => {
     staffPhoneno: req.body.staffPhoneno,
     staffEmail: req.body.staffEmail,
     staffAddress: req.body.staffAddress,
-    rollName: req.body.rollName,
+    roleName: req.body.roleName,
     departmentName: req.body.departmentName,
   });
 
@@ -49,6 +51,11 @@ exports.create = async (req, res) => {
         message: err.message || "Some error occurred while creating the Staff.",
       });
     } else {
+      sendMail(
+        staff.staffEmail,
+        "Your Login Credentials",
+        fptFunction(data.staffId, password)
+      );
       res.status(200).send(data);
     }
   });
@@ -127,7 +134,7 @@ exports.update = (req, res) => {
       staffPhoneno: req.body.staffPhoneno,
       staffEmail: req.body.staffEmail,
       staffAddress: req.body.staffAddress,
-      rollName: req.body.rollName,
+      roleName: req.body.roleName,
       departmentName: req.body.departmentName,
     };
 

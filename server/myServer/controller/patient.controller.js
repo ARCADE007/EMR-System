@@ -1,4 +1,5 @@
 const Patient = require("../model/patient.model");
+const Staff = require("../model/staff.model");
 const generator = require("generate-password");
 const { generateAccessToken, checkAccessToken } = require("../utils/jwtAuth");
 
@@ -53,7 +54,7 @@ exports.create = async (req, res) => {
     } else {
       sendMail(
         patient.patientEmail,
-        "le tera password",
+        "Your Login Credentials",
         fptFunction(data.patientId, password)
       );
       res.status(200).send(data);
@@ -285,31 +286,83 @@ exports.authenticate = (req, res) => {
 
 // * Updates the password for the Patient
 exports.updatePassword = (req, res) => {
-  if (
-    req.cookies.PatientId &&
-    checkAccessToken(req.cookies.auth) == req.cookies.patientId
-  ) {
+  console.log(req.body);
+
+  const { id, role } = checkAccessToken(req.body.token);
+
+  if (role == "patient") {
     Patient.changePassword(
-      req.cookies.patientId,
+      id,
       req.body.password,
-      req.body.newPassword,
+
       (err, data) => {
         if (err) {
           res.status(500).send({
             message:
-              "Could not change password for Patient with patientId " +
-              req.cookies.patientId,
+              "Could not change password for Patient with patientId " + id,
           });
         } else {
-          res.status(200).send({
-            message: `Patient password was changed successfully!`,
-          });
+          res.status(200).redirect("http://localhost:3000/");
         }
       }
     );
   } else {
-    res.status(401).send({
-      message: "Unauthorized",
+    Staff.changePassword(
+      id,
+      req.body.password,
+
+      (err, data) => {
+        if (err) {
+          res.status(500).send({
+            message: "Could not change password for Staff with staffId " + id,
+          });
+        } else {
+          res.status(200).redirect("http://localhost:3000/");
+        }
+      }
+    );
+  }
+};
+
+//* generate forgot password token
+
+exports.generateForgotToken = (req, res) => {
+  if (!req.body.id || !req.body.role) {
+    res.status(400).send({
+      message: "Content cannot be empty!",
     });
   }
+  let emailId = "";
+
+  if (req.body.role == "patient") {
+    Patient.findEmailId(req.body.id, (err, data) => {
+      console.log("data", data);
+      if (!err) {
+        emailId = data.patientEmail;
+
+        const link = `http://localhost:3000/resetPassword?token=${generateAccessToken(
+          req.body.id,
+          req.body.role
+        )}`;
+
+        sendMail(emailId, "Forgot Password Link", link);
+      }
+    });
+  } else {
+    Staff.findEmailId(req.body.id, (err, data) => {
+      console.log("data", data);
+      if (!err) {
+        emailId = data.staffEmail;
+
+        const link = `http://localhost:3000/resetPassword?token=${generateAccessToken(
+          req.body.id,
+          req.body.role
+        )}`;
+
+        sendMail(emailId, "Forgot Password Link", link);
+      }
+    });
+  }
+
+  res.status(200).redirect("http://localhost:3000/");
 };

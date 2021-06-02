@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import Login from "./Components/CommonPage/Login";
 import "./assets/vendor/nucleo/css/nucleo.css";
 import "./assets/vendor/font-awesome/css/font-awesome.min.css";
@@ -23,12 +22,20 @@ import ReportStaff from "./Components/Staff/Report/ReportStaff";
 import PrescriptionMain from "./Components/Staff/PrescriptionMain/PrescriptionMain";
 import PrescriptionMainPatient from "./Components/Patient/PrescriptionMainPatient/PrescriptionMainPatient";
 import ReportPatient from "./Components/Patient/ReportPatient/ReportPatient";
+import ResetPassword from "./Components/CommonPage/ResetPassword";
+// import NotAuthorized from "./Components/CommonPage/NotAuthorized";
 
 function App() {
   return (
     <Router>
       <div className="app">
         <Switch>
+          {/* <Route path="/notAuthorized">
+            <NotAuthorized />
+          </Route> */}
+
+          <Route path="/resetPassword" component={ResetPassword} />
+
           {/* -------------------------PATIENT-------------------------------- */}
 
           <Route path="/DrDashboardPatient">

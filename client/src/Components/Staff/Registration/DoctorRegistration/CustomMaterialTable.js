@@ -9,8 +9,6 @@ import {
   InputGroupText,
   InputGroup,
   Container,
-  Row,
-  Col,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -18,27 +16,20 @@ export default function CustomMaterialTable(props) {
   const [addData, setAddData] = useState([]);
   const [updateData, setUpdateData] = useState([]);
   const [staffId, setStaffId] = useState("");
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "Staff Name",
       field: "staffName",
+      type: "string",
       validate: (rowData) =>
         rowData.staffName && rowData.staffName.length < 2
           ? "StaffName must be have 3 chars"
           : "",
-
-      editComponent: (props) => (
-        <input
-          type="string"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
     },
     {
       title: "Role",
-      field: "rollName",
-      lookup: { Staff: "Staff", Reception: "Reception" },
+      field: "roleName",
+      lookup: { staff: "Staff", reception: "Reception" },
     },
 
     {
@@ -62,8 +53,9 @@ export default function CustomMaterialTable(props) {
     {
       title: "Email",
       field: "staffEmail",
+      type: "string",
       validate: (rowData) =>
-        rowData.staffAddress && rowData.staffAddress.length < 6
+        rowData.staffEmail && rowData.staffEmail.length < 6
           ? "Email is not valid"
           : "",
     },
@@ -192,8 +184,8 @@ export default function CustomMaterialTable(props) {
                 setStaffId(e.target.id.value);
               }}
             >
-              <Row>
-                <Col>
+              <div style={{ display: "flex", marginLeft: "28%" }}>
+                <div style={{ display: "flex", paddingTop: "25px" }}>
                   <FormGroup className="px-lg-5">
                     <InputGroup className="input-group-alternative">
                       <InputGroupAddon addonType="prepend">
@@ -208,15 +200,17 @@ export default function CustomMaterialTable(props) {
                       />
                     </InputGroup>
                   </FormGroup>
-                </Col>
-                <Col>
-                  <div className="text-center">
-                    <Button className="my-4" color="primary" type="submit">
-                      Go
-                    </Button>
-                  </div>
-                </Col>
-              </Row>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                  <Button className="my-4" color="primary" type="submit">
+                    Go
+                  </Button>
+                </div>
+              </div>
             </Form>
           </Container>
           <MaterialTable
