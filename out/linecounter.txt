@@ -213,3 +213,36 @@ server\queries.md, code is 78, comment is 0, blank is 15.
 server\server.js, code is 28, comment is 8, blank is 8.
 server\test.session.sql, code is 12, comment is 3, blank is 11.
 ===============================================================================
+
+
+
+
+// server.env
+// MYSQL_DB_HOST=localhost
+// MYSQL_DB_USER=emr-user
+// MYSQL_DB_PASSWORD=nmgWxdwD@ek4fBj
+// MYSQL_DB_DATABASE=Emr_System
+// MYSQL_PORT=3306
+// TOKEN_SECRET=6bQtK%$P!gY*iKvY$ot7myXcz#7&wSbmN5Xbh&TC3W!SBFKiSgRphTaf2vNRQLFP242rUNJq6RQb2ABhbs#opvFn7w@J&hD8KFE
+
+// GMAIL_USER=*******
+// GMAIL_PASSWORD=*******
+
+.vscode
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "password": "nmgWxdwD@ek4fBj",
+            "name": "emrProject",
+            "database": "Emr_System",
+            "username": "emr-user"
+        }
+    ]
+}
